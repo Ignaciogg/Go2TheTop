@@ -16,12 +16,13 @@ public class Main extends Application {
 
 	public void start(Stage primaryStage) {
 	try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewLogin.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/viewLogin.fxml"));
 			controlLogin control = new controlLogin();
 			loader.setController(control);
 			Parent root = loader.load();
 			primaryStage.setTitle("gO2theTop - Login");
 			primaryStage.setScene(new Scene(root));
+			
 			primaryStage.show();
 
 		} catch (Exception e) {
@@ -30,6 +31,6 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
-		launch(args);
+			launch(args);
 	}
 }
