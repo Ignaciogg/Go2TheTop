@@ -12,7 +12,7 @@
 		"userType": "trainer"
 	}
 	{
-		"userId": 1,
+		"userId": 3,
 		"email": "athlete@email.com",
 		"password": "pass123",
 		"userType": "athlete"
