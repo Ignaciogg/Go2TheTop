@@ -20,7 +20,7 @@ public class Main extends Application {
 			controlLogin control = new controlLogin();
 			loader.setController(control);
 			Parent root = loader.load();
-			primaryStage.setTitle("HearthHealth - Login");
+			primaryStage.setTitle("gO2theTop - Login");
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();
 
