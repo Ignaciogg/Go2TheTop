@@ -21,7 +21,7 @@ public class Main extends Application {
     			primaryStage.setTitle("gO2theTop - Login");
     			primaryStage.setScene(new Scene(root));
     			primaryStage.show();
-
+    			System.out.println("Cerveza plz");
         	}catch (IOException f) {
                 f.printStackTrace();
             }
@@ -31,5 +31,6 @@ public class Main extends Application {
 			launch(args);
 	}
 }
+
 
 
