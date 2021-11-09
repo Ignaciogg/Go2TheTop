@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,18 +21,13 @@
                         <Image url="@../../recursos/logo.jpeg" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="99.0" prefWidth="156.0" text="Bienvenido a go2">
-                     <font>
-                        <Font name="Times New Roman Bold" size="21.0" />
-                     </font>
-                  </Label>
                </children>
             </VBox>
          </left>
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                <children>
-                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log-in">
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrenador">
                         <font>
                              <Font name="System Bold" size="26.0" />
                         </font>
@@ -44,20 +35,8 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                     </Text>
-                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="445.0">
-                     <children>
-                        <TextField fx:id="userNameText" prefHeight="29.0" prefWidth="232.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 2 0;" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="445.0">
-                     <children>
-                     		<PasswordField fx:id="passwordText" prefHeight="29.0" prefWidth="232.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 2 0;" />
-                     </children>
-                  </HBox>
-                    <Button fx:id="botonLogin" mnemonicParsing="false" onAction="#comprobarLogin" prefHeight="27.0" prefWidth="97.0" style="-fx-background-color: white;" text="LOGIN">
-                     <VBox.margin>
-                        <Insets bottom="10.0" top="10.0" />
-                     </VBox.margin></Button>
+                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="445.0" />
+                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="445.0" />
                </children>
             </VBox>
          </center>
