@@ -1,20 +1,20 @@
 [
 	{
-		"userId": 1,
+		"userId": "12345678A",
 		"email": "admin@email.com",
 		"password": "pass123",
 		"userType": "admin"
 	},
 	{
-		"userId": 2,
+		"userId": "23456789B",
 		"email": "entrenador@email.com",
 		"password": "pass123",
-		"userType": "trainer"
+		"userType": "entrenador"
 	},
 	{
-		"userId": 3,
-		"email": "athlete@email.com",
+		"userId": "34567890C",
+		"email": "deportista@email.com",
 		"password": "pass123",
-		"userType": "athlete"
+		"userType": "deportista"
 	}
 ]
