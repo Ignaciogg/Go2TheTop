@@ -28,7 +28,7 @@ public class controlLogin {
 
     @FXML
     void comprobarLogin(ActionEvent event) {
-    	Usuario usuario = gsonUsuario.comprobarUsuario(getEmailText(), getPasswordText());
+    	Usuario usuario = UsuarioGson.comprobarUsuario(getEmailText(), getPasswordText());
 		String rol;
 
 
