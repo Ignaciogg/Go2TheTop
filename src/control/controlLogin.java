@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Usuario;
-//import model.UsuarioGson;
 
 public class controlLogin {
 
@@ -28,9 +27,8 @@ public class controlLogin {
 
     @FXML
     void comprobarLogin(ActionEvent event) {
-    	//Usuario usuario = UsuarioGson.comprobarUsuario(getEmailText(), getPasswordText());
+    	Usuario usuario = new Usuario();
 		String rol;
-
 
 		if (usuario != null) {
 			rol = usuario.getUserType();
@@ -96,7 +94,7 @@ public class controlLogin {
 					loader.setController(controlEntren1);
 					Parent root = loader.load();
 
-					controlEntren1.cargarEntrenador(usuario.getUserId());
+					controlEntren1.setUsuario(usuario);
 
 					Stage stage = new Stage();
 
