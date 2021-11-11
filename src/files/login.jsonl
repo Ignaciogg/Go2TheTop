@@ -1,6 +1,6 @@
-{"userId": "12345678A","email": "Florentino@admin.com","password": "pass123","userType": "admin"}
-{"userId": "23456789B","email": "JoseMario@entrenador.com","password": "pass123","userType": "entrenador"}
-{"userId": "34567890C","email": "Cristiano@deportista.com","password": "pass123","userType": "deportista"}
-{"userId": "12345678D","email": "Elon@admin.com","password": "pass123","userType": "admin"}
-{"userId": "23456789E","email": "Josep@entrenador.com","password": "pass123","userType": "entrenador"}
-{"userId": "34567890F","email": "LionelAndres@deportista.com","password": "pass123","userType": "deportista"}
+{"userId": "123456789A","email": "Florentino@admin.com","password": "pass123","userType": "admin"}
+{"userId": "123456789B","email": "JoseMario@entrenador.com","password": "pass123","userType": "entrenador"}
+{"userId": "123456789C","email": "Cristiano@deportista.com","password": "pass123","userType": "deportista"}
+{"userId": "123456789D","email": "Elon@admin.com","password": "pass123","userType": "admin"}
+{"userId": "123456789E","email": "Josep@entrenador.com","password": "pass123","userType": "entrenador"}
+{"userId": "123456789F","email": "LionelAndres@deportista.com","password": "pass123","userType": "deportista"}
