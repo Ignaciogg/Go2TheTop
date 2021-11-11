@@ -1,0 +1,10 @@
+[{
+	"userId": "12345678A",
+	"email": "admin@email.com",
+	"password": "pass123",
+	"userType": "admin",
+	"name": "Manolo",
+	"lastnames": "soy manolo",
+	"birthday": "01-01-2000",
+	"genre": "helicoptero de combate"
+}]

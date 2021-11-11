@@ -26,7 +26,7 @@ import model.Usuario;
 public class controlLogin {
 
 	@FXML
-	private TextField emailText;
+	private TextField userNameText;
 
 	@FXML
 	private PasswordField passwordText;
@@ -35,11 +35,12 @@ public class controlLogin {
 	private Button botonLogin;
 
 	public static Usuario iniciarSesion(String email, String pass) {
+
 		Gson gson = new Gson();
 		int inicioSesion = 0;
 		Usuario persona = null;
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("../files/login.jsonl"));
+			BufferedReader br = new BufferedReader(new FileReader("C:/Users/Mario/Documents/Universidad/2/Proyecto1/Workspace/PR_INF_21-22-go2thetop/src/files/login.jsonl"));
 			String linea;
 			while ((linea = br.readLine()) != null && inicioSesion == 0) {
 				persona = gson.fromJson(linea, Usuario.class);
@@ -49,7 +50,8 @@ public class controlLogin {
 						String ruta = "";
 						switch (persona.getUserType()) { // Seleccionar la ruta
 						case "administrador":
-							ruta = "../files/administradores/" + persona.getUserId() + ".jsonl";
+							ruta = "../files/administradores/" + persona.getUserId() + ".json";
+							System.out.println(ruta);
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Administrador.class);
@@ -59,7 +61,7 @@ public class controlLogin {
 							break;
 
 						case "entrenador":
-							ruta = "../files/entrenador/" + persona.getUserId() + ".jsonl";
+							ruta = "../files/entrenador/" + persona.getUserId() + ".json";
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Entrenador.class);
@@ -69,7 +71,7 @@ public class controlLogin {
 							break;
 
 						case "deportista":
-							ruta = "../ficheros/deportista/" + persona.getUserId() + ".jsonl";
+							ruta = "../ficheros/deportista/" + persona.getUserId() + ".json";
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Deportista.class);
@@ -99,78 +101,79 @@ public class controlLogin {
 
 	@FXML
 	void comprobarLogin(ActionEvent event) {
-		Usuario usuario = iniciarSesion(emailText.getText(), passwordText.getText());
-		String rol = usuario.getUserType();
+		Usuario usuario = iniciarSesion(userNameText.getText(), passwordText.getText());
+		if(usuario!=null) {
+			String rol = usuario.getUserType();
+			switch (rol) {
+			case "admin":
+				try {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
+					controlAdmin controlAdmin1 = new controlAdmin();
+					loader.setController(controlAdmin1);
+					Parent root = loader.load();
 
-		switch (rol) {
-		case "admin":
-			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
-				controlAdmin controlAdmin1 = new controlAdmin();
-				loader.setController(controlAdmin1);
-				Parent root = loader.load();
+					controlAdmin1.setUsuario(usuario);
 
-				controlAdmin1.setUsuario(usuario);
+					Stage stage = new Stage();
 
-				Stage stage = new Stage();
+					stage.setTitle("gO2theTop - Administrador");
 
-				stage.setTitle("gO2theTop - Administrador");
+					stage.setScene(new Scene(root));
+					stage.show();
+					Stage s_login = (Stage) botonLogin.getScene().getWindow();
+					s_login.hide();
 
-				stage.setScene(new Scene(root));
-				stage.show();
-				Stage s_login = (Stage) botonLogin.getScene().getWindow();
-				s_login.hide();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case "deportista":
+				try {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewDepor.fxml"));
+					controlDeportista controlDepor1 = new controlDeportista();
+					loader.setController(controlDepor1);
+					Parent root = loader.load();
 
-			} catch (Exception e) {
-				e.printStackTrace();
+					controlDepor1.setUsuario(usuario);
+
+					Stage stage = new Stage();
+
+					stage.setTitle("gO2theTop - Deportista");
+
+					stage.setScene(new Scene(root));
+					stage.show();
+					Stage s_login = (Stage) botonLogin.getScene().getWindow();
+					s_login.hide();
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case "Entrenador":
+				try {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntrenador.fxml"));
+					controlEntrenador controlEntren1 = new controlEntrenador();
+					loader.setController(controlEntren1);
+					Parent root = loader.load();
+
+					controlEntren1.setUsuario(usuario);
+
+					Stage stage = new Stage();
+
+					stage.setTitle("gO2theTop - Seleccion");
+
+					stage.setScene(new Scene(root));
+					stage.show();
+
+					Stage s_login = (Stage) botonLogin.getScene().getWindow();
+					s_login.hide();
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
 			}
-			break;
-		case "deportista":
-			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewDepor.fxml"));
-				controlDeportista controlDepor1 = new controlDeportista();
-				loader.setController(controlDepor1);
-				Parent root = loader.load();
-
-				controlDepor1.setUsuario(usuario);
-
-				Stage stage = new Stage();
-
-				stage.setTitle("gO2theTop - Deportista");
-
-				stage.setScene(new Scene(root));
-				stage.show();
-				Stage s_login = (Stage) botonLogin.getScene().getWindow();
-				s_login.hide();
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			break;
-		case "Entrenador":
-			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntrenador.fxml"));
-				controlEntrenador controlEntren1 = new controlEntrenador();
-				loader.setController(controlEntren1);
-				Parent root = loader.load();
-
-				controlEntren1.setUsuario(usuario);
-
-				Stage stage = new Stage();
-
-				stage.setTitle("gO2theTop - Seleccion");
-
-				stage.setScene(new Scene(root));
-				stage.show();
-
-				Stage s_login = (Stage) botonLogin.getScene().getWindow();
-				s_login.hide();
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			break;
-		default:
+		}else {
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/errorLogin.fxml"));
 
