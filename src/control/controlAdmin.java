@@ -3,7 +3,6 @@ package control;
 import java.io.File;
 import java.io.IOException;
 
-import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

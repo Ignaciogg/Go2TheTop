@@ -1,6 +1,5 @@
 package control;
 
-import com.jfoenix.controls.JFXTextArea;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
