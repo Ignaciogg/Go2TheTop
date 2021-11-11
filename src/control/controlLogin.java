@@ -50,7 +50,7 @@ public class controlLogin {
 						String ruta = "";
 						switch (persona.getUserType()) { // Seleccionar la ruta
 						case "administrador":
-							ruta = "../files/administradores/" + persona.getUserId() + ".json";
+							ruta = "../files/administradores/" + persona.getUserId() + ".jsonl";
 							System.out.println(ruta);
 							try {
 								br = new BufferedReader(new FileReader(ruta));
@@ -61,7 +61,7 @@ public class controlLogin {
 							break;
 
 						case "entrenador":
-							ruta = "../files/entrenador/" + persona.getUserId() + ".json";
+							ruta = "../files/entrenador/" + persona.getUserId() + ".jsonl";
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Entrenador.class);
@@ -71,7 +71,7 @@ public class controlLogin {
 							break;
 
 						case "deportista":
-							ruta = "../ficheros/deportista/" + persona.getUserId() + ".json";
+							ruta = "../ficheros/deportista/" + persona.getUserId() + ".jsonl";
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Deportista.class);
