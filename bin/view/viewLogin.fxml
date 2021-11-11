@@ -46,12 +46,12 @@
                     </Text>
                   <HBox alignment="CENTER" prefHeight="51.0" prefWidth="445.0">
                      <children>
-                        <TextField fx:id="userNameText" prefHeight="29.0" prefWidth="232.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 2 0;" />
+                        <TextField fx:id="userNameText" prefHeight="29.0" prefWidth="232.0" promptText="Email" style="-fx-background-color: white; -fx-border-color: white; -fx-border-width: 0 0 2 0;" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="51.0" prefWidth="445.0">
                      <children>
-                     		<PasswordField fx:id="passwordText" prefHeight="29.0" prefWidth="232.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 2 0;" />
+                     		<PasswordField fx:id="passwordText" prefHeight="29.0" prefWidth="232.0" promptText="Password" style="-fx-background-color: white; -fx-border-color: white; -fx-border-width: 0 0 2 0;" />
                      </children>
                   </HBox>
                     <Button fx:id="botonLogin" mnemonicParsing="false" onAction="#comprobarLogin" prefHeight="27.0" prefWidth="97.0" style="-fx-background-color: white;" text="LOGIN">
