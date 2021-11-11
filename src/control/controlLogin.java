@@ -58,7 +58,7 @@ public class controlLogin {
 					e.printStackTrace();
 				}
 
-				break;
+			break;
 
 			case "deportista":
 
@@ -83,7 +83,7 @@ public class controlLogin {
 					e.printStackTrace();
 				}
 
-				break;
+			break;
 
 			case "Entrenador":
 
@@ -111,7 +111,8 @@ public class controlLogin {
 					e.printStackTrace();
 				}
 
-				break;
+			break;
+
 
 			}
 
