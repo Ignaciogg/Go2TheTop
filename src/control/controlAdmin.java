@@ -19,13 +19,10 @@ public class controlAdmin {
 	private Usuario user;
 
     @FXML
-    private Text nombrePantalla;
+    private Text nombreUser;
 
     @FXML
-    private Button btn_Logout;
-
-    @FXML
-    private JFXTextArea miLista;
+    private Button botonCerrarSesion;
 
 
     @FXML
@@ -42,8 +39,8 @@ public class controlAdmin {
 
 				stage.setScene(new Scene(root));
 				stage.show();
-				Stage s_cuidador = (Stage) btn_Logout.getScene().getWindow();
-				s_cuidador.close();
+				Stage s_admin = (Stage) botonCerrarSesion.getScene().getWindow();
+				s_admin.close();
 
 	        }catch (Exception e) {
 				e.printStackTrace();
@@ -53,7 +50,7 @@ public class controlAdmin {
 
 	public void setUsuario(Usuario u) {
     	user = u;
-    	nombrePantalla.setText(u.getUserId());
+    	nombreUser.setText(u.getUserId());
 
     }
 }
