@@ -1,4 +1,3 @@
-/*
 package model;
 
 import java.io.File;
@@ -10,9 +9,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -65,7 +61,6 @@ public class UsuarioGson {
 
 				Usuario persona = new Usuario();
 
-			    ObjectMapper mapper = new ObjectMapper();
 			       try {
 					Usuario[] usuario = mapper.readValue(new File("login.json"), Usuario[].class);
 

@@ -1,5 +1,11 @@
 package control;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import com.google.gson.Gson;
+
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,6 +18,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.Administrador;
+import model.Deportista;
+import model.Entrenador;
 import model.Usuario;
 import model.UsuarioGson;
 
@@ -25,15 +34,74 @@ public class controlLogin {
 
     @FXML
     private Button botonLogin;
+    
+    public static Usuario iniciarSesion (String email, String pass){
+        Gson gson = new Gson();
+        int inicioSesion = 0;
+        Usuario persona = null;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"));
+            String linea;
+            while ((linea = br.readLine()) != null && inicioSesion==0) {
+                persona = gson.fromJson(linea, Usuario.class);
+                if (persona.getEmail().toLowerCase().equals(email)){
+                	System.out.println(persona);
+                    if (persona.getPassword().equals(pass)){
+                        String ruta="";
+                        switch (persona.getUserType()){ //Seleccionar la ruta
+                            case "administrador":
+                                ruta = "src/files/administradores/"+persona.getUserId()+".jsonl";
+                                try{
+                                    br = new BufferedReader(new FileReader(ruta));
+                                    persona = gson.fromJson(br.readLine(), Administrador.class);
+                                } catch (IOException ex) {
+                                    System.out.println(ex.getMessage());
+                                }
+                                break;
 
+                            case "entrenador":
+                                ruta = "src/files/entrenador/"+persona.getUserId()+".jsonl";
+                                try{
+                                    br = new BufferedReader(new FileReader(ruta));
+                                    persona = gson.fromJson(br.readLine(), Entrenador.class);
+                                } catch (IOException ex) {
+                                    System.out.println(ex.getMessage());
+                                }
+                                break;
+
+                            case "deportista":
+                                ruta = "src/ficheros/deportista/"+persona.getUserId()+".jsonl";
+                                try{
+                                    br = new BufferedReader(new FileReader(ruta));
+                                    persona = gson.fromJson(br.readLine(), Deportista.class);
+                                } catch (IOException ex) {
+                                    System.out.println(ex.getMessage());
+                                }
+                                break;
+                        }
+                        System.out.println("Has iniciado sesion correctamente");
+                        inicioSesion = 1;
+                    }else {
+                        System.out.println("la contrasena introducida no es correcta");
+                        inicioSesion = 2;
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        if(inicioSesion==1){
+            return persona;
+        }
+        System.out.println("Los datos de inicio de sesion no son correctos");
+        return null;
+    }    
+    
     @FXML
     void comprobarLogin(ActionEvent event) {
-    	Usuario usuario = UsuarioGson.comprobarUsuario(getEmailText(), getPasswordText());
-		String rol;
-
-
-		if (usuario != null) {
-			rol = usuario.getUserType();
+    	Usuario usuario = iniciarSesion(emailText.getText(), passwordText.getText());
+		String rol = usuario.getUserType();
 
 			switch (rol) {
 
@@ -95,8 +163,6 @@ public class controlLogin {
 					controlEntrenador controlEntren1 = new controlEntrenador();
 					loader.setController(controlEntren1);
 					Parent root = loader.load();
-
-					controlEntren1.cargarEntrenador(usuario.getUserId());
 
 					Stage stage = new Stage();
 

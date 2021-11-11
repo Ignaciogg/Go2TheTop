@@ -46,7 +46,7 @@
                     </Text>
                   <HBox alignment="CENTER" prefHeight="51.0" prefWidth="445.0">
                      <children>
-                        <TextField fx:id="userNameText" prefHeight="29.0" prefWidth="232.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 2 0;" />
+                        <TextField fx:id="userNameText" prefHeight="29.0" prefWidth="232.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 2 0;" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="51.0" prefWidth="445.0">

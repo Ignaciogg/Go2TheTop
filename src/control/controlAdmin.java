@@ -3,7 +3,6 @@ package control;
 import java.io.File;
 import java.io.IOException;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jfoenix.controls.JFXTextArea;
 
 import javafx.event.ActionEvent;
@@ -59,11 +58,7 @@ public class controlAdmin {
 	public void setUsuario(Usuario u) {
     	user = u;
     	nombrePantalla.setText(u.getUserId());
-
-    	ObjectMapper mapper = new ObjectMapper();
-    	ObjectMapper mapper2 = new ObjectMapper();
-    	ObjectMapper mapper3 = new ObjectMapper();
-
+    	
 	       try {
 
 	    	   Deportista[] deportistas = mapper.readValue(new File("deportistas.json"), Deportista[].class);
