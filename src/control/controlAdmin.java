@@ -22,7 +22,7 @@ public class controlAdmin {
     private Text nombrePantalla;
 
     @FXML
-    private Button btn_Logout;
+    private Button botonCerrarSesion;
 
     @FXML
     private JFXTextArea miLista;
@@ -42,8 +42,8 @@ public class controlAdmin {
 
 				stage.setScene(new Scene(root));
 				stage.show();
-				Stage s_cuidador = (Stage) btn_Logout.getScene().getWindow();
-				s_cuidador.close();
+				Stage s_admin = (Stage) botonCerrarSesion.getScene().getWindow();
+				s_admin.close();
 
 	        }catch (Exception e) {
 				e.printStackTrace();
