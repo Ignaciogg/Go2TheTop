@@ -40,7 +40,7 @@ public class controlLogin {
 		int inicioSesion = 0;
 		Usuario persona = null;
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("C:/Users/Mario/Documents/Universidad/2/Proyecto1/Workspace/PR_INF_21-22-go2thetop/src/files/login.jsonl"));
+			BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"));
 			String linea;
 			while ((linea = br.readLine()) != null && inicioSesion == 0) {
 				persona = gson.fromJson(linea, Usuario.class);
