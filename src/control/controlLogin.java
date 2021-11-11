@@ -39,7 +39,7 @@ public class controlLogin {
 		int inicioSesion = 0;
 		Usuario persona = null;
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"));
+			BufferedReader br = new BufferedReader(new FileReader("../files/login.jsonl"));
 			String linea;
 			while ((linea = br.readLine()) != null && inicioSesion == 0) {
 				persona = gson.fromJson(linea, Usuario.class);
@@ -49,7 +49,7 @@ public class controlLogin {
 						String ruta = "";
 						switch (persona.getUserType()) { // Seleccionar la ruta
 						case "administrador":
-							ruta = "src/files/administradores/" + persona.getUserId() + ".jsonl";
+							ruta = "../files/administradores/" + persona.getUserId() + ".jsonl";
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Administrador.class);
@@ -59,7 +59,7 @@ public class controlLogin {
 							break;
 
 						case "entrenador":
-							ruta = "src/files/entrenador/" + persona.getUserId() + ".jsonl";
+							ruta = "../files/entrenador/" + persona.getUserId() + ".jsonl";
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Entrenador.class);
@@ -69,7 +69,7 @@ public class controlLogin {
 							break;
 
 						case "deportista":
-							ruta = "src/ficheros/deportista/" + persona.getUserId() + ".jsonl";
+							ruta = "../ficheros/deportista/" + persona.getUserId() + ".jsonl";
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Deportista.class);
