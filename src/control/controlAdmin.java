@@ -3,7 +3,7 @@ package control;
 import java.io.File;
 import java.io.IOException;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jfoenix.controls.JFXTextArea;
 
 import javafx.event.ActionEvent;
@@ -60,6 +60,7 @@ public class controlAdmin {
     	user = u;
     	nombrePantalla.setText(u.getUserId());
 
+    	/*
     	ObjectMapper mapper = new ObjectMapper();
     	ObjectMapper mapper2 = new ObjectMapper();
     	ObjectMapper mapper3 = new ObjectMapper();
@@ -88,7 +89,7 @@ public class controlAdmin {
 		  } catch (IOException e) {
 			e.printStackTrace();
 		  }
-
+*/
 
     }
 }
