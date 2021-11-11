@@ -16,14 +16,11 @@ public class controlDeportista {
 
 	private Usuario user;
 
-    @FXML
-    private Text nombrePantalla;
+	@FXML
+    private Text nombreUser;
 
     @FXML
-    private Button btn_Logout;
-
-    @FXML
-    private JFXTextArea miLista;
+    private Button botonCerrarSesion;
 
 
     @FXML
@@ -40,8 +37,8 @@ public class controlDeportista {
 
 				stage.setScene(new Scene(root));
 				stage.show();
-				Stage s_cuidador = (Stage) btn_Logout.getScene().getWindow();
-				s_cuidador.close();
+				Stage s_depor = (Stage) botonCerrarSesion.getScene().getWindow();
+				s_depor.close();
 
 	        }catch (Exception e) {
 				e.printStackTrace();
@@ -51,8 +48,7 @@ public class controlDeportista {
 
 	public void setUsuario(Usuario u) {
     	user = u;
-    	nombrePantalla.setText(u.getUserId());
+    	nombreUser.setText(u.getUserId());
 
     }
-
 }

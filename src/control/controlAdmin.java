@@ -19,13 +19,10 @@ public class controlAdmin {
 	private Usuario user;
 
     @FXML
-    private Text nombrePantalla;
+    private Text nombreUser;
 
     @FXML
     private Button botonCerrarSesion;
-
-    @FXML
-    private JFXTextArea miLista;
 
 
     @FXML
@@ -53,7 +50,7 @@ public class controlAdmin {
 
 	public void setUsuario(Usuario u) {
     	user = u;
-    	nombrePantalla.setText(u.getUserId());
+    	nombreUser.setText(u.getUserId());
 
     }
 }

@@ -16,14 +16,11 @@ public class controlEntrenador {
 
 	private Usuario user;
 
-    @FXML
-    private Text nombrePantalla;
+	@FXML
+    private Text nombreUser;
 
     @FXML
-    private Button btn_Logout;
-
-    @FXML
-    private JFXTextArea miLista;
+    private Button botonCerrarSesion;
 
 
     @FXML
@@ -40,8 +37,8 @@ public class controlEntrenador {
 
 				stage.setScene(new Scene(root));
 				stage.show();
-				Stage s_cuidador = (Stage) btn_Logout.getScene().getWindow();
-				s_cuidador.close();
+				Stage s_entren = (Stage) botonCerrarSesion.getScene().getWindow();
+				s_entren.close();
 
 	        }catch (Exception e) {
 				e.printStackTrace();
@@ -51,7 +48,7 @@ public class controlEntrenador {
 
 	public void setUsuario(Usuario u) {
     	user = u;
-    	nombrePantalla.setText(u.getUserId());
+    	nombreUser.setText(u.getUserId());
 
     }
 

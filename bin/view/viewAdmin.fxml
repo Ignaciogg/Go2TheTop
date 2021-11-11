@@ -17,6 +17,7 @@
          <left>
             <VBox alignment="CENTER" prefHeight="500.0" prefWidth="255.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
+                  <Text fx:id="nombreUser" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto" />
                   <ImageView fitHeight="207.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../recursos/logo.jpeg" />
