@@ -61,7 +61,7 @@ public class controlLogin {
 							break;
 
 						case "entrenador":
-							ruta = "../files/entrenador/" + persona.getUserId() + ".json";
+							ruta = "../files/entrenadores/" + persona.getUserId() + ".json";
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Entrenador.class);
@@ -71,7 +71,7 @@ public class controlLogin {
 							break;
 
 						case "deportista":
-							ruta = "../ficheros/deportista/" + persona.getUserId() + ".json";
+							ruta = "../files/deportistas/" + persona.getUserId() + ".json";
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Deportista.class);
@@ -101,7 +101,7 @@ public class controlLogin {
 
 	@FXML
 	void comprobarLogin(ActionEvent event) {
-		Usuario usuario = iniciarSesion(userNameText.getText(), passwordText.getText());
+		Usuario usuario = iniciarSesion(userNameText.getText().toLowerCase(), passwordText.getText());
 		if(usuario!=null) {
 			String rol = usuario.getUserType();
 			switch (rol) {
