@@ -1,11 +1,7 @@
 package control;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
-import com.google.gson.Gson;
-
+import application.ficheros;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,9 +14,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import model.Administrador;
-import model.Deportista;
-import model.Entrenador;
 import model.Usuario;
 
 public class controlLogin {
@@ -34,74 +27,9 @@ public class controlLogin {
 	@FXML
 	private Button botonLogin;
 
-	public static Usuario iniciarSesion(String email, String pass) {
-
-		Gson gson = new Gson();
-		int inicioSesion = 0;
-		Usuario persona = null;
-		try {
-			BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"));
-			String linea;
-			while ((linea = br.readLine()) != null && inicioSesion == 0) {
-				persona = gson.fromJson(linea, Usuario.class);
-				if (persona.getEmail().equalsIgnoreCase(email)) {
-					System.out.println(persona);
-					if (persona.getPassword().equals(pass)) {
-						String ruta = "";
-						switch (persona.getUserType()) { // Seleccionar la ruta
-						case "administrador":
-							ruta = "src/files/administradores/" + persona.getUserId() + ".jsonl";
-							System.out.println(ruta);
-							try {
-								br = new BufferedReader(new FileReader(ruta));
-								persona = gson.fromJson(br.readLine(), Administrador.class);
-							} catch (IOException ex) {
-								System.out.println(ex.getMessage());
-							}
-							break;
-
-						case "entrenador":
-							ruta = "src/files/entrenadores/" + persona.getUserId() + ".jsonl";
-							try {
-								br = new BufferedReader(new FileReader(ruta));
-								persona = gson.fromJson(br.readLine(), Entrenador.class);
-							} catch (IOException ex) {
-								System.out.println(ex.getMessage());
-							}
-							break;
-
-						case "deportista":
-							ruta = "src/files/deportistas/" + persona.getUserId() + ".jsonl";
-							try {
-								br = new BufferedReader(new FileReader(ruta));
-								persona = gson.fromJson(br.readLine(), Deportista.class);
-							} catch (IOException ex) {
-								System.out.println(ex.getMessage());
-							}
-							break;
-						}
-						System.out.println("Has iniciado sesion correctamente");
-						inicioSesion = 1;
-					} else {
-						System.out.println("la contrasena introducida no es correcta");
-						inicioSesion = 2;
-					}
-				}
-			}
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
-		}
-
-		if (inicioSesion == 1) {
-			return persona;
-		}
-		System.out.println("Los datos de inicio de sesion no son correctos");
-		return null;
-	}
-
 	@FXML
 	void comprobarLogin(ActionEvent event) {
-		Usuario usuario = iniciarSesion(userNameText.getText(), passwordText.getText());
+		Usuario usuario = new ficheros().IniciarSesion(userNameText.getText(), passwordText.getText());
 		if(usuario!=null) {
 			String rol = usuario.getUserType();
 			switch (rol) {

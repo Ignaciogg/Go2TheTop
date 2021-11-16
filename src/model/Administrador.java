@@ -9,6 +9,6 @@ public class Administrador extends Usuario{
 
 	
 	public void borrarUsuario(Usuario user) {
-		if(user)
+		
 	}
 }
