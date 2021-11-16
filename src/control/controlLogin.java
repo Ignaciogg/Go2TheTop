@@ -105,7 +105,7 @@ public class controlLogin {
 		if(usuario!=null) {
 			String rol = usuario.getUserType();
 			switch (rol) {
-			case "admin":
+			case "administrador":
 				try {
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
 					controlAdmin controlAdmin1 = new controlAdmin();
@@ -149,7 +149,7 @@ public class controlLogin {
 					e.printStackTrace();
 				}
 				break;
-			case "Entrenador":
+			case "entrenador":
 				try {
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntrenador.fxml"));
 					controlEntrenador controlEntren1 = new controlEntrenador();
@@ -198,5 +198,7 @@ public class controlLogin {
 				e.printStackTrace();
 			}
 		}
+		
+		
 	}
 }

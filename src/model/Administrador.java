@@ -7,4 +7,8 @@ public class Administrador extends Usuario{
         super(userId, email, password, userType, name, lastnames, birthdate, genre, active);
     }
 
+	
+	public void borrarUsuario(Usuario user) {
+		if(user)
+	}
 }
