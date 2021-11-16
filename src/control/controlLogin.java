@@ -151,7 +151,7 @@ public class controlLogin {
 				break;
 			case "entrenador":
 				try {
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntrenador.fxml"));
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntren.fxml"));
 					controlEntrenador controlEntren1 = new controlEntrenador();
 					loader.setController(controlEntren1);
 					Parent root = loader.load();
@@ -198,7 +198,7 @@ public class controlLogin {
 				e.printStackTrace();
 			}
 		}
-		
-		
+
+
 	}
 }
