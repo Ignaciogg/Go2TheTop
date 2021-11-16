@@ -49,5 +49,6 @@ public class controlAdmin {
 
 	public void setUsuario(Usuario u) {
     	user = u;
+    	nombreUser.setText(u.getName());
     }
 }

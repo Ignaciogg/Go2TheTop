@@ -17,17 +17,48 @@
          <left>
             <VBox alignment="CENTER" prefHeight="500.0" prefWidth="255.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="nombreUser" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto" />
-                  <ImageView fitHeight="207.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../recursos/logo.jpeg" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="botonCerrarSesion" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
+                  <BorderPane prefHeight="637.0" prefWidth="255.0" style="-fx-background-color: white;">
+                     <top>
+                        <ImageView fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../../recursos/logo.jpeg" />
+                           </image>
+                           <BorderPane.margin>
+                              <Insets right="125.0" />
+                           </BorderPane.margin>
+                        </ImageView>
+                     </top>
+                     <bottom>
+                        <Button fx:id="botonCerrarSesion" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <BorderPane.margin>
+                              <Insets bottom="50.0" />
+                           </BorderPane.margin>
+                        </Button>
+                     </bottom>
+                     <left>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido" wrappingWidth="88.6708984375" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="250.0" left="30.0" />
+                           </BorderPane.margin>
+                           <font>
+                              <Font name="Times New Roman Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </left>
+                     <center>
+                        <Text fx:id="nombreUser" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="250.0" right="85.0" />
+                           </BorderPane.margin>
+                           <font>
+                              <Font name="Times New Roman Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </center>
+                  </BorderPane>
                </children>
             </VBox>
          </left>
@@ -39,7 +70,7 @@
                              <Font name="System Bold" size="26.0" />
                         </font>
                      <VBox.margin>
-                        <Insets bottom="5.0" />
+                        <Insets bottom="300.0" />
                      </VBox.margin>
                     </Text>
                   <HBox alignment="CENTER" prefHeight="51.0" prefWidth="445.0" />
