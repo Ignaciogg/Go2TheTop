@@ -10,6 +10,7 @@ public class Usuario {
     private String lastnames;
     private String birthdate;
     private String genre;
+    private Boolean active;
 
 
     public Usuario(String userId, String email, String password, String userType) {
@@ -21,7 +22,7 @@ public class Usuario {
 
 
     public Usuario(String userId, String email, String password, String userType, String name, String lastnames,
-			String birthdate, String genre) {
+			String birthdate, String genre, Boolean active) {
 		this.userId = userId;
 		this.email = email;
 		this.password = password;
@@ -30,6 +31,7 @@ public class Usuario {
 		this.lastnames = lastnames;
 		this.birthdate = birthdate;
 		this.genre = genre;
+		this.active = active;
 	}
 
 
@@ -110,6 +112,16 @@ public class Usuario {
 
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+
+
+	public Boolean getActive() {
+		return active;
+	}
+
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	
