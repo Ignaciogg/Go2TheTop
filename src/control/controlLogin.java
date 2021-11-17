@@ -44,24 +44,24 @@ public class controlLogin {
 			String linea;
 			while ((linea = br.readLine()) != null && inicioSesion == 0) {
 				persona = gson.fromJson(linea, Usuario.class);
-				if (persona.getEmail().equalsIgnoreCase(email)) {
+				if (persona.getEmail().toLowerCase().equals(email)) {
 					System.out.println(persona);
 					if (persona.getPassword().equals(pass)) {
 						String ruta = "";
 						switch (persona.getUserType()) { // Seleccionar la ruta
-						case "administrador":
-							ruta = "src/files/administradores/" + persona.getUserId() + ".jsonl";
+						case "admin":
+							ruta = "../files/administradores" + persona.getUserId() + ".json";
 							System.out.println(ruta);
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Administrador.class);
 							} catch (IOException ex) {
-								System.out.println(ex.getMessage());
+								System.out.println(ex.getMessage() + "hola");
 							}
 							break;
 
 						case "entrenador":
-							ruta = "src/files/entrenadores/" + persona.getUserId() + ".jsonl";
+							ruta = "../files/entrenadores/" + persona.getUserId() + ".json";
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Entrenador.class);
@@ -71,7 +71,7 @@ public class controlLogin {
 							break;
 
 						case "deportista":
-							ruta = "src/files/deportistas/" + persona.getUserId() + ".jsonl";
+							ruta = "../files/deportistas/" + persona.getUserId() + ".json";
 							try {
 								br = new BufferedReader(new FileReader(ruta));
 								persona = gson.fromJson(br.readLine(), Deportista.class);
@@ -101,12 +101,13 @@ public class controlLogin {
 
 	@FXML
 	void comprobarLogin(ActionEvent event) {
-		Usuario usuario = iniciarSesion(userNameText.getText(), passwordText.getText());
+		Usuario usuario = iniciarSesion(userNameText.getText().toLowerCase(), passwordText.getText());
 		if(usuario!=null) {
 			String rol = usuario.getUserType();
 			switch (rol) {
-			case "admin":
+			case "administrador":
 				try {
+					
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
 					controlAdmin controlAdmin1 = new controlAdmin();
 					loader.setController(controlAdmin1);
