@@ -1,8 +1,5 @@
 package control;
 
-import java.io.File;
-import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,5 +46,6 @@ public class controlAdmin {
 
 	public void setUsuario(Usuario u) {
     	user = u;
+    	nombreUser.setText(u.getName());
     }
 }

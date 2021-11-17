@@ -1,11 +1,7 @@
 package control;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
-import com.google.gson.Gson;
-
+import application.ficheros;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,9 +14,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import model.Administrador;
-import model.Deportista;
-import model.Entrenador;
 import model.Usuario;
 
 public class controlLogin {
@@ -34,6 +27,7 @@ public class controlLogin {
 	@FXML
 	private Button botonLogin;
 
+<<<<<<< HEAD
 	public static Usuario iniciarSesion(String email, String pass) {
 
 		Gson gson = new Gson();
@@ -102,6 +96,11 @@ public class controlLogin {
 	@FXML
 	void comprobarLogin(ActionEvent event) {
 		Usuario usuario = iniciarSesion(userNameText.getText().toLowerCase(), passwordText.getText());
+=======
+	@FXML
+	void comprobarLogin(ActionEvent event) {
+		Usuario usuario = new ficheros().IniciarSesion(userNameText.getText(), passwordText.getText());
+>>>>>>> dec8f0f91cff740e80ab8b2937670ee37dbd8b01
 		if(usuario!=null) {
 			String rol = usuario.getUserType();
 			switch (rol) {
@@ -150,9 +149,9 @@ public class controlLogin {
 					e.printStackTrace();
 				}
 				break;
-			case "Entrenador":
+			case "entrenador":
 				try {
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntrenador.fxml"));
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntren.fxml"));
 					controlEntrenador controlEntren1 = new controlEntrenador();
 					loader.setController(controlEntren1);
 					Parent root = loader.load();
@@ -199,5 +198,7 @@ public class controlLogin {
 				e.printStackTrace();
 			}
 		}
+
+
 	}
 }

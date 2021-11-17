@@ -1,1 +1,1 @@
-{"userId": "123456789D","email": "Elon@admin.com","password": "pass123","userType": "admin","name": "Elon","lastnames": "Reeve Musk","birthday": "28-06-1971","genre": "hombre"}
+{"userId": "123456789D","email": "Elon@admin.com","password": "pass123","userType": "administrador","name": "Elon","lastnames": "Reeve Musk","birthday": "28-06-1971","genre": "hombre", "active":True}
