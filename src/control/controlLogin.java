@@ -1,6 +1,5 @@
 package control;
 
-
 import application.ficheros;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -27,86 +26,14 @@ public class controlLogin {
 	@FXML
 	private Button botonLogin;
 
-<<<<<<< HEAD
-	public static Usuario iniciarSesion(String email, String pass) {
-
-		Gson gson = new Gson();
-		int inicioSesion = 0;
-		Usuario persona = null;
-		try {
-			BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"));
-			String linea;
-			while ((linea = br.readLine()) != null && inicioSesion == 0) {
-				persona = gson.fromJson(linea, Usuario.class);
-				if (persona.getEmail().toLowerCase().equals(email)) {
-					System.out.println(persona);
-					if (persona.getPassword().equals(pass)) {
-						String ruta = "";
-						switch (persona.getUserType()) { // Seleccionar la ruta
-						case "admin":
-							ruta = "../files/administradores" + persona.getUserId() + ".json";
-							System.out.println(ruta);
-							try {
-								br = new BufferedReader(new FileReader(ruta));
-								persona = gson.fromJson(br.readLine(), Administrador.class);
-							} catch (IOException ex) {
-								System.out.println(ex.getMessage() + "hola");
-							}
-							break;
-
-						case "entrenador":
-							ruta = "../files/entrenadores/" + persona.getUserId() + ".json";
-							try {
-								br = new BufferedReader(new FileReader(ruta));
-								persona = gson.fromJson(br.readLine(), Entrenador.class);
-							} catch (IOException ex) {
-								System.out.println(ex.getMessage());
-							}
-							break;
-
-						case "deportista":
-							ruta = "../files/deportistas/" + persona.getUserId() + ".json";
-							try {
-								br = new BufferedReader(new FileReader(ruta));
-								persona = gson.fromJson(br.readLine(), Deportista.class);
-							} catch (IOException ex) {
-								System.out.println(ex.getMessage());
-							}
-							break;
-						}
-						System.out.println("Has iniciado sesion correctamente");
-						inicioSesion = 1;
-					} else {
-						System.out.println("la contrasena introducida no es correcta");
-						inicioSesion = 2;
-					}
-				}
-			}
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
-		}
-
-		if (inicioSesion == 1) {
-			return persona;
-		}
-		System.out.println("Los datos de inicio de sesion no son correctos");
-		return null;
-	}
-
-	@FXML
-	void comprobarLogin(ActionEvent event) {
-		Usuario usuario = iniciarSesion(userNameText.getText().toLowerCase(), passwordText.getText());
-=======
 	@FXML
 	void comprobarLogin(ActionEvent event) {
 		Usuario usuario = new ficheros().IniciarSesion(userNameText.getText(), passwordText.getText());
->>>>>>> dec8f0f91cff740e80ab8b2937670ee37dbd8b01
 		if(usuario!=null) {
 			String rol = usuario.getUserType();
 			switch (rol) {
 			case "administrador":
 				try {
-					
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
 					controlAdmin controlAdmin1 = new controlAdmin();
 					loader.setController(controlAdmin1);
