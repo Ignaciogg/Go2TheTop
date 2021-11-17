@@ -6,4 +6,6 @@ public class Entrenador extends Usuario{
 			String birthdate, String genre, Boolean active) {
         super(userId, email, password, userType, name, lastnames, birthdate, genre, active);
     }
+
+
 }
