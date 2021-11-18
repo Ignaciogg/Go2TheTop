@@ -37,6 +37,7 @@ public class controlLogin {
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
 					controlAdmin controlAdmin1 = new controlAdmin();
 					loader.setController(controlAdmin1);
+					
 					Parent root = loader.load();
 
 					controlAdmin1.setUsuario(usuario);
@@ -44,7 +45,7 @@ public class controlLogin {
 					Stage stage = new Stage();
 
 					stage.setTitle("gO2theTop - Administrador");
-
+					
 					stage.setScene(new Scene(root));
 					stage.show();
 					Stage s_login = (Stage) botonLogin.getScene().getWindow();
