@@ -43,27 +43,26 @@
             </VBox>
          </left>
          <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                <children>
-                  <BorderPane prefHeight="507.0" prefWidth="275.0">
-                     <top>
-                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir Usuario" BorderPane.alignment="CENTER">
-                              <font>
-                                   <Font name="System Bold" size="26.0" />
-                              </font>
-                           <BorderPane.margin>
-                              <Insets top="15.0" />
-                           </BorderPane.margin>
-                          </Text>
-                     </top>
-                     <center>
-                        <JFXTextField prefHeight="31.0" prefWidth="222.0" style="-fx-background-color: white;" text="Nombre" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets bottom="300.0" left="150.0" right="150.0" />
-                           </BorderPane.margin>
-                        </JFXTextField>
-                     </center>
-                  </BorderPane>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir Usuario" textAlignment="CENTER">
+                        <font>
+                             <Font name="System Bold" size="26.0" />
+                        </font>
+                     <VBox.margin>
+                        <Insets left="127.0" top="10.0" />
+                     </VBox.margin>
+                    </Text>
+                  <JFXTextField promptText="Nombre" style="-fx-background-color: white;">
+                     <VBox.margin>
+                        <Insets left="50.0" right="250.0" top="50.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField promptText="Nombre" style="-fx-background-color: white;" text="Apellidos">
+                     <VBox.margin>
+                        <Insets left="250.0" right="50.0" top="-30.0" />
+                     </VBox.margin>
+                  </JFXTextField>
                </children>
             </VBox>
          </center>
