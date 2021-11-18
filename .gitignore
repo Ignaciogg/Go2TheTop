@@ -1,5 +1,4 @@
-
 bin/control/controlLogin$1.class
 bin/control/controlLogin.class
-src/control/controlLogin.java
 bin/*
+bin/*/*
