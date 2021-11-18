@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -53,16 +54,16 @@
                         <Insets left="127.0" top="10.0" />
                      </VBox.margin>
                     </Text>
-                  <JFXTextField promptText="Nombre" style="-fx-background-color: white;">
-                     <VBox.margin>
-                        <Insets left="50.0" right="250.0" top="50.0" />
-                     </VBox.margin>
-                  </JFXTextField>
-                  <JFXTextField promptText="Nombre" style="-fx-background-color: white;" text="Apellidos">
-                     <VBox.margin>
-                        <Insets left="250.0" right="50.0" top="-30.0" />
-                     </VBox.margin>
-                  </JFXTextField>
+                  <HBox alignment="CENTER" prefHeight="117.0" prefWidth="445.0">
+                     <children>
+                        <JFXTextField promptText="Nombre" style="-fx-background-color: white;" />
+                        <JFXTextField promptText="Apellidos" style="-fx-background-color: white;">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </center>
