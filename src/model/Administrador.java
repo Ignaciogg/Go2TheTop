@@ -11,6 +11,7 @@ public class Administrador extends Usuario {
 
 	public void borrarUsuario(String email) {
 		ficheros files = new ficheros();
+		
 		Usuario persona = files.buscarUsuario(email);
 		files.eliminarUsuarioLogin(persona.getEmail());
 		
