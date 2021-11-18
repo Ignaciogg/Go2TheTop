@@ -9,10 +9,14 @@ public class Administrador extends Usuario {
 		super(userId, email, password, userType, name, lastnames, birthdate, genre, active);
 	}
 
-	public void borrarUsuario(Usuario persona) {
+	public void borrarUsuario(String email) {
 		ficheros files = new ficheros();
-		persona.setActive(false);
+		Usuario persona = files.buscarUsuario(email);
 		files.eliminarUsuarioLogin(persona.getEmail());
+		
+		persona = files.leerUsuario(persona);
+		persona.setActive(false);
+		
 		switch (persona.getUserType()) {
 			case "administrador":
 				files.escribirPersona(persona, "src/files/administradores/" + persona.getUserId() + ".jsonl");
