@@ -49,20 +49,27 @@
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                <children>
-                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Borrar Usuario" textAlignment="CENTER">
-                        <font>
-                             <Font name="System Bold" size="26.0" />
-                        </font>
-                     <VBox.margin>
-                        <Insets left="127.0" top="10.0" />
-                     </VBox.margin>
-                    </Text>
-                  <HBox alignment="CENTER" prefHeight="117.0" prefWidth="445.0" />
+                  <HBox alignment="CENTER" prefHeight="117.0" prefWidth="445.0">
+                     <children>
+                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Borrar Usuario" textAlignment="CENTER">
+                              <font>
+                                   <Font name="System Bold" size="26.0" />
+                              </font>
+                          </Text>
+                     </children></HBox>
                   <JFXTextField fx:id="textfielUser" promptText="Introduzca el DNI/User_Id del usuario que quiera borrar" style="-fx-background-color: white;">
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" top="30.0" />
                      </VBox.margin>
                   </JFXTextField>
+                  <Button fx:id="botonBorrar" mnemonicParsing="false" onAction="#borrarUser" text="Borrar" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="195.0" top="50.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
          </center>
