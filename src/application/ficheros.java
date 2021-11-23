@@ -20,9 +20,10 @@ public class ficheros {
 		Usuario persona = buscarUsuario(email);
 
 		if (persona != null && persona.getPassword().equals(password)) {
-			persona = leerUsuario(persona);
+			return leerUsuario(persona);
+		}else {
+			return null;
 		}
-		return persona;
 	}
 
 	public Usuario buscarUsuario(String email) {
@@ -45,7 +46,28 @@ public class ficheros {
 		}
 		return persona;
 	}
+	
+	public Usuario buscarUsuarioId(String dni) {
+		Gson gson = new Gson();
+		Usuario persona = null;
 
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"));
+			String linea;
+			Boolean encontrado = false;
+			while ((linea = br.readLine()) != null && !encontrado) {
+				persona = gson.fromJson(linea, Usuario.class);
+				if (persona.getUserId().equalsIgnoreCase(dni)) {
+					encontrado = true;
+				}
+			}
+			br.close();
+		} catch (IOException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return persona;
+	}
+	
 	public Usuario leerUsuario(Usuario persona) {
 		switch (persona.getUserType()) { // Seleccionar la ruta
 			case "administrador":

@@ -15,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Administrador;
 import model.Deportista;
+import model.Entrenador;
 import model.Usuario;
 
 import java.io.BufferedReader;
@@ -33,7 +34,7 @@ import application.ficheros;
 
 public class controlEntrenador {
 
-	private Usuario user;
+	private Entrenador user;
 
 	@FXML
     private JFXTextField nombreUser;
@@ -155,7 +156,7 @@ public class controlEntrenador {
     }
 	
 
-	public void setUsuario(Usuario u) {
+	public void setUsuario(Entrenador u) {
     	user = u;
     	if(u.getGenre().equals("hombre")){
     		nombreUser.setText("Bienvenido " + u.getName());

@@ -9,11 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Deportista;
 import model.Usuario;
 
 public class controlDeportista {
 
-	private Usuario user;
+	private Deportista user;
 
 	@FXML
     private Text nombreUser;
@@ -45,7 +46,7 @@ public class controlDeportista {
 
 	    }
 
-	public void setUsuario(Usuario u) {
+	public void setUsuario(Deportista u) {
     	user = u;
     	nombreUser.setText(u.getName());
 

@@ -28,7 +28,8 @@ public class controlLogin {
 
 	@FXML
 	void comprobarLogin(ActionEvent event) {
-		Usuario usuario = new ficheros().IniciarSesion(userNameText.getText(), passwordText.getText());
+		ficheros files = new ficheros();
+		Usuario usuario = files.IniciarSesion(userNameText.getText(), passwordText.getText());
 		if(usuario!=null) {
 			String rol = usuario.getUserType();
 			switch (rol) {
@@ -40,7 +41,7 @@ public class controlLogin {
 					
 					Parent root = loader.load();
 
-					controlAdmin1.setUsuario(usuario);
+					controlAdmin1.setUsuario(files.leerAdministrador("src/files/administradores/" + usuario.getUserId() + ".jsonl"));
 
 					Stage stage = new Stage();
 
@@ -62,7 +63,7 @@ public class controlLogin {
 					loader.setController(controlDepor1);
 					Parent root = loader.load();
 
-					controlDepor1.setUsuario(usuario);
+					controlDepor1.setUsuario(files.leerDeportista("src/files/deportistas/" + usuario.getUserId() + ".jsonl"));
 
 					Stage stage = new Stage();
 
@@ -84,7 +85,7 @@ public class controlLogin {
 					loader.setController(controlEntren1);
 					Parent root = loader.load();
 
-					controlEntren1.setUsuario(usuario);
+					controlEntren1.setUsuario(files.leerEntrenador("src/files/entrenadores/" + usuario.getUserId() + ".jsonl"));
 
 					Stage stage = new Stage();
 
