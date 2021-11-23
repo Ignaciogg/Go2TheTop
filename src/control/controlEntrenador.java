@@ -108,7 +108,7 @@ public class controlEntrenador {
 	}
   
 
-    private String obtenerDatosFicheroEnlaces(Usuario user) {
+    /*private String obtenerDatosFicheroEnlaces(Usuario user) {
     	Gson gson = new Gson();
 
     	String fichero = "", entrenID, deporID="";
@@ -122,14 +122,6 @@ public class controlEntrenador {
     	        Properties properties = gson.fromJson(fichero, Properties.class);
 
         	    entrenID=(String) properties.get("entrenadorID");
-
-        	    //System.out.println(entrenID);
-            	//System.out.println(user.getUserId());
-        	    
-
-        	    System.out.print(entrenID);
-            	System.out.print(user.getUserId());
-
 
             	if(user.getUserId().equals(entrenID)) {
             		deporID= (String) properties.get("deportistaID");
@@ -151,16 +143,38 @@ public class controlEntrenador {
 
     	return deporID;
 
-    }
+    }*/
 
     public ObservableList<Deportista> observableList(Usuario user){
         ObservableList<Deportista> deportistas = FXCollections.observableArrayList();
+        Gson gson = new Gson();
+        Deportista dep = null;
+    	String fichero = "", entrenID, deporID="";
+    	
+    	try (BufferedReader br = new BufferedReader(new FileReader("src/files/enlaces.jsonl"))) {
 
-        deportistaArray.add(new ficheros().leerDeportista("src/files/deportistas/" + obtenerDatosFicheroEnlaces(user) +".jsonl"));
+    	    String linea;
+    	    while ((linea = br.readLine()) != null) {
+    	        fichero = linea;
+    	        System.out.println(fichero);
+    	        Properties properties = gson.fromJson(fichero, Properties.class);
 
-        /*Deportista dep1 = new Deportista("1", "yahoo.com", "pass123","deportista", "alfonso", "Tupu", "26-04-98", "no_binario", true);
-        deportistaArray.add(dep1);*/
+        	    entrenID=(String) properties.get("entrenadorID");
 
+            	if(user.getUserId().equals(entrenID)) {
+            		deporID= (String) properties.get("deportistaID");
+            		System.out.println(deporID);
+            		dep = new ficheros().leerDeportista("src/files/deportistas/" + deporID + ".jsonl");
+                    deportistaArray.add(dep);
+            	}
+    	    }
+
+    	} catch (FileNotFoundException ex) {
+    	    System.out.println(ex.getMessage());
+    	} catch (IOException ex) {
+    	    System.out.println(ex.getMessage());
+    	}
+  
 
         deportistas.addAll(deportistaArray);
         
