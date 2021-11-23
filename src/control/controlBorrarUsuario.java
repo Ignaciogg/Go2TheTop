@@ -23,7 +23,12 @@ public class controlBorrarUsuario {
 
     @FXML
     void borrarUser(ActionEvent event) {
-    	user.borrarUsuario(textfielUser.getText());
+    	String dni = textfielUser.getText();
+    	System.out.println(dni);
+    	
+    	System.out.println(user.toString());
+    	
+    	user.borrarUsuario(dni);
     }
 
     @FXML

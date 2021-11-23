@@ -8,7 +8,7 @@ public class Usuario {
     private String userType;
     private String name;
     private String lastnames;
-    private String birthdate;
+    private String birthday;
     private String genre;
     private Boolean active;
 
@@ -29,7 +29,7 @@ public class Usuario {
 		this.userType = userType;
 		this.name = name;
 		this.lastnames = lastnames;
-		this.birthdate = birthdate;
+		this.birthday = birthdate;
 		this.genre = genre;
 		this.active = active;
 	}
@@ -82,12 +82,12 @@ public class Usuario {
 		this.lastnames = lastnames;
 	}
 
-	public String getBirthdate() {
-		return birthdate;
+	public String getBirthday() {
+		return birthday;
 	}
 
-	public void setBirthdate(String birthdate) {
-		this.birthdate = birthdate;
+	public void setBirthdate(String birthday) {
+		this.birthday = birthday;
 	}
 
 	public String getGenre() {

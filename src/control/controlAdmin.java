@@ -66,6 +66,8 @@ public class controlAdmin {
 				controlBorrarUsuario controlBor = new controlBorrarUsuario();
 				loader.setController(controlBor);
 				Parent root = loader.load();
+				
+				controlBor.setUser(user);
 
 				Stage stage = new Stage();
 				stage.setTitle("gO2theTop - Borrar Usuario");
