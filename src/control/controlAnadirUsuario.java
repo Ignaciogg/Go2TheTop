@@ -9,8 +9,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import model.Administrador;
 
 public class controlAnadirUsuario {
+
+	private Administrador user;
 
     @FXML
     private Button botonVolver;
@@ -54,6 +57,8 @@ public class controlAnadirUsuario {
         	controlAdmin controlAdmin = new controlAdmin();
 			loader.setController(controlAdmin);
 			Parent root = loader.load();
+
+			controlAdmin.setUsuario(user);
 
 			Stage stage = new Stage();
 			stage.setTitle("gO2theTop - Administrador");

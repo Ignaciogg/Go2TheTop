@@ -29,9 +29,9 @@ public class controlBorrarUsuario {
     void borrarUser(ActionEvent event) {
     	String dni = textfielUser.getText();
     	System.out.println(dni);
-    	
+
     	System.out.println(user.toString());
-    	
+
     	user.borrarUsuario(dni);
     }
 
@@ -44,6 +44,8 @@ public class controlBorrarUsuario {
         	controlAdmin controlAdmin = new controlAdmin();
 			loader.setController(controlAdmin);
 			Parent root = loader.load();
+
+			controlAdmin.setUsuario(user);
 
 			Stage stage = new Stage();
 			stage.setTitle("gO2theTop - Administrador");
