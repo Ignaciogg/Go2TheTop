@@ -29,22 +29,24 @@ public class ficheros {
 	public Usuario buscarUsuario(String email) {
 		Gson gson = new Gson();
 		Usuario persona = null;
-
+		Usuario personaBuscada = null;
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"));
 			String linea;
+			
 			Boolean encontrado = false;
 			while ((linea = br.readLine()) != null && !encontrado) {
 				persona = gson.fromJson(linea, Usuario.class);
 				if (persona.getEmail().equalsIgnoreCase(email)) {
 					encontrado = true;
+					personaBuscada=persona;
 				}
 			}
 			br.close();
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
-		return persona;
+		return personaBuscada;
 	}
 	
 	public Usuario buscarUsuarioId(String dni) {
