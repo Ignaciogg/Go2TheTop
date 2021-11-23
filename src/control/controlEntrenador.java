@@ -41,7 +41,7 @@ public class controlEntrenador {
 
     @FXML
     private Button botonCerrarSesion;
-    
+
     @FXML
     private TableView<Deportista> tablaEntrenador;
 
@@ -56,12 +56,10 @@ public class controlEntrenador {
 
     @FXML
     private TableColumn<Deportista, String> colCumple;
-    
-    ArrayList<Deportista> deportistaArray;
-    
-    
 
-    
+    ArrayList<Deportista> deportistaArray;
+
+
     @FXML
     void cerrarSesion(ActionEvent event) {
 		 try {
@@ -84,7 +82,7 @@ public class controlEntrenador {
 			}
 
 	    }
-    
+
     private void inicializarTabla(Usuario user) {
     	/*tablaEntrenador = new TableView();
     	colDeportista = new TableColumn<>("Deportista");
@@ -92,69 +90,69 @@ public class controlEntrenador {
     	colGenero = new TableColumn<>("Genero");
     	colCumple = new TableColumn<>("Cumpleanos");
     	tablaEntrenador.getColumns().addAll(colDeportista,colEmail,colGenero,colCumple);*/
-    	
+
 		colDeportista.setCellValueFactory(new PropertyValueFactory<Deportista,String>("name"));
 		colEmail.setCellValueFactory(new PropertyValueFactory<Deportista,String>("email"));
 		colGenero.setCellValueFactory(new PropertyValueFactory<Deportista,String>("genre"));
 		colCumple.setCellValueFactory(new PropertyValueFactory<Deportista,String>("birthdate"));
-		
+
 		tablaEntrenador.setItems(observableList(user));
 		//deportistas = FXCollections.observableArrayList();
-		
+
 		/*Deportista dep1 = new Deportista("1", "yahoo.com", "pass123","deportista", "alfonso", "Tupu", "26-04-98", "no_binario", true);
 		Deportista dep2 =  new Deportista("2", "yahoo2.com", "pass123","deportista", "alfonso2", "Tupu2", "26-04-98", "no_binario", true);*/
-		
+
 		//tablaEntrenador.getItems().addAll(dep1,dep2);
-		
-		
+
+
 	}
-    
+
     private String obtenerDatosFicheroEnlaces(Usuario user) {
     	Gson gson = new Gson();
-    	
+
     	String fichero = "", entrenID, deporID="";
-    	 
+
     	try (BufferedReader br = new BufferedReader(new FileReader("src/files/enlaces.jsonl"))) {
     	    String linea;
     	    while ((linea = br.readLine()) != null) {
     	        fichero += linea;
     	        System.out.print(fichero);
     	        Properties properties = gson.fromJson(fichero, Properties.class);
-    	        
+
         	    entrenID=(String) properties.get("entrenadorID");
         	    System.out.print(entrenID);
             	System.out.print(user.getUserId());
-        	    
+
             	if(user.getUserId().equals(entrenID)) {
             		deporID= (String) properties.get("deportistaID");
             		System.out.print(deporID);
             	}
     	    }
-        	
+
         	System.out.print(deporID);
-    	 
+
     	} catch (FileNotFoundException ex) {
     	    System.out.println(ex.getMessage());
     	} catch (IOException ex) {
     	    System.out.println(ex.getMessage());
     	}
-    	
+
     	return deporID;
 
     }
-    
+
     public ObservableList<Deportista> observableList(Usuario user){
         ObservableList<Deportista> deportistas = FXCollections.observableArrayList();
-                
+
         deportistaArray.add(new ficheros().leerDeportista("src/files/deportistas/" + obtenerDatosFicheroEnlaces(user) +".jsonl"));
-        
+
         /*Deportista dep1 = new Deportista("1", "yahoo.com", "pass123","deportista", "alfonso", "Tupu", "26-04-98", "no_binario", true);
         deportistaArray.add(dep1);*/
-        
+
         deportistas.addAll(deportistaArray);
         return deportistas;
     }
-	
+
 
 	public void setUsuario(Entrenador u) {
     	user = u;
@@ -163,13 +161,10 @@ public class controlEntrenador {
     	}else if(u.getGenre().equals("mujer")) {
     		nombreUser.setText("Bienvenida " + u.getName());
     	}
-    	
+
     	this.inicializarTabla(u);
-    	
+
 
     }
-	
-	
-	
 
 }
