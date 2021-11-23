@@ -33,7 +33,7 @@
                                     <Insets />
                                  </VBox.margin>
                               </Text>
-                              <Button fx:id="botonAniadir" mnemonicParsing="false" onAction="#aniadirUsuario" text="Añadir nuevo usuario" textAlignment="CENTER">
+                              <Button fx:id="botonAniadir" mnemonicParsing="false" onAction="#aniadirUsuario" style="-fx-background-color: black;" text="Añadir nuevo usuario" textAlignment="CENTER" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets left="40.0" top="30.0" />
                                  </VBox.margin>
@@ -41,7 +41,7 @@
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="botonBorrar" mnemonicParsing="false" onAction="#borrarUsuario" text="Borrar usuario">
+                              <Button fx:id="botonBorrar" mnemonicParsing="false" onAction="#borrarUsuario" style="-fx-background-color: black;" text="Borrar usuario" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets left="60.0" top="30.0" />
                                  </VBox.margin>
@@ -49,13 +49,21 @@
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="botonEnlazar" mnemonicParsing="false" onAction="#enlazarUsuarios" text="Enlazar entrenador-deportista">
+                              <Button fx:id="botonEnlazar" mnemonicParsing="false" onAction="#enlazarUsuarios" style="-fx-background-color: black;" text="Enlazar entrenador-deportista" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets left="15.0" top="30.0" />
                                  </VBox.margin>
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
+                              </Button>
+                              <Button fx:id="botonBorrar1" mnemonicParsing="false" onAction="#borrarUsuario" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: black;" text="Modificar usuario" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="50.0" top="30.0" />
+                                 </VBox.margin>
                               </Button>
                            </children>
                         </VBox>
