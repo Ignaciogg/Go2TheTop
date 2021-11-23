@@ -62,7 +62,7 @@ public class controlAdmin {
     void borrarUsuario(ActionEvent event) {
     	try {
 
-	        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewBorrrarUsuario.fxml"));
+	        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewBorrarUsuario.fxml"));
 				controlBorrarUsuario controlBor = new controlBorrarUsuario();
 				loader.setController(controlBor);
 				Parent root = loader.load();
