@@ -17,7 +17,7 @@ public class controlAdmin {
 	private Administrador user;
 
     @FXML
-    private Text nombreUser;
+    private Text bienvenide;
 
     @FXML
     private Button botonCerrarSesion;
@@ -114,6 +114,6 @@ public class controlAdmin {
 
     public void setUsuario(Administrador u) {
     	user = u;
-    	nombreUser.setText(user.getName());
+    	bienvenide.setText("Bienvenide " + user.getName());
     }
 }

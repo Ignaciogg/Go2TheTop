@@ -25,20 +25,12 @@
                                     <Image url="@../../recursos/logo.jpeg" />
                                  </image>
                               </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido" wrappingWidth="88.6708984375">
+                              <Text fx:id="bienvenide" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenida" wrappingWidth="215.6708984375">
                                  <font>
                                     <Font name="Times New Roman Bold" size="18.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets />
-                                 </VBox.margin>
-                              </Text>
-                              <Text fx:id="nombreUser" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="18.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets left="95.0" />
                                  </VBox.margin>
                               </Text>
                               <Button fx:id="botonAniadir" mnemonicParsing="false" onAction="#aniadirUsuario" text="Añadir nuevo usuario" textAlignment="CENTER">
