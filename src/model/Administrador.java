@@ -9,9 +9,9 @@ public class Administrador extends Usuario {
 		super(userId, email, password, userType, name, lastnames, birthdate, genre, active);
 	}
 
-	public void borrarUsuario(String email) {
+	public void borrarUsuario(String dni) {
 		ficheros files = new ficheros();
-		Usuario persona = files.buscarUsuario(email);
+		Usuario persona = files.buscarUsuarioId(dni);
 		files.eliminarUsuarioLogin(persona.getEmail());
 		
 		persona = files.leerUsuario(persona);

@@ -17,46 +17,59 @@
             <VBox alignment="CENTER" prefHeight="500.0" prefWidth="255.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
                   <BorderPane prefHeight="637.0" prefWidth="255.0" style="-fx-background-color: white;">
-                     <top>
-                        <ImageView fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                           <image>
-                              <Image url="@../../recursos/logo.jpeg" />
-                           </image>
-                           <BorderPane.margin>
-                              <Insets right="125.0" />
-                           </BorderPane.margin>
-                        </ImageView>
-                     </top>
+                     <center>
+                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../recursos/logo.jpeg" />
+                                 </image>
+                              </ImageView>
+                              <Text fx:id="bienvenide" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenida" wrappingWidth="215.6708984375">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Text>
+                              <Button fx:id="botonAniadir" mnemonicParsing="false" onAction="#aniadirUsuario" text="Añadir nuevo usuario" textAlignment="CENTER">
+                                 <VBox.margin>
+                                    <Insets left="40.0" top="30.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="botonBorrar" mnemonicParsing="false" onAction="#borrarUsuario" text="Borrar usuario">
+                                 <VBox.margin>
+                                    <Insets left="60.0" top="30.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="botonEnlazar" mnemonicParsing="false" onAction="#enlazarUsuarios" text="Enlazar entrenador-deportista">
+                                 <VBox.margin>
+                                    <Insets left="15.0" top="30.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </center>
                      <bottom>
                         <Button fx:id="botonCerrarSesion" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" textAlignment="CENTER" BorderPane.alignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                            <BorderPane.margin>
-                              <Insets bottom="50.0" />
+                              <Insets bottom="20.0" />
                            </BorderPane.margin>
                         </Button>
                      </bottom>
-                     <left>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido" wrappingWidth="88.6708984375" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets bottom="250.0" left="30.0" />
-                           </BorderPane.margin>
-                           <font>
-                              <Font name="Times New Roman Bold" size="18.0" />
-                           </font>
-                        </Text>
-                     </left>
-                     <center>
-                        <Text fx:id="nombreUser" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets bottom="250.0" right="85.0" />
-                           </BorderPane.margin>
-                           <font>
-                              <Font name="Times New Roman Bold" size="18.0" />
-                           </font>
-                        </Text>
-                     </center>
                   </BorderPane>
                </children>
             </VBox>

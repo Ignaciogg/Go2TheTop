@@ -1,9 +1,5 @@
 package control;
 
-import java.io.File;
-import java.io.IOException;
-
-import application.ficheros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,14 +14,23 @@ import model.Usuario;
 
 public class controlAdmin {
 
-	private Usuario user;
+	private Administrador user;
 
     @FXML
-    private Text nombreUser;
+    private Text bienvenide;
 
     @FXML
     private Button botonCerrarSesion;
-    
+
+    @FXML
+    private Button botonAniadir;
+
+    @FXML
+    private Button botonBorrar;
+
+    @FXML
+    private Button botonEnlazar;
+
 	@FXML
 	private TextField userEmailText;
 
@@ -54,33 +59,61 @@ public class controlAdmin {
 	    }
 
     @FXML
-    void borrarUsusario(ActionEvent event) {
-		ficheros files = new ficheros();
-    	Administrador admin = files.leerAdministrador("src/files/administradores/" + user.getUserId() + ".jsonl");
-    	
-    	admin.borrarUsuario(userEmailText.getText());
-    	/*
+    void borrarUsuario(ActionEvent event) {
     	try {
 
-	        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewLogin.fxml"));
-				controlLogin controlLog = new controlLogin();
-				loader.setController(controlLog);
+	        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewBorrrarUsuario.fxml"));
+				controlBorrarUsuario controlBor = new controlBorrarUsuario();
+				loader.setController(controlBor);
 				Parent root = loader.load();
 
 				Stage stage = new Stage();
-				stage.setTitle("gO2theTop - Login");
+				stage.setTitle("gO2theTop - Borrar Usuario");
 
 				stage.setScene(new Scene(root));
 				stage.show();
-				Stage s_admin = (Stage) botonCerrarSesion.getScene().getWindow();
+				Stage s_admin = (Stage) botonBorrar.getScene().getWindow();
 				s_admin.close();
 
 	        }catch (Exception e) {
 				e.printStackTrace();
 			}
-			*/
 	    }
-	public void setUsuario(Usuario u) {
+
+    @FXML
+    void aniadirUsuario(ActionEvent event) {
+    	try {
+
+	        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirUsuario.fxml"));
+				controlBorrarUsuario controlBor = new controlBorrarUsuario();
+				loader.setController(controlBor);
+				Parent root = loader.load();
+
+				Stage stage = new Stage();
+				stage.setTitle("gO2theTop - Anadir Usuario");
+
+				stage.setScene(new Scene(root));
+				stage.show();
+				Stage s_admin = (Stage) botonBorrar.getScene().getWindow();
+				s_admin.close();
+
+	        }catch (Exception e) {
+				e.printStackTrace();
+			}
+	    }
+
+    @FXML
+    void enlazarUsuarios(ActionEvent event) {
+    	try {
+
+
+	        }catch (Exception e) {
+				e.printStackTrace();
+			}
+	    }
+
+    public void setUsuario(Administrador u) {
     	user = u;
+    	bienvenide.setText("Bienvenide " + user.getName());
     }
 }
