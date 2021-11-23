@@ -29,8 +29,51 @@ public class Administrador extends Usuario {
 				break;
 		}
 	}
-
 	
+	public void modificarUsuario (String email, String password, String name, String lastnames,
+			String birthdate, String genre) {
+			
+			ficheros files =new ficheros();
+			Usuario persona = files.buscarUsuario(email);
+			files.eliminarUsuarioLogin(persona.getEmail());
+			persona = files.leerUsuario(persona);
+				
+			persona.setPassword(" ");
+			persona.setName(" ");
+			persona.setLastnames(" ");
+			persona.setBirthdate(" ");
+			persona.setGenre(" ");
+
+			switch (persona.getUserType()) {
+				case "administrador":
+					files.escribirPersona(persona, persona.getPassword());
+					files.escribirPersona(persona, persona.getName());
+					files.escribirPersona(persona, persona.getLastnames());
+					files.escribirPersona(persona, persona.getBirthdate());
+					files.escribirPersona(persona, persona.getGenre());
+					
+					break;
+				case "entrenador":
+					files.escribirPersona(persona, persona.getPassword());
+					files.escribirPersona(persona, persona.getName());
+					files.escribirPersona(persona, persona.getLastnames());
+					files.escribirPersona(persona, persona.getBirthdate());
+					files.escribirPersona(persona, persona.getGenre());
+					
+					break;
+				case "deportista":
+					files.escribirPersona(persona, persona.getPassword());
+					files.escribirPersona(persona, persona.getName());
+					files.escribirPersona(persona, persona.getLastnames());
+					files.escribirPersona(persona, persona.getBirthdate());
+					files.escribirPersona(persona, persona.getGenre());
+					
+					break;
+					
+				}
+						
+		
+		}
 
 
 }

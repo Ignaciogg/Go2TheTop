@@ -111,6 +111,14 @@ public class controlAdmin {
 				e.printStackTrace();
 			}
 	    }
+    void modificarUsuario(ActionEvent event) {
+    	try {
+
+
+	        }catch (Exception e) {
+				e.printStackTrace();
+			}
+	    }
 
     public void setUsuario(Administrador u) {
     	user = u;
