@@ -62,10 +62,12 @@ public class controlAdmin {
     void borrarUsuario(ActionEvent event) {
     	try {
 
-	        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewBorrrarUsuario.fxml"));
+	        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewBorrarUsuario.fxml"));
 				controlBorrarUsuario controlBor = new controlBorrarUsuario();
 				loader.setController(controlBor);
 				Parent root = loader.load();
+				
+				controlBor.setUser(user);
 
 				Stage stage = new Stage();
 				stage.setTitle("gO2theTop - Borrar Usuario");
@@ -104,6 +106,14 @@ public class controlAdmin {
 
     @FXML
     void enlazarUsuarios(ActionEvent event) {
+    	try {
+
+
+	        }catch (Exception e) {
+				e.printStackTrace();
+			}
+	    }
+    void modificarUsuario(ActionEvent event) {
     	try {
 
 
