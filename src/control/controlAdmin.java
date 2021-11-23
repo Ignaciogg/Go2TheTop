@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Administrador;
+import model.Usuario;
 
 public class controlAdmin {
 
@@ -20,16 +21,16 @@ public class controlAdmin {
 
     @FXML
     private Button botonCerrarSesion;
-    
+
     @FXML
     private Button botonAniadir;
-    
+
     @FXML
     private Button botonBorrar;
-    
+
     @FXML
     private Button botonEnlazar;
-    
+
 	@FXML
 	private TextField userEmailText;
 
@@ -57,10 +58,6 @@ public class controlAdmin {
 
 	    }
 
-    void aniadirUsuario(ActionEvent event) {
-    	
-    }
-    
     @FXML
     void borrarUsuario(ActionEvent event) {
     	try {
@@ -82,11 +79,39 @@ public class controlAdmin {
 				e.printStackTrace();
 			}
 	    }
-	
+
+    @FXML
+    void aniadirUsuario(ActionEvent event) {
+    	try {
+
+	        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirUsuario.fxml"));
+				controlBorrarUsuario controlBor = new controlBorrarUsuario();
+				loader.setController(controlBor);
+				Parent root = loader.load();
+
+				Stage stage = new Stage();
+				stage.setTitle("gO2theTop - Anadir Usuario");
+
+				stage.setScene(new Scene(root));
+				stage.show();
+				Stage s_admin = (Stage) botonBorrar.getScene().getWindow();
+				s_admin.close();
+
+	        }catch (Exception e) {
+				e.printStackTrace();
+			}
+	    }
+
+    @FXML
     void enlazarUsuarios(ActionEvent event) {
-		
-	}
-	
+    	try {
+
+
+	        }catch (Exception e) {
+				e.printStackTrace();
+			}
+	    }
+
     public void setUsuario(Administrador u) {
     	user = u;
     	nombreUser.setText(user.getName());
