@@ -108,49 +108,39 @@ public class controlEntrenador {
 		
 	}
     
-    private String obtenerDatosFicheroEnlaces(Usuario user) {
-    	Gson gson = new Gson();
-    	
+   
+    public ObservableList<Deportista> observableList(Usuario user){
+        ObservableList<Deportista> deportistas = FXCollections.observableArrayList();
+        
+        Gson gson = new Gson();
     	String fichero = "", entrenID, deporID="";
-    	 
-    	try (BufferedReader br = new BufferedReader(new FileReader("src/files/enlaces.jsonl"))) {
+        
+        try (BufferedReader br = new BufferedReader(new FileReader("src/files/enlaces.jsonl"))) {
     	    String linea;
     	    while ((linea = br.readLine()) != null) {
-    	        fichero += linea;
-    	        System.out.print(fichero);
+    	        fichero = linea;
+    	        System.out.println(fichero);
     	        Properties properties = gson.fromJson(fichero, Properties.class);
     	        
         	    entrenID=(String) properties.get("entrenadorID");
-        	    System.out.print(entrenID);
-            	System.out.print(user.getUserId());
+        	    //System.out.println(entrenID);
+            	//System.out.println(user.getUserId());
         	    
             	if(user.getUserId().equals(entrenID)) {
             		deporID= (String) properties.get("deportistaID");
-            		System.out.print(deporID);
+            		System.out.println(deporID);
+                    deportistaArray.add(new ficheros().leerDeportista("src/files/deportistas/" + deporID + ".jsonl"));
             	}
     	    }
         	
-        	System.out.print(deporID);
-    	 
     	} catch (FileNotFoundException ex) {
     	    System.out.println(ex.getMessage());
     	} catch (IOException ex) {
     	    System.out.println(ex.getMessage());
     	}
-    	
-    	return deporID;
 
-    }
-    
-    public ObservableList<Deportista> observableList(Usuario user){
-        ObservableList<Deportista> deportistas = FXCollections.observableArrayList();
-                
-        deportistaArray.add(new ficheros().leerDeportista("src/files/deportistas/" + obtenerDatosFicheroEnlaces(user) +".jsonl"));
-        
-        /*Deportista dep1 = new Deportista("1", "yahoo.com", "pass123","deportista", "alfonso", "Tupu", "26-04-98", "no_binario", true);
-        deportistaArray.add(dep1);*/
-        
         deportistas.addAll(deportistaArray);
+        
         return deportistas;
     }
 	
