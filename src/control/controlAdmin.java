@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Administrador;
-import model.Usuario;
 
 public class controlAdmin {
 
@@ -58,6 +57,10 @@ public class controlAdmin {
 
 	    }
 
+    void aniadirUsuario(ActionEvent event) {
+    	
+    }
+    
     @FXML
     void borrarUsuario(ActionEvent event) {
     	try {
@@ -79,6 +82,10 @@ public class controlAdmin {
 				e.printStackTrace();
 			}
 	    }
+	
+    void enlazarUsuarios(ActionEvent event) {
+		
+	}
 	
     public void setUsuario(Administrador u) {
     	user = u;
