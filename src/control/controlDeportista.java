@@ -48,7 +48,7 @@ public class controlDeportista {
 
 	public void setUsuario(Deportista u) {
     	user = u;
-    	nombreUser.setText(u.getName());
+    	nombreUser.setText("Bienvenide " + u.getName());
 
     }
 }
