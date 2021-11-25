@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -52,17 +53,27 @@
                                    <Font name="System Bold" size="26.0" />
                               </font>
                            <BorderPane.margin>
-                              <Insets top="15.0" />
+                              <Insets top="40.0" />
                            </BorderPane.margin>
                           </Text>
                      </top>
                      <bottom>
                         <Button mnemonicParsing="false" text="Modificar" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
-                              <Insets bottom="50.0" />
+                              <Insets bottom="200.0" />
                            </BorderPane.margin>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
                         </Button>
                      </bottom>
+                     <center>
+                        <TextField fx:id="textMod" alignment="CENTER" prefHeight="31.0" prefWidth="355.0" text="Introduzca el DNI/User_Id del usuario que quiera modificar" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="-50.0" left="50.0" right="50.0" />
+                           </BorderPane.margin>
+                        </TextField>
+                     </center>
                   </BorderPane>
                </children>
             </VBox>
