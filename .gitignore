@@ -4,3 +4,4 @@ src/files/*
 src/files/*/*
 *.class
 *.jsonl
+src/files/deportistas/123456789F.jsonl
