@@ -1,15 +1,40 @@
 package control;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Properties;
+
+import com.google.gson.Gson;
+
+import application.ficheros;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Administrador;
+import model.Deportista;
+import model.Usuario;
+import java.util.ArrayList;
+import java.util.Properties;
+
+import com.google.gson.Gson;
+import com.jfoenix.controls.JFXTextField;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import application.ficheros;
 
 public class controlAdmin {
 
@@ -35,6 +60,20 @@ public class controlAdmin {
 
 	@FXML
 	private TextField userEmailText;
+	
+	 @FXML
+	private TableView<Usuario> tableAdmin;
+
+	 @FXML
+	 private TableColumn<Usuario, String> colUserId;
+
+	 @FXML
+	 private TableColumn<Usuario, String> colEmail;
+
+	 @FXML
+	 private TableColumn<Usuario, String> colUserType;
+	 
+	 ArrayList<Usuario> usersArray;
 
     @FXML
     void cerrarSesion(ActionEvent event) {
@@ -121,9 +160,47 @@ public class controlAdmin {
 				e.printStackTrace();
 			}
 	    }
+    
+    private void inicializarTabla() {
+    	 
+		colUserId.setCellValueFactory(new PropertyValueFactory<Usuario,String>("userId"));
+		colEmail.setCellValueFactory(new PropertyValueFactory<Usuario,String>("email"));
+		colUserType.setCellValueFactory(new PropertyValueFactory<Usuario,String>("userType"));
+		
+
+		tableAdmin.setItems(observableList());
+
+	}
+  
+
+    public ObservableList<Usuario> observableList(){
+        ObservableList<Usuario> users = FXCollections.observableArrayList();
+        Gson gson = new Gson();
+        Usuario user = null;
+    	String fichero = "";
+    	
+    	try (BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"))) {
+
+    	    String linea;
+    	    while ((linea = br.readLine()) != null) {
+    	        fichero = linea;
+    	        user = gson.fromJson(fichero, Usuario.class);
+    	        users.add(user);
+    	    }
+
+    	} catch (FileNotFoundException ex) {
+    	    System.out.println(ex.getMessage());
+    	} catch (IOException ex) {
+    	    System.out.println(ex.getMessage());
+    	}
+    	
+        return users;
+    }
 
     public void setUsuario(Administrador u) {
     	user = u;
     	bienvenide.setText("Bienvenide " + user.getName());
+    	this.inicializarTabla();
+    	
     }
 }
