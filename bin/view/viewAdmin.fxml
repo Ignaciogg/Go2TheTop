@@ -31,7 +31,7 @@
                                     <Font name="Times New Roman Bold" size="18.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets />
+                                    <Insets left="20.0" />
                                  </VBox.margin>
                               </Text>
                               <Button fx:id="botonAniadir" mnemonicParsing="false" onAction="#aniadirUsuario" style="-fx-background-color: black;" text="Añadir nuevo usuario" textAlignment="CENTER" textFill="WHITE">
