@@ -84,66 +84,16 @@ public class controlEntrenador {
 	    }
 
     private void inicializarTabla(Usuario user) {
-    	/*tablaEntrenador = new TableView();
-    	colDeportista = new TableColumn<>("Deportista");
-    	colEmail = new TableColumn<>("Email");
-    	colGenero = new TableColumn<>("Genero");
-    	colCumple = new TableColumn<>("Cumpleanos");
-    	tablaEntrenador.getColumns().addAll(colDeportista,colEmail,colGenero,colCumple);*/
-
+ 
 		colDeportista.setCellValueFactory(new PropertyValueFactory<Deportista,String>("name"));
 		colEmail.setCellValueFactory(new PropertyValueFactory<Deportista,String>("email"));
 		colGenero.setCellValueFactory(new PropertyValueFactory<Deportista,String>("genre"));
-		colCumple.setCellValueFactory(new PropertyValueFactory<Deportista,String>("birthdate"));
+		colCumple.setCellValueFactory(new PropertyValueFactory<Deportista,String>("birthday"));
 
 		tablaEntrenador.setItems(observableList(user));
-		//deportistas = FXCollections.observableArrayList();
-
-		/*Deportista dep1 = new Deportista("1", "yahoo.com", "pass123","deportista", "alfonso", "Tupu", "26-04-98", "no_binario", true);
-		Deportista dep2 =  new Deportista("2", "yahoo2.com", "pass123","deportista", "alfonso2", "Tupu2", "26-04-98", "no_binario", true);*/
-
-		//tablaEntrenador.getItems().addAll(dep1,dep2);
-
 
 	}
   
-
-    /*private String obtenerDatosFicheroEnlaces(Usuario user) {
-    	Gson gson = new Gson();
-
-    	String fichero = "", entrenID, deporID="";
-
-    	try (BufferedReader br = new BufferedReader(new FileReader("src/files/enlaces.jsonl"))) {
-
-    	    String linea;
-    	    while ((linea = br.readLine()) != null) {
-    	        fichero = linea;
-    	        System.out.println(fichero);
-    	        Properties properties = gson.fromJson(fichero, Properties.class);
-
-        	    entrenID=(String) properties.get("entrenadorID");
-
-            	if(user.getUserId().equals(entrenID)) {
-            		deporID= (String) properties.get("deportistaID");
-            		System.out.println(deporID);
-                    deportistaArray.add(new ficheros().leerDeportista("src/files/deportistas/" + deporID + ".jsonl"));
-            	}
-    	    }
-
-
-
-        	System.out.print(deporID);
-
-    	} catch (FileNotFoundException ex) {
-    	    System.out.println(ex.getMessage());
-    	} catch (IOException ex) {
-    	    System.out.println(ex.getMessage());
-    	}
-
-
-    	return deporID;
-
-    }*/
 
     public ObservableList<Deportista> observableList(Usuario user){
         ObservableList<Deportista> deportistas = FXCollections.observableArrayList();
@@ -165,7 +115,8 @@ public class controlEntrenador {
             		deporID= (String) properties.get("deportistaID");
             		System.out.println(deporID);
             		dep = new ficheros().leerDeportista("src/files/deportistas/" + deporID + ".jsonl");
-                    deportistaArray.add(dep);
+            		System.out.println(dep.getName());
+                    deportistas.add(dep);
             	}
     	    }
 
@@ -175,8 +126,6 @@ public class controlEntrenador {
     	    System.out.println(ex.getMessage());
     	}
   
-
-        deportistas.addAll(deportistaArray);
         
         return deportistas;
     }
