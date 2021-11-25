@@ -68,7 +68,7 @@
                         </Button>
                      </bottom>
                      <center>
-                        <TextField fx:id="textMod" alignment="CENTER" prefHeight="31.0" prefWidth="355.0" promptText="Introduzca el DNI/User_Id del usuario que quiera modificar" BorderPane.alignment="CENTER">
+                        <TextField fx:id="textMod" alignment="CENTER" prefHeight="31.0" prefWidth="355.0" promptText="Introduzca el DNI/User_Id del usuario que quiera modificar" BorderPane.alignment="CENTER_LEFT">
                            <BorderPane.margin>
                               <Insets bottom="-50.0" left="50.0" right="50.0" />
                            </BorderPane.margin>
