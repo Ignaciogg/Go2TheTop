@@ -8,9 +8,26 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import model.Administrador;
+import model.Usuario;
 import javafx.scene.control.TextField;
+import application.ficheros;
+import com.google.gson.Gson;
+import com.jfoenix.controls.JFXTextField;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Properties;
+
 
 public class controlModificarUsuario {
+
+	
+	private Usuario persona;
+	
 	
 	private Administrador user;
 
@@ -25,12 +42,20 @@ public class controlModificarUsuario {
     
     @FXML
     void modificarUser(ActionEvent event) {
-
+    	ficheros files = new ficheros();
     	String dni = textMod.getText();
     	System.out.println(dni);
-
-    	System.out.println(user.toString());
-
+    	/*persona = files.buscarUsuarioId(dni);
+		persona = leerUsuario(persona);
+		System.out.println(persona);
+    	/*System.out.println(persona);
+    	if(persona!=null) {
+    		files.leerUsuario(persona);
+    		System.out.println(persona.getEmail());
+    	}*/
+    	//files.buscarUsuario(persona.getEmail());
+    	//persona = files.leerUsuario(persona);
+    	
     	user.modificarUsuario(dni);
     	
     	try {
@@ -40,7 +65,7 @@ public class controlModificarUsuario {
     		Parent root = loader.load();
     		controlMod1.setUser(user);
     		Stage stage = (Stage) botonModify.getScene().getWindow();
-    		stage.setTitle("gO2theTop - Modificar Usuario2");
+    		stage.setTitle("gO2theTop - Modificar Usuario");
 
     		stage.setScene(new Scene(root));
 

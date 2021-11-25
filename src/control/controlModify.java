@@ -44,29 +44,25 @@ public class controlModify {
 
     @FXML
     void confirmarModify(ActionEvent event) {
+    	
     	String password = nuevaContraseña.getText();
     	System.out.println(password);
-    	//System.out.println(user.toString());
     	user.modificarUsuario(password);
     	
     	String name = nuevoNombre.getText();
     	System.out.println(name);
-    	//System.out.println(user.toString());
     	user.modificarUsuario(name);
     	
     	String lastname = nuevoApellido.getText();
     	System.out.println(lastname);
-    	//System.out.println(user.toString());
     	user.modificarUsuario(lastname);
     	
     	String day = nuevaFecha.getText();
     	System.out.println(day);
-    	//System.out.println(user.toString());
     	user.modificarUsuario(day);
     	
     	String sex = nuevoGenero.getText();
     	System.out.println(sex);
-    	//System.out.println(user.toString());
     	user.modificarUsuario(sex);
     	
     }
