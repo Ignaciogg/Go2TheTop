@@ -6,14 +6,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.print.PrintColor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Administrador;
 import model.Deportista;
 import model.Entrenador;
 import model.Usuario;
@@ -26,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -110,9 +106,7 @@ public class controlEntrenador {
 
             	if(user.getUserId().equals(entrenID)) {
             		deporID= (String) properties.get("deportistaID");
-            		System.out.println(deporID);
             		dep = new ficheros().leerDeportista("src/files/deportistas/" + deporID + ".jsonl");
-            		System.out.println(dep.getName());
                     deportistas.add(dep);
             	}
     	    }
