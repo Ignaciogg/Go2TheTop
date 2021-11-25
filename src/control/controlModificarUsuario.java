@@ -26,20 +26,21 @@ public class controlModificarUsuario {
     @FXML
     void modificarUser(ActionEvent event) {
 
-    	/*String dni = textMod.getText();
+    	String dni = textMod.getText();
     	System.out.println(dni);
 
     	System.out.println(user.toString());
 
-    	user.modificarUsuario(dni);*/
+    	user.modificarUsuario(dni);
+    	
     	try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModify.fxml"));
-    		controlModificarUsuario controlMod1 = new controlModificarUsuario();
+    		controlModify controlMod1 = new controlModify();
     		loader.setController(controlMod1);
     		Parent root = loader.load();
     		controlMod1.setUser(user);
     		Stage stage = (Stage) botonModify.getScene().getWindow();
-    		stage.setTitle("gO2theTop - Modificar Usuario1");
+    		stage.setTitle("gO2theTop - Modificar Usuario2");
 
     		stage.setScene(new Scene(root));
 
