@@ -43,14 +43,11 @@ public class controlLogin {
 
 					controlAdmin1.setUsuario(files.leerAdministrador("src/files/administradores/" + usuario.getUserId() + ".jsonl"));
 
-					Stage stage = new Stage();
+					Stage stage = (Stage) botonLogin.getScene().getWindow();
 
 					stage.setTitle("gO2theTop - Administrador");
 
 					stage.setScene(new Scene(root));
-					stage.show();
-					Stage s_login = (Stage) botonLogin.getScene().getWindow();
-					s_login.hide();
 
 				} catch (Exception e) {
 					e.printStackTrace();
