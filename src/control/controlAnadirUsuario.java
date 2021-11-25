@@ -1,6 +1,7 @@
 package control;
 
-import com.jfoenix.controls.JFXRadioButton;
+import javafx.scene.control.ToggleButton;
+import com.gluonhq.charm.glisten.control.ToggleButtonGroup;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,13 +20,16 @@ public class controlAnadirUsuario {
     private Button botonVolver;
 
     @FXML
-    private JFXRadioButton radioAdmin;
+    private ToggleButtonGroup toggleGroup;
 
     @FXML
-    private JFXRadioButton radioDepor;
+    private ToggleButton toggleAdmin;
 
     @FXML
-    private JFXRadioButton radioEntren;
+    private ToggleButton toggleEntrenador;
+
+    @FXML
+    private ToggleButton toggleDeportista;
 
     @FXML
     void selectAdmin(ActionEvent event) {
@@ -35,14 +39,14 @@ public class controlAnadirUsuario {
     }
 
     @FXML
-    void selectDepor(ActionEvent event) {
+    void selectDeportista(ActionEvent event) {
 
     	System.out.println("Deportista seleccionado");
 
     }
 
     @FXML
-    void selectEntren(ActionEvent event) {
+    void selectEntrentrenador(ActionEvent event) {
 
     	System.out.println("Entrenador seleccionado");
 
@@ -60,13 +64,10 @@ public class controlAnadirUsuario {
 
 			controlAdmin.setUsuario(user);
 
-			Stage stage = new Stage();
+			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Administrador");
 
 			stage.setScene(new Scene(root));
-			stage.show();
-			Stage s_entren = (Stage) botonVolver.getScene().getWindow();
-			s_entren.close();
 
         }catch (Exception e) {
 			e.printStackTrace();

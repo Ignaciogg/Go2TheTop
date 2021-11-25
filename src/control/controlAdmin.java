@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Administrador;
-import model.Usuario;
 
 public class controlAdmin {
 
@@ -30,10 +29,12 @@ public class controlAdmin {
 
     @FXML
     private Button botonEnlazar;
+    
+    @FXML
+    private Button botonModificar;
 
 	@FXML
 	private TextField userEmailText;
-
 
     @FXML
     void cerrarSesion(ActionEvent event) {
@@ -44,13 +45,10 @@ public class controlAdmin {
 				loader.setController(controlLog);
 				Parent root = loader.load();
 
-				Stage stage = new Stage();
+				Stage stage = (Stage) botonCerrarSesion.getScene().getWindow();
 				stage.setTitle("gO2theTop - Login");
 
 				stage.setScene(new Scene(root));
-				stage.show();
-				Stage s_admin = (Stage) botonCerrarSesion.getScene().getWindow();
-				s_admin.close();
 
 	        }catch (Exception e) {
 				e.printStackTrace();
@@ -69,15 +67,12 @@ public class controlAdmin {
 				
 				controlBor.setUser(user);
 
-				Stage stage = new Stage();
+				Stage stage = (Stage) botonBorrar.getScene().getWindow();
 				stage.setTitle("gO2theTop - Borrar Usuario");
 
 				stage.setScene(new Scene(root));
-				stage.show();
-				Stage s_admin = (Stage) botonBorrar.getScene().getWindow();
-				s_admin.close();
-
-	        }catch (Exception e) {
+				
+			}catch (Exception e) {
 				e.printStackTrace();
 			}
 	    }
@@ -85,19 +80,15 @@ public class controlAdmin {
     @FXML
     void aniadirUsuario(ActionEvent event) {
     	try {
-
 	        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirUsuario.fxml"));
-				controlBorrarUsuario controlBor = new controlBorrarUsuario();
-				loader.setController(controlBor);
+				controlAnadirUsuario controlAna = new controlAnadirUsuario();
+				loader.setController(controlAna);
 				Parent root = loader.load();
+				
+				Stage stageActual = (Stage) botonBorrar.getScene().getWindow();
+				stageActual.setTitle("gO2theTop - Anadir Usuario");
 
-				Stage stage = new Stage();
-				stage.setTitle("gO2theTop - Anadir Usuario");
-
-				stage.setScene(new Scene(root));
-				stage.show();
-				Stage s_admin = (Stage) botonBorrar.getScene().getWindow();
-				s_admin.close();
+				stageActual.setScene(new Scene(root));
 
 	        }catch (Exception e) {
 				e.printStackTrace();
@@ -113,9 +104,18 @@ public class controlAdmin {
 				e.printStackTrace();
 			}
 	    }
+    @FXML
     void modificarUsuario(ActionEvent event) {
     	try {
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModificarUsuario.fxml"));
+			controlModificarUsuario controlMod = new controlModificarUsuario();
+			loader.setController(controlMod);
+			Parent root = loader.load();
+	
+			Stage stage = (Stage) botonModificar.getScene().getWindow();
+			stage.setTitle("gO2theTop - Modificar Usuario");
 
+			stage.setScene(new Scene(root));
 
 	        }catch (Exception e) {
 				e.printStackTrace();

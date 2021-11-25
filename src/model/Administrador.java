@@ -10,7 +10,6 @@ public class Administrador extends Usuario {
 	}
 
 	public void borrarUsuario(String dni) {
-		System.out.println(dni);
 		
 		ficheros files = new ficheros();
 		Usuario persona = files.buscarUsuarioId(dni);

@@ -69,13 +69,10 @@ public class controlEntrenador {
 				loader.setController(controlLog);
 				Parent root = loader.load();
 
-				Stage stage = new Stage();
+				Stage stage = (Stage) botonCerrarSesion.getScene().getWindow();
 				stage.setTitle("gO2theTop - Login");
 
 				stage.setScene(new Scene(root));
-				stage.show();
-				Stage s_entren = (Stage) botonCerrarSesion.getScene().getWindow();
-				s_entren.close();
 
 	        }catch (Exception e) {
 				e.printStackTrace();
