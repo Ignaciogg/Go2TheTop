@@ -58,7 +58,7 @@
                           </Text>
                      </top>
                      <bottom>
-                        <Button mnemonicParsing="false" text="Modificar" BorderPane.alignment="CENTER">
+                        <Button fx:id="botonModify" mnemonicParsing="false" onAction="#modificarUser" text="Modificar" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="200.0" />
                            </BorderPane.margin>
