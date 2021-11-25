@@ -30,6 +30,9 @@ public class controlAdmin {
 
     @FXML
     private Button botonEnlazar;
+    
+    @FXML
+    private Button botonModificar;
 
 	@FXML
 	private TextField userEmailText;
@@ -115,7 +118,18 @@ public class controlAdmin {
 	    }
     void modificarUsuario(ActionEvent event) {
     	try {
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModificarUsuario.fxml"));
+			controlModificarUsuario controlMod = new controlModificarUsuario();
+			loader.setController(controlMod);
+			Parent root = loader.load();
 
+			Stage stage = new Stage();
+			stage.setTitle("gO2theTop - Modificar Usuario");
+
+			stage.setScene(new Scene(root));
+			stage.show();
+			Stage s_admin = (Stage) botonModificar.getScene().getWindow();
+			s_admin.close();
 
 	        }catch (Exception e) {
 				e.printStackTrace();
