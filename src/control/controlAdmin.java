@@ -29,7 +29,7 @@ public class controlAdmin {
 
     @FXML
     private Button botonEnlazar;
-    
+
     @FXML
     private Button botonModificar;
 
@@ -64,14 +64,14 @@ public class controlAdmin {
 				controlBorrarUsuario controlBor = new controlBorrarUsuario();
 				loader.setController(controlBor);
 				Parent root = loader.load();
-				
+
 				controlBor.setUser(user);
 
 				Stage stage = (Stage) botonBorrar.getScene().getWindow();
 				stage.setTitle("gO2theTop - Borrar Usuario");
 
 				stage.setScene(new Scene(root));
-				
+
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -84,7 +84,7 @@ public class controlAdmin {
 				controlAnadirUsuario controlAna = new controlAnadirUsuario();
 				loader.setController(controlAna);
 				Parent root = loader.load();
-				
+
 				Stage stageActual = (Stage) botonBorrar.getScene().getWindow();
 				stageActual.setTitle("gO2theTop - Anadir Usuario");
 
@@ -111,14 +111,11 @@ public class controlAdmin {
 			controlModificarUsuario controlMod = new controlModificarUsuario();
 			loader.setController(controlMod);
 			Parent root = loader.load();
-	
-			Stage stage = new Stage();
+
+			Stage stage = (Stage) botonModificar.getScene().getWindow();
 			stage.setTitle("gO2theTop - Modificar Usuario");
 
 			stage.setScene(new Scene(root));
-			stage.show();
-			Stage s_admin = (Stage) botonModificar.getScene().getWindow();
-			s_admin.close();
 
 	        }catch (Exception e) {
 				e.printStackTrace();
