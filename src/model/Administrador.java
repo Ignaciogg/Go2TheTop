@@ -37,11 +37,13 @@ public class Administrador extends Usuario {
 		
 	}
 	
-	public void modificarUsuario (String email, String password, String name, String lastnames,
+	public void modificarUsuario (String dni, String email, String password, String name, String lastnames,
 			String birthdate, String genre) {
 			
-			ficheros files =new ficheros();
-			Usuario persona = files.buscarUsuario(email);
+			ficheros files = new ficheros();
+			Usuario persona = files.buscarUsuarioId(dni);
+		
+			
 			files.eliminarUsuarioLogin(persona.getEmail());
 			persona = files.leerUsuario(persona);
 				
