@@ -58,7 +58,7 @@
                           </Text>
                      </top>
                      <bottom>
-                        <Button mnemonicParsing="false" text="Modificar" BorderPane.alignment="CENTER">
+                        <Button fx:id="botonModify" mnemonicParsing="false" onAction="#modificarUser" text="Modificar" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="200.0" />
                            </BorderPane.margin>
@@ -68,7 +68,7 @@
                         </Button>
                      </bottom>
                      <center>
-                        <TextField fx:id="textMod" alignment="CENTER" prefHeight="31.0" prefWidth="355.0" text="Introduzca el DNI/User_Id del usuario que quiera modificar" BorderPane.alignment="CENTER">
+                        <TextField fx:id="textMod" alignment="CENTER" prefHeight="31.0" prefWidth="355.0" promptText="Introduzca el DNI/User_Id del usuario que quiera modificar" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="-50.0" left="50.0" right="50.0" />
                            </BorderPane.margin>
