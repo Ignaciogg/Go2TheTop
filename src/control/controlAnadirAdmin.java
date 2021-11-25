@@ -58,7 +58,7 @@ public class controlAnadirAdmin {
 
     @FXML
     void crearAdmin(ActionEvent event) {
-
+    	System.out.println("CREAR ADMIN");
     }
 
     @FXML
@@ -86,6 +86,23 @@ public class controlAnadirAdmin {
     @FXML
     void selectDeportista(ActionEvent event) {
 
+    	try {
+
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirDeportista.fxml"));
+        	controlAnadirDeportista controlAnadirDeportista = new controlAnadirDeportista();
+			loader.setController(controlAnadirDeportista);
+			Parent root = loader.load();
+
+			controlAnadirDeportista.setUsuario(user);
+
+			Stage stage = (Stage) botonVolver.getScene().getWindow();
+			stage.setTitle("gO2theTop - Crear Usuario");
+
+			stage.setScene(new Scene(root));
+
+        }catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
