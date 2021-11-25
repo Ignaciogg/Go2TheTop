@@ -98,6 +98,19 @@ public class ficheros {
 		}
 		return persona;
 	}
+	
+	public Usuario leerUsuarioLogin(String ruta) {
+		Usuario persona = null;
+		try {
+			Gson gson = new Gson();
+			BufferedReader br = new BufferedReader(new FileReader(ruta));
+			persona = gson.fromJson(br.readLine(), Usuario.class);
+			br.close();
+		} catch (IOException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return persona;
+	}
 
 	public Entrenador leerEntrenador(String ruta) {
 		Entrenador persona = null;

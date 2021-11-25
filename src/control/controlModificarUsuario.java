@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import model.Administrador;
+import javafx.scene.control.TextField;
 
 public class controlModificarUsuario {
 	
@@ -16,6 +17,24 @@ public class controlModificarUsuario {
     @FXML
     private Button botonVolver;
 
+    @FXML
+    private Button botonModify;
+    
+    @FXML
+    private TextField textMod;
+    
+    @FXML
+    void modificarUser(ActionEvent event) {
+
+    	String dni = textMod.getText();
+    	System.out.println(dni);
+
+    	System.out.println(user.toString());
+
+    	user.modificarUsuario(dni);
+    	
+    }
+    
     
     @FXML
     void volverAdmin(ActionEvent event) {

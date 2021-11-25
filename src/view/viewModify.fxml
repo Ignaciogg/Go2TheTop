@@ -2,8 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -41,20 +40,15 @@
                         </Button>
                      </bottom>
                      <center>
-                        <VBox alignment="TOP_CENTER" prefHeight="276.0" prefWidth="255.0" BorderPane.alignment="CENTER">
+                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione el tipo de">
+                              <Text fx:id="bienvenide" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduzca los datos que desee modificar" textAlignment="CENTER" wrappingWidth="215.6708984375">
                                  <font>
-                                    <Font name="Times New Roman Bold" size="21.0" />
+                                    <Font name="Times New Roman Bold" size="18.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets top="20.0" />
+                                    <Insets bottom="120.0" left="20.0" />
                                  </VBox.margin>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" usuario que quiere crear">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="21.0" />
-                                 </font>
                               </Text>
                            </children></VBox>
                      </center>
@@ -65,24 +59,48 @@
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                <children>
-                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir Usuario" textAlignment="CENTER">
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Qué desea modificar?" textAlignment="CENTER">
                         <font>
                              <Font name="System Bold" size="26.0" />
                         </font>
                      <VBox.margin>
-                        <Insets left="127.0" top="10.0" />
+                        <Insets left="80.0" top="40.0" />
                      </VBox.margin>
                     </Text>
-                  <HBox alignment="CENTER" prefHeight="117.0" prefWidth="445.0">
-                     <children>
-                        <ToggleButton fx:id="toggleAdmin" onAction="#selectAdmin" text="Administrador">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="seleccionUsuario" />
-                           </toggleGroup>
-                        </ToggleButton>
-                        <ToggleButton fx:id="toggleEntrenador" onAction="#selectEntrenador" selected="true" text="Entrenador" toggleGroup="$seleccionUsuario" />
-                        <ToggleButton fx:id="toggleDeportista" onAction="#selectDeportista" text="Deportista" toggleGroup="$seleccionUsuario" />
-                     </children></HBox>
+                  <HBox alignment="CENTER" prefHeight="117.0" prefWidth="445.0" />
+                  <TextField fx:id="nuevaContraseña" alignment="CENTER" promptText=" Nueva contraseña">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="60.0" right="60.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="nuevoNombre" alignment="CENTER" promptText="Nuevo nombre">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="60.0" right="60.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="nuevoApellido" alignment="CENTER" promptText="Nuevos apellidos">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="60.0" right="60.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="nuevaFecha" alignment="CENTER" promptText="Nueva fecha de nacimiento (Ej: 05-02-1985 )">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="60.0" right="60.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="nuevoGenero" alignment="CENTER" promptText="Nuevo género">
+                     <VBox.margin>
+                        <Insets bottom="80.0" left="60.0" right="60.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Button fx:id="botonConfirmarModify" mnemonicParsing="false" onAction="#confirmarModify" text="Confirmar">
+                     <VBox.margin>
+                        <Insets bottom="60.0" left="178.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
          </center>
