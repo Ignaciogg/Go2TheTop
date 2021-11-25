@@ -6,56 +6,58 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Administrador;
-import javafx.scene.control.TextField;
 
-public class controlModificarUsuario {
-	
+public class controlModify {
+
 	private Administrador user;
+	
+    @FXML
+    private Text bienvenide;
+    
+    @FXML
+    private Button botonConfirmarModify;
 
-	@FXML
+    @FXML
     private Button botonModify;
-
+    
     @FXML
     private Button botonVolver;
 
     @FXML
-    private TextField textMod;
-    
-    @FXML
-    void modificarUser(ActionEvent event) {
+    private TextField nuevaContraseña;
 
-    	/*String dni = textMod.getText();
+    @FXML
+    private TextField nuevaFecha;
+
+    @FXML
+    private TextField nuevoApellido;
+
+    @FXML
+    private TextField nuevoGenero;
+
+    @FXML
+    private TextField nuevoNombre;
+
+    @FXML
+    void confirmarModify(ActionEvent event) {
+    	/*String dni = nuevaContraseña.getText();
     	System.out.println(dni);
 
     	System.out.println(user.toString());
 
     	user.modificarUsuario(dni);*/
-    	try {
-    		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModify.fxml"));
-    		controlModificarUsuario controlMod1 = new controlModificarUsuario();
-    		loader.setController(controlMod1);
-    		Parent root = loader.load();
-    		controlMod1.setUser(user);
-    		Stage stage = (Stage) botonModify.getScene().getWindow();
-    		stage.setTitle("gO2theTop - Modificar Usuario1");
-
-    		stage.setScene(new Scene(root));
-
-        }catch (Exception e) {
-			e.printStackTrace();
-		}
-    	
     }
-    
-    
+
     @FXML
     void volverAdmin(ActionEvent event) {
 
     	try {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModificarUsuario.fxml"));
         	controlAdmin controlAdmin = new controlAdmin();
 			loader.setController(controlAdmin);
 			Parent root = loader.load();
@@ -77,5 +79,5 @@ public class controlModificarUsuario {
 		this.user = user;
 	}
 
-}
 
+}
