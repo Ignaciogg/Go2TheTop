@@ -1,5 +1,6 @@
 bin/*
 bin/*/*
+src/files/*
+src/files/*/*
 *.class
-*.jsonl
 *.jsonl
