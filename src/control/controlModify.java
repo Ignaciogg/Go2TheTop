@@ -44,12 +44,31 @@ public class controlModify {
 
     @FXML
     void confirmarModify(ActionEvent event) {
-    	/*String dni = nuevaContraseña.getText();
-    	System.out.println(dni);
-
-    	System.out.println(user.toString());
-
-    	user.modificarUsuario(dni);*/
+    	String password = nuevaContraseña.getText();
+    	System.out.println(password);
+    	//System.out.println(user.toString());
+    	user.modificarUsuario(password);
+    	
+    	String name = nuevoNombre.getText();
+    	System.out.println(name);
+    	//System.out.println(user.toString());
+    	user.modificarUsuario(name);
+    	
+    	String lastname = nuevoApellido.getText();
+    	System.out.println(lastname);
+    	//System.out.println(user.toString());
+    	user.modificarUsuario(lastname);
+    	
+    	String day = nuevaFecha.getText();
+    	System.out.println(day);
+    	//System.out.println(user.toString());
+    	user.modificarUsuario(day);
+    	
+    	String sex = nuevoGenero.getText();
+    	System.out.println(sex);
+    	//System.out.println(user.toString());
+    	user.modificarUsuario(sex);
+    	
     }
 
     @FXML
@@ -58,14 +77,14 @@ public class controlModify {
     	try {
 
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModificarUsuario.fxml"));
-        	controlAdmin controlAdmin = new controlAdmin();
-			loader.setController(controlAdmin);
+        	controlModificarUsuario controlModificarUsuario = new controlModificarUsuario();
+			loader.setController(controlModificarUsuario);
 			Parent root = loader.load();
 
-			controlAdmin.setUsuario(user);
+			controlModificarUsuario.setUser(user);
 
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
-			stage.setTitle("gO2theTop - Administrador");
+			stage.setTitle("gO2theTop - Modificar Usuario");
 
 			stage.setScene(new Scene(root));
 

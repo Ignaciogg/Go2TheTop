@@ -39,7 +39,7 @@ public class Administrador extends Usuario {
 	
 	public void modificarUsuario (String dni) {
 			
-			ficheros files = new ficheros();
+			/*ficheros files = new ficheros();
 			Usuario persona = files.buscarUsuarioId(dni);
 		
 			
@@ -78,7 +78,7 @@ public class Administrador extends Usuario {
 					
 					break;
 					
-				}
+				}*/
 		
 		}
 
