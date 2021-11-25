@@ -38,9 +38,7 @@ public class controlLogin {
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
 					controlAdmin controlAdmin1 = new controlAdmin();
 					loader.setController(controlAdmin1);
-
 					Parent root = loader.load();
-
 					controlAdmin1.setUsuario(files.leerAdministrador("src/files/administradores/" + usuario.getUserId() + ".jsonl"));
 
 					Stage stage = (Stage) botonLogin.getScene().getWindow();
@@ -62,14 +60,10 @@ public class controlLogin {
 
 					controlDepor1.setUsuario(files.leerDeportista("src/files/deportistas/" + usuario.getUserId() + ".jsonl"));
 
-					Stage stage = new Stage();
+					Stage stage = (Stage) botonLogin.getScene().getWindow();
 
 					stage.setTitle("gO2theTop - Deportista");
-
 					stage.setScene(new Scene(root));
-					stage.show();
-					Stage s_login = (Stage) botonLogin.getScene().getWindow();
-					s_login.hide();
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -84,15 +78,11 @@ public class controlLogin {
 
 					controlEntren1.setUsuario(files.leerEntrenador("src/files/entrenadores/" + usuario.getUserId() + ".jsonl"));
 
-					Stage stage = new Stage();
+					Stage stage = (Stage) botonLogin.getScene().getWindow();
 
-					stage.setTitle("gO2theTop - Seleccion");
+					stage.setTitle("gO2theTop - Entrenador");
 
 					stage.setScene(new Scene(root));
-					stage.show();
-
-					Stage s_login = (Stage) botonLogin.getScene().getWindow();
-					s_login.hide();
 
 				} catch (Exception e) {
 					e.printStackTrace();
