@@ -29,13 +29,10 @@ public class controlModificarUsuario {
 
 			controlAdmin.setUsuario(user);
 
-			Stage stage = new Stage();
+			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Administrador");
 
 			stage.setScene(new Scene(root));
-			stage.show();
-			Stage s_entren = (Stage) botonVolver.getScene().getWindow();
-			s_entren.close();
 
         }catch (Exception e) {
 			e.printStackTrace();

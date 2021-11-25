@@ -45,13 +45,10 @@ public class controlAdmin {
 				loader.setController(controlLog);
 				Parent root = loader.load();
 
-				Stage stage = new Stage();
+				Stage stage = (Stage) botonCerrarSesion.getScene().getWindow();
 				stage.setTitle("gO2theTop - Login");
 
 				stage.setScene(new Scene(root));
-				stage.show();
-				Stage s_admin = (Stage) botonCerrarSesion.getScene().getWindow();
-				s_admin.close();
 
 	        }catch (Exception e) {
 				e.printStackTrace();
@@ -88,14 +85,10 @@ public class controlAdmin {
 				loader.setController(controlAna);
 				Parent root = loader.load();
 				
-				//Stage stage = new Stage();
 				Stage stageActual = (Stage) botonBorrar.getScene().getWindow();
 				stageActual.setTitle("gO2theTop - Anadir Usuario");
 
 				stageActual.setScene(new Scene(root));
-				//stageActual.show();
-				//Stage s_admin = (Stage) botonBorrar.getScene().getWindow();
-				//s_admin.close();
 
 	        }catch (Exception e) {
 				e.printStackTrace();
