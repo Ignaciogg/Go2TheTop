@@ -30,6 +30,23 @@ public class controlAnadirUsuario {
     void selectAdmin(ActionEvent event) {
 
     	System.out.println("Admin seleccionado");
+    	try {
+
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirAdmin.fxml"));
+        	controlAnadirAdmin controlAnadirAdmin = new controlAnadirAdmin();
+			loader.setController(controlAnadirAdmin);
+			Parent root = loader.load();
+
+			controlAnadirAdmin.setUsuario(user);
+
+			Stage stage = (Stage) botonVolver.getScene().getWindow();
+			stage.setTitle("gO2theTop - Crear Usuario");
+
+			stage.setScene(new Scene(root));
+
+        }catch (Exception e) {
+			e.printStackTrace();
+		}
 
     }
 
@@ -44,6 +61,23 @@ public class controlAnadirUsuario {
     void selectEntrenador(ActionEvent event) {
 
     	System.out.println("Entrenador seleccionado");
+    	try {
+
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirAdmin.fxml"));
+        	controlAnadirAdmin controlAnadirAdmin = new controlAnadirAdmin();
+			loader.setController(controlAnadirAdmin);
+			Parent root = loader.load();
+
+			controlAnadirAdmin.setUsuario(user);
+
+			Stage stage = (Stage) botonVolver.getScene().getWindow();
+			stage.setTitle("gO2theTop - Crear Usuario");
+
+			stage.setScene(new Scene(root));
+
+        }catch (Exception e) {
+			e.printStackTrace();
+		}
 
     }
 
