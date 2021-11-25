@@ -69,5 +69,8 @@ public class controlAnadirUsuario {
 		}
 
     }
+    public void setUser(Administrador user) {
+		this.user = user;
+	}
 
 }

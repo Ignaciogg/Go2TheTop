@@ -84,7 +84,7 @@ public class controlAdmin {
 				controlAnadirUsuario controlAna = new controlAnadirUsuario();
 				loader.setController(controlAna);
 				Parent root = loader.load();
-				
+				controlAna.setUser(user);
 				Stage stageActual = (Stage) botonBorrar.getScene().getWindow();
 				stageActual.setTitle("gO2theTop - Anadir Usuario");
 
@@ -111,7 +111,7 @@ public class controlAdmin {
 			controlModificarUsuario controlMod = new controlModificarUsuario();
 			loader.setController(controlMod);
 			Parent root = loader.load();
-	
+			controlMod.setUser(user);
 			Stage stage = (Stage) botonModificar.getScene().getWindow();
 			stage.setTitle("gO2theTop - Modificar Usuario");
 
