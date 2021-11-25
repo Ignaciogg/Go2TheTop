@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -60,16 +60,13 @@
                     </Text>
                   <HBox alignment="CENTER" prefHeight="117.0" prefWidth="445.0">
                      <children>
-                        <ToggleButtonGroup fx:id="toggleGroup" prefHeight="107.0" prefWidth="212.0" selectionType="SINGLE">
-                            <toggles>
-                                <ToggleButton fx:id="toggleAdmin" onAction="#selectAdmin" text="Administrador" />
-                                <ToggleButton fx:id="toggleEntrenador" onAction="#selectEntrenador" selected="true" text="Entrenador" />
-                                <ToggleButton fx:id="toggleDeportista" onAction="#selectDeportista" text="Deportista" />
-                            </toggles>
-                           <HBox.margin>
-                              <Insets top="10.0" />
-                           </HBox.margin>
-                        </ToggleButtonGroup>
+                        <ToggleButton fx:id="toggleAdmin" onAction="#selectAdmin" text="Administrador">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="seleccionUsuario" />
+                           </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton fx:id="toggleEntrenador" onAction="#selectEntrenador" selected="true" text="Entrenador" toggleGroup="$seleccionUsuario" />
+                        <ToggleButton fx:id="toggleDeportista" onAction="#selectDeportista" text="Deportista" toggleGroup="$seleccionUsuario" />
                      </children></HBox>
                </children>
             </VBox>

@@ -1,8 +1,6 @@
 package control;
 
 import javafx.scene.control.ToggleButton;
-import com.gluonhq.charm.glisten.control.ToggleButtonGroup;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,9 +16,6 @@ public class controlAnadirUsuario {
 
     @FXML
     private Button botonVolver;
-
-    @FXML
-    private ToggleButtonGroup toggleGroup;
 
     @FXML
     private ToggleButton toggleAdmin;
@@ -46,7 +41,7 @@ public class controlAnadirUsuario {
     }
 
     @FXML
-    void selectEntrentrenador(ActionEvent event) {
+    void selectEntrenador(ActionEvent event) {
 
     	System.out.println("Entrenador seleccionado");
 
@@ -74,5 +69,8 @@ public class controlAnadirUsuario {
 		}
 
     }
+    public void setUser(Administrador user) {
+		this.user = user;
+	}
 
 }
