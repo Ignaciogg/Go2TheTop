@@ -12,18 +12,18 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Administrador;
-import model.Deportista;
+import model.Entrenador;
 import model.Usuario;
 
-public class controlAnadirDeportista {
+public class controlAnadirEntranador {
 
 	private Administrador user;
 
-	@FXML
+    @FXML
     private Button botonVolver;
 
     @FXML
-    private Button botonCrearDepor;
+    private Button botonCrearEntrenador;
 
     @FXML
     private ToggleButton toggleAdmin;
@@ -59,34 +59,23 @@ public class controlAnadirDeportista {
     private JFXTextField fieldGenero;
 
     @FXML
-    private JFXTextField fieldPeso;
-
-    @FXML
-    private JFXTextField fieldAltura;
-
-    @FXML
-    void crearDepor(ActionEvent event) {
+    void crearEntrenador(ActionEvent event) {
 
     	try{
-    		System.out.println("CREAR DEPORTISTA");
+    		System.out.println("CREAR ENTRENADOR");
 
         	String dni = fieldUserId.getText();
         	String ema = fieldEmail.getText();
         	String pas = fieldPassword.getText();
-        	String use = "deportista";
+        	String use = "administrador";
         	String nom = fieldNombre.getText();
         	String ape = fieldApellidos.getText();
         	String fec = fieldFecha.getText();
         	String gen = fieldGenero.getText();
-        	// El peso y la altura los tenemos como floats así que los pillamos como string y los convertimos
-        	String pes = fieldPeso.getText();
-        	float pes2 = Float.parseFloat(pes);
-        	String alt = fieldAltura.getText();
-        	float alt2 = Float.parseFloat(alt);
         	Boolean act = true;
 
         	Usuario nuevo = new Usuario (dni, ema, pas, use, nom, ape, fec, gen, act);
-        	Deportista nuevo2 = new Deportista (dni, ema, pas, use, nom, ape, fec, gen, act, pes2, alt2);
+        	Entrenador nuevo2 = new Entrenador (dni, ema, pas, use, nom, ape, fec, gen, act);
 
     	}catch (Exception e) {
 			e.printStackTrace();

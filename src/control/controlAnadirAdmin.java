@@ -12,6 +12,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Administrador;
+import model.Usuario;
 
 public class controlAnadirAdmin {
 
@@ -58,7 +59,27 @@ public class controlAnadirAdmin {
 
     @FXML
     void crearAdmin(ActionEvent event) {
-    	System.out.println("CREAR ADMIN");
+
+    	try{
+    		System.out.println("CREAR ADMIN");
+
+        	String dni = fieldUserId.getText();
+        	String ema = fieldEmail.getText();
+        	String pas = fieldPassword.getText();
+        	String use = "administrador";
+        	String nom = fieldNombre.getText();
+        	String ape = fieldApellidos.getText();
+        	String fec = fieldFecha.getText();
+        	String gen = fieldGenero.getText();
+        	Boolean act = true;
+
+        	Usuario nuevo = new Usuario (dni, ema, pas, use, nom, ape, fec, gen, act);
+        	Administrador nuevo2 = new Administrador (dni, ema, pas, use, nom, ape, fec, gen, act);
+
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}
+
     }
 
     @FXML
