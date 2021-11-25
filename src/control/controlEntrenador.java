@@ -45,13 +45,17 @@ public class controlEntrenador {
     private TableColumn<Deportista, String> colDeportista;
 
     @FXML
+    private TableColumn<Deportista, String> colApellido;
+
+    @FXML
     private TableColumn<Deportista, String> colEmail;
 
     @FXML
-    private TableColumn<Deportista, String> colGenero;
+    private TableColumn<Deportista, String> colPeso;
 
     @FXML
-    private TableColumn<Deportista, String> colCumple;
+    private TableColumn<Deportista, String> colAltura;
+
 
     ArrayList<Deportista> deportistaArray;
 
@@ -79,9 +83,10 @@ public class controlEntrenador {
     private void inicializarTabla(Usuario user) {
  
 		colDeportista.setCellValueFactory(new PropertyValueFactory<Deportista,String>("name"));
+		colApellido.setCellValueFactory(new PropertyValueFactory<Deportista,String>("lastnames"));
 		colEmail.setCellValueFactory(new PropertyValueFactory<Deportista,String>("email"));
-		colGenero.setCellValueFactory(new PropertyValueFactory<Deportista,String>("genre"));
-		colCumple.setCellValueFactory(new PropertyValueFactory<Deportista,String>("birthday"));
+		colPeso.setCellValueFactory(new PropertyValueFactory<Deportista,String>("peso"));
+		colAltura.setCellValueFactory(new PropertyValueFactory<Deportista,String>("altura"));
 
 		tablaEntrenador.setItems(observableList(user));
 
