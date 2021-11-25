@@ -162,7 +162,7 @@ public class ficheros {
 			String linea;
 			while ((linea = br.readLine()) != null) {
 				persona = gson.fromJson(linea, Usuario.class);
-				if (!persona.getEmail().toLowerCase().equals(email)) {
+				if (!persona.getEmail().equalsIgnoreCase(email)) {
 					bw.append(gson.toJson(persona));
 					bw.flush();
 					bw.newLine();
