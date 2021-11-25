@@ -116,6 +116,7 @@ public class controlAdmin {
 				e.printStackTrace();
 			}
 	    }
+    @FXML
     void modificarUsuario(ActionEvent event) {
     	try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModificarUsuario.fxml"));
