@@ -42,9 +42,11 @@ public class controlModificarUsuario {
     
     @FXML
     void modificarUser(ActionEvent event) {
-    	ficheros files = new ficheros();
+    	
     	String dni = textMod.getText();
     	System.out.println(dni);
+    	System.out.println(user.toString());
+    	user.modificarUsuario(dni);
     	/*persona = files.buscarUsuarioId(dni);
 		persona = leerUsuario(persona);
 		System.out.println(persona);
@@ -55,15 +57,16 @@ public class controlModificarUsuario {
     	}*/
     	//files.buscarUsuario(persona.getEmail());
     	//persona = files.leerUsuario(persona);
-    	
-    	user.modificarUsuario(dni);
+    	   	
     	
     	try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModify.fxml"));
     		controlModify controlMod1 = new controlModify();
     		loader.setController(controlMod1);
     		Parent root = loader.load();
+    		
     		controlMod1.setUser(user);
+    		
     		Stage stage = (Stage) botonModify.getScene().getWindow();
     		stage.setTitle("gO2theTop - Modificar Usuario");
 
@@ -101,6 +104,10 @@ public class controlModificarUsuario {
     
     public void setUser(Administrador user) {
 		this.user = user;
+	}
+    
+    public void setPersona(Usuario persona) {
+		this.persona = persona;
 	}
 
 }

@@ -38,8 +38,21 @@ public class Administrador extends Usuario {
 	}
 	
 	public void modificarUsuario (String dni) {
+		ficheros files = new ficheros();
+		Usuario persona = files.buscarUsuarioId(dni);
+		files.leerUsuario(persona);
+		System.out.println(files.leerUsuario(persona));
+		
+		if(persona!=null) {
 			
-			/*ficheros files = new ficheros();
+			System.out.println(persona.getEmail());
+
+			//persona = files.leerUsuario(persona);
+		}
+		}
+
+	public void confirmarModificarUsuario() {
+		/*ficheros files = new ficheros();
 			Usuario persona = files.buscarUsuarioId(dni);
 		
 			
@@ -79,8 +92,8 @@ public class Administrador extends Usuario {
 					break;
 					
 				}*/
-		
-		}
+	}
+	
 
 	@Override
 	public String toString() {
