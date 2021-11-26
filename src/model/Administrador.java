@@ -40,58 +40,59 @@ public class Administrador extends Usuario {
 	public void modificarUsuario (String dni) {
 		ficheros files = new ficheros();
 		Usuario persona = files.buscarUsuarioId(dni);
-		files.leerUsuario(persona);
-		System.out.println(files.leerUsuario(persona));
 		
 		if(persona!=null) {
-			
-			System.out.println(persona.getEmail());
+			files.buscarUsuario(persona.getEmail());
 
-			//persona = files.leerUsuario(persona);
+			persona = files.leerUsuario(persona);
+			
+			switch (persona.getUserType()) {
+				case "administrador":
+					files.escribirPersona(persona, "src/files/administradores/" + persona.getUserId() + ".jsonl");
+					System.out.println("a");
+
+					break;
+				case "entrenador":
+					files.escribirPersona(persona, "src/files/entrenadores/" + persona.getUserId() + ".jsonl");
+					System.out.println("e");
+
+					break;
+				case "deportista":
+					files.escribirPersona(persona, "src/files/deportistas/" + persona.getUserId() + ".jsonl");
+					System.out.println("d");
+					break;
+										
+			}
+						
+		}else {
+			System.out.println("No hemos encontrado el usuario");
 		}
 		}
 
 	public void confirmarModificarUsuario() {
 		/*ficheros files = new ficheros();
-			Usuario persona = files.buscarUsuarioId(dni);
-		
-			
+		Usuario persona = files.buscarUsuarioId(dni);
+		if(persona!=null) {
 			files.eliminarUsuarioLogin(persona.getEmail());
+			
 			persona = files.leerUsuario(persona);
-				
-			persona.setPassword(" ");
-			persona.setName(" ");
-			persona.setLastnames(" ");
-			persona.setBirthdate(" ");
-			persona.setGenre(" ");
-
+			persona.setActive(false);
+			
 			switch (persona.getUserType()) {
 				case "administrador":
-					files.escribirPersona(persona, persona.getPassword());
-					files.escribirPersona(persona, persona.getName());
-					files.escribirPersona(persona, persona.getLastnames());
-					files.escribirPersona(persona, persona.getBirthday());
-					files.escribirPersona(persona, persona.getGenre());
-					
+					files.escribirPersona(persona, "src/files/administradores/" + persona.getUserId() + ".jsonl");
 					break;
 				case "entrenador":
-					files.escribirPersona(persona, persona.getPassword());
-					files.escribirPersona(persona, persona.getName());
-					files.escribirPersona(persona, persona.getLastnames());
-					files.escribirPersona(persona, persona.getBirthday());
-					files.escribirPersona(persona, persona.getGenre());
-					
+					files.escribirPersona(persona, "src/files/entrenadores/" + persona.getUserId() + ".jsonl");
 					break;
 				case "deportista":
-					files.escribirPersona(persona, persona.getPassword());
-					files.escribirPersona(persona, persona.getName());
-					files.escribirPersona(persona, persona.getLastnames());
-					files.escribirPersona(persona, persona.getBirthday());
-					files.escribirPersona(persona, persona.getGenre());
-					
+					files.escribirPersona(persona, "src/files/deportistas/" + persona.getUserId() + ".jsonl");
 					break;
-					
-				}*/
+			}
+			System.out.println("usuario borrado");
+		}else {
+			System.out.println("no hemos encontrado el usuario");
+		}*/
 	}
 	
 

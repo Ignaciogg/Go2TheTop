@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Administrador;
+import model.Usuario;
 
 public class controlModify {
 
@@ -44,26 +45,27 @@ public class controlModify {
 
     @FXML
     void confirmarModify(ActionEvent event) {
+    	try{
+
+    		System.out.println("MODIFICA EL USUARIO");
+    		String password = nuevaContraseña.getText();
+    		System.out.println(password);
+    		String name = nuevoNombre.getText();
+    		System.out.println(name);
+    		String lastname = nuevoApellido.getText();
+    		System.out.println(lastname);
+    		String day = nuevaFecha.getText();
+    		System.out.println(day);
+    		String sex = nuevoGenero.getText();
+    		System.out.println(sex);
+    		
+    		Usuario modificado = new Usuario (password, name, day, sex);
+    		
+    		
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}
     	
-    	String password = nuevaContraseña.getText();
-    	System.out.println(password);
-    	user.modificarUsuario(password);
-    	
-    	String name = nuevoNombre.getText();
-    	System.out.println(name);
-    	user.modificarUsuario(name);
-    	
-    	String lastname = nuevoApellido.getText();
-    	System.out.println(lastname);
-    	user.modificarUsuario(lastname);
-    	
-    	String day = nuevaFecha.getText();
-    	System.out.println(day);
-    	user.modificarUsuario(day);
-    	
-    	String sex = nuevoGenero.getText();
-    	System.out.println(sex);
-    	user.modificarUsuario(sex);
     	
     }
 
@@ -90,8 +92,8 @@ public class controlModify {
 
     }
     
-    public void setUser(Administrador user) {
-		this.user = user;
+    public void setUsuario(Administrador u) {
+		user = u;
 	}
 
 
