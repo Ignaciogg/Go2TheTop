@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import model.Administrador;
+import model.Usuario;
 import javafx.scene.control.TextField;
 import application.ficheros;
 import com.google.gson.Gson;
@@ -26,7 +27,7 @@ public class controlModificarUsuario {
 
 	
 	private Administrador user;
-
+	
 	@FXML
     private Button botonModify;
 
@@ -35,12 +36,17 @@ public class controlModificarUsuario {
 
     @FXML
     private TextField textMod;
+
+    
+	public static String dni ="";
     
     @FXML
     void modificarUser(ActionEvent event) {
     	
-    	String dni = textMod.getText();
+    	dni = textMod.getText();
     	System.out.println(dni);
+    	controlModify modif=new controlModify();
+    	modif.setVisible(true);
     	System.out.println(user.toString());
     	user.modificarUsuario(dni);
   
@@ -93,6 +99,7 @@ public class controlModificarUsuario {
 		this.user = user;
 	}
     
+ 
     
 }
 

@@ -1,5 +1,7 @@
 package control;
 
+import javax.swing.JFrame;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +14,9 @@ import javafx.stage.Stage;
 import model.Administrador;
 import model.Usuario;
 
-public class controlModify {
+public class controlModify extends controlModificarUsuario{
 
+	
 	private Administrador user;
 	
     @FXML
@@ -45,9 +48,14 @@ public class controlModify {
 
     @FXML
     void confirmarModify(ActionEvent event) {
-    	try{
+      	
+    	
 
+    	user.confirmarModificarUsuario(dni);
+    	System.out.println(dni);
+    	try{
     		System.out.println("MODIFICA EL USUARIO");
+    		
     		String password = nuevaContraseña.getText();
     		System.out.println(password);
     		String name = nuevoNombre.getText();
@@ -59,7 +67,7 @@ public class controlModify {
     		String sex = nuevoGenero.getText();
     		System.out.println(sex);
     		
-    		Usuario modificado = new Usuario (password, name, day, sex);
+    		//Usuario modificado = new Usuario (password, name, day, sex);
     		
     		
     	}catch (Exception e) {
@@ -71,7 +79,7 @@ public class controlModify {
 
     @FXML
     void volverAdmin(ActionEvent event) {
-
+    	
     	try {
 
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModificarUsuario.fxml"));
@@ -95,6 +103,11 @@ public class controlModify {
     public void setUsuario(Administrador u) {
 		user = u;
 	}
+    
 
+	public void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
