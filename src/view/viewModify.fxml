@@ -68,6 +68,16 @@
                      </VBox.margin>
                     </Text>
                   <HBox alignment="CENTER" prefHeight="117.0" prefWidth="445.0" />
+                  <TextField fx:id="nuevoId" alignment="CENTER" promptText="Nuevo DNI/UserId">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="60.0" right="60.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="nuevoEmail" alignment="CENTER" promptText="Nuevo Email">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="60.0" right="60.0" />
+                     </VBox.margin>
+                  </TextField>
                   <TextField fx:id="nuevaContraseña" alignment="CENTER" promptText=" Nueva contraseña">
                      <VBox.margin>
                         <Insets bottom="20.0" left="60.0" right="60.0" />
@@ -90,7 +100,7 @@
                   </TextField>
                   <TextField fx:id="nuevoGenero" alignment="CENTER" promptText="Nuevo género">
                      <VBox.margin>
-                        <Insets bottom="80.0" left="60.0" right="60.0" />
+                        <Insets bottom="20.0" left="60.0" right="60.0" />
                      </VBox.margin>
                   </TextField>
                   <Button fx:id="botonConfirmarModify" mnemonicParsing="false" onAction="#confirmarModify" text="Confirmar">

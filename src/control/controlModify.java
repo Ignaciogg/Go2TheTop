@@ -2,6 +2,7 @@ package control;
 
 import javax.swing.JFrame;
 
+import application.ficheros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,15 +20,12 @@ public class controlModify extends controlModificarUsuario{
 	
 	private Administrador user;
 	
-    @FXML
+	@FXML
     private Text bienvenide;
-    
+
     @FXML
     private Button botonConfirmarModify;
 
-    @FXML
-    private Button botonModify;
-    
     @FXML
     private Button botonVolver;
 
@@ -41,35 +39,48 @@ public class controlModify extends controlModificarUsuario{
     private TextField nuevoApellido;
 
     @FXML
+    private TextField nuevoEmail;
+
+    @FXML
     private TextField nuevoGenero;
+
+    @FXML
+    private TextField nuevoId;
 
     @FXML
     private TextField nuevoNombre;
 
+
     @FXML
     void confirmarModify(ActionEvent event) {
       	
-    	
-
-    	user.confirmarModificarUsuario(dni);
+        	
     	System.out.println(dni);
+    	
     	try{
-    		System.out.println("MODIFICA EL USUARIO");
+    		System.out.println("MODIFICA EL USUARIO"); 		
     		
+    		String id = nuevoId.getText();
+    		System.out.println(id);
+    		String mail = nuevoEmail.getText();
+    		System.out.println(mail);
     		String password = nuevaContraseña.getText();
     		System.out.println(password);
+    		String type="hay que hacerlo";
+    		System.out.println(type);
     		String name = nuevoNombre.getText();
     		System.out.println(name);
     		String lastname = nuevoApellido.getText();
     		System.out.println(lastname);
     		String day = nuevaFecha.getText();
     		System.out.println(day);
-    		String sex = nuevoGenero.getText();
-    		System.out.println(sex);
+    		String gen = nuevoGenero.getText();
+    		System.out.println(gen);
+    		Boolean act = true;
     		
-    		//Usuario modificado = new Usuario (password, name, day, sex);
+    		Usuario nuevo = new Usuario(id, mail, password, name, lastname, day, gen, gen, act);
     		
-    		
+    		user.confirmarModificarUsuario(dni, id, mail, password, name, lastname, day, gen, gen, act);
     	}catch (Exception e) {
 			e.printStackTrace();
 		}
