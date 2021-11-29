@@ -111,7 +111,6 @@ public class controlAnadirAdmin {
             escribirLogin(nuevo);
             escribirPersona(nuevo2, ruta);
 
-
     	}catch (Exception e) {
 			e.printStackTrace();
 		}
