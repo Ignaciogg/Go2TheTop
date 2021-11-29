@@ -1,5 +1,10 @@
 package control;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import com.google.gson.Gson;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
@@ -64,6 +69,31 @@ public class controlAnadirDeportista {
     @FXML
     private JFXTextField fieldAltura;
 
+    public void escribirLogin(Usuario nuevo){
+        Gson gson = new Gson();
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/login.jsonl",true));
+            bw.newLine();
+            bw.append(gson.toJson(nuevo));
+            bw.flush();
+            bw.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void escribirPersona(Usuario nuevo, String ruta){
+        Gson gson = new Gson();
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
+            bw.write(gson.toJson(nuevo));
+            bw.flush();
+            bw.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     void crearDepor(ActionEvent event) {
 
@@ -87,6 +117,12 @@ public class controlAnadirDeportista {
 
         	Usuario nuevo = new Usuario (dni, ema, pas, use, nom, ape, fec, gen, act);
         	Deportista nuevo2 = new Deportista (dni, ema, pas, use, nom, ape, fec, gen, act, pes2, alt2);
+
+        	System.out.println("El usuario que se va a anadir es: " + nuevo.toString());
+        	String ruta = "src/files/deportistas/" + dni + ".jsonl";
+
+            escribirLogin(nuevo);
+            escribirPersona(nuevo2, ruta);
 
     	}catch (Exception e) {
 			e.printStackTrace();

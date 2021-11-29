@@ -1,5 +1,10 @@
 package control;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import com.google.gson.Gson;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
@@ -57,6 +62,31 @@ public class controlAnadirAdmin {
     @FXML
     private JFXTextField fieldGenero;
 
+    public void escribirLogin(Usuario nuevo){
+        Gson gson = new Gson();
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/login.jsonl",true));
+            bw.newLine();
+            bw.append(gson.toJson(nuevo));
+            bw.flush();
+            bw.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void escribirPersona(Usuario nuevo, String ruta){
+        Gson gson = new Gson();
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
+            bw.write(gson.toJson(nuevo));
+            bw.flush();
+            bw.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     void crearAdmin(ActionEvent event) {
 
@@ -75,6 +105,12 @@ public class controlAnadirAdmin {
 
         	Usuario nuevo = new Usuario (dni, ema, pas, use, nom, ape, fec, gen, act);
         	Administrador nuevo2 = new Administrador (dni, ema, pas, use, nom, ape, fec, gen, act);
+        	System.out.println("El usuario que se va a anadir es: " + nuevo.toString());
+        	String ruta = "src/files/administradores/" + dni + ".jsonl";
+
+            escribirLogin(nuevo);
+            escribirPersona(nuevo2, ruta);
+
 
     	}catch (Exception e) {
 			e.printStackTrace();
