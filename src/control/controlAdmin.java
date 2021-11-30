@@ -52,13 +52,13 @@ public class controlAdmin {
 
     @FXML
     private Button botonEnlazar;
-    
+
     @FXML
     private Button botonModificar;
 
 	@FXML
 	private TextField userEmailText;
-	
+
 	 @FXML
 	private TableView<Usuario> tableAdmin;
 
@@ -70,7 +70,7 @@ public class controlAdmin {
 
 	 @FXML
 	 private TableColumn<Usuario, String> colUserType;
-	 
+
 	 ArrayList<Usuario> usersArray;
 
     @FXML
@@ -101,14 +101,14 @@ public class controlAdmin {
 				controlBorrarUsuario controlBor = new controlBorrarUsuario();
 				loader.setController(controlBor);
 				Parent root = loader.load();
-				
+
 				controlBor.setUser(user);
 
 				Stage stage = (Stage) botonBorrar.getScene().getWindow();
 				stage.setTitle("gO2theTop - Borrar Usuario");
 
 				stage.setScene(new Scene(root));
-				
+
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -145,10 +145,11 @@ public class controlAdmin {
 
 			stage.setScene(new Scene(root));
 
-	        }catch (Exception e) {
-				e.printStackTrace();
-			}
-	    }
+        }catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+
     @FXML
     void modificarUsuario(ActionEvent event) {
     	try {
@@ -166,25 +167,25 @@ public class controlAdmin {
 				e.printStackTrace();
 			}
 	    }
-    
+
     private void inicializarTabla() {
-    	 
+
 		colUserId.setCellValueFactory(new PropertyValueFactory<Usuario,String>("userId"));
 		colEmail.setCellValueFactory(new PropertyValueFactory<Usuario,String>("email"));
 		colUserType.setCellValueFactory(new PropertyValueFactory<Usuario,String>("userType"));
-		
+
 
 		tableAdmin.setItems(observableList());
 
 	}
-  
+
 
     public ObservableList<Usuario> observableList(){
         ObservableList<Usuario> users = FXCollections.observableArrayList();
         Gson gson = new Gson();
         Usuario user = null;
     	String fichero = "";
-    	
+
     	try (BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"))) {
 
     	    String linea;
@@ -199,7 +200,7 @@ public class controlAdmin {
     	} catch (IOException ex) {
     	    System.out.println(ex.getMessage());
     	}
-    	
+
         return users;
     }
 
@@ -207,6 +208,6 @@ public class controlAdmin {
     	user = u;
     	bienvenide.setText("Bienvenide " + user.getName());
     	this.inicializarTabla();
-    	
+
     }
 }

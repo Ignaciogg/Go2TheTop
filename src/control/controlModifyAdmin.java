@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import model.Administrador;
 import model.Usuario;
 
-public class controlModify extends controlModificarUsuario{
+public class controlModifyAdmin extends controlModificarUsuario{
 
 	
 	private Administrador user;
