@@ -126,7 +126,7 @@ public class controlModifyDeportista extends controlModificarUsuario{
 	    	
         	Deportista nuevo2 = new Deportista (id, mail, password, type, name, lastname, day, gen, act, alt2, pes2);
         	System.out.println("El usuario que se va a modificar es: " + nuevo.toString());
-        	String ruta = "src/files/administradores/" + dni + ".jsonl";
+        	String ruta = "src/files/deportistas/" + dni + ".jsonl";
 
             escribirLogin(nuevo);
             escribirPersona(nuevo2, ruta);
