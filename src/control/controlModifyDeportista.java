@@ -94,7 +94,7 @@ public class controlModifyDeportista extends controlModificarUsuario{
       	
         	
     	System.out.println(dni);
-    	
+    	user.borrarUsuario(dni);
     	try{
     		System.out.println("MODIFICA EL USUARIO"); 		
     		
