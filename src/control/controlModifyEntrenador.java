@@ -1,6 +1,12 @@
 package control;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.swing.JFrame;
+
+import com.google.gson.Gson;
 
 import application.ficheros;
 import javafx.event.ActionEvent;
@@ -51,6 +57,31 @@ public class controlModifyEntrenador extends controlModificarUsuario{
     @FXML
     private TextField nuevoNombre;
 
+    
+    public void escribirLogin(Usuario nuevo){
+        Gson gson = new Gson();
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/login.jsonl",true));
+            bw.newLine();
+            bw.append(gson.toJson(nuevo));
+            bw.flush();
+            bw.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void escribirPersona(Usuario nuevo, String ruta){
+        Gson gson = new Gson();
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
+            bw.write(gson.toJson(nuevo));
+            bw.flush();
+            bw.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     void confirmarModify(ActionEvent event) {
@@ -67,7 +98,7 @@ public class controlModifyEntrenador extends controlModificarUsuario{
     		System.out.println(mail);
     		String password = nuevaContraseña.getText();
     		System.out.println(password);
-    		String type="hay que hacerlo";
+    		String type="Entrenador";
     		System.out.println(type);
     		String name = nuevoNombre.getText();
     		System.out.println(name);
@@ -79,9 +110,16 @@ public class controlModifyEntrenador extends controlModificarUsuario{
     		System.out.println(gen);
     		Boolean act = true;
     		
+    	
     		Usuario nuevo = new Usuario(id, mail, password, name, lastname, day, gen, gen, act);
+	    	
+        	Entrenador nuevo2 = new Entrenador (id, mail, password, name, lastname, day, gen, gen, act);
+        	System.out.println("El usuario que se va a modificar es: " + nuevo.toString());
+        	String ruta = "src/files/administradores/" + dni + ".jsonl";
+
+            escribirLogin(nuevo);
+            escribirPersona(nuevo2, ruta);
     		
-    		user.confirmarModificarUsuario(dni, id, mail, password, name, lastname, day, gen, gen, act);
     	}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -117,9 +155,9 @@ public class controlModifyEntrenador extends controlModificarUsuario{
 	}
     
 
-	public void setVisible(boolean b) {
+	/*public void setVisible(boolean b) {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
 
 }

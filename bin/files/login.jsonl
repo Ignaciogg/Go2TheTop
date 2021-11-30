@@ -5,3 +5,5 @@
 {"userId":"123456789C","email":"Cristiano@deportista.com","password":"pass123","userType":"deportista"}
 {"userId":"123456789F","email":"LionelAndres@deportista.com","password":"pass123","userType":"deportista"}
 {"userId":"04850775Y","email":"nachogilgarzon@gmail.com","password":"pass123","userType":"administrador"}
+
+{"userId":"1","email":"2","password":"3","userType":"4","name":"5","lastnames":"6","birthday":"7","genre":"7","active":true}

@@ -40,13 +40,19 @@ public class controlModificarUsuario {
     
 	public static String dni ="";
     
+	
+	
     @FXML
     void modificarUser(ActionEvent event) {
     	
     	dni = textMod.getText();
     	System.out.println(dni);
-    	controlModifyAdmin modif=new controlModifyAdmin();
+    	/*controlModifyAdmin modif=new controlModifyAdmin();
     	modif.setVisible(true);
+    	controlModifyEntrenador modif1=new controlModifyEntrenador();
+    	modif.setVisible(true);
+    	controlModifyDeportista modif2=new controlModifyDeportista();
+    	modif.setVisible(true);*/
     	System.out.println(user.toString());
     	user.modificarUsuario(dni);
  

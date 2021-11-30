@@ -1,6 +1,12 @@
 package control;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.swing.JFrame;
+
+import com.google.gson.Gson;
 
 import application.ficheros;
 import javafx.event.ActionEvent;
@@ -51,7 +57,38 @@ public class controlModifyDeportista extends controlModificarUsuario{
     @FXML
     private TextField nuevoNombre;
 
+    @FXML
+    private TextField nuevaAltura;
+    
+    @FXML
+    private TextField nuevoPeso;
+    
+    
+    public void escribirLogin(Usuario nuevo){
+        Gson gson = new Gson();
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/login.jsonl",true));
+            bw.newLine();
+            bw.append(gson.toJson(nuevo));
+            bw.flush();
+            bw.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
+    public void escribirPersona(Usuario nuevo, String ruta){
+        Gson gson = new Gson();
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
+            bw.write(gson.toJson(nuevo));
+            bw.flush();
+            bw.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    
     @FXML
     void confirmarModify(ActionEvent event) {
       	
@@ -67,7 +104,7 @@ public class controlModifyDeportista extends controlModificarUsuario{
     		System.out.println(mail);
     		String password = nuevaContraseña.getText();
     		System.out.println(password);
-    		String type="hay que hacerlo";
+    		String type="Deportista";
     		System.out.println(type);
     		String name = nuevoNombre.getText();
     		System.out.println(name);
@@ -78,10 +115,22 @@ public class controlModifyDeportista extends controlModificarUsuario{
     		String gen = nuevoGenero.getText();
     		System.out.println(gen);
     		Boolean act = true;
+    		String alt = nuevaAltura.getText();
+    		float alt2 = Float.parseFloat(alt);
+    		System.out.println(alt);
+    		String pes = nuevoPeso.getText();
+    		float pes2 = Float.parseFloat(pes);
+    		System.out.println(pes);
     		
     		Usuario nuevo = new Usuario(id, mail, password, name, lastname, day, gen, gen, act);
-    		
-    		user.confirmarModificarUsuario(dni, id, mail, password, name, lastname, day, gen, gen, act);
+	    	
+        	Deportista nuevo2 = new Deportista (id, mail, password, name, lastname, day, gen, gen, act, alt2, pes2);
+        	System.out.println("El usuario que se va a modificar es: " + nuevo.toString());
+        	String ruta = "src/files/administradores/" + dni + ".jsonl";
+
+            escribirLogin(nuevo);
+            escribirPersona(nuevo2, ruta);
+            
     	}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -117,9 +166,9 @@ public class controlModifyDeportista extends controlModificarUsuario{
 	}
     
 
-	public void setVisible(boolean b) {
+	/*public void setVisible(boolean b) {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
 
 }

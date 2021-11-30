@@ -140,7 +140,7 @@ public class controlAdmin {
 			e.printStackTrace();
 		}
     }
-	    }
+	    
     @FXML
     void modificarUsuario(ActionEvent event) {
     	try {
