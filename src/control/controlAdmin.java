@@ -5,11 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Properties;
 
 import com.google.gson.Gson;
 
-import application.ficheros;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,16 +23,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Administrador;
-import model.Deportista;
 import model.Usuario;
-import java.util.ArrayList;
-import java.util.Properties;
-
-import com.google.gson.Gson;
-import com.jfoenix.controls.JFXTextField;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import application.ficheros;
 
 public class controlAdmin {
 
@@ -137,11 +126,20 @@ public class controlAdmin {
     @FXML
     void enlazarUsuarios(ActionEvent event) {
     	try {
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEnlazarUsuarios.fxml"));
+			controlAnadirUsuario controlAna = new controlAnadirUsuario();
+			loader.setController(controlAna);
+			Parent root = loader.load();
+			controlAna.setUser(user);
+			Stage stageActual = (Stage) botonBorrar.getScene().getWindow();
+			stageActual.setTitle("gO2theTop - Anadir Usuario");
 
+			stageActual.setScene(new Scene(root));
 
-	        }catch (Exception e) {
-				e.printStackTrace();
-			}
+        }catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
 	    }
     @FXML
     void modificarUsuario(ActionEvent event) {
