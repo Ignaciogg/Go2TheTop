@@ -110,14 +110,14 @@ public class controlModifyAdmin extends controlModificarUsuario{
     		System.out.println(gen);
     		Boolean act = true;
     		
-    		Usuario nuevo = new Usuario(id, mail, password, name, lastname, day, gen, gen, act);
-    		    	
-        	Administrador nuevo2 = new Administrador (id, mail, password, name, lastname, day, gen, gen, act);
-        	System.out.println("El usuario que se va a modificar es: " + nuevo.toString());
+    		Usuario nuevo = new Usuario(id, mail, password, type);
+        	Administrador nuevo2 = new Administrador (id, mail, password, type, name, lastname, day, gen, act);
+        	System.out.println("El usuario modificado es: " + nuevo.toString());
         	String ruta = "src/files/administradores/" + dni + ".jsonl";
 
             escribirLogin(nuevo);
             escribirPersona(nuevo2, ruta);
+            
     	}catch (Exception e) {
 			e.printStackTrace();
 		}

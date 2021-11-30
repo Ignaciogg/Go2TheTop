@@ -47,18 +47,18 @@ public class Administrador extends Usuario {
 			
 			switch (persona.getUserType()) {
 				case "administrador":
-					files.escribirPersona(persona, "src/files/administradores/" + persona.getUserId() + ".jsonl");
+					//files.escribirPersona(persona, "src/files/administradores/" + persona.getUserId() + ".jsonl");
 					System.out.println("a");
 					System.out.println("USUARIO ESCOGIDO: " + persona.getName());
 					
 					break;
 				case "entrenador":
-					files.escribirPersona(persona, "src/files/entrenadores/" + persona.getUserId() + ".jsonl");
+					//files.escribirPersona(persona, "src/files/entrenadores/" + persona.getUserId() + ".jsonl");
 					System.out.println("e");
 					System.out.println("USUARIO ESCOGIDO: " + persona.getName());
 					break;
 				case "deportista":
-					files.escribirPersona(persona, "src/files/deportistas/" + persona.getUserId() + ".jsonl");
+					//files.escribirPersona(persona, "src/files/deportistas/" + persona.getUserId() + ".jsonl");
 					System.out.println("USUARIO ESCOGIDO: " + persona.getName());
 					break;
 										
@@ -69,10 +69,10 @@ public class Administrador extends Usuario {
 		}
 		}
 
-	public void confirmarModificarUsuario(String dni, String id,String mail,
+	/*public void confirmarModificarUsuario(String dni, String id,String mail,
 			String password, String type, String name, String lastname, String day,
 			String gen, Boolean act) {
-		/*ficheros files = new ficheros();
+		ficheros files = new ficheros();
 		Usuario persona = files.buscarUsuarioId(dni);
 		System.out.println("confirmar");
 		System.out.println(dni);
@@ -106,9 +106,9 @@ public class Administrador extends Usuario {
 						
 		}else {
 			System.out.println("No hemos encontrado el usuario");
-		}*/
+		}
 
-	}
+	}*/
 	
 
 	@Override

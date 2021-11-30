@@ -112,9 +112,9 @@ public class controlModifyEntrenador extends controlModificarUsuario{
     		Boolean act = true;
     		
     	
-    		Usuario nuevo = new Usuario(id, mail, password, name, lastname, day, gen, gen, act);
+    		Usuario nuevo = new Usuario(id, mail, password, type);
 	    	
-        	Entrenador nuevo2 = new Entrenador (id, mail, password, name, lastname, day, gen, gen, act);
+        	Entrenador nuevo2 = new Entrenador (id, mail, password, type, name, lastname, day, gen, act);
         	System.out.println("El usuario que se va a modificar es: " + nuevo.toString());
         	String ruta = "src/files/administradores/" + dni + ".jsonl";
 

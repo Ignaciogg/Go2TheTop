@@ -122,9 +122,9 @@ public class controlModifyDeportista extends controlModificarUsuario{
     		float pes2 = Float.parseFloat(pes);
     		System.out.println(pes);
     		
-    		Usuario nuevo = new Usuario(id, mail, password, name, lastname, day, gen, gen, act);
+    		Usuario nuevo = new Usuario(id, mail, password, type);
 	    	
-        	Deportista nuevo2 = new Deportista (id, mail, password, name, lastname, day, gen, gen, act, alt2, pes2);
+        	Deportista nuevo2 = new Deportista (id, mail, password, type, name, lastname, day, gen, act, alt2, pes2);
         	System.out.println("El usuario que se va a modificar es: " + nuevo.toString());
         	String ruta = "src/files/administradores/" + dni + ".jsonl";
 
