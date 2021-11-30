@@ -38,49 +38,104 @@ public class Administrador extends Usuario {
 	}
 	
 	public void modificarUsuario (String dni) {
-			
-			ficheros files = new ficheros();
-			Usuario persona = files.buscarUsuarioId(dni);
-		
-			
-			files.eliminarUsuarioLogin(persona.getEmail());
-			persona = files.leerUsuario(persona);
-				
-			persona.setPassword(" ");
-			persona.setName(" ");
-			persona.setLastnames(" ");
-			persona.setBirthdate(" ");
-			persona.setGenre(" ");
+		ficheros files = new ficheros();
+		Usuario persona = files.buscarUsuarioId(dni);
+		System.out.println("modificar");
+		if(persona!=null) {
 
+			persona = files.leerUsuario(persona);
+			
 			switch (persona.getUserType()) {
 				case "administrador":
-					files.escribirPersona(persona, persona.getPassword());
-					files.escribirPersona(persona, persona.getName());
-					files.escribirPersona(persona, persona.getLastnames());
-					files.escribirPersona(persona, persona.getBirthday());
-					files.escribirPersona(persona, persona.getGenre());
+					files.escribirPersona(persona, "src/files/administradores/" + persona.getUserId() + ".jsonl");
+					System.out.println("a");
+					System.out.println("USUARIO ESCOGIDO: " + persona.getName());
 					
 					break;
 				case "entrenador":
-					files.escribirPersona(persona, persona.getPassword());
-					files.escribirPersona(persona, persona.getName());
-					files.escribirPersona(persona, persona.getLastnames());
-					files.escribirPersona(persona, persona.getBirthday());
-					files.escribirPersona(persona, persona.getGenre());
-					
+					files.escribirPersona(persona, "src/files/entrenadores/" + persona.getUserId() + ".jsonl");
+					System.out.println("e");
+					System.out.println("USUARIO ESCOGIDO: " + persona.getName());
 					break;
 				case "deportista":
-					files.escribirPersona(persona, persona.getPassword());
-					files.escribirPersona(persona, persona.getName());
-					files.escribirPersona(persona, persona.getLastnames());
-					files.escribirPersona(persona, persona.getBirthday());
-					files.escribirPersona(persona, persona.getGenre());
-					
+					files.escribirPersona(persona, "src/files/deportistas/" + persona.getUserId() + ".jsonl");
+					System.out.println("USUARIO ESCOGIDO: " + persona.getName());
 					break;
-					
-				}
-		
+										
+			}
+						
+		}else {
+			System.out.println("No hemos encontrado el usuario");
 		}
+		}
+
+	public void confirmarModificarUsuario(String dni, String id,String mail,
+			String password, String type, String name, String lastname, String day,
+			String gen, Boolean act) {
+		ficheros files = new ficheros();
+		Usuario persona = files.buscarUsuarioId(dni);
+		System.out.println("confirmar");
+		System.out.println(dni);
+
+		if(persona!=null) {
+			
+			persona = files.leerUsuario(persona);
+			
+			switch (persona.getUserType()) {
+				case "administrador":
+					files.escribirPersona(persona, "src/files/administradores/" + persona.getUserId() + ".jsonl");
+					System.out.println("a");
+					System.out.println("USUARIO ESCOGIDO: " + persona.getName());
+					persona.setUserId(id);
+		    		persona.setEmail(mail);
+		    		persona.setPassword(password);
+		    		persona.setUserType(type);
+		    		persona.setName(name);
+		    		System.out.println(name);
+		    		persona.setLastnames(lastname);
+		    		persona.setBirthdate(day);
+		    		persona.setGenre(gen);
+		    		persona.setActive(act);
+
+					break;
+				case "entrenador":
+					files.escribirPersona(persona, "src/files/entrenadores/" + persona.getUserId() + ".jsonl");
+					System.out.println("e");
+					System.out.println("USUARIO ESCOGIDO: " + persona.getName());
+					persona.setUserId(id);
+		    		persona.setEmail(mail);
+		    		persona.setPassword(password);
+		    		persona.setUserType(type);
+		    		persona.setName(name);
+		    		System.out.println(name);
+		    		persona.setLastnames(lastname);
+		    		persona.setBirthdate(day);
+		    		persona.setGenre(gen);
+		    		persona.setActive(act);
+					break;
+				case "deportista":
+					files.escribirPersona(persona, "src/files/deportistas/" + persona.getUserId() + ".jsonl");
+					System.out.println("USUARIO ESCOGIDO: " + persona.getName());
+					persona.setUserId(id);
+					persona.setEmail(mail);
+		    		persona.setPassword(password);
+		    		persona.setUserType(type);
+		    		persona.setName(name);
+		    		System.out.println(name);
+		    		persona.setLastnames(lastname);
+		    		persona.setBirthdate(day);
+		    		persona.setGenre(gen);
+		    		persona.setActive(act);
+					break;
+							
+			}
+						
+		}else {
+			System.out.println("No hemos encontrado el usuario");
+		}
+
+	}
+	
 
 	@Override
 	public String toString() {

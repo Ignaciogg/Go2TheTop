@@ -1,4 +1,7 @@
 {"userId":"123456789A","email":"Florentino@admin.com","password":"pass123","userType":"administrador"}
-{"userId":"123456789B","email":"JoseMario@entrenador.com","password":"pass123","userType":"entrenador"}
-{"userId":"123456789C","email":"Cristiano@deportista.com","password":"pass123","userType":"deportista"}
 {"userId":"123456789D","email":"Elon@admin.com","password":"pass123","userType":"administrador"}
+{"userId":"123456789B","email":"JoseMario@entrenador.com","password":"pass123","userType":"entrenador"}
+{"userId":"123456789E","email":"Josep@entrenador.com","password":"pass123","userType":"entrenador"}
+{"userId":"123456789C","email":"Cristiano@deportista.com","password":"pass123","userType":"deportista"}
+{"userId":"123456789F","email":"LionelAndres@deportista.com","password":"pass123","userType":"deportista"}
+{"userId":"04850775Y","email":"nachogilgarzon@gmail.com","password":"pass123","userType":"administrador"}

@@ -17,9 +17,10 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Administrador;
+import model.Entrenador;
 import model.Usuario;
 
-public class controlAnadirAdmin {
+public class controlAnadirEntranador {
 
 	private Administrador user;
 
@@ -27,7 +28,7 @@ public class controlAnadirAdmin {
     private Button botonVolver;
 
     @FXML
-    private Button botonCrearAdmin;
+    private Button botonCrearEntrenador;
 
     @FXML
     private ToggleButton toggleAdmin;
@@ -88,10 +89,10 @@ public class controlAnadirAdmin {
     }
 
     @FXML
-    void crearAdmin(ActionEvent event) {
+    void crearEntrenador(ActionEvent event) {
 
     	try{
-    		System.out.println("CREAR ADMIN");
+    		System.out.println("CREAR ENTRENADOR");
 
         	String dni = fieldUserId.getText();
         	String ema = fieldEmail.getText();
@@ -103,10 +104,11 @@ public class controlAnadirAdmin {
         	String gen = fieldGenero.getText();
         	Boolean act = true;
 
-        	Usuario nuevo = new Usuario (dni, ema, pas, use);
-        	Administrador nuevo2 = new Administrador (dni, ema, pas, use, nom, ape, fec, gen, act);
+        	Usuario nuevo = new Usuario (dni, ema, pas, use, nom, ape, fec, gen, act);
+        	Entrenador nuevo2 = new Entrenador (dni, ema, pas, use, nom, ape, fec, gen, act);
+
         	System.out.println("El usuario que se va a anadir es: " + nuevo.toString());
-        	String ruta = "src/files/administradores/" + dni + ".jsonl";
+        	String ruta = "src/files/deportistas/" + dni + ".jsonl";
 
             escribirLogin(nuevo);
             escribirPersona(nuevo2, ruta);
@@ -165,7 +167,7 @@ public class controlAnadirAdmin {
     void selectEntrenador(ActionEvent event) {
     	try {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirAdmin.fxml"));
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirEntrenador.fxml"));
         	controlAnadirAdmin controlAnadirAdmin = new controlAnadirAdmin();
 			loader.setController(controlAnadirAdmin);
 			Parent root = loader.load();
