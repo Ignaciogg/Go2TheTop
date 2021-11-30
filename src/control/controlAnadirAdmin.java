@@ -103,7 +103,7 @@ public class controlAnadirAdmin {
         	String gen = fieldGenero.getText();
         	Boolean act = true;
 
-        	Usuario nuevo = new Usuario (dni, ema, pas, use, nom, ape, fec, gen, act);
+        	Usuario nuevo = new Usuario (dni, ema, pas, use);
         	Administrador nuevo2 = new Administrador (dni, ema, pas, use, nom, ape, fec, gen, act);
         	System.out.println("El usuario que se va a anadir es: " + nuevo.toString());
         	String ruta = "src/files/administradores/" + dni + ".jsonl";
