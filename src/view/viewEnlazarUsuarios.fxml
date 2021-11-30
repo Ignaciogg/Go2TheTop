@@ -49,31 +49,24 @@
             </VBox>
          </left>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+            <VBox style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="117.0" prefWidth="445.0">
+                  <HBox alignment="CENTER">
                      <children>
-                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Enlazar Usuarioso" textAlignment="CENTER">
+                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Enlazar Usuario" textAlignment="CENTER">
                               <font>
                                    <Font name="System Bold" size="26.0" />
                               </font>
                           </Text>
-                     </children></HBox>
-                  <TableView fx:id="tableEntrenadores" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                    <columns>
-                        <TableColumn fx:id="colUserId" prefWidth="115.0" text="User ID" />
-                        <TableColumn fx:id="colEmail" minWidth="0.0" prefWidth="154.0" text="Email" />
-                        <TableColumn fx:id="colUserType" prefWidth="175.0" text="User Type" />
-                    </columns>
+                     </children>
                      <VBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </VBox.margin>
-                  </TableView>
-                  <VBox prefWidth="100.0">
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin></HBox>
+                  <VBox alignment="CENTER">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER">
                            <children>
-                              <JFXTextField fx:id="textfielUser" alignment="TOP_LEFT" prefColumnCount="50" promptText="Introduzca el DNI/User_Id del usuario que quiera borrar" style="-fx-background-color: white;">
+                              <JFXTextField fx:id="textfielUser" alignment="TOP_LEFT" prefColumnCount="50" promptText="Introduzca el DNI del entrenador" style="-fx-background-color: white;">
                                  <HBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </HBox.margin>
@@ -85,22 +78,39 @@
                               </Button>
                            </children>
                            <VBox.margin>
-                              <Insets top="20.0" />
+                              <Insets bottom="20.0" top="20.0" />
                            </VBox.margin>
                         </HBox>
-                        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Button fx:id="botonBorrar" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#borrarUser" text="Seleccionar" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </HBox.margin>
-                              </Button>
-                           </children>
-                        </HBox>
+                        <Text fill="WHITE" nodeOrientation="RIGHT_TO_LEFT" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrenadores" textAlignment="CENTER">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Text>
+                        <TableView fx:id="tableEntrenadores" prefHeight="1000000.0" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="colEntrenDNI" prefWidth="75.0" text="DNI" />
+                              <TableColumn fx:id="colEntrenNombre" prefWidth="75.0" text="nombre" />
+                            <TableColumn fx:id="colEntrenApellidos" prefWidth="75.0" text="Apellidos" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </VBox.margin>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Button fx:id="botonSeleccionar" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#seleccionar" text="Seleccionar" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
                   </VBox>
                </children>
             </VBox>
