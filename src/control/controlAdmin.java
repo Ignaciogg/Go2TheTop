@@ -23,7 +23,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Administrador;
+import model.Deportista;
 import model.Usuario;
+import java.util.ArrayList;
+import java.util.Properties;
+
+import com.google.gson.Gson;
+import com.jfoenix.controls.JFXTextField;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import application.ficheros;
 
 public class controlAdmin {
 
@@ -126,20 +135,19 @@ public class controlAdmin {
     @FXML
     void enlazarUsuarios(ActionEvent event) {
     	try {
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEnlazarUsuarios.fxml"));
-			controlAnadirUsuario controlAna = new controlAnadirUsuario();
-			loader.setController(controlAna);
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEnlazarUsuarios.fxml"));
+			controlEnlazarEntrenador controlentr = new controlEnlazarEntrenador();
+			loader.setController(controlentr);
 			Parent root = loader.load();
-			controlAna.setUser(user);
-			Stage stageActual = (Stage) botonBorrar.getScene().getWindow();
-			stageActual.setTitle("gO2theTop - Anadir Usuario");
+			controlentr.setUsuario(user);
+			Stage stage = (Stage) botonModificar.getScene().getWindow();
+			stage.setTitle("gO2theTop - Enlazar Usuarios");
 
-			stageActual.setScene(new Scene(root));
+			stage.setScene(new Scene(root));
 
-        }catch (Exception e) {
-			e.printStackTrace();
-		}
-    }
+	        }catch (Exception e) {
+				e.printStackTrace();
+			}
 	    }
     @FXML
     void modificarUsuario(ActionEvent event) {
