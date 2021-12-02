@@ -14,42 +14,7 @@
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <VBox alignment="CENTER" prefHeight="500.0" prefWidth="255.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-               <children>
-                  <BorderPane prefHeight="637.0" prefWidth="255.0" style="-fx-background-color: white;">
-                     <top>
-                        <ImageView fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                           <image>
-                              <Image url="@../../recursos/logo.jpeg" />
-                           </image>
-                           <BorderPane.margin>
-                              <Insets right="125.0" />
-                           </BorderPane.margin>
-                        </ImageView>
-                     </top>
-                     <bottom>
-                        <Button fx:id="botonCerrarSesion" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" textAlignment="CENTER" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                           <BorderPane.margin>
-                              <Insets bottom="50.0" />
-                           </BorderPane.margin>
-                        </Button>
-                     </bottom>
-                     <left>
-                        <Text fx:id="nombreUser" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets bottom="250.0" left="20.0" />
-                           </BorderPane.margin>
-                           <font>
-                              <Font name="Times New Roman Bold" size="18.0" />
-                           </font>
-                        </Text>
-                     </left>
-                  </BorderPane>
-               </children>
-            </VBox>
+            <VBox alignment="CENTER" prefHeight="500.0" prefWidth="255.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
          </left>
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
@@ -70,6 +35,63 @@
             </VBox>
          </center>
       </BorderPane>
+      <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <ImageView fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../recursos/logo.jpeg" />
+               </image>
+            </ImageView>
+            <Text fx:id="bienvenide" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenida" wrappingWidth="215.6708984375">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Text>
+            <Button fx:id="botonDatos" mnemonicParsing="false" onAction="#verDatos" style="-fx-background-color: black;" text="Ver datos" textAlignment="CENTER" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="60.0" top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="botonEstadisticas" mnemonicParsing="false" onAction="#verEstadisticas" style="-fx-background-color: black;" text="Ver estadísticas" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="50.0" top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="botonFeedback" mnemonicParsing="false" onAction="#verFeedback" style="-fx-background-color: black;" text="Ver feedback" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="55.0" top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="botonChat" mnemonicParsing="false" onAction="#verChat" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: black;" text="Chat entrenador" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="40.0" top="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="botonCerrarSesion" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="55.0" top="40.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
 
    </children>
 </AnchorPane>

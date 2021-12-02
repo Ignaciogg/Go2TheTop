@@ -5,3 +5,4 @@
 {"userId":"123456789C","email":"Cristiano@deportista.com","password":"pass123","userType":"deportista"}
 {"userId":"123456789F","email":"LionelAndres@deportista.com","password":"pass123","userType":"deportista"}
 {"userId":"04850775Y","email":"nachogilgarzon@gmail.com","password":"pass123","userType":"administrador"}
+{"userId":"66666666L","email":"luis@depor.com","password":"pass123","userType":"deportista","name":"Luis","lastnames":"Ferrer","birthday":"31/7/1998","genre":"Masculino","active":true}
