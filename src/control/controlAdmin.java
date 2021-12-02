@@ -127,12 +127,12 @@ public class controlAdmin {
     void enlazarUsuarios(ActionEvent event) {
     	try {
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEnlazarUsuarios.fxml"));
-			controlAnadirUsuario controlAna = new controlAnadirUsuario();
-			loader.setController(controlAna);
+			controlEnlazarEntrenador controlEnl = new controlEnlazarEntrenador();
+			loader.setController(controlEnl);
 			Parent root = loader.load();
-			controlAna.setUser(user);
+			controlEnl.setUsuario(user);
 			Stage stageActual = (Stage) botonBorrar.getScene().getWindow();
-			stageActual.setTitle("gO2theTop - Anadir Usuario");
+			stageActual.setTitle("gO2theTop - Enlazar Usuario");
 
 			stageActual.setScene(new Scene(root));
 
