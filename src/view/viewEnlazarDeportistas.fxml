@@ -66,7 +66,7 @@
                      <children>
                         <HBox alignment="CENTER">
                            <children>
-                              <JFXTextField fx:id="textfielUser" alignment="TOP_LEFT" prefColumnCount="50" promptText="Introduzca el DNI del entrenador" style="-fx-background-color: white;">
+                              <JFXTextField fx:id="textfielUser" alignment="TOP_LEFT" prefColumnCount="50" promptText="Introduzca el DNI del deportista" style="-fx-background-color: white;">
                                  <HBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </HBox.margin>
@@ -81,16 +81,16 @@
                               <Insets bottom="20.0" top="20.0" />
                            </VBox.margin>
                         </HBox>
-                        <Text fill="WHITE" nodeOrientation="RIGHT_TO_LEFT" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrenadores" textAlignment="CENTER">
+                        <Text fill="WHITE" nodeOrientation="RIGHT_TO_LEFT" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Deportistas" textAlignment="CENTER">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Text>
-                        <TableView fx:id="tableEntrenadores" prefHeight="1000000.0" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="tableDeportistas" prefHeight="1000000.0" VBox.vgrow="ALWAYS">
                           <columns>
-                            <TableColumn fx:id="colEntrenDNI" prefWidth="75.0" text="DNI" />
-                              <TableColumn fx:id="colEntrenNombre" prefWidth="75.0" text="Nombre" />
-                            <TableColumn fx:id="colEntrenApellidos" prefWidth="75.0" text="Apellidos" />
+                            <TableColumn fx:id="colDeporDNI" prefWidth="75.0" text="DNI" />
+                              <TableColumn fx:id="colDeporNombre" prefWidth="75.0" text="Nombre" />
+                            <TableColumn fx:id="colDeporApellidos" prefWidth="75.0" text="Apellidos" />
                           </columns>
                            <VBox.margin>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
