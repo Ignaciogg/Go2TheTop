@@ -19,9 +19,40 @@ public class controlDeportista {
 	@FXML
     private Text nombreUser;
 
+	@FXML
+    private Button botonDatos;
+
+    @FXML
+    private Button botonEstadisticas;
+
+    @FXML
+    private Button botonFeedback;
+
+    @FXML
+    private Button botonChat;
+
     @FXML
     private Button botonCerrarSesion;
 
+    @FXML
+    void verChat(ActionEvent event) {
+    	System.out.println("VER CHAT");
+    }
+
+    @FXML
+    void verDatos(ActionEvent event) {
+    	System.out.println("VER DATOS");
+    }
+
+    @FXML
+    void verEstadisticas(ActionEvent event) {
+    	System.out.println("VER ESTAD");
+    }
+
+    @FXML
+    void verFeedback(ActionEvent event) {
+    	System.out.println("VER FEEDBACK");
+    }
 
     @FXML
     void cerrarSesion(ActionEvent event) {
@@ -46,6 +77,5 @@ public class controlDeportista {
 	public void setUsuario(Deportista u) {
     	user = u;
     	nombreUser.setText("Bienvenide " + u.getName());
-
     }
 }
