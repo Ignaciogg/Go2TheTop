@@ -22,12 +22,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Administrador;
+import model.Deportista;
 import model.Entrenador;
+import model.Deportista;
 import model.Usuario;
 
-public class controlEnlazarEntrenador {
+public class controlEnlazarDeportista {
 
 	private Administrador user;
+
+	private Entrenador entrenador;
 
 	@FXML
 	private Button botonVolver;
@@ -42,16 +46,16 @@ public class controlEnlazarEntrenador {
 	private TextField textfielUser;
 
 	@FXML
-	private TableView<Entrenador> tableEntrenadores;
+	private TableView<Deportista> tableDeportistas;
 
 	@FXML
-	private TableColumn<Entrenador, String> colEntrenDNI;
+	private TableColumn<Deportista, String> colDeporDNI;
 
 	@FXML
-	private TableColumn<Entrenador, String> colEntrenNombre;
+	private TableColumn<Deportista, String> colDeporNombre;
 
 	@FXML
-	private TableColumn<Entrenador, String> colEntrenApellidos;
+	private TableColumn<Deportista, String> colDeporApellidos;
 
 	@FXML
 	void volverAdmin(ActionEvent event) {
@@ -76,20 +80,17 @@ public class controlEnlazarEntrenador {
 
 	@FXML
 	void seleccionar(ActionEvent event) {
-		
-		if(tableEntrenadores.getSelectionModel().getSelectedItem() != null) {
+		if (tableDeportistas.getSelectionModel().getSelectedItem() != null) {
 			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEnlazarDeportistas.fxml"));
-				controlEnlazarDeportista controladmin = new controlEnlazarDeportista();
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEnlazarConfirmacion.fxml"));
+				controlEnlazarConfirmacion controladmin = new controlEnlazarConfirmacion();
 				loader.setController(controladmin);
 				Parent root = loader.load();
-				
-				
-				Entrenador e= new ficheros().leerEntrenador("src/files/entrenadores/" + tableEntrenadores.getSelectionModel().getSelectedItem().getUserId() + ".jsonl");
-				controladmin.setUsuario(user,e);
+				Deportista deportista= new ficheros().leerDeportista("src/files/deportistas/" + tableDeportistas.getSelectionModel().getSelectedItem().getUserId() + ".jsonl");
+				controladmin.setUsuario(user, entrenador, deportista);
 
 				Stage stage = (Stage) botonVolver.getScene().getWindow();
-				stage.setTitle("gO2theTop - Enlazar Usuarios");
+				stage.setTitle("gO2theTop - Admin");
 
 				stage.setScene(new Scene(root));
 
@@ -97,27 +98,28 @@ public class controlEnlazarEntrenador {
 				e.printStackTrace();
 			}
 		}
+
 	}
 
 	@FXML
 	void buscar(ActionEvent event) {
-		colEntrenDNI.setCellValueFactory(new PropertyValueFactory<Entrenador, String>("userId"));
-		colEntrenNombre.setCellValueFactory(new PropertyValueFactory<Entrenador, String>("name"));
-		colEntrenApellidos.setCellValueFactory(new PropertyValueFactory<Entrenador, String>("lastnames"));
-		tableEntrenadores.setItems(observableList(textfielUser.getText()));
+		colDeporDNI.setCellValueFactory(new PropertyValueFactory<Deportista, String>("userId"));
+		colDeporNombre.setCellValueFactory(new PropertyValueFactory<Deportista, String>("name"));
+		colDeporApellidos.setCellValueFactory(new PropertyValueFactory<Deportista, String>("lastnames"));
+		tableDeportistas.setItems(observableList(textfielUser.getText()));
 	}
 
 	private void inicializarTabla() {
 
-		colEntrenDNI.setCellValueFactory(new PropertyValueFactory<Entrenador, String>("userId"));
-		colEntrenNombre.setCellValueFactory(new PropertyValueFactory<Entrenador, String>("name"));
-		colEntrenApellidos.setCellValueFactory(new PropertyValueFactory<Entrenador, String>("lastnames"));
-		tableEntrenadores.setItems(observableList());
+		colDeporDNI.setCellValueFactory(new PropertyValueFactory<Deportista, String>("userId"));
+		colDeporNombre.setCellValueFactory(new PropertyValueFactory<Deportista, String>("name"));
+		colDeporApellidos.setCellValueFactory(new PropertyValueFactory<Deportista, String>("lastnames"));
+		tableDeportistas.setItems(observableList());
 
 	}
 
-	public ObservableList<Entrenador> observableList(String dni) {
-		ObservableList<Entrenador> users = FXCollections.observableArrayList();
+	public ObservableList<Deportista> observableList(String dni) {
+		ObservableList<Deportista> users = FXCollections.observableArrayList();
 		Gson gson = new Gson();
 		Usuario user = null;
 		ficheros files = new ficheros();
@@ -126,9 +128,9 @@ public class controlEnlazarEntrenador {
 			String linea;
 			while ((linea = br.readLine()) != null) {
 				user = gson.fromJson(linea, Usuario.class);
-				if (user.getUserType().equalsIgnoreCase("entrenador")) {
-					if(user.getUserId().equalsIgnoreCase(dni)) {
-						users.add(files.leerEntrenador("src/files/entrenadores/" + user.getUserId() + ".jsonl"));
+				if (user.getUserType().equalsIgnoreCase("Deportista")) {
+					if (user.getUserId().equalsIgnoreCase(dni)) {
+						users.add(files.leerDeportista("src/files/Deportistas/" + user.getUserId() + ".jsonl"));
 					}
 				}
 			}
@@ -141,9 +143,9 @@ public class controlEnlazarEntrenador {
 
 		return users;
 	}
-	
-	public ObservableList<Entrenador> observableList() {
-		ObservableList<Entrenador> users = FXCollections.observableArrayList();
+
+	public ObservableList<Deportista> observableList() {
+		ObservableList<Deportista> users = FXCollections.observableArrayList();
 		Gson gson = new Gson();
 		Usuario user = null;
 		ficheros files = new ficheros();
@@ -152,8 +154,8 @@ public class controlEnlazarEntrenador {
 			String linea;
 			while ((linea = br.readLine()) != null) {
 				user = gson.fromJson(linea, Usuario.class);
-				if (user.getUserType().equalsIgnoreCase("entrenador")) {
-					users.add(files.leerEntrenador("src/files/entrenadores/" + user.getUserId() + ".jsonl"));
+				if (user.getUserType().equalsIgnoreCase("deportista")) {
+					users.add(files.leerDeportista("src/files/deportistas/" + user.getUserId() + ".jsonl"));
 				}
 			}
 
@@ -166,8 +168,9 @@ public class controlEnlazarEntrenador {
 		return users;
 	}
 
-	public void setUsuario(Administrador u) {
+	public void setUsuario(Administrador u, Entrenador e) {
 		user = u;
+		entrenador = e;
 		this.inicializarTabla();
 
 	}
