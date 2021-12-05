@@ -104,10 +104,10 @@ public class controlAnadirEntranador {
         	String gen = fieldGenero.getText();
         	Boolean act = true;
 
-        	Usuario nuevo = new Usuario (dni, ema, pas, use, nom, ape, fec, gen, act);
+        	Usuario nuevo = new Usuario (dni, ema, pas, use);
         	Entrenador nuevo2 = new Entrenador (dni, ema, pas, use, nom, ape, fec, gen, act);
 
-        	System.out.println("El usuario que se va a anadir es: " + nuevo.toString());
+        	System.out.println("El usuario que se va a anadir es: " + nuevo2.toString());
         	String ruta = "src/files/deportistas/" + dni + ".jsonl";
 
             escribirLogin(nuevo);

@@ -115,10 +115,10 @@ public class controlAnadirDeportista {
         	float alt2 = Float.parseFloat(alt);
         	Boolean act = true;
 
-        	Usuario nuevo = new Usuario (dni, ema, pas, use, nom, ape, fec, gen, act);
+        	Usuario nuevo = new Usuario (dni, ema, pas, use);
         	Deportista nuevo2 = new Deportista (dni, ema, pas, use, nom, ape, fec, gen, act, pes2, alt2);
 
-        	System.out.println("El usuario que se va a anadir es: " + nuevo.toString());
+        	System.out.println("El usuario que se va a anadir es: " + nuevo2.toString());
         	String ruta = "src/files/deportistas/" + dni + ".jsonl";
 
             escribirLogin(nuevo);

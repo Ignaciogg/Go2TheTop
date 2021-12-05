@@ -17,7 +17,7 @@ public class controlDeportista {
 	private Deportista user;
 
 	@FXML
-    private Text nombreUser;
+    private Text bienvenide;
 
 	@FXML
     private Button botonDatos;
@@ -76,6 +76,6 @@ public class controlDeportista {
 
 	public void setUsuario(Deportista u) {
     	user = u;
-    	nombreUser.setText("Bienvenide " + u.getName());
+    	bienvenide.setText("Bienvenide " + u.getName());
     }
 }

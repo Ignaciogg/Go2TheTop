@@ -105,7 +105,7 @@ public class controlAnadirAdmin {
 
         	Usuario nuevo = new Usuario (dni, ema, pas, use);
         	Administrador nuevo2 = new Administrador (dni, ema, pas, use, nom, ape, fec, gen, act);
-        	System.out.println("El usuario que se va a anadir es: " + nuevo.toString());
+        	System.out.println("El usuario que se va a anadir es: " + nuevo2.toString());
         	String ruta = "src/files/administradores/" + dni + ".jsonl";
 
             escribirLogin(nuevo);
