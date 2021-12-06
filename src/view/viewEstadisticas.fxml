@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="500.0" prefWidth="218.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="106.0" fitWidth="102.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../recursos/logo.jpeg" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="botonVolver" layoutX="78.0" layoutY="399.0" mnemonicParsing="false" onAction="#volverDeportista" style="-fx-background-color: black;" text="Volver" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <VBox alignment="CENTER" layoutX="223.0" layoutY="5.0" prefHeight="488.0" prefWidth="477.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="48.0" prefWidth="477.0">
+                     <children>
+                        <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos visualizados:">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <RadioButton fx:id="frecuencia" mnemonicParsing="false" onAction="#mostrarFrecuencia" selected="true" text="Frec. cardíaca">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="grafica2" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="actividad" mnemonicParsing="false" onAction="#mostrarActividad" text="Act. Física" toggleGroup="$grafica2">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="temperatura" mnemonicParsing="false" onAction="#mostrarTemperatura" text="Cond. ambiental" toggleGroup="$grafica2">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="24.0" prefWidth="477.0">
+                     <children>
+                        <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="Fechas de la muestra (dd/mm/yyyy):  desde">
+                           <HBox.margin>
+                              <Insets left="30.0" right="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Text>
+                        <DatePicker />
+                        <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="hasta">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <DatePicker>
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="-15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="134.0" prefWidth="477.0">
+                     <VBox.margin>
+                        <Insets bottom="-20.0" />
+                     </VBox.margin>
+                     <children>
+                        <LineChart fx:id="grafica" prefHeight="112.0" prefWidth="477.0">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </LineChart>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
