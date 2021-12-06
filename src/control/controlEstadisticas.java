@@ -1,18 +1,18 @@
 package control;
 
-import java.awt.Button;
-
+import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Deportista;
-import model.Usuario;
 
 public class controlEstadisticas {
 
@@ -37,22 +37,40 @@ public class controlEstadisticas {
     private LineChart<?, ?> grafica;
 
     @FXML
-    void mostrarActividad(ActionEvent event) {
-
-    }
-
-    @FXML
     void mostrarFrecuencia(ActionEvent event) {
+    	System.out.println("Mostrar Frecuencia Cardiaca");
+
+    	grafica.getData().clear();
+		Series<String, Number> series = new XYChart.Series<String, Number>();
+
+		for(int i = 2000; i<=2400; i+=100){
+			series.getData().add(new XYChart.Data<String, Number>("pepe", i));
+		}
+
+		series.setName("Actividad");
+		//grafica.getData().add(series);
 
     }
 
     @FXML
-    void mostrarTemperatura(ActionEvent event) {
+    void mostrarNivelO2(ActionEvent event) {
+    	System.out.println("Mostrar Nivel O2");
+
+    	grafica.getData().clear();
+		Series<String, Number> series = new XYChart.Series<String, Number>();
+
+		for(int i = 2000; i<=2400; i+=100){
+			series.getData().add(new XYChart.Data<String, Number>("pepe", i));
+		}
+
+		series.setName("Actividad");
+		//grafica.getData().add(series);
 
     }
 
     @FXML
     void volverDeportista(ActionEvent event) {
+
     	try {
 
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewDeportista.fxml"));
@@ -70,6 +88,7 @@ public class controlEstadisticas {
         }catch (Exception e) {
 			e.printStackTrace();
 		}
+
     }
 
 	public void setUsuario(Deportista u) {

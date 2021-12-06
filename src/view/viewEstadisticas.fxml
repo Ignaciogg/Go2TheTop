@@ -38,12 +38,15 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="48.0" prefWidth="477.0">
                      <children>
-                        <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos visualizados:">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos visualizados:">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
                         </Text>
-                        <RadioButton fx:id="frecuencia" mnemonicParsing="false" onAction="#mostrarFrecuencia" selected="true" text="Frec. cardíaca">
+                        <RadioButton fx:id="frecuencia" mnemonicParsing="false" onAction="#mostrarFrecuencia" selected="true" text="Frec. cardíaca" textFill="WHITE">
                            <font>
                               <Font size="10.0" />
                            </font>
@@ -51,15 +54,7 @@
                               <ToggleGroup fx:id="grafica2" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="actividad" mnemonicParsing="false" onAction="#mostrarActividad" text="Act. Física" toggleGroup="$grafica2">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </RadioButton>
-                        <RadioButton fx:id="temperatura" mnemonicParsing="false" onAction="#mostrarTemperatura" text="Cond. ambiental" toggleGroup="$grafica2">
+                        <RadioButton fx:id="nivelo2" mnemonicParsing="false" onAction="#mostrarNivelO2" text="Nivel O2" textFill="WHITE" toggleGroup="$grafica2">
                            <font>
                               <Font size="10.0" />
                            </font>
@@ -74,7 +69,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="24.0" prefWidth="477.0">
                      <children>
-                        <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="Fechas de la muestra (dd/mm/yyyy):  desde">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fechas de la muestra (dd/mm/yyyy):  desde">
                            <HBox.margin>
                               <Insets left="30.0" right="5.0" />
                            </HBox.margin>
@@ -83,7 +78,7 @@
                            </font>
                         </Text>
                         <DatePicker />
-                        <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="hasta">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="hasta">
                            <font>
                               <Font size="11.0" />
                            </font>
