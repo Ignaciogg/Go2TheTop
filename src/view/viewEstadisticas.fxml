@@ -32,49 +32,41 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
+                  <HBox alignment="CENTER" layoutX="-138.0" layoutY="182.0" prefHeight="134.0" prefWidth="477.0" />
                </children>
             </AnchorPane>
             <VBox alignment="CENTER" layoutX="223.0" layoutY="5.0" prefHeight="488.0" prefWidth="477.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="48.0" prefWidth="477.0">
-                     <children>
-                        <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos visualizados:">
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <RadioButton fx:id="frecuencia" mnemonicParsing="false" onAction="#mostrarFrecuencia" selected="true" text="Frec. cardíaca">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                           <toggleGroup>
-                              <ToggleGroup fx:id="grafica2" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="actividad" mnemonicParsing="false" onAction="#mostrarActividad" text="Act. Física" toggleGroup="$grafica2">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </RadioButton>
-                        <RadioButton fx:id="temperatura" mnemonicParsing="false" onAction="#mostrarTemperatura" text="Cond. ambiental" toggleGroup="$grafica2">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </RadioButton>
-                     </children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos visualizados:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
                      <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets bottom="25.0" />
                      </VBox.margin>
-                  </HBox>
+                  </Text>
+                  <RadioButton fx:id="frecuencia" mnemonicParsing="false" onAction="#mostrarFrecuencia" selected="true" text="Frec. cardíaca" textFill="WHITE">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="grafica2" />
+                     </toggleGroup>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="nivelo2" mnemonicParsing="false" onAction="#mostrarNivelO2" text="Nivel O2" textFill="WHITE" toggleGroup="$grafica2">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </RadioButton>
                   <HBox alignment="CENTER" prefHeight="24.0" prefWidth="477.0">
                      <children>
-                        <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="Fechas de la muestra (dd/mm/yyyy):  desde">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fechas de la muestra (dd/mm/yyyy):  desde">
                            <HBox.margin>
                               <Insets left="30.0" right="5.0" />
                            </HBox.margin>
@@ -82,8 +74,8 @@
                               <Font size="11.0" />
                            </font>
                         </Text>
-                        <DatePicker />
-                        <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="hasta">
+                        <DatePicker fx:id="datepicker1" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="hasta">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -91,31 +83,24 @@
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </Text>
-                        <DatePicker>
+                        <DatePicker fx:id="datepicker2">
                            <HBox.margin>
                               <Insets right="30.0" />
                            </HBox.margin>
                         </DatePicker>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="20.0" top="-15.0" />
+                        <Insets bottom="20.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="134.0" prefWidth="477.0">
-                     <VBox.margin>
-                        <Insets bottom="-20.0" />
-                     </VBox.margin>
-                     <children>
-                        <LineChart fx:id="grafica" prefHeight="112.0" prefWidth="477.0">
-                           <xAxis>
-                              <CategoryAxis side="BOTTOM" />
-                           </xAxis>
-                           <yAxis>
-                              <NumberAxis side="LEFT" />
-                           </yAxis>
-                        </LineChart>
-                     </children>
-                  </HBox>
+                  <LineChart fx:id="grafica" prefHeight="240.0" prefWidth="477.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </LineChart>
                </children>
             </VBox>
          </children>
