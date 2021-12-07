@@ -2,71 +2,92 @@ package model;
 
 public class Sesion {
 
-    private String sesionId;
-    private String userId;
-    private float valor1;
-    private float valor2;
-    private float valor3;
-    private float valor4;
+    private int valorF1;
+    private int valorF2;
+    private int valorF3;
+    private int valorF4;
+    private int valorO1;
+    private int valorO2;
+    private int valorO3;
+    private int valorO4;
     private String fecha;
 
 
-    public Sesion (String sesionId, String userId, float valor1, float valor2, float valor3, float valor4, String fecha) {
-    	this.sesionId = sesionId;
-    	this.userId = userId;
-        this.valor1 = valor1;
-        this.valor2 = valor2;
-        this.valor3 = valor3;
-        this.valor4 = valor4;
+    public Sesion (int valorF1, int valorF2, int valorF3, int valorF4, int valorO1, int valorO2, int valorO3, int valorO4, String fecha) {
+
+        this.valorF1 = valorF1;
+        this.valorF2 = valorF2;
+        this.valorF3 = valorF3;
+        this.valorF4 = valorF4;
+        this.valorO1 = valorO1;
+        this.valorO2 = valorO2;
+        this.valorO3 = valorO3;
+        this.valorO4 = valorO4;
         this.fecha = fecha;
     }
 
-    public String getSesionId() {
-		return sesionId;
+	public int getValorF1() {
+		return valorF1;
 	}
 
-	public void setSesionId(String sesionId) {
-		this.sesionId = sesionId;
+	public void setValorF1(int valorF1) {
+		this.valorF1 = valorF1;
 	}
 
-	public String getUserId() {
-		return userId;
+	public int getValorF2() {
+		return valorF2;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setValorF2(int valorF2) {
+		this.valorF2 = valorF2;
 	}
 
-	public float getValor1() {
-		return valor1;
+	public int getValorF3() {
+		return valorF3;
 	}
 
-	public void setValor1(float valor1) {
-		this.valor1 = valor1;
+	public void setValorF3(int valorF3) {
+		this.valorF3 = valorF3;
 	}
 
-	public float getValor2() {
-		return valor2;
+	public int getValorF4() {
+		return valorF4;
 	}
 
-	public void setValor2(float valor2) {
-		this.valor2 = valor2;
+	public void setValorF4(int valorF4) {
+		this.valorF4 = valorF4;
 	}
 
-	public float getValor3() {
-		return valor3;
+	public int getValorO1() {
+		return valorO1;
 	}
 
-	public void setValor3(float valor3) {
-		this.valor3 = valor3;
+	public void setValorO1(int valorO1) {
+		this.valorO1 = valorO1;
 	}
 
-	public float getValor4() {
-		return valor4;
+	public int getValorO2() {
+		return valorO2;
 	}
 
-	public void setValor4(float valor4) {
-		this.valor4 = valor4;
+	public void setValorO2(int valorO2) {
+		this.valorO2 = valorO2;
+	}
+
+	public int getValorO3() {
+		return valorO3;
+	}
+
+	public void setValorO3(int valorO3) {
+		this.valorO3 = valorO3;
+	}
+
+	public int getValorO4() {
+		return valorO4;
+	}
+
+	public void setValorO4(int valorO4) {
+		this.valorO4 = valorO4;
 	}
 
 	public String getFecha() {

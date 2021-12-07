@@ -3,8 +3,14 @@ package control;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.google.gson.Gson;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +25,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Deportista;
+import model.Sesion;
+import model.Usuario;
 
 public class controlEstadisticas implements Initializable{
 
@@ -46,19 +54,32 @@ public class controlEstadisticas implements Initializable{
     private DatePicker datepicker2;
 
     @FXML
-    void mostrarFrecuencia(ActionEvent event) {
+    void mostrarFrecuencia(ActionEvent event) throws FileNotFoundException {
     	System.out.println("Mostrar Frecuencia Cardiaca");
     	grafica.getData().clear();
+    	Gson gson = new Gson();
+    	Sesion sesion1 = null;
+    	String linea;
+    	String[] sesiones;
 
-    	XYChart.Series serie1 = new XYChart.Series();
-		serie1.getData().add(new XYChart.Data("1", 85));
-		serie1.getData().add(new XYChart.Data("2", 100));
-		serie1.getData().add(new XYChart.Data("3", 110));
-		serie1.getData().add(new XYChart.Data("4", 120));
-		serie1.getData().add(new XYChart.Data("5", 120));
-		serie1.getData().add(new XYChart.Data("6", 115));
+    	try {
+			BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"));
 
-		grafica.getData().add(serie1);
+			while ((linea = br.readLine()) != null){
+				sesion1 = gson.fromJson(linea, Sesion.class);
+			}
+
+	    	XYChart.Series serie1 = new XYChart.Series();
+			serie1.getData().add(new XYChart.Data("1", sesion1.getValorF1()));
+			serie1.getData().add(new XYChart.Data("2", sesion1.getValorF2()));
+			serie1.getData().add(new XYChart.Data("3", sesion1.getValorF3()));
+			serie1.getData().add(new XYChart.Data("4", sesion1.getValorF4()));
+
+			grafica.getData().add(serie1);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
     }
 
@@ -66,16 +87,29 @@ public class controlEstadisticas implements Initializable{
     void mostrarNivelO2(ActionEvent event) {
     	System.out.println("Mostrar Nivel O2");
     	grafica.getData().clear();
+    	Gson gson = new Gson();
+    	Sesion sesion2 = null;
+    	String linea;
+    	String[] sesiones;
 
-    	XYChart.Series serie1 = new XYChart.Series();
-		serie1.getData().add(new XYChart.Data("1", 99));
-		serie1.getData().add(new XYChart.Data("2", 97));
-		serie1.getData().add(new XYChart.Data("3", 94));
-		serie1.getData().add(new XYChart.Data("4", 91));
-		serie1.getData().add(new XYChart.Data("5", 89));
-		serie1.getData().add(new XYChart.Data("6", 85));
+    	try {
+			BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"));
 
-		grafica.getData().add(serie1);
+			while ((linea = br.readLine()) != null){
+				sesion2 = gson.fromJson(linea, Sesion.class);
+			}
+
+	    	XYChart.Series serie1 = new XYChart.Series();
+			serie1.getData().add(new XYChart.Data("1", sesion2.getValorO1()));
+			serie1.getData().add(new XYChart.Data("2", sesion2.getValorO2()));
+			serie1.getData().add(new XYChart.Data("3", sesion2.getValorO3()));
+			serie1.getData().add(new XYChart.Data("4", sesion2.getValorO4()));
+
+			grafica.getData().add(serie1);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
     }
 
@@ -84,7 +118,7 @@ public class controlEstadisticas implements Initializable{
 
     	try {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewDeportista.fxml"));
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewDepor.fxml"));
         	controlDeportista controlDep = new controlDeportista();
 			loader.setController(controlDep);
 			Parent root = loader.load();
