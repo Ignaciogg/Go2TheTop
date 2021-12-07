@@ -1,20 +1,4 @@
 package control;
-
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.stage.Stage;
-import model.Deportista;
-import model.Entrenador;
-import model.Usuario;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -24,27 +8,38 @@ import java.util.Properties;
 
 import com.google.gson.Gson;
 import com.jfoenix.controls.JFXTextField;
+
+import application.ficheros;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import application.ficheros;
+import model.Deportista;
+import model.Entrenador;
+import model.Usuario;
 
-
-
-public class controlEntrenador {
-
+public class controlEstadisticasEntrenador {
+	
 	private Entrenador user;
-
-	@FXML
-    private JFXTextField nombreUser;
 
     @FXML
     private Button botonCerrarSesion;
-    
+
+    @FXML
+    private JFXTextField nombreUser;
+
     @FXML
     private Button buttonVerEstadisticas;
 
     @FXML
     private Button buttonChatEntrenador;
+
+    @FXML
+    private JFXTextField textfielUser;
 
     @FXML
     private TableView<Deportista> tablaEntrenador;
@@ -66,28 +61,13 @@ public class controlEntrenador {
 
 
     ArrayList<Deportista> deportistaArray;
-
-
+    
+    
     @FXML
     void cerrarSesion(ActionEvent event) {
-		 try {
 
-	        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewLogin.fxml"));
-				controlLogin controlLog = new controlLogin();
-				loader.setController(controlLog);
-				Parent root = loader.load();
+    }
 
-				Stage stage = (Stage) botonCerrarSesion.getScene().getWindow();
-				stage.setTitle("gO2theTop - Login");
-
-				stage.setScene(new Scene(root));
-
-	        }catch (Exception e) {
-				e.printStackTrace();
-			}
-
-	    }
-    
     @FXML
     void chatEntrenador(ActionEvent event) {
 
@@ -95,28 +75,11 @@ public class controlEntrenador {
 
     @FXML
     void verEstadisticas(ActionEvent event) {
-    	try {
-
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren.fxml"));
-			controlEstadisticasEntrenador controlEstadisticasEntren = new controlEstadisticasEntrenador();
-			//controlEstadisticasEntren.setUsuario(new ficheros().leerAdministrador("src/files/entrenadores/" + user.getUserId() + ".jsonl"));
-			loader.setController(controlEstadisticasEntren);
-			Parent root = loader.load();
-
-			Stage stage = (Stage) buttonVerEstadisticas.getScene().getWindow();
-			stage.setTitle("gO2theTop - VerEstadisticasEntrenador");
-
-			stage.setScene(new Scene(root));
-
-        }catch (Exception e) {
-			e.printStackTrace();
-		}
-
 
     }
-
+    
     private void inicializarTabla(Usuario user) {
- 
+    	 
 		colDeportista.setCellValueFactory(new PropertyValueFactory<Deportista,String>("name"));
 		colApellido.setCellValueFactory(new PropertyValueFactory<Deportista,String>("lastnames"));
 		colEmail.setCellValueFactory(new PropertyValueFactory<Deportista,String>("email"));
@@ -160,18 +123,16 @@ public class controlEntrenador {
         
         return deportistas;
     }
-
-
-	public void setUsuario(Entrenador u) {
+    
+    public void setUsuario(Entrenador u) {
     	user = u;
-    	if(u.getGenre().equals("hombre")){
+    	/*if(u.getGenre().equals("hombre")){
     		nombreUser.setText("Bienvenido " + u.getName());
     	}else if(u.getGenre().equals("mujer")) {
     		nombreUser.setText("Bienvenida " + u.getName());
-    	}
+    	}*/
 
     	this.inicializarTabla(u);
-
 
     }
 
