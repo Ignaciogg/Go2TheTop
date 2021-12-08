@@ -14,10 +14,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.Deportista;
 import model.Entrenador;
 import model.Usuario;
@@ -27,7 +31,7 @@ public class controlEstadisticasEntrenador {
 	private Entrenador user;
 
     @FXML
-    private Button botonCerrarSesion;
+    private Button botonVolver;
 
     @FXML
     private JFXTextField nombreUser;
@@ -64,8 +68,23 @@ public class controlEstadisticasEntrenador {
     
     
     @FXML
-    void cerrarSesion(ActionEvent event) {
+    void volver(ActionEvent event) {
+    	try {
 
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntren.fxml"));
+			controlEntrenador controlEntren = new controlEntrenador();
+			loader.setController(controlEntren);
+			Parent root = loader.load();
+			controlEntren.setUsuario(user);
+
+			Stage stage = (Stage) botonVolver.getScene().getWindow();
+			stage.setTitle("gO2theTop - Entrenador");
+
+			stage.setScene(new Scene(root));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
