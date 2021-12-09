@@ -33,8 +33,13 @@ public class controlEstadisticas2 implements Initializable{
 
 	private Deportista user;
 
+	private String fech;
+
 	@FXML
     private Button botonVolver;
+
+	@FXML
+    private Button buttonMapa;
 
     @FXML
     private ToggleGroup grafica2;
@@ -133,8 +138,15 @@ public class controlEstadisticas2 implements Initializable{
 
     }
 
-	public void setUsuario(Deportista u) {
+    @FXML
+    void verMapa(ActionEvent event) {
+
+    }
+
+	public void setUsuario(Deportista u, String fecha) {
     	user = u;
+    	fech = fecha;
+
     }
 
 	@Override

@@ -30,6 +30,8 @@ public class controlEstadisticas {
 
 	private Deportista user;
 
+	private Sesion sesion;
+
 	ArrayList<Sesion> sesionArray;
 
 	@FXML
@@ -46,7 +48,28 @@ public class controlEstadisticas {
 
     @FXML
     void seleccionar(ActionEvent event) {
+    	if(tableSesiones.getSelectionModel().getSelectedItem() != null) {
+    		try {
 
+            	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticas2.fxml"));
+            	controlEstadisticas2 controlE2 = new controlEstadisticas2();
+    			loader.setController(controlE2);
+    			Parent root = loader.load();
+
+    			Sesion e = sesion.leerSesion("src/files/sesiones/" + user.getUserId() + ".jsonl");
+    			String fecha = tableSesiones.getSelectionModel().getSelectedItem().getFecha();
+
+    			controlE2.setUsuario(user,fecha);
+
+    			Stage stage = (Stage) botonSeleccionar.getScene().getWindow();
+    			stage.setTitle("gO2theTop - Estadisticas2");
+
+    			stage.setScene(new Scene(root));
+
+            }catch (Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
     }
 
     @FXML
