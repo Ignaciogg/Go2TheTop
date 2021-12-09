@@ -103,7 +103,7 @@
                                                       <Insets left="20.0" right="20.0" />
                                                    </HBox.margin>
                                                 </JFXTextField>
-                                                <Button mnemonicParsing="false" text="Buscar" />
+                                                <Button fx:id="botonBuscar" mnemonicParsing="false" onAction="#buscar" text="Buscar" />
                                              </children>
                                           </HBox>
                                           <Text fill="WHITE" nodeOrientation="RIGHT_TO_LEFT" strokeType="OUTSIDE" strokeWidth="0.0" text="Deportistas">

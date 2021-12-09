@@ -98,12 +98,9 @@ public class controlEntrenador {
 
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren.fxml"));
 			controlEstadisticasEntrenador controlEstadisticasEntren = new controlEstadisticasEntrenador();
-			Entrenador entre;
-			entre = new ficheros().leerEntrenador("src/files/entrenadores/" + user.getUserId() + ".jsonl");
-			System.out.print(entre.getName());
-			controlEstadisticasEntren.setUsuario(new ficheros().leerEntrenador("src/files/entrenadores/" + user.getUserId() + ".jsonl"));
 			loader.setController(controlEstadisticasEntren);
 			Parent root = loader.load();
+			controlEstadisticasEntren.setUsuario(user);
 
 			Stage stage = (Stage) buttonVerEstadisticas.getScene().getWindow();
 			stage.setTitle("gO2theTop - VerEstadisticasEntrenador");	
@@ -120,7 +117,7 @@ public class controlEntrenador {
 
     
     public void setUsuario(Entrenador u) {
-    	user = u;
+    	user = u; 
     	if(u.getGenre().equals("hombre")){
     		nombreUser.setText("Bienvenido " + u.getName());
     	}else if(u.getGenre().equals("mujer")) {
