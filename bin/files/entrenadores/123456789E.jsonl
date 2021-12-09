@@ -1,1 +1,1 @@
-{"userId": "123456789E","email": Josep@entrenador.com","password": "pass123","userType": "entrenador","name": "Josep","lastnames": "Guardiola I Sala","birthday": "18-01-1971","genre": "hombre", "active":True}
+{"userId": "123456789E","email": "Josep@entrenador.com","password": "pass123","userType": "entrenador","name": "Josep","lastnames": "Guardiola I Sala","birthday": "18-01-1971","genre": "hombre", "active":True}

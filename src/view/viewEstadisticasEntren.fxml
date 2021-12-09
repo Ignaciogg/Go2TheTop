@@ -15,8 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="471.0" prefWidth="730.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -33,7 +32,7 @@
                               </ImageView>
                            </top>
                            <bottom>
-                              <Button fx:id="botonCerrarSesion" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="24.0" prefWidth="112.0" text="Cerrar Sesion" BorderPane.alignment="CENTER">
+                              <Button fx:id="botonVolver" mnemonicParsing="false" onAction="#volver" prefHeight="24.0" prefWidth="112.0" text="Volver" BorderPane.alignment="CENTER">
                                  <BorderPane.margin>
                                     <Insets bottom="50.0" />
                                  </BorderPane.margin>

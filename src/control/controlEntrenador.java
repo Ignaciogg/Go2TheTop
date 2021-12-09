@@ -37,9 +37,9 @@ public class controlEntrenador {
 	@FXML
     private JFXTextField nombreUser;
 
-    @FXML
+	@FXML
     private Button botonCerrarSesion;
-    
+
     @FXML
     private Button buttonVerEstadisticas;
 
@@ -47,26 +47,25 @@ public class controlEntrenador {
     private Button buttonChatEntrenador;
 
     @FXML
-    private TableView<Deportista> tablaEntrenador;
+    private JFXTextField nameEntrenador;
 
     @FXML
-    private TableColumn<Deportista, String> colDeportista;
+    private JFXTextField lastnameEntren;
 
     @FXML
-    private TableColumn<Deportista, String> colApellido;
+    private JFXTextField emailEntren;
 
     @FXML
-    private TableColumn<Deportista, String> colEmail;
+    private JFXTextField passEntren;
 
     @FXML
-    private TableColumn<Deportista, String> colPeso;
+    private Button botonModificarDatos;
+
 
     @FXML
-    private TableColumn<Deportista, String> colAltura;
-
-
-    ArrayList<Deportista> deportistaArray;
-
+    void modificarDatos(ActionEvent event) {
+    	
+    }
 
     @FXML
     void cerrarSesion(ActionEvent event) {
@@ -99,12 +98,15 @@ public class controlEntrenador {
 
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren.fxml"));
 			controlEstadisticasEntrenador controlEstadisticasEntren = new controlEstadisticasEntrenador();
-			//controlEstadisticasEntren.setUsuario(new ficheros().leerAdministrador("src/files/entrenadores/" + user.getUserId() + ".jsonl"));
+			Entrenador entre;
+			entre = new ficheros().leerEntrenador("src/files/entrenadores/" + user.getUserId() + ".jsonl");
+			System.out.print(entre.getName());
+			controlEstadisticasEntren.setUsuario(new ficheros().leerEntrenador("src/files/entrenadores/" + user.getUserId() + ".jsonl"));
 			loader.setController(controlEstadisticasEntren);
 			Parent root = loader.load();
 
 			Stage stage = (Stage) buttonVerEstadisticas.getScene().getWindow();
-			stage.setTitle("gO2theTop - VerEstadisticasEntrenador");
+			stage.setTitle("gO2theTop - VerEstadisticasEntrenador");	
 
 			stage.setScene(new Scene(root));
 
@@ -115,64 +117,22 @@ public class controlEntrenador {
 
     }
 
-    private void inicializarTabla(Usuario user) {
- 
-		colDeportista.setCellValueFactory(new PropertyValueFactory<Deportista,String>("name"));
-		colApellido.setCellValueFactory(new PropertyValueFactory<Deportista,String>("lastnames"));
-		colEmail.setCellValueFactory(new PropertyValueFactory<Deportista,String>("email"));
-		colPeso.setCellValueFactory(new PropertyValueFactory<Deportista,String>("peso"));
-		colAltura.setCellValueFactory(new PropertyValueFactory<Deportista,String>("altura"));
 
-		tablaEntrenador.setItems(observableList(user));
-
-	}
-  
-
-    public ObservableList<Deportista> observableList(Usuario user){
-        ObservableList<Deportista> deportistas = FXCollections.observableArrayList();
-        Gson gson = new Gson();
-        Deportista dep = null;
-    	String fichero = "", entrenID, deporID="";
-    	
-    	try (BufferedReader br = new BufferedReader(new FileReader("src/files/enlaces.jsonl"))) {
-
-    	    String linea;
-    	    while ((linea = br.readLine()) != null) {
-    	        fichero = linea;
-    	        System.out.println(fichero);
-    	        Properties properties = gson.fromJson(fichero, Properties.class);
-
-        	    entrenID=(String) properties.get("entrenadorID");
-
-            	if(user.getUserId().equals(entrenID)) {
-            		deporID= (String) properties.get("deportistaID");
-            		dep = new ficheros().leerDeportista("src/files/deportistas/" + deporID + ".jsonl");
-                    deportistas.add(dep);
-            	}
-    	    }
-
-    	} catch (FileNotFoundException ex) {
-    	    System.out.println(ex.getMessage());
-    	} catch (IOException ex) {
-    	    System.out.println(ex.getMessage());
-    	}
-  
-        
-        return deportistas;
-    }
-
-
-	public void setUsuario(Entrenador u) {
+    
+    public void setUsuario(Entrenador u) {
     	user = u;
     	if(u.getGenre().equals("hombre")){
     		nombreUser.setText("Bienvenido " + u.getName());
     	}else if(u.getGenre().equals("mujer")) {
     		nombreUser.setText("Bienvenida " + u.getName());
     	}
-
-    	this.inicializarTabla(u);
-
+    	
+    	nameEntrenador.setText(user.getName());
+    	lastnameEntren.setText(user.getLastnames());
+    	emailEntren.setText(user.getEmail());
+    	passEntren.setText(user.getPassword());
 
     }
+
 
 }

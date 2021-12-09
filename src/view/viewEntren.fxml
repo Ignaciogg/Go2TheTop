@@ -4,12 +4,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -39,38 +38,48 @@
                         </Button>
                      </bottom>
                      <center>
-                        <VBox prefHeight="276.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+                        <VBox alignment="CENTER" prefHeight="276.0" prefWidth="250.0" BorderPane.alignment="CENTER">
                            <children>
-                              <JFXTextField fx:id="nombreUser" alignment="CENTER" focusColor="WHITE" prefHeight="67.0" prefWidth="180.0" text="Bienvenido" unFocusColor="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </JFXTextField>
-                              <Button fx:id="buttonVerEstadisticas" mnemonicParsing="false" onAction="#verEstadisticas" style="-fx-background-color: black;" text="Ver Estadisticas" textFill="WHITE">
-                                 <VBox.margin>
-                                    <Insets left="60.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="buttonChatEntrenador" mnemonicParsing="false" onAction="#chatEntrenador" style="-fx-background-color: black;" text="Chat deportista" textFill="WHITE">
-                                 <VBox.margin>
-                                    <Insets left="60.0" top="25.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button mnemonicParsing="false" style="-fx-background-color: black;" text="Button" textFill="WHITE">
-                                 <VBox.margin>
-                                    <Insets left="90.0" top="25.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Button>
+                              <HBox alignment="CENTER" prefHeight="57.0" prefWidth="261.0">
+                                 <children>
+                                    <JFXTextField fx:id="nombreUser" alignment="CENTER" focusColor="WHITE" prefHeight="67.0" prefWidth="180.0" text="Bienvenido" unFocusColor="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="56.0" prefWidth="261.0">
+                                 <children>
+                                    <Button fx:id="buttonVerEstadisticas" mnemonicParsing="false" onAction="#verEstadisticas" style="-fx-background-color: black;" text="Ver Estadisticas" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="71.0" prefWidth="261.0">
+                                 <children>
+                                    <Button fx:id="buttonChatEntrenador" mnemonicParsing="false" onAction="#chatEntrenador" style="-fx-background-color: black;" text="Chat deportista" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="54.0" prefWidth="261.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" style="-fx-background-color: black;" text="Button" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
                            </children>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
                         </VBox>
                      </center>
                   </BorderPane>
@@ -79,24 +88,123 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: black;">
                <children>
                   <BorderPane layoutY="-8.0" prefHeight="469.0" prefWidth="461.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <center>
-                        <TableView fx:id="tablaEntrenador" prefHeight="426.0" prefWidth="453.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-                          <columns>
-                            <TableColumn fx:id="colDeportista" prefWidth="83.0" text="Deportista" />
-                            <TableColumn fx:id="colApellido" prefWidth="111.0" text="Apellido" />
-                              <TableColumn fx:id="colEmail" minWidth="5.0" prefWidth="98.0" text="Email" />
-                              <TableColumn fx:id="colPeso" prefWidth="89.0" text="Peso" />
-                              <TableColumn fx:id="colAltura" text="Altura" />
-                          </columns>
-                        </TableView>
-                     </center>
                      <top>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrenador" BorderPane.alignment="CENTER">
                            <font>
                               <Font name="System Bold" size="26.0" />
                            </font>
+                           <BorderPane.margin>
+                              <Insets top="10.0" />
+                           </BorderPane.margin>
                         </Text>
                      </top>
+                     <center>
+                        <VBox alignment="CENTER" prefHeight="406.0" prefWidth="461.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="65.0" prefWidth="461.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" wrappingWidth="84.13671875">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <JFXTextField fx:id="nameEntrenador" alignment="CENTER" prefHeight="25.0" prefWidth="282.0" promptText="Nombre del entrenador" style="-fx-background-color: white;" unFocusColor="BLACK">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="65.0" prefWidth="461.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" wrappingWidth="84.13671875">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <JFXTextField fx:id="lastnameEntren" alignment="CENTER" prefHeight="25.0" prefWidth="282.0" promptText="Apellidos del entrenador" style="-fx-background-color: white;" unFocusColor="BLACK">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="65.0" prefWidth="461.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="84.13671875">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <JFXTextField fx:id="emailEntren" alignment="CENTER" prefHeight="25.0" prefWidth="282.0" promptText="Email del entrenador" style="-fx-background-color: white;" unFocusColor="BLACK">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="65.0" prefWidth="461.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="84.13671875">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <JFXTextField fx:id="passEntren" alignment="CENTER" prefHeight="25.0" prefWidth="282.0" promptText="Password del entrenador" style="-fx-background-color: white;" unFocusColor="BLACK">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="65.0" prefWidth="461.0">
+                                 <children>
+                                    <Button fx:id="botonModificarDatos" mnemonicParsing="false" onAction="#modificarDatos" prefHeight="25.0" prefWidth="152.0" text="Modificar datos">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="30.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <BorderPane.margin>
+                              <Insets top="20.0" />
+                           </BorderPane.margin>
+                        </VBox>
+                     </center>
                   </BorderPane>
                </children>
             </AnchorPane>
