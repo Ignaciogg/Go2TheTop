@@ -10,3 +10,4 @@ src/files/deportistas/123456789F.jsonl
 bin/files/login.jsonl
 bin/files/deportistas/123456789F.jsonl
 src/files/deportistas/123456789F.jsonl
+src/files/sesiones/*
