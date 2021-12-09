@@ -1,6 +1,8 @@
 package control;
 
 import com.google.gson.Gson;
+
+import application.ficheros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Administrador;
 import model.Deportista;
+import model.Enlace;
 import model.Entrenador;
 
 public class controlEnlazarConfirmacion {
@@ -56,6 +59,11 @@ public class controlEnlazarConfirmacion {
 	void confirmar(ActionEvent event) {
 
 		try {
+			
+			ficheros files = new ficheros();
+			Enlace en = new Enlace(entrenador.getUserId(), deportista.getUserId());
+			files.escribirEnlace(en);
+					
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
 			controlAdmin controladmin = new controlAdmin();
 			loader.setController(controladmin);

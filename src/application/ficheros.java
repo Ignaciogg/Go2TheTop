@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 
 import model.Administrador;
 import model.Deportista;
+import model.Enlace;
 import model.Entrenador;
 import model.Usuario;
 
@@ -144,6 +145,19 @@ public class ficheros {
 			BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/login.jsonl", true));
 			bw.newLine();
 			bw.append(gson.toJson(user));
+			bw.flush();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void escribirEnlace(Enlace en) {
+		Gson gson = new Gson();
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/enlaces.jsonl", true));
+			bw.newLine();
+			bw.append(gson.toJson(en));
 			bw.flush();
 			bw.close();
 		} catch (IOException e) {
