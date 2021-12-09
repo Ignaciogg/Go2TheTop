@@ -1,7 +1,5 @@
 package control;
 
-import com.google.gson.Gson;
-
 import application.ficheros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,11 +24,8 @@ public class controlEnlazarConfirmacion {
 	private Button botonVolver;
 	
 	@FXML
-	private Text textoEntrenador;
+	private Text texto;
 	
-	@FXML
-	private Text textoDeportista;
-
 	@FXML
 	private Button botonConfirmar;
 
@@ -85,7 +80,6 @@ public class controlEnlazarConfirmacion {
 		user = u;
 		entrenador = e;
 		deportista = d;
-		textoEntrenador.setText(e.getUserId()+" - "+e.getName()+ " "+e.getLastnames());
-		textoDeportista.setText(d.getUserId()+" - "+d.getName()+ " "+d.getLastnames());
+		texto.setText("Desea confirmar el enlace entre\n"+e.getUserId()+" - "+e.getName()+ " "+e.getLastnames()+"\n"+d.getUserId()+" - "+d.getName()+ " "+d.getLastnames());
 	}
 }

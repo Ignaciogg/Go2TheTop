@@ -58,29 +58,16 @@
                            </VBox.margin>
                           </Text>
                         <VBox prefHeight="200.0" prefWidth="100.0" />
-                        <Text fx:id="texto" fill="WHITE" nodeOrientation="RIGHT_TO_LEFT" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="desea confirmar el enlace entre:" textAlignment="CENTER">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="textoEntrenador" fill="WHITE" nodeOrientation="RIGHT_TO_LEFT" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="textoDeportista" fill="WHITE" nodeOrientation="RIGHT_TO_LEFT" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
+                        <Text fx:id="texto" fill="WHITE" nodeOrientation="RIGHT_TO_LEFT" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="MENSAJE" textAlignment="JUSTIFY">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Text>
                         <VBox prefHeight="200.0" prefWidth="100.0" />
-                        <Button fx:id="botonConfirmar" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="10.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#confirmar" text="Confirmar" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                        <Button fx:id="botonConfirmar" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="10.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#confirmar" text="Confirmar" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
-                           <VBox.margin>
-                              <Insets bottom="20.0" />
-                           </VBox.margin>
                         </Button>
                      </children>
                      <VBox.margin>
