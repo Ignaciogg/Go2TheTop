@@ -1,5 +1,11 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import com.google.gson.Gson;
+
 public class Sesion {
 
     private int valorF1;
@@ -96,5 +102,20 @@ public class Sesion {
 
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
+	}
+
+	public Sesion leerSesion(String ruta) {
+
+		Sesion sesion = null;
+		try {
+			Gson gson = new Gson();
+			BufferedReader br = new BufferedReader(new FileReader(ruta));
+			sesion = gson.fromJson(br.readLine(), Sesion.class);
+			br.close();
+		} catch (IOException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return sesion;
+
 	}
 }

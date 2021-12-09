@@ -34,10 +34,6 @@ public class controlDeportista {
     @FXML
     private Button botonCerrarSesion;
 
-    @FXML
-    void verChat(ActionEvent event) {
-    	System.out.println("VER CHAT");
-    }
 
     @FXML
     void verDatos(ActionEvent event) {
@@ -66,6 +62,25 @@ public class controlDeportista {
     @FXML
     void verFeedback(ActionEvent event) {
     	System.out.println("VER FEEDBACK");
+    }
+    
+    @FXML
+    void verChat(ActionEvent event) {
+    	System.out.println("VER CHAT");
+    	try {
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewChat.fxml"));
+			controlChat controlXat = new controlChat();
+			loader.setController(controlXat);
+			Parent root = loader.load();
+			controlXat.setUsuario(user);
+			Stage stageActual = (Stage) botonChat.getScene().getWindow();
+			stageActual.setTitle("gO2theTop - Chat");
+
+			stageActual.setScene(new Scene(root));
+
+        }catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
