@@ -94,6 +94,7 @@ public class controlAdmin {
 				Parent root = loader.load();
 
 				controlBor.setUser(user);
+				System.out.println(user.getName());
 
 				Stage stage = (Stage) botonBorrar.getScene().getWindow();
 				stage.setTitle("gO2theTop - Borrar Usuario");
