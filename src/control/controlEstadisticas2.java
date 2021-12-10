@@ -30,6 +30,8 @@ import model.Sesion;
 import model.Usuario;
 
 public class controlEstadisticas2 implements Initializable{
+	
+	private Sesion sesioncita;
 
 	private Deportista user;
 
@@ -55,32 +57,18 @@ public class controlEstadisticas2 implements Initializable{
 
     @FXML
     void mostrarFrecuencia(ActionEvent event) throws FileNotFoundException {
-    	System.out.println("Mostrar Frecuencia Cardiaca");
+    	System.out.println("Mostrar Frecuencia");
     	grafica.getData().clear();
-    	Gson gson = new Gson();
-    	Sesion sesion1 = null;
-    	String linea;
-    	String[] sesiones;
 
-    	try {
-			BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"));
+    	XYChart.Series serie1 = new XYChart.Series();
+		serie1.getData().add(new XYChart.Data("1", sesioncita.getValorF1()));
+		serie1.getData().add(new XYChart.Data("2", sesioncita.getValorF2()));
+		serie1.getData().add(new XYChart.Data("3", sesioncita.getValorF3()));
+		serie1.getData().add(new XYChart.Data("4", sesioncita.getValorF4()));
 
-			while ((linea = br.readLine()) != null){
-				sesion1 = gson.fromJson(linea, Sesion.class);
-			}
+		serie1.setName("Frecuencia cardiaca");
+		grafica.getData().add(serie1);
 
-	    	XYChart.Series serie1 = new XYChart.Series();
-			serie1.getData().add(new XYChart.Data("1", sesion1.getValorF1()));
-			serie1.getData().add(new XYChart.Data("2", sesion1.getValorF2()));
-			serie1.getData().add(new XYChart.Data("3", sesion1.getValorF3()));
-			serie1.getData().add(new XYChart.Data("4", sesion1.getValorF4()));
-
-			serie1.setName("Frecuencia Cardiaca");
-			grafica.getData().add(serie1);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 
     }
 
@@ -88,31 +76,15 @@ public class controlEstadisticas2 implements Initializable{
     void mostrarNivelO2(ActionEvent event) {
     	System.out.println("Mostrar Nivel O2");
     	grafica.getData().clear();
-    	Gson gson = new Gson();
-    	Sesion sesion2 = null;
-    	String linea;
-    	String[] sesiones;
 
-    	try {
-			BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"));
+    	XYChart.Series serie1 = new XYChart.Series();
+		serie1.getData().add(new XYChart.Data("1", sesioncita.getValorO1()));
+		serie1.getData().add(new XYChart.Data("2", sesioncita.getValorO2()));
+		serie1.getData().add(new XYChart.Data("3", sesioncita.getValorO3()));
+		serie1.getData().add(new XYChart.Data("4", sesioncita.getValorO4()));
 
-			while ((linea = br.readLine()) != null){
-				sesion2 = gson.fromJson(linea, Sesion.class);
-			}
-
-	    	XYChart.Series serie1 = new XYChart.Series();
-			serie1.getData().add(new XYChart.Data("1", sesion2.getValorO1()));
-			serie1.getData().add(new XYChart.Data("2", sesion2.getValorO2()));
-			serie1.getData().add(new XYChart.Data("3", sesion2.getValorO3()));
-			serie1.getData().add(new XYChart.Data("4", sesion2.getValorO4()));
-
-			serie1.setName("Nivel de O2");
-			grafica.getData().add(serie1);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		serie1.setName("Nivel de O2");
+		grafica.getData().add(serie1);
     }
 
     @FXML
@@ -143,9 +115,9 @@ public class controlEstadisticas2 implements Initializable{
 
     }
 
-	public void setUsuario(Deportista u, String fecha) {
+	public void setUsuario(Deportista u, Sesion sesion) {
     	user = u;
-    	fech = fecha;
+    	sesioncita = sesion;
 
     }
 

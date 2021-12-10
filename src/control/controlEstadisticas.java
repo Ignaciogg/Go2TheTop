@@ -56,10 +56,11 @@ public class controlEstadisticas {
     			loader.setController(controlE2);
     			Parent root = loader.load();
 
-    			Sesion e = sesion.leerSesion("src/files/sesiones/" + user.getUserId() + ".jsonl");
+    			//Sesion e = new Sesion().leerSesion("src/files/sesiones/" + user.getUserId() + ".jsonl");
     			String fecha = tableSesiones.getSelectionModel().getSelectedItem().getFecha();
+    			Sesion sesionFin = buscar_fecha(fecha);
 
-    			controlE2.setUsuario(user,fecha);
+    			controlE2.setUsuario(user,sesionFin);
 
     			Stage stage = (Stage) botonSeleccionar.getScene().getWindow();
     			stage.setTitle("gO2theTop - Estadisticas2");
@@ -102,16 +103,17 @@ public class controlEstadisticas {
 	public ObservableList<Sesion> observableList() {
 		ObservableList<Sesion> sesiones = FXCollections.observableArrayList();
 		Gson gson = new Gson();
+		String linea="";
 		Sesion sesion = null;
 		ficheros files = new ficheros();
-		try (BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"))) {
 
-			String linea;
+		try (BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"))) {
 
 			while ((linea = br.readLine()) != null) {
 				sesion = gson.fromJson(linea, Sesion.class);
-				sesiones.add(sesion.leerSesion("src/files/sesiones/"+ user.getUserId() +".jsonl"));
+				sesiones.add(sesion);
 			}
+
 
 		} catch (FileNotFoundException ex) {
 			System.out.println(ex.getMessage());
@@ -125,6 +127,32 @@ public class controlEstadisticas {
 	public void setUsuario(Deportista u) {
 		user = u;
 		this.inicializarTabla();
+	}
+
+	public Sesion buscar_fecha(String fecha){
+		Sesion sesion = null;
+		Sesion sesionFinal=null;
+		Gson gson = new Gson();
+		String linea="";
+		ficheros files = new ficheros();
+
+		try (BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"))) {
+
+			while ((linea = br.readLine()) != null) {
+				sesion = gson.fromJson(linea, Sesion.class);
+				if(sesion.getFecha().equals(fecha)){
+					sesionFinal = sesion;
+				}
+			}
+
+
+		} catch (FileNotFoundException ex) {
+			System.out.println(ex.getMessage());
+		} catch (IOException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return sesionFinal;
+
 	}
 
 }

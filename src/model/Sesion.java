@@ -18,8 +18,7 @@ public class Sesion {
     private int valorO4;
     private String fecha;
 
-
-    public Sesion (int valorF1, int valorF2, int valorF3, int valorF4, int valorO1, int valorO2, int valorO3, int valorO4, String fecha) {
+    /*public Sesion (int valorF1, int valorF2, int valorF3, int valorF4, int valorO1, int valorO2, int valorO3, int valorO4, String fecha) {
 
         this.valorF1 = valorF1;
         this.valorF2 = valorF2;
@@ -30,7 +29,7 @@ public class Sesion {
         this.valorO3 = valorO3;
         this.valorO4 = valorO4;
         this.fecha = fecha;
-    }
+    }*/
 
 	public int getValorF1() {
 		return valorF1;
