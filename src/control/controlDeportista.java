@@ -42,7 +42,7 @@ public class controlDeportista {
 
     @FXML
     void verEstadisticas(ActionEvent event) {
-    	System.out.println("VER ESTAD");
+    	System.out.println("VER ESTADISTICAS");
     	try {
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticas.fxml"));
 			controlEstadisticas controlEst = new controlEstadisticas();
@@ -63,7 +63,7 @@ public class controlDeportista {
     void verFeedback(ActionEvent event) {
     	System.out.println("VER FEEDBACK");
     }
-    
+
     @FXML
     void verChat(ActionEvent event) {
     	System.out.println("VER CHAT");

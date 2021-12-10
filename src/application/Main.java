@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 public class Main extends Application {
 
@@ -19,6 +20,7 @@ public class Main extends Application {
     			Parent root = loader.load();
     			primaryStage.setTitle("gO2theTop - Login");
     			primaryStage.setScene(new Scene(root));
+    			//primaryStage.getIcons().add(new Image("../recursos/logo.jpeg"));
     			primaryStage.show();
         	}catch (IOException f) {
                 f.printStackTrace();

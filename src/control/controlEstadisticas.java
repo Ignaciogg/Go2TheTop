@@ -56,11 +56,11 @@ public class controlEstadisticas {
     			loader.setController(controlE2);
     			Parent root = loader.load();
 
-    			//Sesion e = new Sesion().leerSesion("src/files/sesiones/" + user.getUserId() + ".jsonl");
     			String fecha = tableSesiones.getSelectionModel().getSelectedItem().getFecha();
     			Sesion sesionFin = buscar_fecha(fecha);
 
     			controlE2.setUsuario(user,sesionFin);
+    			System.out.println("Sesión seleccionada: " + user.getUserId() + " - " + fecha);
 
     			Stage stage = (Stage) botonSeleccionar.getScene().getWindow();
     			stage.setTitle("gO2theTop - Estadisticas2");
