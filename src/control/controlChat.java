@@ -38,5 +38,8 @@ public class controlChat {
 
     public void setUsuario(Deportista u) {
     	user = u;
+    	bienvenide.setText("Bienvenide " + user.getName());
+    	this.inicializarTabla();
+
     }
 }
