@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Deportista;
+import model.Entrenador;
 
 public class controlChat {
 	
@@ -40,7 +41,7 @@ public class controlChat {
 		}
     }
 
-    public void setUsuario(Deportista u) {
+    public void setUsuario(Deportista u, Entrenador e) {
     	user = u;
     	depor.setText("Chat de " + user.getName());
 
