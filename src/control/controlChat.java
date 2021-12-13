@@ -16,13 +16,17 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import model.ChatDeportista;
 import model.Deportista;
+import model.Entrenador;
 import model.Usuario;
 
 
 public class controlChat {
 	
 	private Deportista user;
+	private Entrenador entrenador;
+	
 	
 	@FXML
     private Button botonEnviar;
@@ -61,8 +65,11 @@ public class controlChat {
     @FXML
     void enviar(ActionEvent event) {
     	try {
+    		System.out.println("CHAT XD");
 			ficheros files = new ficheros();
-			
+			ChatDeportista chat=new ChatDeportista(user.getUserId()
+					/*, entrenador.getUserId()*/,textoMensaje.getText());
+			files.escribirChat(chat);
     	} catch (Exception e) {
 			e.printStackTrace();
 		}

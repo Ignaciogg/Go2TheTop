@@ -3,7 +3,7 @@ import model.*;
 
 public class ChatDeportista {
 
-	private String entrenadorID;
+	//private String entrenadorID;
 	private String deportistaID;
     private String textoDeportista;
 
@@ -12,9 +12,9 @@ public class ChatDeportista {
     }*/
 
 
-	public ChatDeportista(String entrenadorID, String deportistaID, String textoDeportista) {
+	public ChatDeportista(/*String entrenadorID, */String deportistaID, String textoDeportista) {
 		this.deportistaID=deportistaID;
-		this.entrenadorID=entrenadorID;
+		//this.entrenadorID=entrenadorID;
 		this.textoDeportista = textoDeportista;
 		
 	}
@@ -25,12 +25,12 @@ public class ChatDeportista {
 	public void setTextoDeportista(String textoDeportista) {
 		this.textoDeportista = textoDeportista;
 	}
-	public String getEntrenadorID() {
+	/*public String getEntrenadorID() {
 		return entrenadorID;
 	}
 	public void setEntrenadorID(String entrenadorID) {
 		this.entrenadorID = entrenadorID;
-	}
+	}*/
 	public String getDeportistaID() {
 		return deportistaID;
 	}
