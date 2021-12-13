@@ -6,13 +6,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Deportista;
 
 public class controlChat {
 	
 	private Deportista user;
-
+	
+    @FXML
+    private Text depor;
+	
     @FXML
     private Button botonVolver;
 
@@ -38,8 +42,7 @@ public class controlChat {
 
     public void setUsuario(Deportista u) {
     	user = u;
-    	bienvenide.setText("Bienvenide " + user.getName());
-    	this.inicializarTabla();
+    	depor.setText("Chat de " + user.getName());
 
     }
 }

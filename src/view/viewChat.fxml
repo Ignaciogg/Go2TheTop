@@ -56,7 +56,14 @@
                         <Insets left="60.0" top="40.0" />
                      </VBox.margin>
                     </Text>
-                  <HBox alignment="CENTER" prefHeight="117.0" prefWidth="445.0" />
+                  <HBox alignment="CENTER" prefHeight="117.0" prefWidth="445.0">
+                     <children>
+                        <Text fx:id="depor" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat de " wrappingWidth="215.6708984375">
+                           <font>
+                              <Font name="Times New Roman Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children></HBox>
                </children>
             </VBox>
          </center>
