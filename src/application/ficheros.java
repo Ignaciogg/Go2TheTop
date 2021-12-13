@@ -14,6 +14,7 @@ import model.Deportista;
 import model.Enlace;
 import model.Entrenador;
 import model.Usuario;
+import model.ChatDeportista;
 
 public class ficheros {
 
@@ -164,6 +165,19 @@ public class ficheros {
 			e.printStackTrace();
 		}
 	}
+	public void escribirChat(ChatDeportista chat) {
+		Gson gson = new Gson();
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/chat.jsonl", true));
+			bw.newLine();
+			bw.append(gson.toJson(chat));
+			bw.flush();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 	public void escribirPersona(Usuario nuevo, String ruta) {
 		Gson gson = new Gson();
