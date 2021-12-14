@@ -30,7 +30,7 @@ import model.Sesion;
 import model.Usuario;
 
 public class controlEstadisticas2 implements Initializable{
-	
+
 	private Sesion sesioncita;
 
 	private Deportista user;
@@ -68,7 +68,6 @@ public class controlEstadisticas2 implements Initializable{
 
 		serie1.setName("Frecuencia cardiaca");
 		grafica.getData().add(serie1);
-
 
     }
 

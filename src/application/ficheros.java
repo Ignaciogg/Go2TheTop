@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
@@ -178,6 +179,24 @@ public class ficheros {
 		}
 	}
 
+	public ArrayList<Mensaje> leerChat(String ruta) {
+		ArrayList<Mensaje> lista = new ArrayList<Mensaje>();
+		try {
+			Gson gson = new Gson();
+			BufferedReader br = new BufferedReader(new FileReader(ruta));
+			String linea;
+			Mensaje men;
+			while ((linea = br.readLine()) != null) {
+				men = gson.fromJson(linea, Mensaje.class);
+				lista.add(men);
+			}
+				br.close();
+
+		} catch (IOException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return lista;
+	}
 
 	public void escribirPersona(Usuario nuevo, String ruta) {
 		Gson gson = new Gson();
