@@ -13,6 +13,7 @@ import model.Administrador;
 import model.Deportista;
 import model.Enlace;
 import model.Entrenador;
+import model.Mensaje;
 import model.Usuario;
 
 public class ficheros {
@@ -164,12 +165,12 @@ public class ficheros {
 			e.printStackTrace();
 		}
 	}
-	public void escribirChat(String nombre, String chat, String ruta) {
+	public void escribirChat(Mensaje mensaje, String ruta) {
 		Gson gson = new Gson();
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
 			bw.newLine();
-			bw.append(gson.toJson(chat));
+			bw.append(gson.toJson(mensaje));
 			bw.flush();
 			bw.close();
 		} catch (IOException e) {
