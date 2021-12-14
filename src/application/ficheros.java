@@ -165,10 +165,10 @@ public class ficheros {
 			e.printStackTrace();
 		}
 	}
-	public void escribirChat(ChatDeportista chat) {
+	public void escribirChat(ChatDeportista chat, String ruta) {
 		Gson gson = new Gson();
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/chat.jsonl", true));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
 			bw.newLine();
 			bw.append(gson.toJson(chat));
 			bw.flush();

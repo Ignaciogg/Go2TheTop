@@ -66,10 +66,14 @@ public class controlChat {
     void enviar(ActionEvent event) {
     	try {
     		System.out.println("CHAT XD");
+    		String ruta = "src/files/chat/" + user.getUserId() + "chat.jsonl";
 			ficheros files = new ficheros();
 			ChatDeportista chat=new ChatDeportista(user.getUserId()
 					/*, entrenador.getUserId()*/,textoMensaje.getText());
-			files.escribirChat(chat);
+			if(chat != null) {
+				files.escribirChat(chat, ruta);
+			}
+			
     	} catch (Exception e) {
 			e.printStackTrace();
 		}
