@@ -164,7 +164,7 @@ public class ficheros {
 			e.printStackTrace();
 		}
 	}
-	public void escribirChat(String chat, String ruta) {
+	public void escribirChat(String nombre, String chat, String ruta) {
 		Gson gson = new Gson();
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
