@@ -14,7 +14,6 @@ import model.Deportista;
 import model.Enlace;
 import model.Entrenador;
 import model.Usuario;
-import model.ChatDeportista;
 
 public class ficheros {
 
@@ -35,7 +34,7 @@ public class ficheros {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"));
 			String linea;
-			
+
 			Boolean encontrado = false;
 			while ((linea = br.readLine()) != null && !encontrado) {
 				persona = gson.fromJson(linea, Usuario.class);
@@ -50,7 +49,7 @@ public class ficheros {
 		}
 		return personaBuscada;
 	}
-	
+
 	public Usuario buscarUsuarioId(String dni) {
 		Gson gson = new Gson();
 		Usuario persona = null;
@@ -71,7 +70,7 @@ public class ficheros {
 		}
 		return persona;
 	}
-	
+
 	public Usuario leerUsuario(Usuario persona) {
 		switch (persona.getUserType()) { // Seleccionar la ruta
 			case "administrador":
@@ -84,7 +83,7 @@ public class ficheros {
 				persona = leerDeportista("src/files/deportistas/" + persona.getUserId() + ".jsonl");
 				break;
 		}
-		
+
 		return persona;
 	}
 
@@ -100,7 +99,7 @@ public class ficheros {
 		}
 		return persona;
 	}
-	
+
 	public Usuario leerUsuarioLogin(String ruta) {
 		Usuario persona = null;
 		try {
@@ -152,7 +151,7 @@ public class ficheros {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void escribirEnlace(Enlace en) {
 		Gson gson = new Gson();
 		try {
@@ -165,7 +164,7 @@ public class ficheros {
 			e.printStackTrace();
 		}
 	}
-	public void escribirChat(ChatDeportista chat, String ruta) {
+	public void escribirChat(String chat, String ruta) {
 		Gson gson = new Gson();
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
