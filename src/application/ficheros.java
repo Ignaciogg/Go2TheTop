@@ -170,7 +170,7 @@ public class ficheros {
 	public void escribirChat(Mensaje mensaje, String ruta) {
 		Gson gson = new Gson();
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, true));
 			bw.newLine();
 			bw.append(gson.toJson(mensaje));
 			bw.flush();
@@ -190,8 +190,11 @@ public class ficheros {
 				String linea;
 				Mensaje men;
 				while ((linea = br.readLine()) != null) {
-					men = gson.fromJson(linea, Mensaje.class);
-					lista.add(men);
+					if(!linea.equals("")){
+						men = gson.fromJson(linea, Mensaje.class);
+						lista.add(men);
+					}
+
 				}
 				br.close();
 

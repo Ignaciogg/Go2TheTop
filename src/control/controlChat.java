@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -27,7 +28,7 @@ public class controlChat {
     private Text depor;
 
     @FXML
-    private TextField chatBox;
+    private TextArea chatBox;
 
     @FXML
     private TextField textoMensaje;
@@ -36,12 +37,15 @@ public class controlChat {
     private Button botonEnviar;
 
     void cargarChat(){
+
+    	chatBox.clear();
     	ficheros fichero = new ficheros();
     	String ruta = "src/files/chats/"+ dep.getUserId() +".jsonl";
     	ArrayList <Mensaje> miChat = fichero.leerChat(ruta);
 
     	for(int i = 0; i < miChat.size(); i++){
-    		chatBox.appendText(miChat.get(i).getNombre() + " : " + miChat.get(i).getTexto() + "\n");
+    		chatBox.appendText(miChat.get(i).getNombre() + " : " + miChat.get(i).getTexto());
+    		chatBox.appendText("\n");
     	}
 
     }
