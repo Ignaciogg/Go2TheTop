@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
-import application.ficheros;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,17 +23,18 @@ import javafx.stage.Stage;
 import model.Deportista;
 import model.Entrenador;
 import model.Sesion;
-import model.Usuario;
 
-public class controlEstadisticas {
-
+public class controlEstadisticasEntren1 {
+	
 	private Deportista user;
+	
+	private Entrenador mister;
 
 	private Sesion sesion;
 
 	ArrayList<Sesion> sesionArray;
 
-	@FXML
+    @FXML
     private Button botonVolver;
 
     @FXML
@@ -51,19 +51,19 @@ public class controlEstadisticas {
     	if(tableSesiones.getSelectionModel().getSelectedItem() != null) {
     		try {
 
-            	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticas2.fxml"));
-            	controlEstadisticas2 controlE2 = new controlEstadisticas2();
-    			loader.setController(controlE2);
+            	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren2.fxml"));
+            	controlEstadisticasEntrenador2 controlEntren2 = new controlEstadisticasEntrenador2();
+    			loader.setController(controlEntren2);
     			Parent root = loader.load();
 
     			String fecha = tableSesiones.getSelectionModel().getSelectedItem().getFecha();
     			Sesion sesionFin = buscar_fecha(fecha);
 
-    			controlE2.setUsuario(user,sesionFin);
+    			controlEntren2.setUsuario(user,sesionFin,mister);
     			System.out.println("Sesión seleccionada: " + user.getUserId() + " - " + fecha);
 
     			Stage stage = (Stage) botonSeleccionar.getScene().getWindow();
-    			stage.setTitle("gO2theTop - Estadisticas2");
+    			stage.setTitle("gO2theTop - EstadisticasEntren1");
 
     			stage.setScene(new Scene(root));
 
@@ -74,19 +74,19 @@ public class controlEstadisticas {
     }
 
     @FXML
-    void volverDeportista(ActionEvent event) {
+    void volverEntrenador(ActionEvent event) {
 
     	try {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewDepor.fxml"));
-        	controlDeportista controlDep = new controlDeportista();
-			loader.setController(controlDep);
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntren.fxml"));
+        	controlEntrenador controlEntren = new controlEntrenador();
+			loader.setController(controlEntren);
 			Parent root = loader.load();
 
-			controlDep.setUsuario(user);
+			controlEntren.setUsuario(mister);
 
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
-			stage.setTitle("gO2theTop - Deportista");
+			stage.setTitle("gO2theTop - Entrenador");
 
 			stage.setScene(new Scene(root));
 
@@ -105,8 +105,7 @@ public class controlEstadisticas {
 		Gson gson = new Gson();
 		String linea="";
 		Sesion sesion = null;
-		ficheros files = new ficheros();
-
+		
 		try (BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"))) {
 
 			while ((linea = br.readLine()) != null) {
@@ -124,8 +123,9 @@ public class controlEstadisticas {
 		return sesiones;
 	}
 
-	public void setUsuario(Deportista u) {
+	public void setUsuario(Deportista u, Entrenador mis) {
 		user = u;
+		mister=mis;
 		this.inicializarTabla();
 	}
 

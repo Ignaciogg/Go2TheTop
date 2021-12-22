@@ -101,6 +101,15 @@
                      <center>
                         <VBox alignment="CENTER" prefHeight="406.0" prefWidth="461.0" BorderPane.alignment="CENTER">
                            <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="fotoMister" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               <HBox alignment="CENTER" prefHeight="65.0" prefWidth="461.0">
                                  <children>
                                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" wrappingWidth="84.13671875">
@@ -166,38 +175,6 @@
                                        </font>
                                     </JFXTextField>
                                  </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="65.0" prefWidth="461.0">
-                                 <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="84.13671875">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="50.0" />
-                                       </HBox.margin>
-                                    </Text>
-                                    <JFXTextField fx:id="passEntren" alignment="CENTER" prefHeight="25.0" prefWidth="282.0" promptText="Password del entrenador" style="-fx-background-color: white;" unFocusColor="BLACK">
-                                       <HBox.margin>
-                                          <Insets left="25.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </JFXTextField>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="65.0" prefWidth="461.0">
-                                 <children>
-                                    <Button fx:id="botonModificarDatos" mnemonicParsing="false" onAction="#modificarDatos" prefHeight="25.0" prefWidth="152.0" text="Modificar datos">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="30.0" />
-                                 </VBox.margin>
                               </HBox>
                            </children>
                            <BorderPane.margin>

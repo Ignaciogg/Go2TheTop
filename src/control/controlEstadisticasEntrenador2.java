@@ -1,52 +1,40 @@
 package control;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import com.google.gson.Gson;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.chart.XYChart.Series;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.InputMethodEvent;
 import javafx.stage.Stage;
 import model.Deportista;
+import model.Entrenador;
 import model.Sesion;
-import model.Usuario;
 
-public class controlEstadisticas2 implements Initializable{
-
+public class controlEstadisticasEntrenador2 {
+	
 	private Sesion sesioncita;
 
 	private Deportista user;
+	
+	private Entrenador mister;
 
 
-	@FXML
+    @FXML
     private Button botonVolver;
 
-	@FXML
+    @FXML
     private Button buttonMapa;
 
     @FXML
-    private ToggleGroup grafica2;
+    private RadioButton frecuencia;
 
     @FXML
-    private RadioButton frecuencia;
+    private ToggleGroup grafica2;
 
     @FXML
     private RadioButton nivelo2;
@@ -55,7 +43,7 @@ public class controlEstadisticas2 implements Initializable{
     private LineChart<?, ?> grafica;
 
     @FXML
-    void mostrarFrecuencia(ActionEvent event) throws FileNotFoundException {
+    void mostrarFrecuencia(ActionEvent event) {
     	System.out.println("Mostrar Frecuencia");
     	grafica.getData().clear();
 
@@ -67,7 +55,6 @@ public class controlEstadisticas2 implements Initializable{
 
 		serie1.setName("Frecuencia cardiaca");
 		grafica.getData().add(serie1);
-
     }
 
     @FXML
@@ -86,19 +73,24 @@ public class controlEstadisticas2 implements Initializable{
     }
 
     @FXML
-    void volverDeportista(ActionEvent event) {
+    void verMapa(ActionEvent event) {
+    	
+    }
+
+    @FXML
+    void volverEntrenador(ActionEvent event) {
 
     	try {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewDepor.fxml"));
-        	controlDeportista controlDep = new controlDeportista();
-			loader.setController(controlDep);
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntren.fxml"));
+        	controlEntrenador controlEntren = new controlEntrenador();
+			loader.setController(controlEntren);
 			Parent root = loader.load();
 
-			controlDep.setUsuario(user);
+			controlEntren.setUsuario(mister);
 
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
-			stage.setTitle("gO2theTop - Deportista");
+			stage.setTitle("gO2theTop - Entrenador");
 
 			stage.setScene(new Scene(root));
 
@@ -107,23 +99,12 @@ public class controlEstadisticas2 implements Initializable{
 		}
 
     }
-
-    @FXML
-    void verMapa(ActionEvent event) {
-
-    }
-
-	public void setUsuario(Deportista u, Sesion sesion) {
+    
+    public void setUsuario(Deportista u, Sesion sesion, Entrenador mis) {
     	user = u;
     	sesioncita = sesion;
+    	mister=mis;
 
     }
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		XYChart.Series serie = new XYChart.Series();
-
-		grafica.getData().add(serie);
-	}
 
 }

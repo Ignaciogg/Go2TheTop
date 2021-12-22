@@ -24,11 +24,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Deportista;
 import model.Entrenador;
+import model.Sesion;
 import model.Usuario;
 
 public class controlEstadisticasEntrenador {
 	
 	private Entrenador user;
+	
+	@FXML
+	private Button botonSeleccionar;
 	
 	@FXML
     private Button botonBuscar;
@@ -102,26 +106,47 @@ public class controlEstadisticasEntrenador {
 
     @FXML
     void chatEntrenador(ActionEvent event) {
+    	System.out.println("VER CHAT");
+    	try {
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewChatEntrenador.fxml"));
+			controlChatEntrenador controlChatEntren = new controlChatEntrenador();
+			loader.setController(controlChatEntren);
+			Parent root = loader.load();
+			controlChatEntren.setUsuario(user);
+			Stage stageActual = (Stage) buttonChatEntrenador.getScene().getWindow();
+			stageActual.setTitle("gO2theTop - Chat");
 
+			stageActual.setScene(new Scene(root));
+
+        }catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
     void verEstadisticas(ActionEvent event) {
-    	try {
+   
+    }
+    
+    @FXML
+    void seleccionar(ActionEvent event) {
+    	if (tablaEntrenador.getSelectionModel().getSelectedItem() != null) {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren1.fxml"));
+				controlEstadisticasEntren1 controlEstadisticasEntren = new controlEstadisticasEntren1();
+				loader.setController(controlEstadisticasEntren);
+				Parent root = loader.load();
+				Deportista deportista= new ficheros().leerDeportista("src/files/deportistas/" + tablaEntrenador.getSelectionModel().getSelectedItem().getUserId() + ".jsonl");
+				controlEstadisticasEntren.setUsuario(deportista,user);
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren.fxml"));
-			controlEntrenador controlEntren = new controlEntrenador();
-			loader.setController(controlEntren);
-			Parent root = loader.load();
-			controlEntren.setUsuario(user);
+				Stage stage = (Stage) botonVolver.getScene().getWindow();
+				stage.setTitle("gO2theTop - Seleccion de sesion");
 
-			Stage stage = (Stage) botonVolver.getScene().getWindow();
-			stage.setTitle("gO2theTop - Entrenador");
+				stage.setScene(new Scene(root));
 
-			stage.setScene(new Scene(root));
-
-		} catch (Exception e) {
-			e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
     }
     
