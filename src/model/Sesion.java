@@ -17,6 +17,7 @@ public class Sesion {
     private int valorO3;
     private int valorO4;
     private String fecha;
+    private String feedback;
 
     /*public Sesion (int valorF1, int valorF2, int valorF3, int valorF4, int valorO1, int valorO2, int valorO3, int valorO4, String fecha) {
 
@@ -101,6 +102,14 @@ public class Sesion {
 
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
+	}
+
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
 	}
 
 	public Sesion leerSesion(String ruta) {
