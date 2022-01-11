@@ -1,5 +1,6 @@
 package control;
 
+import application.ficheros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Deportista;
 import model.Entrenador;
+import model.Mensaje;
 import model.Sesion;
 
 public class controlEstadisticasEntrenador2 {
@@ -51,7 +53,8 @@ public class controlEstadisticasEntrenador2 {
 
     @FXML
     void enviar(ActionEvent event) {
-
+    	ficheros fichero = new ficheros();
+    	fichero.escribirFeedback(new Mensaje (mister.getName(), textoFeedback.getText()), ("src/files/sesiones/"+ user.getUserId() +".jsonl"));
     }
 
     @FXML
