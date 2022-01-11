@@ -179,6 +179,19 @@ public class ficheros {
 			e.printStackTrace();
 		}
 	}
+	
+	public void escribirFeedback(Mensaje mensaje, String ruta) {
+		Gson gson = new Gson();
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, true));
+			bw.newLine();
+			bw.append(gson.toJson(mensaje));
+			bw.flush();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public ArrayList<Mensaje> leerChat(String ruta) {
 		ArrayList<Mensaje> lista = new ArrayList<Mensaje>();
