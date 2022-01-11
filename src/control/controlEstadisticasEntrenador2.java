@@ -9,6 +9,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Deportista;
@@ -41,6 +42,17 @@ public class controlEstadisticasEntrenador2 {
 
     @FXML
     private LineChart<?, ?> grafica;
+    
+    @FXML
+    private TextField textoFeedback;
+
+    @FXML
+    private Button botonEnviar;
+
+    @FXML
+    void enviar(ActionEvent event) {
+
+    }
 
     @FXML
     void mostrarFrecuencia(ActionEvent event) {
