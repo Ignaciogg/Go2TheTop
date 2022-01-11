@@ -1,33 +1,17 @@
 package control;
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
-import model.Deportista;
 import model.Entrenador;
-import model.Usuario;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Properties;
-
-import com.google.gson.Gson;
 import com.jfoenix.controls.JFXTextField;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import application.ficheros;
-
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 
 public class controlEntrenador {
@@ -54,18 +38,12 @@ public class controlEntrenador {
 
     @FXML
     private JFXTextField emailEntren;
-
+    
     @FXML
-    private JFXTextField passEntren;
-
-    @FXML
-    private Button botonModificarDatos;
+    private ImageView fotoMister;
 
 
-    @FXML
-    void modificarDatos(ActionEvent event) {
-    	
-    }
+
 
     @FXML
     void cerrarSesion(ActionEvent event) {
@@ -89,6 +67,20 @@ public class controlEntrenador {
     
     @FXML
     void chatEntrenador(ActionEvent event) {
+    	System.out.println("VER CHAT");
+    	try {
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewChatEntrenador.fxml"));
+			controlChatEntrenador controlChatEntren = new controlChatEntrenador();
+			loader.setController(controlChatEntren);
+			Parent root = loader.load();
+			controlChatEntren.setUsuario(user);
+			Stage stage = (Stage) buttonChatEntrenador.getScene().getWindow();
+			stage.setTitle("gO2theTop - Chat");
+			stage.setScene(new Scene(root));
+
+        }catch (Exception e) {
+			e.printStackTrace();
+		}
 
     }
 
@@ -127,8 +119,11 @@ public class controlEntrenador {
     	nameEntrenador.setText(user.getName());
     	lastnameEntren.setText(user.getLastnames());
     	emailEntren.setText(user.getEmail());
-    	passEntren.setText(user.getPassword());
-
+    	
+    	Image image = new Image ("file:recursos/"+ user.getUserId() +".jpg");
+    	
+    	fotoMister.setImage(image);
+    
     }
 
 

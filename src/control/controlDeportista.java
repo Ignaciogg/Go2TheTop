@@ -1,20 +1,36 @@
 package control;
 
 
+import com.jfoenix.controls.JFXTextField;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Deportista;
-import model.Usuario;
 
 public class controlDeportista {
 
 	private Deportista user;
+	
+   @FXML
+    private ImageView fotoDepor;
+
+    @FXML
+    private JFXTextField nameDepor;
+
+    @FXML
+    private JFXTextField lastnameDepor;
+
+    @FXML
+    private JFXTextField emailDepor;
+
 
 	@FXML
     private Text bienvenide;
@@ -104,7 +120,19 @@ public class controlDeportista {
 	    }
 
 	public void setUsuario(Deportista u) {
-    	user = u;
-    	bienvenide.setText("Bienvenide " + u.getName());
+		user = u; 
+    	if(u.getGenre().equals("hombre")){
+    		bienvenide.setText("Bienvenido " + u.getName());
+    	}else if(u.getGenre().equals("mujer")) {
+    		bienvenide.setText("Bienvenida " + u.getName());
+    	}
+    	
+    	nameDepor.setText(user.getName());
+    	lastnameDepor.setText(user.getLastnames());
+    	emailDepor.setText(user.getEmail());
+    	
+    	Image image = new Image ("file:recursos/"+ user.getUserId() +".jpg");
+    	
+    	fotoDepor.setImage(image);
     }
 }

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="500.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -30,6 +32,87 @@
                            </BorderPane.margin>
                           </Text>
                      </top>
+                     <center>
+                        <VBox alignment="CENTER" prefHeight="406.0" prefWidth="461.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="fotoDepor" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="65.0" prefWidth="461.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" wrappingWidth="84.13671875">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <JFXTextField fx:id="nameDepor" alignment="CENTER" prefHeight="25.0" prefWidth="282.0" promptText="Nombre del deportista" style="-fx-background-color: white;" unFocusColor="BLACK">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="65.0" prefWidth="461.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" wrappingWidth="84.13671875">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <JFXTextField fx:id="lastnameDepor" alignment="CENTER" prefHeight="25.0" prefWidth="282.0" promptText="Apellidos del deportista" style="-fx-background-color: white;" unFocusColor="BLACK">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="65.0" prefWidth="461.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="84.13671875">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <JFXTextField fx:id="emailDepor" alignment="CENTER" prefHeight="25.0" prefWidth="282.0" promptText="Email del deportista" style="-fx-background-color: white;" unFocusColor="BLACK">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </center>
                   </BorderPane>
                </children>
             </VBox>
@@ -50,14 +133,6 @@
                   <Insets left="20.0" />
                </VBox.margin>
             </Text>
-            <Button fx:id="botonDatos" mnemonicParsing="false" onAction="#verDatos" style="-fx-background-color: black;" text="Ver datos" textAlignment="CENTER" textFill="WHITE">
-               <VBox.margin>
-                  <Insets left="60.0" top="30.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
             <Button fx:id="botonEstadisticas" mnemonicParsing="false" onAction="#verEstadisticas" style="-fx-background-color: black;" text="Ver estadísticas" textFill="WHITE">
                <VBox.margin>
                   <Insets left="50.0" top="30.0" />

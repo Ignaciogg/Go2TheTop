@@ -1,8 +1,5 @@
 package control;
 
-import model.Deportista;
-import model.Mensaje;
-
 import java.util.ArrayList;
 
 import application.ficheros;
@@ -16,16 +13,18 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Entrenador;
+import model.Mensaje;
 
-public class controlChat {
+public class controlChatEntrenador {
+	
+	Entrenador mister;
 
-	Deportista dep;
-
-	@FXML
+    @FXML
     private Button botonVolver;
 
     @FXML
-    private Text depor;
+    private Text entren;
 
     @FXML
     private TextArea chatBox;
@@ -40,7 +39,7 @@ public class controlChat {
 
     	chatBox.clear();
     	ficheros fichero = new ficheros();
-    	String ruta = "src/files/chats/"+ dep.getUserId() +".jsonl";
+    	String ruta = "src/files/chats/"+ mister.getUserId() +".jsonl";
     	ArrayList <Mensaje> miChat = fichero.leerChat(ruta);
 
     	for(int i = 0; i < miChat.size(); i++){
@@ -54,7 +53,7 @@ public class controlChat {
     void enviar(ActionEvent event) {
 
     	ficheros fichero = new ficheros();
-    	fichero.escribirChat(new Mensaje (dep.getName(), textoMensaje.getText()), ("src/files/chats/"+ dep.getUserId() +".jsonl"));
+    	fichero.escribirChat(new Mensaje (mister.getName(), textoMensaje.getText()), ("src/files/chats/"+ mister.getUserId() +".jsonl"));
     	cargarChat();
     }
 
@@ -62,15 +61,15 @@ public class controlChat {
     void volver(ActionEvent event) {
     	try {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewDepor.fxml"));
-        	controlDeportista controlDep = new controlDeportista();
-			loader.setController(controlDep);
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntren.fxml"));
+        	controlEntrenador controlEntren = new controlEntrenador();
+			loader.setController(controlEntren);
 			Parent root = loader.load();
 
-			controlDep.setUsuario(dep);
+			controlEntren.setUsuario(mister);
 
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
-			stage.setTitle("gO2theTop - Deportista");
+			stage.setTitle("gO2theTop - Entrenador");
 
 			stage.setScene(new Scene(root));
 
@@ -79,10 +78,10 @@ public class controlChat {
 		}
     }
 
-	public void setUsuario(Deportista user) {
-		dep = user;
-		depor.setText("Chat de " + dep.getName());
+	public void setUsuario(Entrenador user) {
+		mister = user;
+		entren.setText("Chat de " + mister.getName());
 		cargarChat();
 	}
-
 }
+

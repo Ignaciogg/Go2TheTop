@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
@@ -23,7 +24,7 @@ public class ficheros {
 
 		if (persona != null && persona.getPassword().equals(password)) {
 			return leerUsuario(persona);
-		}else {
+		} else {
 			return null;
 		}
 	}
@@ -41,7 +42,7 @@ public class ficheros {
 				persona = gson.fromJson(linea, Usuario.class);
 				if (persona.getEmail().equalsIgnoreCase(email)) {
 					encontrado = true;
-					personaBuscada=persona;
+					personaBuscada = persona;
 				}
 			}
 			br.close();
@@ -74,15 +75,15 @@ public class ficheros {
 
 	public Usuario leerUsuario(Usuario persona) {
 		switch (persona.getUserType()) { // Seleccionar la ruta
-			case "administrador":
-				persona = leerAdministrador("src/files/administradores/" + persona.getUserId() + ".jsonl");
-				break;
-			case "entrenador":
-				persona = leerEntrenador("src/files/entrenadores/" + persona.getUserId() + ".jsonl");
-				break;
-			case "deportista":
-				persona = leerDeportista("src/files/deportistas/" + persona.getUserId() + ".jsonl");
-				break;
+		case "administrador":
+			persona = leerAdministrador("src/files/administradores/" + persona.getUserId() + ".jsonl");
+			break;
+		case "entrenador":
+			persona = leerEntrenador("src/files/entrenadores/" + persona.getUserId() + ".jsonl");
+			break;
+		case "deportista":
+			persona = leerDeportista("src/files/deportistas/" + persona.getUserId() + ".jsonl");
+			break;
 		}
 
 		return persona;
@@ -165,10 +166,11 @@ public class ficheros {
 			e.printStackTrace();
 		}
 	}
+
 	public void escribirChat(Mensaje mensaje, String ruta) {
 		Gson gson = new Gson();
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, true));
 			bw.newLine();
 			bw.append(gson.toJson(mensaje));
 			bw.flush();
@@ -178,6 +180,31 @@ public class ficheros {
 		}
 	}
 
+	public ArrayList<Mensaje> leerChat(String ruta) {
+		ArrayList<Mensaje> lista = new ArrayList<Mensaje>();
+		File file = new File(ruta);
+		if (file.exists()) {
+			try {
+				Gson gson = new Gson();
+				BufferedReader br = new BufferedReader(new FileReader(ruta));
+				String linea;
+				Mensaje men;
+				while ((linea = br.readLine()) != null) {
+					if(!linea.equals("")){
+						men = gson.fromJson(linea, Mensaje.class);
+						lista.add(men);
+					}
+
+				}
+				br.close();
+
+			} catch (IOException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+
+		return lista;
+	}
 
 	public void escribirPersona(Usuario nuevo, String ruta) {
 		Gson gson = new Gson();
