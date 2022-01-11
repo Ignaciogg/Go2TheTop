@@ -67,15 +67,7 @@
                                     </Button>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="54.0" prefWidth="261.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" style="-fx-background-color: black;" text="Button" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="54.0" prefWidth="261.0" />
                            </children>
                            <BorderPane.margin>
                               <Insets />

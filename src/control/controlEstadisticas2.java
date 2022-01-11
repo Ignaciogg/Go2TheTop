@@ -23,6 +23,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodEvent;
 import javafx.stage.Stage;
 import model.Deportista;
@@ -35,7 +36,6 @@ public class controlEstadisticas2 implements Initializable{
 
 	private Deportista user;
 
-
 	@FXML
     private Button botonVolver;
 
@@ -44,6 +44,9 @@ public class controlEstadisticas2 implements Initializable{
 
     @FXML
     private ToggleGroup grafica2;
+
+    @FXML
+    private TextField textoFeedback;
 
     @FXML
     private RadioButton frecuencia;
@@ -117,6 +120,9 @@ public class controlEstadisticas2 implements Initializable{
     	user = u;
     	sesioncita = sesion;
 
+    	if(!sesion.getFeedback().equals("")){
+    		textoFeedback.setText(sesion.getFeedback());
+    	}
     }
 
 	@Override
