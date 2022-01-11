@@ -62,7 +62,6 @@ public class controlModifyEntrenador extends controlModificarUsuario{
         Gson gson = new Gson();
         try{
             BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/login.jsonl",true));
-            bw.newLine();
             bw.append(gson.toJson(nuevo));
             bw.flush();
             bw.close();
@@ -116,7 +115,7 @@ public class controlModifyEntrenador extends controlModificarUsuario{
 	    	
         	Entrenador nuevo2 = new Entrenador (id, mail, password, type, name, lastname, day, gen, act);
         	System.out.println("El usuario que se va a modificar es: " + nuevo.toString());
-        	String ruta = "src/files/entrenadores/" + dni + ".jsonl";
+        	String ruta = "src/files/entrenadores/" + id + ".jsonl";
 
             escribirLogin(nuevo);
             escribirPersona(nuevo2, ruta);
