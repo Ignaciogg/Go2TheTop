@@ -7,15 +7,7 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.jfoenix.controls.JFXTextField;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.stage.Stage;
+
 import model.Administrador;
 import model.Usuario;
 
