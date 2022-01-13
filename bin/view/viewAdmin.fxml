@@ -85,28 +85,34 @@
             </VBox>
          </left>
          <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                <children>
-                  <BorderPane prefHeight="507.0" prefWidth="275.0">
-                     <top>
-                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrador" BorderPane.alignment="CENTER">
-                              <font>
-                                   <Font name="System Bold" size="26.0" />
-                              </font>
-                           <BorderPane.margin>
-                              <Insets top="15.0" />
-                           </BorderPane.margin>
-                          </Text>
-                     </top>
+                  <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <left>
+                        <VBox alignment="CENTER" BorderPane.alignment="CENTER" />
+                     </left>
                      <center>
-                        <TableView fx:id="tableAdmin" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <TableView fx:id="tableAdmin" maxHeight="700.0" maxWidth="-Infinity" prefHeight="418.0" prefWidth="439.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                           <columns>
-                            <TableColumn fx:id="colUserId" prefWidth="115.0" text="User ID" />
-                            <TableColumn fx:id="colEmail" minWidth="0.0" prefWidth="154.0" text="Email" />
-                              <TableColumn fx:id="colUserType" prefWidth="175.0" text="User Type" />
+                            <TableColumn fx:id="colUserId" editable="false" prefWidth="115.0" text="User ID" />
+                            <TableColumn fx:id="colEmail" editable="false" minWidth="0.0" prefWidth="154.0" text="Email" />
+                              <TableColumn fx:id="colUserType" editable="false" prefWidth="190.0" text="User Type" />
                           </columns>
+                           <BorderPane.margin>
+                              <Insets bottom="30.0" />
+                           </BorderPane.margin>
                         </TableView>
                      </center>
+                     <top>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrador" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                           <BorderPane.margin>
+                              <Insets bottom="50.0" />
+                           </BorderPane.margin>
+                        </Text>
+                     </top>
                   </BorderPane>
                </children>
             </VBox>

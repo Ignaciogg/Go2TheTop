@@ -1,7 +1,5 @@
 package control;
 
-import com.jfoenix.controls.JFXTextField;
-
 import application.ficheros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Administrador;
 
@@ -20,7 +19,7 @@ public class controlBorrarUsuario {
     private Button botonVolver;
 
     @FXML
-    private JFXTextField textfielUser;
+    private TextField textfielUser;
 
     @FXML
     private Button botonBorrar;

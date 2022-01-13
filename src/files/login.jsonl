@@ -4,5 +4,3 @@
 {"userId":"123456789E","email":"Josep@entrenador.com","password":"pass123","userType":"entrenador"}
 {"userId":"123456789C","email":"Cristiano@deportista.com","password":"pass123","userType":"deportista"}
 {"userId":"123456789F","email":"LionelAndres@deportista.com","password":"pass123","userType":"deportista"}
-{"userId":"2","email":"2","password":"2","userType":"entrenador"}
-{"userId":"3","email":"3","password":"3","userType":"deportista"}

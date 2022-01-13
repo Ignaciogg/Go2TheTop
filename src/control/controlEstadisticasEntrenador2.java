@@ -54,11 +54,11 @@ public class controlEstadisticasEntrenador2 {
     void enviar(ActionEvent event) {
 
     	try {
-    		
+
     		String feedback = textoFeedback.getText();
-    		
-    		Sesion
-    		
+
+    		//Sesion
+
     	}catch (Exception e) {
 			e.printStackTrace();
 		}
