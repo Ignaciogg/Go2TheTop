@@ -33,6 +33,7 @@ public class controlBorrarUsuario {
     	System.out.println(user.toString());
 
     	user.borrarUsuario(dni);
+    	volverAdmin(event);
     }
 
     @FXML

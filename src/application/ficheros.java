@@ -40,11 +40,13 @@ public class ficheros {
 
 			Boolean encontrado = false;
 			while ((linea = br.readLine()) != null && !encontrado) {
-				persona = gson.fromJson(linea, Usuario.class);
-				if (persona.getEmail().equalsIgnoreCase(email)) {
-					encontrado = true;
-					personaBuscada = persona;
-				}
+				try {
+					persona = gson.fromJson(linea, Usuario.class);
+					if (persona.getEmail().equalsIgnoreCase(email)) {
+						encontrado = true;
+						personaBuscada = persona;
+					}
+				}catch (Exception e) {}
 			}
 			br.close();
 		} catch (IOException ex) {
@@ -62,10 +64,12 @@ public class ficheros {
 			String linea;
 			Boolean encontrado = false;
 			while ((linea = br.readLine()) != null && !encontrado) {
-				persona = gson.fromJson(linea, Usuario.class);
-				if (persona.getUserId().equalsIgnoreCase(dni)) {
-					encontrado = true;
-				}
+				try {
+					persona = gson.fromJson(linea, Usuario.class);
+					if (persona.getUserId().equalsIgnoreCase(dni)) {
+						encontrado = true;
+					}
+				}catch (Exception e) {}
 			}
 			br.close();
 		} catch (IOException ex) {

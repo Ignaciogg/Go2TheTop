@@ -7,14 +7,13 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.jfoenix.controls.JFXTextField;
 
+import application.ficheros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Administrador;
 import model.Entrenador;
@@ -29,18 +28,6 @@ public class controlAnadirEntrenador {
 
     @FXML
     private Button botonCrearEntrenador;
-
-    @FXML
-    private ToggleButton toggleAdmin;
-
-    @FXML
-    private ToggleGroup seleccionUsuario;
-
-    @FXML
-    private ToggleButton toggleEntrenador;
-
-    @FXML
-    private ToggleButton toggleDeportista;
 
     @FXML
     private JFXTextField fieldUserId;
@@ -63,30 +50,6 @@ public class controlAnadirEntrenador {
     @FXML
     private JFXTextField fieldGenero;
 
-    public void escribirLogin(Usuario nuevo){
-        Gson gson = new Gson();
-        try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/login.jsonl",true));
-            bw.append(gson.toJson(nuevo));
-            bw.flush();
-            bw.close();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void escribirPersona(Usuario nuevo, String ruta){
-        Gson gson = new Gson();
-        try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
-            bw.write(gson.toJson(nuevo));
-            bw.flush();
-            bw.close();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     void crearEntrenador(ActionEvent event) {
 
@@ -108,79 +71,17 @@ public class controlAnadirEntrenador {
 
         	System.out.println("El usuario que se va a anadir es: " + nuevo2.toString());
         	String ruta = "src/files/entrenadores/" + dni + ".jsonl";
+        	
+        	ficheros fichero = new ficheros();
+        	fichero.escribirLogin(nuevo);
+        	fichero.escribirPersona(nuevo2, ruta);
 
-            escribirLogin(nuevo);
-            escribirPersona(nuevo2, ruta);
+            volverAdmin(event);
 
     	}catch (Exception e) {
 			e.printStackTrace();
 		}
 
-    }
-
-    @FXML
-    void selectAdmin(ActionEvent event) {
-
-    	try {
-
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirAdmin.fxml"));
-        	controlAnadirAdmin controlAnadirAdmin = new controlAnadirAdmin();
-			loader.setController(controlAnadirAdmin);
-			Parent root = loader.load();
-
-			controlAnadirAdmin.setUsuario(user);
-
-			Stage stage = (Stage) botonVolver.getScene().getWindow();
-			stage.setTitle("gO2theTop - Crear Usuario");
-
-			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
-
-        }catch (Exception e) {
-			e.printStackTrace();
-		}
-    }
-
-    @FXML
-    void selectDeportista(ActionEvent event) {
-
-    	try {
-
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirDeportista.fxml"));
-        	controlAnadirDeportista controlAnadirDeportista = new controlAnadirDeportista();
-			loader.setController(controlAnadirDeportista);
-			Parent root = loader.load();
-
-			controlAnadirDeportista.setUsuario(user);
-
-			Stage stage = (Stage) botonVolver.getScene().getWindow();
-			stage.setTitle("gO2theTop - Crear Usuario");
-
-			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
-
-        }catch (Exception e) {
-			e.printStackTrace();
-		}
-    }
-
-    @FXML
-    void selectEntrenador(ActionEvent event) {
-    	try {
-
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirEntrenador.fxml"));
-        	controlAnadirEntrenador controlAnadirAdmin = new controlAnadirEntrenador();
-			loader.setController(controlAnadirAdmin);
-			Parent root = loader.load();
-
-			controlAnadirAdmin.setUsuario(user);
-
-			Stage stage = (Stage) botonVolver.getScene().getWindow();
-			stage.setTitle("gO2theTop - Crear Usuario");
-
-			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
-
-        }catch (Exception e) {
-			e.printStackTrace();
-		}
     }
 
     @FXML
