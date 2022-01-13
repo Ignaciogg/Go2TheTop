@@ -52,6 +52,16 @@ public class controlEstadisticasEntrenador2 {
 
     @FXML
     void enviar(ActionEvent event) {
+
+    	try {
+    		
+    		String feedback = textoFeedback.getText();
+    		
+    		Sesion
+    		
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}
     	ficheros fichero = new ficheros();
     	fichero.escribirFeedback(new Sesion (textoFeedback.getText()), ("src/files/sesiones/"+ user.getUserId() +".jsonl"));
     }
@@ -120,5 +130,4 @@ public class controlEstadisticasEntrenador2 {
     	mister=mis;
 
     }
-
 }
