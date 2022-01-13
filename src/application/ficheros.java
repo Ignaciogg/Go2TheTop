@@ -58,11 +58,11 @@ public class ficheros {
 	public Usuario buscarUsuarioId(String dni) {
 		Gson gson = new Gson();
 		Usuario persona = null;
-
+		Boolean encontrado = false;
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"));
 			String linea;
-			Boolean encontrado = false;
+			
 			while ((linea = br.readLine()) != null && !encontrado) {
 				try {
 					persona = gson.fromJson(linea, Usuario.class);
@@ -75,7 +75,11 @@ public class ficheros {
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
-		return persona;
+		if(encontrado) {
+			return persona;
+		}else {
+			return null;
+		}
 	}
 
 	public Usuario leerUsuario(Usuario persona) {
