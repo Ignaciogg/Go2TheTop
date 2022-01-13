@@ -57,31 +57,6 @@ public class controlModifyEntrenador extends controlModificarUsuario{
     @FXML
     private TextField nuevoNombre;
 
-
-    public void escribirLogin(Usuario nuevo){
-        Gson gson = new Gson();
-        try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/login.jsonl",true));
-            bw.append(gson.toJson(nuevo));
-            bw.flush();
-            bw.close();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void escribirPersona(Usuario nuevo, String ruta){
-        Gson gson = new Gson();
-        try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
-            bw.write(gson.toJson(nuevo));
-            bw.flush();
-            bw.close();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     void confirmarModify(ActionEvent event) {
 
@@ -117,8 +92,9 @@ public class controlModifyEntrenador extends controlModificarUsuario{
         	System.out.println("El usuario que se va a modificar es: " + nuevo.toString());
         	String ruta = "src/files/entrenadores/" + id + ".jsonl";
 
-            escribirLogin(nuevo);
-            escribirPersona(nuevo2, ruta);
+        	ficheros fichero = new ficheros();
+        	fichero.escribirLogin(nuevo);
+        	fichero.escribirPersona(nuevo2, ruta);
 
     	}catch (Exception e) {
 			e.printStackTrace();
@@ -153,11 +129,5 @@ public class controlModifyEntrenador extends controlModificarUsuario{
     public void setUsuario(Administrador u) {
 		user = u;
 	}
-
-
-	/*public void setVisible(boolean b) {
-		// TODO Auto-generated method stub
-
-	}*/
 
 }
