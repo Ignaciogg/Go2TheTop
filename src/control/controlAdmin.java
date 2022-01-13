@@ -76,7 +76,7 @@ public class controlAdmin {
 				Stage stage = (Stage) botonCerrarSesion.getScene().getWindow();
 				stage.setTitle("gO2theTop - Login");
 
-				stage.setScene(new Scene(root));
+				stage.setScene(new Scene(root, botonCerrarSesion.getScene().getWidth(), botonCerrarSesion.getScene().getHeight()));
 
 	        }catch (Exception e) {
 				e.printStackTrace();
@@ -99,7 +99,7 @@ public class controlAdmin {
 				Stage stage = (Stage) botonBorrar.getScene().getWindow();
 				stage.setTitle("gO2theTop - Borrar Usuario");
 
-				stage.setScene(new Scene(root));
+				stage.setScene(new Scene(root, botonBorrar.getScene().getWidth(), botonBorrar.getScene().getHeight()));
 
 			}catch (Exception e) {
 				e.printStackTrace();
@@ -117,7 +117,7 @@ public class controlAdmin {
 				Stage stageActual = (Stage) botonBorrar.getScene().getWindow();
 				stageActual.setTitle("gO2theTop - Anadir Usuario");
 
-				stageActual.setScene(new Scene(root));
+				stageActual.setScene(new Scene(root, botonBorrar.getScene().getWidth(), botonBorrar.getScene().getHeight()));
 
 	        }catch (Exception e) {
 				e.printStackTrace();
@@ -135,7 +135,7 @@ public class controlAdmin {
 			Stage stageActual = (Stage) botonBorrar.getScene().getWindow();
 			stageActual.setTitle("gO2theTop - Enlazar Usuario");
 
-			stageActual.setScene(new Scene(root));
+			stageActual.setScene(new Scene(root, botonBorrar.getScene().getWidth(), botonBorrar.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
@@ -153,7 +153,7 @@ public class controlAdmin {
 			Stage stage = (Stage) botonModificar.getScene().getWindow();
 			stage.setTitle("gO2theTop - Modificar Usuario");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonModificar.getScene().getWidth(), botonModificar.getScene().getHeight()));
 
 	        }catch (Exception e) {
 				e.printStackTrace();

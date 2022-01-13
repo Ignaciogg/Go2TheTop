@@ -23,9 +23,9 @@ import model.Usuario;
 
 public class controlModifyAdmin extends controlModificarUsuario{
 
-	
+
 	private Administrador user;
-	
+
 	@FXML
     private Text bienvenide;
 
@@ -61,7 +61,6 @@ public class controlModifyAdmin extends controlModificarUsuario{
         Gson gson = new Gson();
         try{
             BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/login.jsonl",true));
-            bw.newLine();
             bw.append(gson.toJson(nuevo));
             bw.flush();
             bw.close();
@@ -80,18 +79,18 @@ public class controlModifyAdmin extends controlModificarUsuario{
         }catch (IOException e){
             e.printStackTrace();
         }
-    }    
-    
+    }
+
     @FXML
     void confirmarModify(ActionEvent event) {
-      	
-        	
+
+
     	System.out.println(dni);
     	user.borrarUsuario(dni);
 
     	try{
-    		System.out.println("MODIFICA EL USUARIO"); 		
-    		
+    		System.out.println("MODIFICA EL USUARIO");
+
     		String id = nuevoId.getText();
     		System.out.println(id);
     		String mail = nuevoEmail.getText();
@@ -109,25 +108,24 @@ public class controlModifyAdmin extends controlModificarUsuario{
     		String gen = nuevoGenero.getText();
     		System.out.println(gen);
     		Boolean act = true;
-    		
+
     		Usuario nuevo = new Usuario(id, mail, password, type);
         	Administrador nuevo2 = new Administrador (id, mail, password, type, name, lastname, day, gen, act);
         	System.out.println("El usuario modificado es: " + nuevo.toString());
-        	String ruta = "src/files/administradores/" + dni + ".jsonl";
+        	String ruta = "src/files/administradores/" + id + ".jsonl";
 
             escribirLogin(nuevo);
             escribirPersona(nuevo2, ruta);
-            
+
     	}catch (Exception e) {
 			e.printStackTrace();
 		}
-    	
-    	
+
     }
 
     @FXML
     void volverAdmin(ActionEvent event) {
-    	
+
     	try {
 
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModificarUsuario.fxml"));
@@ -140,22 +138,22 @@ public class controlModifyAdmin extends controlModificarUsuario{
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Modificar Usuario");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
 		}
 
     }
-    
+
     public void setUsuario(Administrador u) {
 		user = u;
 	}
-    
+
 
 	/*public void setVisible(boolean b) {
 		// TODO Auto-generated method stub
-		
+
 	}*/
 
 }

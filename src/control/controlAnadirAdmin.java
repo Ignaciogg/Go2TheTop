@@ -7,15 +7,7 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.jfoenix.controls.JFXTextField;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.stage.Stage;
+
 import model.Administrador;
 import model.Usuario;
 
@@ -132,7 +124,7 @@ public class controlAnadirAdmin {
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Crear Usuario");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
@@ -154,7 +146,7 @@ public class controlAnadirAdmin {
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Crear Usuario");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
@@ -175,7 +167,7 @@ public class controlAnadirAdmin {
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Crear Usuario");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
@@ -196,7 +188,7 @@ public class controlAnadirAdmin {
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Crear Usuario");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();

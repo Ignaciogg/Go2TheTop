@@ -13,7 +13,7 @@ import model.Deportista;
 public class controlFeedbackDeportista {
 
 	Deportista dep;
-	
+
     @FXML
     private Button botonVolver;
 
@@ -37,7 +37,7 @@ public class controlFeedbackDeportista {
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Deportista");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
@@ -48,7 +48,7 @@ public class controlFeedbackDeportista {
 		depor.setText("Feedback de " + dep.getName());
 		//cargarChat();
 		//aqui iria el cargar feedback
-		
+
 	}
 
 }

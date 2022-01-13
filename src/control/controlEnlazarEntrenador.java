@@ -66,7 +66,7 @@ public class controlEnlazarEntrenador {
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Admin");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -76,22 +76,22 @@ public class controlEnlazarEntrenador {
 
 	@FXML
 	void seleccionar(ActionEvent event) {
-		
+
 		if(tableEntrenadores.getSelectionModel().getSelectedItem() != null) {
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEnlazarDeportistas.fxml"));
 				controlEnlazarDeportista controladmin = new controlEnlazarDeportista();
 				loader.setController(controladmin);
 				Parent root = loader.load();
-				
-				
+
+
 				Entrenador e= new ficheros().leerEntrenador("src/files/entrenadores/" + tableEntrenadores.getSelectionModel().getSelectedItem().getUserId() + ".jsonl");
 				controladmin.setUsuario(user,e);
 
 				Stage stage = (Stage) botonVolver.getScene().getWindow();
 				stage.setTitle("gO2theTop - Enlazar Usuarios");
 
-				stage.setScene(new Scene(root));
+				stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -141,7 +141,7 @@ public class controlEnlazarEntrenador {
 
 		return users;
 	}
-	
+
 	public ObservableList<Entrenador> observableList() {
 		ObservableList<Entrenador> users = FXCollections.observableArrayList();
 		Gson gson = new Gson();

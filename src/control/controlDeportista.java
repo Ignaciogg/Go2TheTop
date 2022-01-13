@@ -18,7 +18,7 @@ import model.Deportista;
 public class controlDeportista {
 
 	private Deportista user;
-	
+
    @FXML
     private ImageView fotoDepor;
 
@@ -30,7 +30,6 @@ public class controlDeportista {
 
     @FXML
     private JFXTextField emailDepor;
-
 
 	@FXML
     private Text bienvenide;
@@ -68,7 +67,7 @@ public class controlDeportista {
 			Stage stageActual = (Stage) botonEstadisticas.getScene().getWindow();
 			stageActual.setTitle("gO2theTop - Estadisticas");
 
-			stageActual.setScene(new Scene(root));
+			stageActual.setScene(new Scene(root, botonEstadisticas.getScene().getWidth(), botonEstadisticas.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +91,7 @@ public class controlDeportista {
 			Stage stageActual = (Stage) botonChat.getScene().getWindow();
 			stageActual.setTitle("gO2theTop - Chat");
 
-			stageActual.setScene(new Scene(root));
+			stageActual.setScene(new Scene(root, botonChat.getScene().getWidth(), botonChat.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
@@ -111,7 +110,7 @@ public class controlDeportista {
 				Stage stage = (Stage) botonCerrarSesion.getScene().getWindow();
 				stage.setTitle("gO2theTop - Login");
 
-				stage.setScene(new Scene(root));
+				stage.setScene(new Scene(root, botonCerrarSesion.getScene().getWidth(), botonCerrarSesion.getScene().getHeight()));
 
 	        }catch (Exception e) {
 				e.printStackTrace();
@@ -120,19 +119,19 @@ public class controlDeportista {
 	    }
 
 	public void setUsuario(Deportista u) {
-		user = u; 
+		user = u;
     	if(u.getGenre().equals("hombre")){
     		bienvenide.setText("Bienvenido " + u.getName());
     	}else if(u.getGenre().equals("mujer")) {
     		bienvenide.setText("Bienvenida " + u.getName());
     	}
-    	
+
     	nameDepor.setText(user.getName());
     	lastnameDepor.setText(user.getLastnames());
     	emailDepor.setText(user.getEmail());
-    	
+
     	Image image = new Image ("file:recursos/"+ user.getUserId() +".jpg");
-    	
+
     	fotoDepor.setImage(image);
     }
 }

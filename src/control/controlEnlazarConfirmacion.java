@@ -22,10 +22,10 @@ public class controlEnlazarConfirmacion {
 
 	@FXML
 	private Button botonVolver;
-	
+
 	@FXML
 	private Text texto;
-	
+
 	@FXML
 	private Button botonConfirmar;
 
@@ -42,7 +42,7 @@ public class controlEnlazarConfirmacion {
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Admin");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -54,11 +54,11 @@ public class controlEnlazarConfirmacion {
 	void confirmar(ActionEvent event) {
 
 		try {
-			
+
 			ficheros files = new ficheros();
 			Enlace en = new Enlace(entrenador.getUserId(), deportista.getUserId());
 			files.escribirEnlace(en);
-					
+
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
 			controlAdmin controladmin = new controlAdmin();
 			loader.setController(controladmin);
@@ -69,7 +69,7 @@ public class controlEnlazarConfirmacion {
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Admin");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -25,9 +25,9 @@ import model.Entrenador;
 import model.Sesion;
 
 public class controlEstadisticasEntren1 {
-	
+
 	private Deportista user;
-	
+
 	private Entrenador mister;
 
 	private Sesion sesion;
@@ -65,7 +65,7 @@ public class controlEstadisticasEntren1 {
     			Stage stage = (Stage) botonSeleccionar.getScene().getWindow();
     			stage.setTitle("gO2theTop - EstadisticasEntren1");
 
-    			stage.setScene(new Scene(root));
+    			stage.setScene(new Scene(root, botonSeleccionar.getScene().getWidth(), botonSeleccionar.getScene().getHeight()));
 
             }catch (Exception e) {
     			e.printStackTrace();
@@ -88,7 +88,7 @@ public class controlEstadisticasEntren1 {
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Entrenador");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
@@ -105,7 +105,7 @@ public class controlEstadisticasEntren1 {
 		Gson gson = new Gson();
 		String linea="";
 		Sesion sesion = null;
-		
+
 		try (BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"))) {
 
 			while ((linea = br.readLine()) != null) {

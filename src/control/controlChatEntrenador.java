@@ -17,7 +17,7 @@ import model.Entrenador;
 import model.Mensaje;
 
 public class controlChatEntrenador {
-	
+
 	Entrenador mister;
 
     @FXML
@@ -71,7 +71,7 @@ public class controlChatEntrenador {
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Entrenador");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
