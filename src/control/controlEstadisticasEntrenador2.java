@@ -52,6 +52,16 @@ public class controlEstadisticasEntrenador2 {
 
     @FXML
     void enviar(ActionEvent event) {
+
+    	try {
+    		
+    		String feedback = textoFeedback.getText();
+    		
+    		Sesion
+    		
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}
     	ficheros fichero = new ficheros();
     	fichero.escribirFeedback(new Sesion (textoFeedback.getText()), ("src/files/sesiones/"+ user.getUserId() +".jsonl"));
     }
@@ -96,7 +106,7 @@ public class controlEstadisticasEntrenador2 {
 
     	try {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren1.fxml"));
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntren.fxml"));
         	controlEntrenador controlEntren = new controlEntrenador();
 			loader.setController(controlEntren);
 			Parent root = loader.load();
@@ -120,5 +130,4 @@ public class controlEstadisticasEntrenador2 {
     	mister=mis;
 
     }
-
 }

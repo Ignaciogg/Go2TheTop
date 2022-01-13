@@ -78,7 +78,7 @@ public class controlEstadisticasEntrenador {
     void volver(ActionEvent event) {
     	try {
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren1.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntren.fxml"));
 			controlEntrenador controlEntren = new controlEntrenador();
 			loader.setController(controlEntren);
 			Parent root = loader.load();
@@ -142,7 +142,7 @@ public class controlEstadisticasEntrenador {
 				Stage stage = (Stage) botonVolver.getScene().getWindow();
 				stage.setTitle("gO2theTop - Seleccion de sesion");
 
-				stage.setScene(new Scene(root, buttonVerEstadisticas.getScene().getWidth(), buttonVerEstadisticas.getScene().getHeight()));
+				stage.setScene(new Scene(root, botonSeleccionar.getScene().getWidth(), botonSeleccionar.getScene().getHeight()));
 
 			} catch (Exception e) {
 				e.printStackTrace();
