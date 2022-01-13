@@ -48,14 +48,6 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </JFXTextField>
-                                    <Button fx:id="buttonVerEstadisticas" mnemonicParsing="false" onAction="#verEstadisticas" prefHeight="31.0" prefWidth="136.0" style="-fx-background-color: black;" text="Ver Estadisticas" textFill="WHITE">
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Button>
                                     <Button fx:id="buttonChatEntrenador" mnemonicParsing="false" onAction="#chatEntrenador" prefHeight="31.0" prefWidth="137.0" style="-fx-background-color: black;" text="Chat deportista" textFill="WHITE">
                                        <VBox.margin>
                                           <Insets bottom="100.0" top="25.0" />

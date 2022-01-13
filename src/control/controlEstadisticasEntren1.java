@@ -78,17 +78,17 @@ public class controlEstadisticasEntren1 {
 
     	try {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren.fxml.fxml"));
-        	controlEntrenador controlEntren = new controlEntrenador();
-			loader.setController(controlEntren);
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren.fxml"));
+			controlEstadisticasEntrenador controlEstadisticasEntren = new controlEstadisticasEntrenador();
+			loader.setController(controlEstadisticasEntren);
 			Parent root = loader.load();
-
-			controlEntren.setUsuario(mister);
+			controlEstadisticasEntren.setUsuario(mister);
 
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
-			stage.setTitle("gO2theTop - Entrenador");
+			stage.setTitle("gO2theTop - VerEstadisticasEntrenador");
 
 			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
+
 
         }catch (Exception e) {
 			e.printStackTrace();
