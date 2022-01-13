@@ -20,4 +20,11 @@
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>recursos/GMapsFX-8.0.0.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Documents/Librerias%20java/GMapsFX-8.0.0.jar</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
