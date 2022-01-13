@@ -58,7 +58,7 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                <children>
-                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir Usuario" textAlignment="CENTER">
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir Deportista" textAlignment="CENTER">
                         <font>
                              <Font name="System Bold" size="26.0" />
                         </font>

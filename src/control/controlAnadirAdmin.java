@@ -1,5 +1,6 @@
 package control;
 
+import java.awt.Button;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,7 +16,13 @@ import javafx.stage.Stage;
 import com.google.gson.Gson;
 import com.jfoenix.controls.JFXTextField;
 
-
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 import model.Administrador;
 import model.Usuario;
 
@@ -66,7 +73,6 @@ public class controlAnadirAdmin {
         Gson gson = new Gson();
         try{
             BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/login.jsonl",true));
-            bw.newLine();
             bw.append(gson.toJson(nuevo));
             bw.flush();
             bw.close();
@@ -165,8 +171,8 @@ public class controlAnadirAdmin {
     void selectEntrenador(ActionEvent event) {
     	try {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirAdmin.fxml"));
-        	controlAnadirAdmin controlAnadirAdmin = new controlAnadirAdmin();
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirEntrenador.fxml"));
+        	controlAnadirEntrenador controlAnadirAdmin = new controlAnadirEntrenador();
 			loader.setController(controlAnadirAdmin);
 			Parent root = loader.load();
 

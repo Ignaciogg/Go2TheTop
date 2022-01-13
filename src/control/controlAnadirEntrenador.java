@@ -20,7 +20,7 @@ import model.Administrador;
 import model.Entrenador;
 import model.Usuario;
 
-public class controlAnadirEntranador {
+public class controlAnadirEntrenador {
 
 	private Administrador user;
 
@@ -67,7 +67,6 @@ public class controlAnadirEntranador {
         Gson gson = new Gson();
         try{
             BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/login.jsonl",true));
-            bw.newLine();
             bw.append(gson.toJson(nuevo));
             bw.flush();
             bw.close();
@@ -97,7 +96,7 @@ public class controlAnadirEntranador {
         	String dni = fieldUserId.getText();
         	String ema = fieldEmail.getText();
         	String pas = fieldPassword.getText();
-        	String use = "administrador";
+        	String use = "entrenador";
         	String nom = fieldNombre.getText();
         	String ape = fieldApellidos.getText();
         	String fec = fieldFecha.getText();
@@ -108,7 +107,7 @@ public class controlAnadirEntranador {
         	Entrenador nuevo2 = new Entrenador (dni, ema, pas, use, nom, ape, fec, gen, act);
 
         	System.out.println("El usuario que se va a anadir es: " + nuevo2.toString());
-        	String ruta = "src/files/deportistas/" + dni + ".jsonl";
+        	String ruta = "src/files/entrenadores/" + dni + ".jsonl";
 
             escribirLogin(nuevo);
             escribirPersona(nuevo2, ruta);
@@ -168,7 +167,7 @@ public class controlAnadirEntranador {
     	try {
 
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirEntrenador.fxml"));
-        	controlAnadirAdmin controlAnadirAdmin = new controlAnadirAdmin();
+        	controlAnadirEntrenador controlAnadirAdmin = new controlAnadirEntrenador();
 			loader.setController(controlAnadirAdmin);
 			Parent root = loader.load();
 

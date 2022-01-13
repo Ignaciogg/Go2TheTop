@@ -1,6 +1,5 @@
 package control;
 
-import javafx.scene.control.ToggleButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,13 +17,13 @@ public class controlAnadirUsuario {
     private Button botonVolver;
 
     @FXML
-    private ToggleButton toggleAdmin;
+    private Button botonAdmin;
 
     @FXML
-    private ToggleButton toggleEntrenador;
+    private Button botonEntrenador;
 
     @FXML
-    private ToggleButton toggleDeportista;
+    private Button botonDeportista;
 
     @FXML
     void selectAdmin(ActionEvent event) {
@@ -81,12 +80,12 @@ public class controlAnadirUsuario {
     	System.out.println("Entrenador seleccionado");
     	try {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirAdmin.fxml"));
-        	controlAnadirAdmin controlAnadirAdmin = new controlAnadirAdmin();
-			loader.setController(controlAnadirAdmin);
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirEntrenador.fxml"));
+        	controlAnadirEntrenador controlAnadirEntrenador = new controlAnadirEntrenador();
+			loader.setController(controlAnadirEntrenador);
 			Parent root = loader.load();
 
-			controlAnadirAdmin.setUsuario(user);
+			controlAnadirEntrenador.setUsuario(user);
 
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Crear Usuario");

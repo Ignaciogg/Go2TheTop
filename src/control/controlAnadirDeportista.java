@@ -73,7 +73,6 @@ public class controlAnadirDeportista {
         Gson gson = new Gson();
         try{
             BufferedWriter bw = new BufferedWriter(new FileWriter("src/files/login.jsonl",true));
-            bw.newLine();
             bw.append(gson.toJson(nuevo));
             bw.flush();
             bw.close();
@@ -179,7 +178,7 @@ public class controlAnadirDeportista {
     	try {
 
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAnadirEntrenador.fxml"));
-        	controlAnadirAdmin controlAnadirAdmin = new controlAnadirAdmin();
+        	controlAnadirEntrenador controlAnadirAdmin = new controlAnadirEntrenador();
 			loader.setController(controlAnadirAdmin);
 			Parent root = loader.load();
 
