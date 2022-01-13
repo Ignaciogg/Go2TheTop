@@ -22,128 +22,117 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-
 public class controlModificarUsuario {
 
-	
 	private Administrador user;
-	
+
 	@FXML
-    private Button botonModify;
+	private Button botonModify;
 
-    @FXML
-    private Button botonVolver;
+	@FXML
+	private Button botonVolver;
 
-    @FXML
-    private TextField textMod;
+	@FXML
+	private TextField textMod;
 
-    
-	public static String dni ="";
-    
-	
-	
-    @FXML
-    void modificarUser(ActionEvent event) {
-    	
-    	dni = textMod.getText();
-    	System.out.println(dni);
-    	/*controlModifyAdmin modif=new controlModifyAdmin();
-    	modif.setVisible(true);
-    	controlModifyEntrenador modif1=new controlModifyEntrenador();
-    	modif.setVisible(true);
-    	controlModifyDeportista modif2=new controlModifyDeportista();
-    	modif.setVisible(true);*/
-    	System.out.println(user.toString());
-    	user.modificarUsuario(dni);
- 
-    	ficheros files = new ficheros();
+	public static String dni = "";
+
+	@FXML
+	void modificarUser(ActionEvent event) {
+
+		dni = textMod.getText();
+		System.out.println(dni);
+		/*
+		 * controlModifyAdmin modif=new controlModifyAdmin(); modif.setVisible(true);
+		 * controlModifyEntrenador modif1=new controlModifyEntrenador();
+		 * modif.setVisible(true); controlModifyDeportista modif2=new
+		 * controlModifyDeportista(); modif.setVisible(true);
+		 */
+		System.out.println(user.toString());
+		user.modificarUsuario(dni);
+
+		ficheros files = new ficheros();
 		Usuario persona = files.buscarUsuarioId(dni);
 
+		if (persona != null) {
 
-		if(persona!=null) {
-			
 			persona = files.leerUsuario(persona);
 			switch (persona.getUserType()) {
-				case "administrador":
-					
-					try {
-			    		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModifyAdmin.fxml"));
-			    		controlModifyAdmin controlModify = new controlModifyAdmin();
-			    		loader.setController(controlModify);
-			    		Parent root = loader.load();
-			    		
-			    		controlModify.setUsuario(user);
-			    		
-			    		Stage stage = (Stage) botonModify.getScene().getWindow();
-			    		stage.setTitle("gO2theTop - Modificar Administrador");
+			case "administrador":
 
-			    		stage.setScene(new Scene(root));
+				try {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModifyAdmin.fxml"));
+					controlModifyAdmin controlModify = new controlModifyAdmin();
+					loader.setController(controlModify);
+					Parent root = loader.load();
 
-			        }catch (Exception e) {
-						e.printStackTrace();
-					}
+					controlModify.setUsuario(user);
 
-					break;
-				case "entrenador":
-					
-					try {
-			    		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModifyEntrenador.fxml"));
-			    		controlModifyEntrenador controlModify1 = new controlModifyEntrenador();
-			    		loader.setController(controlModify1);
-			    		Parent root = loader.load();
-			    		
-			    		controlModify1.setUsuario(user);
-			    		
-			    		Stage stage = (Stage) botonModify.getScene().getWindow();
-			    		stage.setTitle("gO2theTop - Modificar Entrenador");
+					Stage stage = (Stage) botonModify.getScene().getWindow();
+					stage.setTitle("gO2theTop - Modificar Administrador");
 
-			    		stage.setScene(new Scene(root));
+					stage.setScene(new Scene(root));
 
-			        }catch (Exception e) {
-						e.printStackTrace();
-					}
-					
-					break;
-				case "deportista":
-					
-					try {
-						FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModifyDeportista.fxml"));
-						controlModifyDeportista controlModify2 = new controlModifyDeportista();
-						loader.setController(controlModify2);
-						Parent root = loader.load();
-						
-						controlModify2.setUsuario(user);
-						
-						Stage stage = (Stage) botonModify.getScene().getWindow();
-						stage.setTitle("gO2theTop - Modificar Deportista");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
-						stage.setScene(new Scene(root));
+				break;
+			case "entrenador":
 
-				    }catch (Exception e) {
-						e.printStackTrace();
-					}
-					break;
-							
+				try {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModifyEntrenador.fxml"));
+					controlModifyEntrenador controlModify1 = new controlModifyEntrenador();
+					loader.setController(controlModify1);
+					Parent root = loader.load();
+
+					controlModify1.setUsuario(user);
+
+					Stage stage = (Stage) botonModify.getScene().getWindow();
+					stage.setTitle("gO2theTop - Modificar Entrenador");
+
+					stage.setScene(new Scene(root));
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				break;
+			case "deportista":
+
+				try {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModifyDeportista.fxml"));
+					controlModifyDeportista controlModify2 = new controlModifyDeportista();
+					loader.setController(controlModify2);
+					Parent root = loader.load();
+
+					controlModify2.setUsuario(user);
+
+					Stage stage = (Stage) botonModify.getScene().getWindow();
+					stage.setTitle("gO2theTop - Modificar Deportista");
+
+					stage.setScene(new Scene(root));
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+
 			}
-						
-		}else {
+
+		} else {
 			System.out.println("No hemos encontrado el usuario");
 		}
-    	
-    	
-    	
-    	
-    }
-    
 
-    
-    @FXML
-    void volverAdmin(ActionEvent event) {
+	}
 
-    	try {
+	@FXML
+	void volverAdmin(ActionEvent event) {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
-        	controlAdmin controlAdmin = new controlAdmin();
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
+			controlAdmin controlAdmin = new controlAdmin();
 			loader.setController(controlAdmin);
 			Parent root = loader.load();
 
@@ -154,17 +143,14 @@ public class controlModificarUsuario {
 
 			stage.setScene(new Scene(root));
 
-        }catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-    }
-    
-    public void setUser(Administrador user) {
+	}
+
+	public void setUser(Administrador user) {
 		this.user = user;
 	}
-    
- 
-    
-}
 
+}

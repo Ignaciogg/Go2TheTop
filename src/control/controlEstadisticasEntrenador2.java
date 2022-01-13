@@ -1,5 +1,6 @@
 package control;
 
+import application.ficheros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,10 +10,12 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Deportista;
 import model.Entrenador;
+import model.Mensaje;
 import model.Sesion;
 
 public class controlEstadisticasEntrenador2 {
@@ -41,6 +44,18 @@ public class controlEstadisticasEntrenador2 {
 
     @FXML
     private LineChart<?, ?> grafica;
+    
+    @FXML
+    private TextField textoFeedback;
+
+    @FXML
+    private Button botonEnviar;
+
+    @FXML
+    void enviar(ActionEvent event) {
+    	ficheros fichero = new ficheros();
+    	fichero.escribirFeedback(new Mensaje (mister.getName(), textoFeedback.getText()), ("src/files/sesiones/"+ user.getUserId() +".jsonl"));
+    }
 
     @FXML
     void mostrarFrecuencia(ActionEvent event) {
