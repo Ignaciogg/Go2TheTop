@@ -78,7 +78,7 @@ public class controlEstadisticasEntren1 {
 
     	try {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntren.fxml"));
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren.fxml.fxml"));
         	controlEntrenador controlEntren = new controlEntrenador();
 			loader.setController(controlEntren);
 			Parent root = loader.load();
