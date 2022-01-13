@@ -15,6 +15,7 @@ import model.Deportista;
 import model.Enlace;
 import model.Entrenador;
 import model.Mensaje;
+import model.Sesion;
 import model.Usuario;
 
 public class ficheros {
@@ -180,12 +181,12 @@ public class ficheros {
 		}
 	}
 	
-	public void escribirFeedback(Mensaje mensaje, String ruta) {
+	public void escribirFeedback(Sesion feedback, String ruta) {
 		Gson gson = new Gson();
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, true));
 			bw.newLine();
-			bw.append(gson.toJson(mensaje));
+			bw.append(gson.toJson(feedback));
 			bw.flush();
 			bw.close();
 		} catch (IOException e) {

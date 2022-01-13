@@ -53,7 +53,7 @@ public class controlEstadisticasEntrenador2 {
     @FXML
     void enviar(ActionEvent event) {
     	ficheros fichero = new ficheros();
-    	fichero.escribirFeedback(new Mensaje (mister.getName(), textoFeedback.getText()), ("src/files/sesiones/"+ user.getUserId() +".jsonl"));
+    	fichero.escribirFeedback(new Sesion (textoFeedback.getText()), ("src/files/sesiones/"+ user.getUserId() +".jsonl"));
     }
 
     @FXML

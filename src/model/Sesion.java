@@ -104,6 +104,11 @@ public class Sesion {
 		this.fecha = fecha;
 	}
 
+	public Sesion(String feedback) {
+		this.feedback=feedback;
+	}
+	
+
 	public String getFeedback() {
 		return feedback;
 	}
