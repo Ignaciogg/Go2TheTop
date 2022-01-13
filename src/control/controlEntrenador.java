@@ -38,7 +38,7 @@ public class controlEntrenador {
 
     @FXML
     private JFXTextField emailEntren;
-    
+
     @FXML
     private ImageView fotoMister;
 
@@ -57,14 +57,14 @@ public class controlEntrenador {
 				Stage stage = (Stage) botonCerrarSesion.getScene().getWindow();
 				stage.setTitle("gO2theTop - Login");
 
-				stage.setScene(new Scene(root));
+				stage.setScene(new Scene(root, botonCerrarSesion.getScene().getWidth(), botonCerrarSesion.getScene().getHeight()));
 
 	        }catch (Exception e) {
 				e.printStackTrace();
 			}
 
 	    }
-    
+
     @FXML
     void chatEntrenador(ActionEvent event) {
     	System.out.println("VER CHAT");
@@ -76,7 +76,7 @@ public class controlEntrenador {
 			controlChatEntren.setUsuario(user);
 			Stage stage = (Stage) buttonChatEntrenador.getScene().getWindow();
 			stage.setTitle("gO2theTop - Chat");
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, buttonChatEntrenador.getScene().getWidth(), buttonChatEntrenador.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
@@ -95,9 +95,9 @@ public class controlEntrenador {
 			controlEstadisticasEntren.setUsuario(user);
 
 			Stage stage = (Stage) buttonVerEstadisticas.getScene().getWindow();
-			stage.setTitle("gO2theTop - VerEstadisticasEntrenador");	
+			stage.setTitle("gO2theTop - VerEstadisticasEntrenador");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, buttonVerEstadisticas.getScene().getWidth(), buttonVerEstadisticas.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
@@ -107,23 +107,23 @@ public class controlEntrenador {
     }
 
 
-    
+
     public void setUsuario(Entrenador u) {
-    	user = u; 
+    	user = u;
     	if(u.getGenre().equals("hombre")){
     		nombreUser.setText("Bienvenido " + u.getName());
     	}else if(u.getGenre().equals("mujer")) {
     		nombreUser.setText("Bienvenida " + u.getName());
     	}
-    	
+
     	nameEntrenador.setText(user.getName());
     	lastnameEntren.setText(user.getLastnames());
     	emailEntren.setText(user.getEmail());
-    	
+
     	Image image = new Image ("file:recursos/"+ user.getUserId() +".jpg");
-    	
+
     	fotoMister.setImage(image);
-    
+
     }
 
 

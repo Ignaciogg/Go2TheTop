@@ -24,9 +24,9 @@ import model.Usuario;
 
 public class controlModifyEntrenador extends controlModificarUsuario{
 
-	
+
 	private Administrador user;
-	
+
 	@FXML
     private Text bienvenide;
 
@@ -57,7 +57,7 @@ public class controlModifyEntrenador extends controlModificarUsuario{
     @FXML
     private TextField nuevoNombre;
 
-    
+
     public void escribirLogin(Usuario nuevo){
         Gson gson = new Gson();
         try{
@@ -84,14 +84,14 @@ public class controlModifyEntrenador extends controlModificarUsuario{
 
     @FXML
     void confirmarModify(ActionEvent event) {
-      	
-        	
+
+
     	System.out.println(dni);
     	user.borrarUsuario(dni);
 
     	try{
-    		System.out.println("MODIFICA EL USUARIO"); 		
-    		
+    		System.out.println("MODIFICA EL USUARIO");
+
     		String id = nuevoId.getText();
     		System.out.println(id);
     		String mail = nuevoEmail.getText();
@@ -109,27 +109,27 @@ public class controlModifyEntrenador extends controlModificarUsuario{
     		String gen = nuevoGenero.getText();
     		System.out.println(gen);
     		Boolean act = true;
-    		
-    	
+
+
     		Usuario nuevo = new Usuario(id, mail, password, type);
-	    	
+
         	Entrenador nuevo2 = new Entrenador (id, mail, password, type, name, lastname, day, gen, act);
         	System.out.println("El usuario que se va a modificar es: " + nuevo.toString());
         	String ruta = "src/files/entrenadores/" + id + ".jsonl";
 
             escribirLogin(nuevo);
             escribirPersona(nuevo2, ruta);
-    		
+
     	}catch (Exception e) {
 			e.printStackTrace();
 		}
-    	
-    	
+
+
     }
 
     @FXML
     void volverAdmin(ActionEvent event) {
-    	
+
     	try {
 
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewModificarUsuario.fxml"));
@@ -142,22 +142,22 @@ public class controlModifyEntrenador extends controlModificarUsuario{
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Modificar Usuario");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
 		}
 
     }
-    
+
     public void setUsuario(Administrador u) {
 		user = u;
 	}
-    
+
 
 	/*public void setVisible(boolean b) {
 		// TODO Auto-generated method stub
-		
+
 	}*/
 
 }

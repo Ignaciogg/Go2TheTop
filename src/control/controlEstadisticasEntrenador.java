@@ -28,12 +28,12 @@ import model.Sesion;
 import model.Usuario;
 
 public class controlEstadisticasEntrenador {
-	
+
 	private Entrenador user;
-	
+
 	@FXML
 	private Button botonSeleccionar;
-	
+
 	@FXML
     private Button botonBuscar;
 
@@ -72,8 +72,8 @@ public class controlEstadisticasEntrenador {
 
 
     ArrayList<Deportista> deportistaArray;
-    
-    
+
+
     @FXML
     void volver(ActionEvent event) {
     	try {
@@ -87,13 +87,13 @@ public class controlEstadisticasEntrenador {
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Entrenador");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
     }
-    
+
     @FXML
     void buscar(ActionEvent event) {
     	colDeportista.setCellValueFactory(new PropertyValueFactory<Deportista,String>("name"));
@@ -116,7 +116,7 @@ public class controlEstadisticasEntrenador {
 			Stage stageActual = (Stage) buttonChatEntrenador.getScene().getWindow();
 			stageActual.setTitle("gO2theTop - Chat");
 
-			stageActual.setScene(new Scene(root));
+			stageActual.setScene(new Scene(root, buttonChatEntrenador.getScene().getWidth(), buttonChatEntrenador.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
@@ -125,9 +125,9 @@ public class controlEstadisticasEntrenador {
 
     @FXML
     void verEstadisticas(ActionEvent event) {
-   
+
     }
-    
+
     @FXML
     void seleccionar(ActionEvent event) {
     	if (tablaEntrenador.getSelectionModel().getSelectedItem() != null) {
@@ -142,16 +142,16 @@ public class controlEstadisticasEntrenador {
 				Stage stage = (Stage) botonVolver.getScene().getWindow();
 				stage.setTitle("gO2theTop - Seleccion de sesion");
 
-				stage.setScene(new Scene(root));
+				stage.setScene(new Scene(root, buttonVerEstadisticas.getScene().getWidth(), buttonVerEstadisticas.getScene().getHeight()));
 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
     }
-    
+
     private void inicializarTabla(Usuario user) {
-    	 
+
 		colDeportista.setCellValueFactory(new PropertyValueFactory<Deportista,String>("name"));
 		colApellido.setCellValueFactory(new PropertyValueFactory<Deportista,String>("lastnames"));
 		colEmail.setCellValueFactory(new PropertyValueFactory<Deportista,String>("email"));
@@ -161,7 +161,7 @@ public class controlEstadisticasEntrenador {
 		tablaEntrenador.setItems(observableList(user));
 
 	}
-  
+
     public ObservableList<Deportista> observableList(String dni) {
 		ObservableList<Deportista> users = FXCollections.observableArrayList();
 		Gson gson = new Gson();
@@ -193,7 +193,7 @@ public class controlEstadisticasEntrenador {
         Gson gson = new Gson();
         Deportista dep = null;
     	String fichero = "", entrenID, deporID="";
-    	
+
     	try (BufferedReader br = new BufferedReader(new FileReader("src/files/enlaces.jsonl"))) {
 
     	    String linea;
@@ -203,10 +203,10 @@ public class controlEstadisticasEntrenador {
     	        Properties properties = gson.fromJson(fichero, Properties.class);
 
         	    entrenID=(String) properties.get("entrenadorID");
-        	    
+
         	    System.out.println(entrenID);
         	    System.out.println(user.getUserId());
-        	    
+
             	if(user.getUserId().equals(entrenID)) {
             		deporID= (String) properties.get("deportistaID");
             		dep = new ficheros().leerDeportista("src/files/deportistas/" + deporID + ".jsonl");
@@ -219,11 +219,11 @@ public class controlEstadisticasEntrenador {
     	} catch (IOException ex) {
     	    System.out.println(ex.getMessage());
     	}
-  
-        
+
+
         return deportistas;
     }
-    
+
     public void setUsuario(Entrenador u) {
     	user = u;
     	if(u.getGenre().equals("hombre")){
@@ -231,7 +231,7 @@ public class controlEstadisticasEntrenador {
     	}else if(u.getGenre().equals("mujer")) {
     		nombreUser.setText("Bienvenida " + u.getName());
     	}
-    	
+
     	this.inicializarTabla(u);
 
     }

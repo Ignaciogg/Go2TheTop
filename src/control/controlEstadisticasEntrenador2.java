@@ -19,13 +19,12 @@ import model.Mensaje;
 import model.Sesion;
 
 public class controlEstadisticasEntrenador2 {
-	
+
 	private Sesion sesioncita;
 
 	private Deportista user;
-	
-	private Entrenador mister;
 
+	private Entrenador mister;
 
     @FXML
     private Button botonVolver;
@@ -44,7 +43,7 @@ public class controlEstadisticasEntrenador2 {
 
     @FXML
     private LineChart<?, ?> grafica;
-    
+
     @FXML
     private TextField textoFeedback;
 
@@ -89,7 +88,7 @@ public class controlEstadisticasEntrenador2 {
 
     @FXML
     void verMapa(ActionEvent event) {
-    	
+
     }
 
     @FXML
@@ -107,14 +106,14 @@ public class controlEstadisticasEntrenador2 {
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Entrenador");
 
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
 		}
 
     }
-    
+
     public void setUsuario(Deportista u, Sesion sesion, Entrenador mis) {
     	user = u;
     	sesioncita = sesion;

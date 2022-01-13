@@ -45,7 +45,7 @@ public class controlLogin {
 
 					stage.setTitle("gO2theTop - Administrador");
 
-					stage.setScene(new Scene(root));
+					stage.setScene(new Scene(root, botonLogin.getScene().getWidth(), botonLogin.getScene().getHeight()));
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -63,7 +63,7 @@ public class controlLogin {
 					Stage stage = (Stage) botonLogin.getScene().getWindow();
 
 					stage.setTitle("gO2theTop - Deportista");
-					stage.setScene(new Scene(root));
+					stage.setScene(new Scene(root, botonLogin.getScene().getWidth(), botonLogin.getScene().getHeight()));
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -82,7 +82,7 @@ public class controlLogin {
 
 					stage.setTitle("gO2theTop - Entrenador");
 
-					stage.setScene(new Scene(root));
+					stage.setScene(new Scene(root, botonLogin.getScene().getWidth(), botonLogin.getScene().getHeight()));
 
 				} catch (Exception e) {
 					e.printStackTrace();
