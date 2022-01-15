@@ -54,7 +54,7 @@
                   </Text>
                   <RadioButton fx:id="frecuencia" mnemonicParsing="false" onAction="#mostrarFrecuencia" selected="true" text="Frec. cardíaca" textFill="WHITE">
                      <font>
-                        <Font size="10.0" />
+                        <Font size="17.0" />
                      </font>
                      <toggleGroup>
                         <ToggleGroup fx:id="grafica2" />
@@ -65,7 +65,7 @@
                   </RadioButton>
                   <RadioButton fx:id="nivelo2" mnemonicParsing="false" onAction="#mostrarNivelO2" text="Nivel O2" textFill="WHITE" toggleGroup="$grafica2">
                      <font>
-                        <Font size="10.0" />
+                        <Font size="17.0" />
                      </font>
                      <VBox.margin>
                         <Insets bottom="20.0" />
