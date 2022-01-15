@@ -26,6 +26,9 @@
                                  <image>
                                     <Image url="@../../recursos/logo.jpeg" />
                                  </image>
+                                 <VBox.margin>
+                                    <Insets left="75.0" />
+                                 </VBox.margin>
                               </ImageView>
                               <Text fx:id="bienvenide" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenida" wrappingWidth="215.6708984375">
                                  <font>
@@ -35,23 +38,7 @@
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </Text>
-                              <Button fx:id="botonAniadir" mnemonicParsing="false" onAction="#aniadirUsuario" style="-fx-background-color: black;" text="Añadir nuevo usuario" textAlignment="CENTER" textFill="WHITE">
-                                 <VBox.margin>
-                                    <Insets left="40.0" top="30.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="botonBorrar" mnemonicParsing="false" onAction="#borrarUsuario" style="-fx-background-color: black;" text="Borrar usuario" textFill="WHITE">
-                                 <VBox.margin>
-                                    <Insets left="60.0" top="30.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="botonEnlazar" mnemonicParsing="false" onAction="#enlazarUsuarios" style="-fx-background-color: black;" text="Enlazar entrenador-deportista" textFill="WHITE">
+                              <Button fx:id="botonAniadir" minHeight="31.0" minWidth="232.0" mnemonicParsing="false" onAction="#aniadirUsuario" prefHeight="31.0" prefWidth="232.0" style="-fx-background-color: black;" text="Añadir nuevo usuario" textAlignment="CENTER" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets left="15.0" top="30.0" />
                                  </VBox.margin>
@@ -59,12 +46,28 @@
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="botonModificar" mnemonicParsing="false" onAction="#modificarUsuario" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: black;" text="Modificar usuario" textAlignment="CENTER" textFill="WHITE">
+                              <Button fx:id="botonBorrar" minHeight="31.0" minWidth="232.0" mnemonicParsing="false" onAction="#borrarUsuario" prefHeight="31.0" prefWidth="232.0" style="-fx-background-color: black;" text="Borrar usuario" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets left="15.0" top="30.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="botonEnlazar" minHeight="31.0" minWidth="232.0" mnemonicParsing="false" onAction="#enlazarUsuarios" prefHeight="31.0" prefWidth="232.0" style="-fx-background-color: black;" text="Enlazar entrenador-deportista" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets left="15.0" top="30.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="botonModificar" minHeight="31.0" minWidth="232.0" mnemonicParsing="false" onAction="#modificarUsuario" prefHeight="31.0" prefWidth="232.0" style="-fx-background-color: black;" text="Modificar usuario" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets left="50.0" top="30.0" />
+                                    <Insets left="15.0" top="30.0" />
                                  </VBox.margin>
                               </Button>
                            </children>
