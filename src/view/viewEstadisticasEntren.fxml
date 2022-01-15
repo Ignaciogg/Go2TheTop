@@ -50,7 +50,15 @@
                                     </JFXTextField>
                                     <Button fx:id="buttonChatEntrenador" mnemonicParsing="false" onAction="#chatEntrenador" prefHeight="31.0" prefWidth="137.0" style="-fx-background-color: black;" text="Chat deportista" textFill="WHITE">
                                        <VBox.margin>
-                                          <Insets bottom="100.0" top="25.0" />
+                                          <Insets top="25.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="botonSeleccionar" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#seleccionar" style="-fx-background-color: black;" text="Ver Estadísticas" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
                                        </VBox.margin>
                                        <font>
                                           <Font name="System Bold" size="15.0" />
@@ -87,14 +95,6 @@
                                                 <TableColumn fx:id="colAltura" text="Altura" />
                                              </columns>
                                           </TableView>
-                                          <Button fx:id="botonSeleccionar" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#seleccionar" text="Seleccionar">
-                                             <VBox.margin>
-                                                <Insets top="20.0" />
-                                             </VBox.margin>
-                                             <font>
-                                                <Font name="System Bold" size="15.0" />
-                                             </font>
-                                          </Button>
                                        </children>
                                        <VBox.margin>
                                           <Insets />
@@ -103,16 +103,6 @@
                                  </children>
                               </VBox>
                            </center>
-                           <top>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ver Estadisticas" BorderPane.alignment="CENTER">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                                 <BorderPane.margin>
-                                    <Insets top="25.0" />
-                                 </BorderPane.margin>
-                              </Text>
-                           </top>
                         </BorderPane>
                      </children>
                   </AnchorPane>

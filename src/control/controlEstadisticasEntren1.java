@@ -47,6 +47,29 @@ public class controlEstadisticasEntren1 {
     private Button botonSeleccionar;
 
     @FXML
+    private Button buttonChatEntrenador;
+
+
+    @FXML
+    void chatEntrenador(ActionEvent event) {
+    	System.out.println("VER CHAT");
+    	try {
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewChatEntrenador.fxml"));
+			controlChatEntrenador controlChatEntren = new controlChatEntrenador();
+			loader.setController(controlChatEntren);
+			Parent root = loader.load();
+			controlChatEntren.setUsuario(user);
+			Stage stage = (Stage) buttonChatEntrenador.getScene().getWindow();
+			stage.setTitle("gO2theTop - Chat");
+			stage.setScene(new Scene(root, buttonChatEntrenador.getScene().getWidth(), buttonChatEntrenador.getScene().getHeight()));
+
+        }catch (Exception e) {
+			e.printStackTrace();
+		}
+
+    }
+
+    @FXML
     void seleccionar(ActionEvent event) {
     	if(tableSesiones.getSelectionModel().getSelectedItem() != null) {
     		try {

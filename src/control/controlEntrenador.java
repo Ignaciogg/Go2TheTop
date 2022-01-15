@@ -25,10 +25,7 @@ public class controlEntrenador {
     private Button botonCerrarSesion;
 
     @FXML
-    private Button buttonVerEstadisticas;
-
-    @FXML
-    private Button buttonChatEntrenador;
+    private Button botonSeleccionar;
 
     @FXML
     private JFXTextField nameEntrenador;
@@ -41,9 +38,6 @@ public class controlEntrenador {
 
     @FXML
     private ImageView fotoMister;
-
-
-
 
     @FXML
     void cerrarSesion(ActionEvent event) {
@@ -65,27 +59,9 @@ public class controlEntrenador {
 
 	    }
 
-    @FXML
-    void chatEntrenador(ActionEvent event) {
-    	System.out.println("VER CHAT");
-    	try {
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewChatEntrenador.fxml"));
-			controlChatEntrenador controlChatEntren = new controlChatEntrenador();
-			loader.setController(controlChatEntren);
-			Parent root = loader.load();
-			controlChatEntren.setUsuario(user);
-			Stage stage = (Stage) buttonChatEntrenador.getScene().getWindow();
-			stage.setTitle("gO2theTop - Chat");
-			stage.setScene(new Scene(root, buttonChatEntrenador.getScene().getWidth(), buttonChatEntrenador.getScene().getHeight()));
-
-        }catch (Exception e) {
-			e.printStackTrace();
-		}
-
-    }
 
     @FXML
-    void verEstadisticas(ActionEvent event) {
+    void seleccionar(ActionEvent event) {
     	try {
 
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren.fxml"));
@@ -94,19 +70,16 @@ public class controlEntrenador {
 			Parent root = loader.load();
 			controlEstadisticasEntren.setUsuario(user);
 
-			Stage stage = (Stage) buttonVerEstadisticas.getScene().getWindow();
+			Stage stage = (Stage) botonSeleccionar.getScene().getWindow();
 			stage.setTitle("gO2theTop - VerEstadisticasEntrenador");
 
-			stage.setScene(new Scene(root, buttonVerEstadisticas.getScene().getWidth(), buttonVerEstadisticas.getScene().getHeight()));
+			stage.setScene(new Scene(root, botonSeleccionar.getScene().getWidth(), botonSeleccionar.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
 		}
 
-
     }
-
-
 
     public void setUsuario(Entrenador u) {
     	user = u;
