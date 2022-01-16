@@ -13,12 +13,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Deportista;
 import model.Entrenador;
 import model.Mensaje;
 
 public class controlChatEntrenador {
 
 	Entrenador mister;
+	Deportista deportista;
 
     @FXML
     private Button botonVolver;
@@ -39,7 +41,7 @@ public class controlChatEntrenador {
 
     	chatBox.clear();
     	ficheros fichero = new ficheros();
-    	String ruta = "src/files/chats/"+ mister.getUserId() +".jsonl";
+    	String ruta = "src/files/chats/"+ deportista.getUserId() +".jsonl";
     	ArrayList <Mensaje> miChat = fichero.leerChat(ruta);
 
     	for(int i = 0; i < miChat.size(); i++){
@@ -53,7 +55,7 @@ public class controlChatEntrenador {
     void enviar(ActionEvent event) {
 
     	ficheros fichero = new ficheros();
-    	fichero.escribirChat(new Mensaje (mister.getName(), textoMensaje.getText()), ("src/files/chats/"+ mister.getUserId() +".jsonl"));
+    	fichero.escribirChat(new Mensaje (mister.getName(), textoMensaje.getText()), ("src/files/chats/"+ deportista.getUserId() +".jsonl"));
     	cargarChat();
     }
 
@@ -78,9 +80,12 @@ public class controlChatEntrenador {
 		}
     }
 
-	public void setUsuario(Entrenador user) {
+	public void setUsuario(Entrenador user, Deportista depor) {
 		mister = user;
-		entren.setText("Chat de " + mister.getName());
+		deportista = depor;
+		String texto = "Chat de " + mister.getName() + " y " + deportista.getName();
+		System.out.println(texto);
+		entren.setText(texto);
 		cargarChat();
 	}
 }

@@ -56,7 +56,7 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="botonSeleccionar" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#seleccionar" style="-fx-background-color: black;" text="Ver Estadísticas" textFill="WHITE">
+                                    <Button fx:id="botonSeleccionar" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#verEstadisticas" style="-fx-background-color: black;" text="Ver Estadísticas" textFill="WHITE">
                                        <VBox.margin>
                                           <Insets top="20.0" />
                                        </VBox.margin>

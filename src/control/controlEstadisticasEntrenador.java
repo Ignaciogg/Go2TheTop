@@ -107,29 +107,30 @@ public class controlEstadisticasEntrenador {
     @FXML
     void chatEntrenador(ActionEvent event) {
     	System.out.println("VER CHAT");
-    	try {
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewChatEntrenador.fxml"));
-			controlChatEntrenador controlChatEntren = new controlChatEntrenador();
-			loader.setController(controlChatEntren);
-			Parent root = loader.load();
-			controlChatEntren.setUsuario(user);
-			Stage stageActual = (Stage) buttonChatEntrenador.getScene().getWindow();
-			stageActual.setTitle("gO2theTop - Chat");
-
-			stageActual.setScene(new Scene(root, buttonChatEntrenador.getScene().getWidth(), buttonChatEntrenador.getScene().getHeight()));
-
-        }catch (Exception e) {
-			e.printStackTrace();
-		}
+    	if (tablaEntrenador.getSelectionModel().getSelectedItem() != null) {
+			try {
+		    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewChatEntrenador.fxml"));
+				controlChatEntrenador controlChatEntren = new controlChatEntrenador();
+				Deportista deportista= new ficheros().leerDeportista("src/files/deportistas/" + tablaEntrenador.getSelectionModel().getSelectedItem().getUserId() + ".jsonl");
+				
+				loader.setController(controlChatEntren);
+				
+				controlChatEntren.setUsuario(user, deportista);
+				
+				Parent root = loader.load();
+				Stage stageActual = (Stage) buttonChatEntrenador.getScene().getWindow();
+				stageActual.setTitle("gO2theTop - Chat");
+		
+				stageActual.setScene(new Scene(root, buttonChatEntrenador.getScene().getWidth(), buttonChatEntrenador.getScene().getHeight()));
+		
+		    }catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}
     }
 
     @FXML
     void verEstadisticas(ActionEvent event) {
-
-    }
-
-    @FXML
-    void seleccionar(ActionEvent event) {
     	if (tablaEntrenador.getSelectionModel().getSelectedItem() != null) {
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren1.fxml"));
@@ -147,7 +148,7 @@ public class controlEstadisticasEntrenador {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
+    	}
     }
 
     private void inicializarTabla(Usuario user) {
