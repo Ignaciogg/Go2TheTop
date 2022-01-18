@@ -22,7 +22,7 @@ public class controlChatEntrenador {
 	Entrenador mister;
 	Deportista deportista;
 
-    @FXML
+	@FXML
     private Button botonVolver;
 
     @FXML
@@ -37,6 +37,7 @@ public class controlChatEntrenador {
     @FXML
     private Button botonEnviar;
 
+ 
     void cargarChat(){
 
     	chatBox.clear();
@@ -50,7 +51,7 @@ public class controlChatEntrenador {
     	}
 
     }
-
+    
     @FXML
     void enviar(ActionEvent event) {
 

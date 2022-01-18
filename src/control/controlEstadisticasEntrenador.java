@@ -114,10 +114,9 @@ public class controlEstadisticasEntrenador {
 				Deportista deportista= new ficheros().leerDeportista("src/files/deportistas/" + tablaEntrenador.getSelectionModel().getSelectedItem().getUserId() + ".jsonl");
 				
 				loader.setController(controlChatEntren);
-				
+				Parent root = loader.load();
 				controlChatEntren.setUsuario(user, deportista);
 				
-				Parent root = loader.load();
 				Stage stageActual = (Stage) buttonChatEntrenador.getScene().getWindow();
 				stageActual.setTitle("gO2theTop - Chat");
 		
