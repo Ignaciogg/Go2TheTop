@@ -120,9 +120,9 @@ public class controlDeportista {
 
 	public void setUsuario(Deportista u) {
 		user = u;
-    	if(u.getGenre().equals("hombre")){
+    	if(u.getGenre().equals("hombre") || u.getGenre().equals("masculino")){
     		bienvenide.setText("Bienvenido " + u.getName());
-    	}else if(u.getGenre().equals("mujer")) {
+    	}else if(u.getGenre().equals("mujer") || u.getGenre().equals("femenino")) {
     		bienvenide.setText("Bienvenida " + u.getName());
     	}
 

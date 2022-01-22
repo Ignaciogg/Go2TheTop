@@ -198,7 +198,11 @@ public class controlAdmin {
 
     public void setUsuario(Administrador u) {
     	user = u;
-    	bienvenide.setText("Bienvenide " + user.getName());
+    	if(u.getGenre().equals("hombre") || u.getGenre().equals("masculino")){
+    		bienvenide.setText("Bienvenido " + u.getName());
+    	}else if(u.getGenre().equals("mujer") || u.getGenre().equals("femenino")) {
+    		bienvenide.setText("Bienvenida " + u.getName());
+    	}
     	this.inicializarTabla();
 
     }

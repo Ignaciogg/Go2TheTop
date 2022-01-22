@@ -83,9 +83,9 @@ public class controlEntrenador {
 
     public void setUsuario(Entrenador u) {
     	user = u;
-    	if(u.getGenre().equals("hombre")){
+    	if(u.getGenre().equals("hombre") || u.getGenre().equals("masculino")){
     		nombreUser.setText("Bienvenido " + u.getName());
-    	}else if(u.getGenre().equals("mujer")) {
+    	}else if(u.getGenre().equals("mujer") || u.getGenre().equals("femenino")) {
     		nombreUser.setText("Bienvenida " + u.getName());
     	}
 

@@ -58,7 +58,7 @@ public class controlEstadisticasEntren1 {
 			controlChatEntrenador controlChatEntren = new controlChatEntrenador();
 			loader.setController(controlChatEntren);
 			Parent root = loader.load();
-			controlChatEntren.setUsuario(user);
+			controlChatEntren.setUsuario(mister, user);
 			Stage stage = (Stage) buttonChatEntrenador.getScene().getWindow();
 			stage.setTitle("gO2theTop - Chat");
 			stage.setScene(new Scene(root, buttonChatEntrenador.getScene().getWidth(), buttonChatEntrenador.getScene().getHeight()));

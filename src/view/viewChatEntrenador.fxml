@@ -79,7 +79,7 @@
                            </VBox.margin>
                         </TextArea>
                         <TextFlow prefHeight="118.0" prefWidth="253.0" />
-                        <TextField fx:id="textoMensaje" alignment="CENTER" prefHeight="25.0" prefWidth="382.0" promptText="¿Qué desea decirle a su entrenador?">
+                        <TextField fx:id="textoMensaje" alignment="CENTER" prefHeight="25.0" prefWidth="382.0" promptText="¿Qué desea decirle a su deportista?">
                            <VBox.margin>
                               <Insets bottom="15.0" left="40.0" right="40.0" />
                            </VBox.margin>
