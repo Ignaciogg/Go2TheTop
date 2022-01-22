@@ -98,7 +98,21 @@ public class controlEstadisticasEntrenador2 {
 
     @FXML
     void verMapa(ActionEvent event) {
+    	try {
 
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Mapa.fxml"));
+        	controlMapa controlEntren = new controlMapa();
+			loader.setController(controlEntren);
+			Parent root = loader.load();
+
+			Stage stage = (Stage) buttonMapa.getScene().getWindow();
+			stage.setTitle("gO2theTop - Mapa");
+
+			stage.setScene(new Scene(root, buttonMapa.getScene().getWidth(), buttonMapa.getScene().getHeight()));
+
+        }catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
