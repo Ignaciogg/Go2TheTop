@@ -189,17 +189,50 @@ public class ficheros {
 		}
 	}
 	
-	public void escribirFeedback(Sesion feedback, String ruta) {
+	public boolean escribirFeedback(Sesion feedback, String ruta, String mensaje) {
 		Gson gson = new Gson();
+		File ficheroViejo = new File(ruta);
+		File ficheroNuevo = new File("src/files/sesiones/buffer.jsonl");
+		Sesion sesion = null;
+		
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, true));
-			bw.newLine();
-			bw.append(gson.toJson(feedback));
-			bw.flush();
+			BufferedReader br = new BufferedReader(new FileReader(ficheroViejo));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(ficheroNuevo, true));
+
+			String linea;
+			while ((linea = br.readLine()) != null) {
+				sesion = gson.fromJson(linea, Sesion.class);
+				if (!sesion.getFecha().equals(feedback.getFecha())) {
+					bw.append(gson.toJson(sesion));
+					bw.flush();
+					bw.newLine();
+				}else {
+					sesion.setFeedback(mensaje);
+					bw.append(gson.toJson(sesion));
+					bw.flush();
+					bw.newLine();
+				}
+			}
+			br.close();
 			bw.close();
+			System.out.println("fichero viejo duplicado");
+			if (ficheroViejo.delete()) { // Aqui­ deberia eliminar el original
+				System.out.println("fichero viejo eliminado");
+				File renombrar = new File(ruta);
+				if (ficheroNuevo.renameTo(renombrar)) { // Aqui deberia renombrarlo al nombre original
+					System.out.println("fichero renombrado");
+					return true;
+				} else {
+					System.out.println("error al renombrar fichero");
+				}
+			} else {
+				System.out.println("error al eliminar fichero");
+			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(e);
 		}
+		return false;
+		
 	}
 
 	public ArrayList<Mensaje> leerChat(String ruta) {
