@@ -31,6 +31,9 @@ public class controlEstadisticasEntrenador2 {
 
     @FXML
     private Button buttonMapa;
+    
+    @FXML
+    private Button enviarfedback;
 
     @FXML
     private RadioButton frecuencia;
@@ -56,6 +59,7 @@ public class controlEstadisticasEntrenador2 {
     	try {
 
     		feedback = textoFeedback.getText();
+    		System.out.println(feedback);
     		ficheros fichero = new ficheros();
         	fichero.escribirFeedback(sesioncita, ("src/files/sesiones/"+ user.getUserId() +".jsonl"), feedback);
 
@@ -139,6 +143,10 @@ public class controlEstadisticasEntrenador2 {
     public void setUsuario(Deportista u, Sesion sesion, Entrenador mis) {
     	user = u;
     	sesioncita = sesion;
+    	if(!sesioncita.getFeedback().equals("")) {
+    		textoFeedback.setText(sesioncita.getFeedback());
+    	}
+    	
     	mister=mis;
 
     }

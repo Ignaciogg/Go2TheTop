@@ -135,6 +135,7 @@ public class controlEstadisticas2 implements Initializable{
     	sesioncita = sesion;
 
     	if(!sesion.getFeedback().equals("")){
+    		System.out.print(sesion.getFeedback());
     		textoFeedback.setText(sesion.getFeedback());
     	}
     }
