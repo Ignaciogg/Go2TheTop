@@ -20,7 +20,7 @@
                      <top>
                         <ImageView fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                            <image>
-                              <Image url="@../../recursos/logo.jpeg" />
+                              <Image url="@../logo.jpeg" />
                            </image>
                            <BorderPane.margin>
                               <Insets right="125.0" />

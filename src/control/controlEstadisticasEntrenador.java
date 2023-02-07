@@ -9,6 +9,7 @@ import java.util.Properties;
 import com.google.gson.Gson;
 import com.jfoenix.controls.JFXTextField;
 
+import application.BBDD;
 import application.ficheros;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,50 +33,34 @@ public class controlEstadisticasEntrenador {
 	private Entrenador user;
 
 	@FXML
-	private Button botonSeleccionar;
+	private Button botonVolver;
 
 	@FXML
-    private Button botonBuscar;
+	private Button buttonChatEntrenador;
+
+	@FXML
+	private Button buttonVerEstadisticas;
+
+	@FXML
+	private TableView<Deportista> tablaEntrenador;
+
+	@FXML
+	private TableColumn<Deportista, String> colDeportista;
+
+	@FXML
+	private TableColumn<Deportista, String> colApellido;
+
+	@FXML
+	private TableColumn<Deportista, String> colEmail;
+
+	@FXML
+	private TableColumn<Deportista, Float> colPeso;
+
+	@FXML
+	private TableColumn<Deportista, Float> colAltura;
 
     @FXML
-    private Button botonVolver;
-
-    @FXML
-    private JFXTextField nombreUser;
-
-    @FXML
-    private Button buttonVerEstadisticas;
-
-    @FXML
-    private Button buttonChatEntrenador;
-
-    @FXML
-    private JFXTextField textfielUser;
-
-    @FXML
-    private TableView<Deportista> tablaEntrenador;
-
-    @FXML
-    private TableColumn<Deportista, String> colDeportista;
-
-    @FXML
-    private TableColumn<Deportista, String> colApellido;
-
-    @FXML
-    private TableColumn<Deportista, String> colEmail;
-
-    @FXML
-    private TableColumn<Deportista, String> colPeso;
-
-    @FXML
-    private TableColumn<Deportista, String> colAltura;
-
-
-    ArrayList<Deportista> deportistaArray;
-
-
-    @FXML
-    void volver(ActionEvent event) {
+    void volverEntrenador(ActionEvent event) {
     	try {
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntren.fxml"));
@@ -94,15 +79,6 @@ public class controlEstadisticasEntrenador {
 		}
     }
 
-    @FXML
-    void buscar(ActionEvent event) {
-    	colDeportista.setCellValueFactory(new PropertyValueFactory<Deportista,String>("name"));
-		colApellido.setCellValueFactory(new PropertyValueFactory<Deportista,String>("lastnames"));
-		colEmail.setCellValueFactory(new PropertyValueFactory<Deportista,String>("email"));
-		colPeso.setCellValueFactory(new PropertyValueFactory<Deportista,String>("peso"));
-		colAltura.setCellValueFactory(new PropertyValueFactory<Deportista,String>("altura"));
-		tablaEntrenador.setItems(observableList(textfielUser.getText()));
-    }
 
     @FXML
     void chatEntrenador(ActionEvent event) {
@@ -111,17 +87,17 @@ public class controlEstadisticasEntrenador {
 			try {
 		    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewChatEntrenador.fxml"));
 				controlChatEntrenador controlChatEntren = new controlChatEntrenador();
-				Deportista deportista= new ficheros().leerDeportista("src/files/deportistas/" + tablaEntrenador.getSelectionModel().getSelectedItem().getUserId() + ".jsonl");
-				
 				loader.setController(controlChatEntren);
 				Parent root = loader.load();
-				controlChatEntren.setUsuario(user, deportista);
-				
+
+				Deportista depor = tablaEntrenador.getSelectionModel().getSelectedItem();
+				controlChatEntren.setUsuario(user,depor);
+
 				Stage stageActual = (Stage) buttonChatEntrenador.getScene().getWindow();
 				stageActual.setTitle("gO2theTop - Chat");
-		
+
 				stageActual.setScene(new Scene(root, buttonChatEntrenador.getScene().getWidth(), buttonChatEntrenador.getScene().getHeight()));
-		
+
 		    }catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -133,16 +109,17 @@ public class controlEstadisticasEntrenador {
     	if (tablaEntrenador.getSelectionModel().getSelectedItem() != null) {
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren1.fxml"));
-				controlEstadisticasEntren1 controlEstadisticasEntren = new controlEstadisticasEntren1();
+				controlEstadisticasEntrenador1 controlEstadisticasEntren = new controlEstadisticasEntrenador1();
 				loader.setController(controlEstadisticasEntren);
 				Parent root = loader.load();
-				Deportista deportista= new ficheros().leerDeportista("src/files/deportistas/" + tablaEntrenador.getSelectionModel().getSelectedItem().getUserId() + ".jsonl");
-				controlEstadisticasEntren.setUsuario(deportista,user);
+
+				Deportista depor = tablaEntrenador.getSelectionModel().getSelectedItem();
+				controlEstadisticasEntren.setUsuario(depor,user);
 
 				Stage stage = (Stage) botonVolver.getScene().getWindow();
 				stage.setTitle("gO2theTop - Seleccion de sesion");
 
-				stage.setScene(new Scene(root, botonSeleccionar.getScene().getWidth(), botonSeleccionar.getScene().getHeight()));
+				stage.setScene(new Scene(root, buttonVerEstadisticas.getScene().getWidth(), buttonVerEstadisticas.getScene().getHeight()));
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -150,89 +127,21 @@ public class controlEstadisticasEntrenador {
     	}
     }
 
-    private void inicializarTabla(Usuario user) {
+    public void inicializarTabla() {
+		BBDD bd = new BBDD();
+		colDeportista.setCellValueFactory(new PropertyValueFactory<Deportista, String>("Name"));
+		colApellido.setCellValueFactory(new PropertyValueFactory<Deportista, String>("Lastnames"));
+		colEmail.setCellValueFactory(new PropertyValueFactory<Deportista, String>("Email"));
+		colPeso.setCellValueFactory(new PropertyValueFactory<Deportista, Float>("Peso"));
+		colAltura.setCellValueFactory(new PropertyValueFactory<Deportista, Float>("Altura"));
 
-		colDeportista.setCellValueFactory(new PropertyValueFactory<Deportista,String>("name"));
-		colApellido.setCellValueFactory(new PropertyValueFactory<Deportista,String>("lastnames"));
-		colEmail.setCellValueFactory(new PropertyValueFactory<Deportista,String>("email"));
-		colPeso.setCellValueFactory(new PropertyValueFactory<Deportista,String>("peso"));
-		colAltura.setCellValueFactory(new PropertyValueFactory<Deportista,String>("altura"));
-
-		tablaEntrenador.setItems(observableList(user));
-
+		tablaEntrenador.setItems(bd.observableListEntrenador(user));
 	}
-
-    public ObservableList<Deportista> observableList(String dni) {
-		ObservableList<Deportista> users = FXCollections.observableArrayList();
-		Gson gson = new Gson();
-		Usuario user = null;
-		ficheros files = new ficheros();
-		try (BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"))) {
-
-			String linea;
-			while ((linea = br.readLine()) != null) {
-				user = gson.fromJson(linea, Usuario.class);
-				if (user.getUserType().equalsIgnoreCase("Deportista")) {
-					if (user.getUserId().equalsIgnoreCase(dni)) {
-						users.add(files.leerDeportista("src/files/Deportistas/" + user.getUserId() + ".jsonl"));
-					}
-				}
-			}
-
-		} catch (FileNotFoundException ex) {
-			System.out.println(ex.getMessage());
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
-		}
-
-		return users;
-	}
-
-    public ObservableList<Deportista> observableList(Usuario user){
-        ObservableList<Deportista> deportistas = FXCollections.observableArrayList();
-        Gson gson = new Gson();
-        Deportista dep = null;
-    	String fichero = "", entrenID, deporID="";
-
-    	try (BufferedReader br = new BufferedReader(new FileReader("src/files/enlaces.jsonl"))) {
-
-    	    String linea;
-    	    while ((linea = br.readLine()) != null) {
-    	        fichero = linea;
-    	        System.out.println(fichero);
-    	        Properties properties = gson.fromJson(fichero, Properties.class);
-
-        	    entrenID=(String) properties.get("entrenadorID");
-
-        	    System.out.println(entrenID);
-        	    System.out.println(user.getUserId());
-
-            	if(user.getUserId().equals(entrenID)) {
-            		deporID= (String) properties.get("deportistaID");
-            		dep = new ficheros().leerDeportista("src/files/deportistas/" + deporID + ".jsonl");
-                    deportistas.add(dep);
-            	}
-    	    }
-
-    	} catch (FileNotFoundException ex) {
-    	    System.out.println(ex.getMessage());
-    	} catch (IOException ex) {
-    	    System.out.println(ex.getMessage());
-    	}
-
-
-        return deportistas;
-    }
 
     public void setUsuario(Entrenador u) {
-    	user = u;
-    	if(u.getGenre().equals("hombre")){
-    		nombreUser.setText("Bienvenido " + u.getName());
-    	}else if(u.getGenre().equals("mujer")) {
-    		nombreUser.setText("Bienvenida " + u.getName());
-    	}
 
-    	this.inicializarTabla(u);
+    	user = u;
+    	this.inicializarTabla();
 
     }
 

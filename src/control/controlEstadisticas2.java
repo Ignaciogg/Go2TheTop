@@ -1,17 +1,13 @@
 package control;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.Labeled;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import com.google.gson.Gson;
-
+import application.BBDD;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,71 +17,142 @@ import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.DatosSensores;
 import model.Deportista;
 import model.Sesion;
 import model.Usuario;
 
-public class controlEstadisticas2 implements Initializable{
+public class controlEstadisticas2{
 
-	private Sesion sesioncita;
+	private Sesion sesion;
 
 	private Deportista user;
 
-	@FXML
-    private Button botonVolver;
+	 @FXML
+	 private Button botonVolver;
+
+	 @FXML
+	 private LineChart<DatosSensores, String> graficaFrec;
+
+	 @FXML
+	 private LineChart<DatosSensores, String> graficaO2;
+
+	 @FXML
+	 private LineChart<DatosSensores, String> graficaVel;
+
+	 @FXML
+	 private Text frecMax;
+
+	 @FXML
+	 private Text frecMed;
+
+	 @FXML
+	 private Text o2Max;
+
+	 @FXML
+	 private Text o2Med;
+
+	 @FXML
+	 private Text velMax;
+
+	 @FXML
+	 private Text velMed;
+
+	 @FXML
+	 private TextField textoFeedback;
 
 	@FXML
-    private Button buttonMapa;
+	 private TextField textoFmax;
 
-    @FXML
-    private ToggleGroup grafica2;
+	@FXML
+	 private TextField textoFmedia;
 
-    @FXML
-    private TextField textoFeedback;
+	@FXML
+	private TextField textoOmax;
 
-    @FXML
-    private RadioButton frecuencia;
+	@FXML
+	private TextField textoOmedio;
 
-    @FXML
-    private RadioButton nivelo2;
+	@FXML
+	private TextField textoVmax;
 
-    @FXML
-    private LineChart<?, ?> grafica;
+	@FXML
+	private TextField textoVmedia;
 
-    @FXML
-    void mostrarFrecuencia(ActionEvent event) throws FileNotFoundException {
-    	System.out.println("Mostrar Frecuencia");
-    	grafica.getData().clear();
+
+    void mostrarFrecuencia() {
 
     	XYChart.Series serie1 = new XYChart.Series();
-		serie1.getData().add(new XYChart.Data("1", sesioncita.getValorF1()));
-		serie1.getData().add(new XYChart.Data("2", sesioncita.getValorF2()));
-		serie1.getData().add(new XYChart.Data("3", sesioncita.getValorF3()));
-		serie1.getData().add(new XYChart.Data("4", sesioncita.getValorF4()));
+    	int max = 0;
+    	int media = 0;
 
-		serie1.setName("Frecuencia cardiaca");
-		grafica.getData().add(serie1);
+    	BBDD bd = new BBDD();
+    	ArrayList <DatosSensores> array = bd.obtenerDato(sesion.getId_Sesion(), "Frecuencia cardiaca");
+    	System.out.println(array.size());
+
+    	for(int i = 0; i<array.size(); i++){
+    		serie1.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i+1), Integer.parseInt(array.get(i).getValor())));
+    		if(Integer.parseInt(array.get(i).getValor()) > max) {
+				max = Integer.parseInt(array.get(i).getValor());
+			}
+    		media+= Integer.parseInt(array.get(i).getValor());
+    	}
+
+    	textoFmax.setText(Integer.toString(max));
+    	media = media/array.size();
+		textoFmedia.setText(Integer.toString(media));
+		graficaFrec.getData().add(serie1);
 
     }
 
-    @FXML
-    void mostrarNivelO2(ActionEvent event) {
-    	System.out.println("Mostrar Nivel O2");
-    	grafica.getData().clear();
+    void mostrarNivelO2() {
 
-    	XYChart.Series serie1 = new XYChart.Series();
-		serie1.getData().add(new XYChart.Data("1", sesioncita.getValorO1()));
-		serie1.getData().add(new XYChart.Data("2", sesioncita.getValorO2()));
-		serie1.getData().add(new XYChart.Data("3", sesioncita.getValorO3()));
-		serie1.getData().add(new XYChart.Data("4", sesioncita.getValorO4()));
+    	XYChart.Series serie2 = new XYChart.Series();
+    	int max = 0;
+    	int media = 0;
 
-		serie1.setName("Nivel de O2");
-		grafica.getData().add(serie1);
+    	BBDD bd = new BBDD();
+    	ArrayList <DatosSensores> array = bd.obtenerDato(sesion.getId_Sesion(), "Oxigeno");
+
+    	for(int i = 0; i<array.size(); i++){
+    		serie2.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i+1), Integer.parseInt(array.get(i).getValor())));
+    		if(Integer.parseInt(array.get(i).getValor()) > max) {
+				max = Integer.parseInt(array.get(i).getValor()) ;
+			}
+    		media+= Integer.parseInt(array.get(i).getValor());
+    	}
+
+    	textoOmax.setText(Integer.toString(max));
+    	media = media/array.size();
+		textoOmedio.setText(Integer.toString(media));
+		graficaO2.getData().add(serie2);
+    }
+
+    void mostrarVelocidad() {
+
+    	XYChart.Series serie3 = new XYChart.Series();
+    	int max = 0;
+    	int media = 0;
+
+    	BBDD bd = new BBDD();
+    	ArrayList <DatosSensores> array = bd.obtenerDato(sesion.getId_Sesion(), "Velocidad");
+
+    	for(int i = 0; i<array.size(); i++){
+    		serie3.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i+1), Integer.parseInt(array.get(i).getValor())));
+    		if(Integer.parseInt(array.get(i).getValor()) > max) {
+				max = Integer.parseInt(array.get(i).getValor()) ;
+			}
+    		media+= Integer.parseInt(array.get(i).getValor());
+    	}
+
+    	textoVmax.setText(Integer.toString(max));
+    	media = media/array.size();
+		textoVmedia.setText(Integer.toString(media));
+		graficaVel.getData().add(serie3);
     }
 
     @FXML
@@ -111,40 +178,17 @@ public class controlEstadisticas2 implements Initializable{
 
     }
 
-    @FXML
-    void verMapa(ActionEvent event) {
-    	try {
-
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Mapa.fxml"));
-        	controlMapa controlEntren = new controlMapa();
-			loader.setController(controlEntren);
-			Parent root = loader.load();
-
-			Stage stage = (Stage) buttonMapa.getScene().getWindow();
-			stage.setTitle("gO2theTop - Mapa");
-
-			stage.setScene(new Scene(root, buttonMapa.getScene().getWidth(), buttonMapa.getScene().getHeight()));
-
-        }catch (Exception e) {
-			e.printStackTrace();
-		}
-    }
-
-	public void setUsuario(Deportista u, Sesion sesion) {
+	public void setUsuario(Deportista u, Sesion sesion2) {
     	user = u;
-    	sesioncita = sesion;
+    	sesion = sesion2;
 
-    	if(!sesion.getFeedback().equals("")){
-    		System.out.print(sesion.getFeedback());
-    		textoFeedback.setText(sesion.getFeedback());
+    	if(!sesion2.getFeedback().equals("")){
+    		System.out.print(sesion2.getFeedback());
+    		textoFeedback.setText(sesion2.getFeedback());
     	}
+    	mostrarFrecuencia();
+    	mostrarNivelO2();
+    	mostrarVelocidad();
     }
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		XYChart.Series serie = new XYChart.Series();
-
-		grafica.getData().add(serie);
-	}
 
 }

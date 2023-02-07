@@ -1,12 +1,10 @@
 package control;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-import com.google.gson.Gson;
-
+import application.BBDD;
 import application.ficheros;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,7 +21,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Administrador;
 import model.Entrenador;
-import model.Usuario;
 
 public class controlEnlazarEntrenador {
 
@@ -84,8 +81,8 @@ public class controlEnlazarEntrenador {
 				loader.setController(controladmin);
 				Parent root = loader.load();
 
-
-				Entrenador e= new ficheros().leerEntrenador("src/files/entrenadores/" + tableEntrenadores.getSelectionModel().getSelectedItem().getUserId() + ".jsonl");
+				Entrenador e = new BBDD().leerEntrenador(new BBDD().buscarUsuarioid(tableEntrenadores.getSelectionModel().getSelectedItem().getUserId()));
+				//Entrenador e= new ficheros().leerEntrenador("src/files/entrenadores/" + tableEntrenadores.getSelectionModel().getSelectedItem().getUserId() + ".jsonl");
 				controladmin.setUsuario(user,e);
 
 				Stage stage = (Stage) botonVolver.getScene().getWindow();
@@ -118,51 +115,70 @@ public class controlEnlazarEntrenador {
 
 	public ObservableList<Entrenador> observableList(String dni) {
 		ObservableList<Entrenador> users = FXCollections.observableArrayList();
-		Gson gson = new Gson();
-		Usuario user = null;
-		ficheros files = new ficheros();
-		try (BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"))) {
-
-			String linea;
-			while ((linea = br.readLine()) != null) {
-				user = gson.fromJson(linea, Usuario.class);
-				if (user.getUserType().equalsIgnoreCase("entrenador")) {
-					if(user.getUserId().equalsIgnoreCase(dni)) {
-						users.add(files.leerEntrenador("src/files/entrenadores/" + user.getUserId() + ".jsonl"));
-					}
-				}
+		BBDD bd = new BBDD();
+		Connection conn = bd.getConn();
+		Entrenador user = null;
+		Statement stmt = null;
+		String sql;
+		try {
+			sql = "SELECT * FROM Usuario WHERE userType = 'entrenador' id_Usuario = '"+dni+"'";
+            System.out.println("sql Select: "+sql);
+            stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery( sql );
+			while ( rs.next() ) {
+				user = new Entrenador(
+					rs.getString("id_Usuario"),
+					rs.getString("email"),
+					rs.getString("pass"),
+					rs.getString("userType"),
+					rs.getString("nombre"),
+					rs.getString("apellidos"),
+					rs.getDate("fechaNacimiento").toString(),
+					rs.getString("genero"),
+					rs.getBoolean("activo")
+				);
+				users.add(user);
 			}
-
-		} catch (FileNotFoundException ex) {
-			System.out.println(ex.getMessage());
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
+			rs.close();
+			stmt.close();
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
-
 		return users;
 	}
 
 	public ObservableList<Entrenador> observableList() {
+		
 		ObservableList<Entrenador> users = FXCollections.observableArrayList();
-		Gson gson = new Gson();
-		Usuario user = null;
-		ficheros files = new ficheros();
-		try (BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"))) {
-
-			String linea;
-			while ((linea = br.readLine()) != null) {
-				user = gson.fromJson(linea, Usuario.class);
-				if (user.getUserType().equalsIgnoreCase("entrenador")) {
-					users.add(files.leerEntrenador("src/files/entrenadores/" + user.getUserId() + ".jsonl"));
-				}
+		BBDD bd = new BBDD();
+		Connection conn = bd.getConn();
+		Entrenador user = null;
+		Statement stmt = null;
+		String sql;
+		try {
+			sql = "SELECT * FROM Usuario WHERE userType = 'entrenador'";
+            System.out.println("sql Select: "+sql);
+            stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery( sql );
+			while ( rs.next() ) {
+				user = new Entrenador(
+					rs.getString("id_Usuario"),
+					rs.getString("email"),
+					rs.getString("pass"),
+					rs.getString("userType"),
+					rs.getString("nombre"),
+					rs.getString("apellidos"),
+					rs.getDate("fechaNacimiento").toString(),
+					rs.getString("genero"),
+					rs.getBoolean("activo")
+				);
+				users.add(user);
 			}
-
-		} catch (FileNotFoundException ex) {
-			System.out.println(ex.getMessage());
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
+			rs.close();
+			stmt.close();
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
-
 		return users;
 	}
 

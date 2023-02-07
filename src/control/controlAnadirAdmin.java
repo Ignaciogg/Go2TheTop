@@ -1,8 +1,5 @@
 package control;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import com.jfoenix.controls.JFXTextField;
 
-import application.ficheros;
+import application.BBDD;
 import model.Administrador;
 import model.Usuario;
 
@@ -63,15 +60,10 @@ public class controlAnadirAdmin {
         	String gen = fieldGenero.getText();
         	Boolean act = true;
 
-        	Usuario nuevo = new Usuario (dni, ema, pas, use);
-        	Administrador nuevo2 = new Administrador (dni, ema, pas, use, nom, ape, fec, gen, act);
-        	System.out.println("El usuario que se va a anadir es: " + nuevo2.toString());
-        	String ruta = "src/files/administradores/" + dni + ".jsonl";
+        	Usuario nuevo = new Usuario (dni, ema, pas, use, nom, ape, fec, gen, act);
+        	BBDD bd = new BBDD();
+        	bd.escribirPersona(nuevo);
 
-        	ficheros fichero = new ficheros();
-        	fichero.escribirLogin(nuevo);
-        	fichero.escribirPersona(nuevo2, ruta);
-            
             volverAdmin(event);
 
     	}catch (Exception e) {

@@ -3,6 +3,7 @@ package control;
 
 import com.jfoenix.controls.JFXTextField;
 
+import application.BBDD;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,13 +15,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Deportista;
+import model.Entrenador;
+import model.Usuario;
 
 public class controlDeportista {
 
-	private Deportista user;
-
-   @FXML
-    private ImageView fotoDepor;
+	private Deportista depor;
+	
+	private Entrenador entren;
 
     @FXML
     private JFXTextField nameDepor;
@@ -34,14 +36,10 @@ public class controlDeportista {
 	@FXML
     private Text bienvenide;
 
-	@FXML
-    private Button botonDatos;
 
     @FXML
     private Button botonEstadisticas;
 
-    @FXML
-    private Button botonFeedback;
 
     @FXML
     private Button botonChat;
@@ -51,11 +49,6 @@ public class controlDeportista {
 
 
     @FXML
-    void verDatos(ActionEvent event) {
-    	System.out.println("VER DATOS");
-    }
-
-    @FXML
     void verEstadisticas(ActionEvent event) {
     	System.out.println("VER ESTADISTICAS");
     	try {
@@ -63,20 +56,14 @@ public class controlDeportista {
 			controlEstadisticas controlEst = new controlEstadisticas();
 			loader.setController(controlEst);
 			Parent root = loader.load();
-			controlEst.setUsuario(user);
+			controlEst.setUsuario(depor);
 			Stage stageActual = (Stage) botonEstadisticas.getScene().getWindow();
 			stageActual.setTitle("gO2theTop - Estadisticas");
-
 			stageActual.setScene(new Scene(root, botonEstadisticas.getScene().getWidth(), botonEstadisticas.getScene().getHeight()));
 
         }catch (Exception e) {
 			e.printStackTrace();
 		}
-    }
-
-    @FXML
-    void verFeedback(ActionEvent event) {
-    	System.out.println("VER FEEDBACK");
     }
 
     @FXML
@@ -87,7 +74,9 @@ public class controlDeportista {
 			controlChat controlXat = new controlChat();
 			loader.setController(controlXat);
 			Parent root = loader.load();
-			controlXat.setUsuario(user);
+			
+			entren = new BBDD().leerEntrenador(new BBDD().buscarUsuarioid(depor.getId_entrenador())); 
+			controlXat.setUsuario(depor,entren);
 			Stage stageActual = (Stage) botonChat.getScene().getWindow();
 			stageActual.setTitle("gO2theTop - Chat");
 
@@ -118,20 +107,19 @@ public class controlDeportista {
 
 	    }
 
-	public void setUsuario(Deportista u) {
-		user = u;
-    	if(u.getGenre().equals("hombre") || u.getGenre().equals("masculino")){
-    		bienvenide.setText("Bienvenido " + u.getName());
-    	}else if(u.getGenre().equals("mujer") || u.getGenre().equals("femenino")) {
-    		bienvenide.setText("Bienvenida " + u.getName());
+	public void setUsuario(Usuario u) {
+		BBDD bd = new BBDD();
+		depor = bd.leerDeportista(u);
+		System.out.println(depor.getGenre());
+    	if(depor.getGenre().equals("Masculino")){
+    		bienvenide.setText("Bienvenido " + depor.getName());
+    	}else if(depor.getGenre().equals("Femenino")) {
+    		bienvenide.setText("Bienvenida " + depor.getName());
     	}
 
-    	nameDepor.setText(user.getName());
-    	lastnameDepor.setText(user.getLastnames());
-    	emailDepor.setText(user.getEmail());
+    	nameDepor.setText(depor.getName());
+    	lastnameDepor.setText(depor.getLastnames());
+    	emailDepor.setText(depor.getEmail());
 
-    	Image image = new Image ("file:recursos/"+ user.getUserId() +".jpg");
-
-    	fotoDepor.setImage(image);
     }
 }

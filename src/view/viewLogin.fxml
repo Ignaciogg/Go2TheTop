@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,7 +23,7 @@
                <children>
                   <ImageView fitHeight="207.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../recursos/logo.jpeg" />
+                        <Image url="@../logo.jpeg" />
                      </image>
                   </ImageView>
                   <Label prefHeight="99.0" prefWidth="231.0" text="Bienvenido a gO2theTop">
@@ -34,11 +35,11 @@
             </VBox>
          </left>
          <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="500.0" prefWidth="411.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                <children>
                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log-in">
                         <font>
-                             <Font name="System Bold" size="26.0" />
+                             <Font name="System Bold" size="36.0" />
                         </font>
                      <VBox.margin>
                         <Insets bottom="5.0" />
@@ -46,22 +47,46 @@
                     </Text>
                   <HBox alignment="CENTER" prefHeight="51.0" prefWidth="445.0">
                      <children>
-                        <TextField fx:id="userNameText" prefHeight="29.0" prefWidth="232.0" promptText="Email" style="-fx-background-color: white; -fx-border-color: white; -fx-border-width: 0 0 2 0;" />
+                        <TextField fx:id="userNameText" prefHeight="46.0" prefWidth="278.0" promptText="Email" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0 0 2 0;">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="20.0" />
+                           </HBox.margin>
+                           <effect>
+                              <DropShadow />
+                           </effect></TextField>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="445.0">
+                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="408.0">
                      <children>
-                     		<PasswordField fx:id="passwordText" prefHeight="29.0" prefWidth="232.0" promptText="Password" style="-fx-background-color: white; -fx-border-color: white; -fx-border-width: 0 0 2 0;" />
+                     		<PasswordField fx:id="passwordText" prefHeight="46.0" prefWidth="278.0" promptText="Password" style="-fx-background-color: white; -fx-border-color: white; -fx-border-width: 0 0 2 0;">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="20.0" top="15.0" />
+                           </HBox.margin></PasswordField>
                      </children>
                   </HBox>
-                    <Button fx:id="botonLogin" mnemonicParsing="false" onAction="#comprobarLogin" prefHeight="27.0" prefWidth="97.0" style="-fx-background-color: white;" text="LOGIN">
+                    <Button fx:id="botonLogin" mnemonicParsing="false" onAction="#comprobarLogin" prefHeight="44.0" prefWidth="127.0" style="-fx-background-color: white;" text="LOGIN">
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
-                     </VBox.margin></Button>
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
          </center>
       </BorderPane>
+      <ImageView fx:id="slide" blendMode="SCREEN" disable="true" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../montana1.jpg" />
+         </image>
+      </ImageView>
 
    </children>
 </AnchorPane>

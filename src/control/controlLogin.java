@@ -1,21 +1,30 @@
 package control;
 
-import application.ficheros;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import application.BBDD;
+import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Usuario;
 
-public class controlLogin {
+public class controlLogin implements Initializable{
 
 	@FXML
 	private TextField userNameText;
@@ -27,9 +36,14 @@ public class controlLogin {
 	private Button botonLogin;
 
 	@FXML
+    private ImageView slide;
+
+	int count = 0;
+
+	@FXML
 	void comprobarLogin(ActionEvent event) {
-		ficheros files = new ficheros();
-		Usuario usuario = files.IniciarSesion(userNameText.getText(), passwordText.getText());
+		BBDD bd = new BBDD();
+		Usuario usuario = bd.IniciarSesion(userNameText.getText(), passwordText.getText());
 		if(usuario!=null) {
 			String rol = usuario.getUserType();
 			switch (rol) {
@@ -39,7 +53,7 @@ public class controlLogin {
 					controlAdmin controlAdmin1 = new controlAdmin();
 					loader.setController(controlAdmin1);
 					Parent root = loader.load();
-					controlAdmin1.setUsuario(files.leerAdministrador("src/files/administradores/" + usuario.getUserId() + ".jsonl"));
+					controlAdmin1.setUsuario(usuario);
 
 					Stage stage = (Stage) botonLogin.getScene().getWindow();
 
@@ -58,7 +72,7 @@ public class controlLogin {
 					loader.setController(controlDepor1);
 					Parent root = loader.load();
 
-					controlDepor1.setUsuario(files.leerDeportista("src/files/deportistas/" + usuario.getUserId() + ".jsonl"));
+					controlDepor1.setUsuario(usuario);
 
 					Stage stage = (Stage) botonLogin.getScene().getWindow();
 
@@ -76,7 +90,7 @@ public class controlLogin {
 					loader.setController(controlEntren1);
 					Parent root = loader.load();
 
-					controlEntren1.setUsuario(files.leerEntrenador("src/files/entrenadores/" + usuario.getUserId() + ".jsonl"));
+					controlEntren1.setUsuario(usuario);
 
 					Stage stage = (Stage) botonLogin.getScene().getWindow();
 
@@ -116,5 +130,31 @@ public class controlLogin {
 		}
 
 
+	}
+
+	public void slideShow(){
+
+		ArrayList<Image> images = new ArrayList<Image>();
+		images.add(new Image("/montana1.jpg"));
+		images.add(new Image("/montana2.jpg"));
+		images.add(new Image("/montana3.jpg"));
+		images.add(new Image("/montana4.jpg"));
+		images.add(new Image("/montana5.jpg"));
+
+		Timeline timeline = new Timeline(new KeyFrame (Duration.seconds(4), event -> {
+			slide.setImage(images.get(count));
+			count ++;
+			if(count == 5){
+				count = 0;
+			}
+		}));
+
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.play();
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources){
+		slideShow();
 	}
 }

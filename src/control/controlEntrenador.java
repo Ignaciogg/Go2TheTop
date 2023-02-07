@@ -1,25 +1,26 @@
 package control;
 
-
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import model.Administrador;
 import model.Entrenador;
-import com.jfoenix.controls.JFXTextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import model.Usuario;
 
+import com.jfoenix.controls.JFXTextField;
+import javafx.scene.text.Text;
 
 public class controlEntrenador {
 
 	private Entrenador user;
 
 	@FXML
-    private JFXTextField nombreUser;
+    private Text bienvenide;
 
 	@FXML
     private Button botonCerrarSesion;
@@ -35,9 +36,6 @@ public class controlEntrenador {
 
     @FXML
     private JFXTextField emailEntren;
-
-    @FXML
-    private ImageView fotoMister;
 
     @FXML
     void cerrarSesion(ActionEvent event) {
@@ -59,7 +57,6 @@ public class controlEntrenador {
 
 	    }
 
-
     @FXML
     void seleccionar(ActionEvent event) {
     	try {
@@ -71,7 +68,7 @@ public class controlEntrenador {
 			controlEstadisticasEntren.setUsuario(user);
 
 			Stage stage = (Stage) botonSeleccionar.getScene().getWindow();
-			stage.setTitle("gO2theTop - VerEstadisticasEntrenador");
+			stage.setTitle("gO2theTop - Seleccionar Deportista");
 
 			stage.setScene(new Scene(root, botonSeleccionar.getScene().getWidth(), botonSeleccionar.getScene().getHeight()));
 
@@ -81,21 +78,29 @@ public class controlEntrenador {
 
     }
 
-    public void setUsuario(Entrenador u) {
-    	user = u;
-    	if(u.getGenre().equals("hombre") || u.getGenre().equals("masculino")){
-    		nombreUser.setText("Bienvenido " + u.getName());
-    	}else if(u.getGenre().equals("mujer") || u.getGenre().equals("femenino")) {
-    		nombreUser.setText("Bienvenida " + u.getName());
+    public void setUsuario(Usuario u) {
+    	user = new Entrenador(
+				u.getUserId(),
+				u.getEmail(),
+				u.getPassword(),
+				u.getUserType(),
+				u.getName(),
+				u.getLastnames(),
+				u.getBirthday(),
+				u.getGenre(),
+				u.getActive());
+
+    	System.out.println(user.getName());
+    	if(u.getGenre().equals("Masculino")){
+    		bienvenide.setText("Bienvenido " + user.getName());
+    	}else if(u.getGenre().equals("Femenino")) {
+    		bienvenide.setText("Bienvenida " + user.getName());
     	}
 
     	nameEntrenador.setText(user.getName());
     	lastnameEntren.setText(user.getLastnames());
     	emailEntren.setText(user.getEmail());
 
-    	Image image = new Image ("file:recursos/"+ user.getUserId() +".jpg");
-
-    	fotoMister.setImage(image);
 
     }
 

@@ -1,15 +1,10 @@
 package control;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+
 import java.util.ArrayList;
 
-import com.google.gson.Gson;
+import application.BBDD;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -165,43 +160,28 @@ public class controlAdmin {
 		colUserId.setCellValueFactory(new PropertyValueFactory<Usuario,String>("userId"));
 		colEmail.setCellValueFactory(new PropertyValueFactory<Usuario,String>("email"));
 		colUserType.setCellValueFactory(new PropertyValueFactory<Usuario,String>("userType"));
-
-
-		tableAdmin.setItems(observableList());
-
+		BBDD bd = new BBDD();
+		tableAdmin.setItems(bd.observableList());
 	}
 
 
-    public ObservableList<Usuario> observableList(){
-        ObservableList<Usuario> users = FXCollections.observableArrayList();
-        Gson gson = new Gson();
-        Usuario user = null;
-    	String fichero = "";
 
-    	try (BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"))) {
+    public void setUsuario(Usuario usuario) {
+    	user = new Administrador(
+				usuario.getUserId(),
+				usuario.getEmail(),
+				usuario.getPassword(),
+				usuario.getUserType(),
+				usuario.getName(),
+				usuario.getLastnames(),
+				usuario.getBirthday(),
+				usuario.getGenre(),
+				usuario.getActive());
 
-    	    String linea;
-    	    while ((linea = br.readLine()) != null) {
-    	        fichero = linea;
-    	        user = gson.fromJson(fichero, Usuario.class);
-    	        users.add(user);
-    	    }
-
-    	} catch (FileNotFoundException ex) {
-    	    System.out.println(ex.getMessage());
-    	} catch (IOException ex) {
-    	    System.out.println(ex.getMessage());
-    	}
-
-        return users;
-    }
-
-    public void setUsuario(Administrador u) {
-    	user = u;
-    	if(u.getGenre().equals("hombre") || u.getGenre().equals("masculino")){
-    		bienvenide.setText("Bienvenido " + u.getName());
-    	}else if(u.getGenre().equals("mujer") || u.getGenre().equals("femenino")) {
-    		bienvenide.setText("Bienvenida " + u.getName());
+    	if(usuario.getGenre().equals("hombre") || usuario.getGenre().equals("Masculino")){
+    		bienvenide.setText("Bienvenido " + usuario.getName());
+    	}else if(usuario.getGenre().equals("mujer") || usuario.getGenre().equals("Femenino")) {
+    		bienvenide.setText("Bienvenida " + usuario.getName());
     	}
     	this.inicializarTabla();
 

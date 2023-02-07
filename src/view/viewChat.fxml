@@ -21,16 +21,6 @@
             <VBox alignment="CENTER" prefHeight="500.0" prefWidth="255.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
                   <BorderPane prefHeight="637.0" prefWidth="255.0" style="-fx-background-color: white;">
-                     <top>
-                        <ImageView fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                           <image>
-                              <Image url="@../../recursos/logo.jpeg" />
-                           </image>
-                           <BorderPane.margin>
-                              <Insets right="125.0" />
-                           </BorderPane.margin>
-                        </ImageView>
-                     </top>
                      <bottom>
                         <Button fx:id="botonVolver" mnemonicParsing="false" onAction="#volver" style="-fx-background-color: black;" text="Volver" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
                            <font>
@@ -42,7 +32,14 @@
                         </Button>
                      </bottom>
                      <center>
-                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fitHeight="110.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../logo.jpeg" />
+                                 </image>
+                              </ImageView>
+                           </children></VBox>
                      </center>
                   </BorderPane>
                </children>
@@ -61,7 +58,7 @@
                     </Text>
                   <HBox alignment="CENTER">
                      <children>
-                        <Text fx:id="depor" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat de " wrappingWidth="215.6708984375">
+                        <Text fx:id="depor" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat de " wrappingWidth="205.6708984375">
                            <font>
                               <Font name="Times New Roman Bold" size="18.0" />
                            </font>
@@ -92,8 +89,10 @@
             </VBox>
          </center>
       </BorderPane>
-      <TextFlow prefHeight="200.0" prefWidth="200.0" />
-      <TextFlow prefHeight="200.0" prefWidth="200.0" />
+      <TextFlow prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <TextFlow prefHeight="227.0" prefWidth="254.0" />
+         </children></TextFlow>
 
    </children>
 </AnchorPane>

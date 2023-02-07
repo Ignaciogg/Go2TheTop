@@ -1,153 +1,208 @@
 package control;
 
-import application.ficheros;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.ResourceBundle;
+
+import application.BBDD;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.DatosSensores;
 import model.Deportista;
 import model.Entrenador;
-import model.Mensaje;
 import model.Sesion;
 
 public class controlEstadisticasEntrenador2 {
 
-	private Sesion sesioncita;
+	//private Sesion sesioncita;
 
 	private Deportista user;
 
 	private Entrenador mister;
 
-    @FXML
-    private Button botonVolver;
+	private Sesion sesion;
+
+	@FXML
+	private Button botonVolver;
+
+	@FXML
+	private LineChart<DatosSensores, String> graficaFrec;
+
+	@FXML
+	private LineChart<DatosSensores, String> graficaO2;
+
+	@FXML
+	private LineChart<DatosSensores, String> graficaVel;
+
+	@FXML
+	private Text frecMax;
+
+	@FXML
+	private Text frecMed;
+
+	@FXML
+	private Text o2Max;
+
+	@FXML
+	private Text o2Med;
+
+	@FXML
+	private Text velMax;
+
+	@FXML
+	private Text velMed;
+
+	@FXML
+	private TextField textoFeedback;
+
+	@FXML
+    private Button buttonFeedback;
+
+	@FXML
+    private TextField textoFmax;
 
     @FXML
-    private Button buttonMapa;
-    
-    @FXML
-    private Button enviarfedback;
+    private TextField textoFmedia;
 
     @FXML
-    private RadioButton frecuencia;
+    private TextField textoOmax;
 
     @FXML
-    private ToggleGroup grafica2;
+    private TextField textoOmedio;
 
     @FXML
-    private RadioButton nivelo2;
+    private TextField textoVmax;
 
     @FXML
-    private LineChart<?, ?> grafica;
+    private TextField textoVmedia;
 
-    @FXML
-    private TextField textoFeedback;
-
-    @FXML
-    private Button botonEnviar;
-
-    @FXML
-    void enviar(ActionEvent event) {
-    	String feedback = "";
-    	try {
-
-    		feedback = textoFeedback.getText();
-    		System.out.println(feedback);
-    		ficheros fichero = new ficheros();
-        	fichero.escribirFeedback(sesioncita, ("src/files/sesiones/"+ user.getUserId() +".jsonl"), feedback);
-
-    	}catch (Exception e) {
-			e.printStackTrace();
-		}
-    }
-
-    @FXML
-    void mostrarFrecuencia(ActionEvent event) {
-    	System.out.println("Mostrar Frecuencia");
-    	grafica.getData().clear();
+    void mostrarFrecuencia() {
 
     	XYChart.Series serie1 = new XYChart.Series();
-		serie1.getData().add(new XYChart.Data("1", sesioncita.getValorF1()));
-		serie1.getData().add(new XYChart.Data("2", sesioncita.getValorF2()));
-		serie1.getData().add(new XYChart.Data("3", sesioncita.getValorF3()));
-		serie1.getData().add(new XYChart.Data("4", sesioncita.getValorF4()));
+    	int max = 0;
+    	int media = 0;
 
-		serie1.setName("Frecuencia cardiaca");
-		grafica.getData().add(serie1);
+    	BBDD bd = new BBDD();
+    	ArrayList <DatosSensores> array = bd.obtenerDato(sesion.getId_Sesion(), "Frecuencia cardiaca");
+    	System.out.println(array.size());
+
+    	for(int i = 0; i<array.size(); i++){
+    		serie1.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i+1), Integer.parseInt(array.get(i).getValor())));
+    		if(Integer.parseInt(array.get(i).getValor()) > max) {
+				max = Integer.parseInt(array.get(i).getValor());
+			}
+    		media+= Integer.parseInt(array.get(i).getValor());
+    	}
+
+    	textoFmax.setText(Integer.toString(max));
+    	media = media/array.size();
+		textoFmedia.setText(Integer.toString(media));
+		graficaFrec.getData().add(serie1);
+
     }
 
-    @FXML
-    void mostrarNivelO2(ActionEvent event) {
-    	System.out.println("Mostrar Nivel O2");
-    	grafica.getData().clear();
+    void mostrarNivelO2() {
 
-    	XYChart.Series serie1 = new XYChart.Series();
-		serie1.getData().add(new XYChart.Data("1", sesioncita.getValorO1()));
-		serie1.getData().add(new XYChart.Data("2", sesioncita.getValorO2()));
-		serie1.getData().add(new XYChart.Data("3", sesioncita.getValorO3()));
-		serie1.getData().add(new XYChart.Data("4", sesioncita.getValorO4()));
+    	XYChart.Series serie2 = new XYChart.Series();
+    	int max = 0;
+    	int media = 0;
 
-		serie1.setName("Nivel de O2");
-		grafica.getData().add(serie1);
+    	BBDD bd = new BBDD();
+    	ArrayList <DatosSensores> array = bd.obtenerDato(sesion.getId_Sesion(), "Oxigeno");
+
+    	for(int i = 0; i<array.size(); i++){
+    		serie2.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i+1), Integer.parseInt(array.get(i).getValor())));
+    		if(Integer.parseInt(array.get(i).getValor()) > max) {
+				max = Integer.parseInt(array.get(i).getValor()) ;
+			}
+    		media+= Integer.parseInt(array.get(i).getValor());
+    	}
+
+    	textoOmax.setText(Integer.toString(max));
+    	media = media/array.size();
+		textoOmedio.setText(Integer.toString(media));
+		graficaO2.getData().add(serie2);
     }
 
-    @FXML
-    void verMapa(ActionEvent event) {
-    	try {
+    void mostrarVelocidad() {
 
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Mapa.fxml"));
-        	controlMapa controlEntren = new controlMapa();
-			loader.setController(controlEntren);
+    	XYChart.Series serie3 = new XYChart.Series();
+    	int max = 0;
+    	int media = 0;
+
+    	BBDD bd = new BBDD();
+    	ArrayList <DatosSensores> array = bd.obtenerDato(sesion.getId_Sesion(), "Velocidad");
+
+    	for(int i = 0; i<array.size(); i++){
+    		serie3.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i+1), Integer.parseInt(array.get(i).getValor())));
+    		if(Integer.parseInt(array.get(i).getValor()) > max) {
+				max = Integer.parseInt(array.get(i).getValor()) ;
+			}
+    		media+= Integer.parseInt(array.get(i).getValor());
+    	}
+
+    	textoVmax.setText(Integer.toString(max));
+    	media = media/array.size();
+		textoVmedia.setText(Integer.toString(media));
+		graficaVel.getData().add(serie3);
+    }
+
+	@FXML
+	void volverEntrenador(ActionEvent event) {
+
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren1.fxml"));
+			controlEstadisticasEntrenador1 controlE1 = new controlEstadisticasEntrenador1();
+			loader.setController(controlE1);
 			Parent root = loader.load();
 
-			Stage stage = (Stage) buttonMapa.getScene().getWindow();
-			stage.setTitle("gO2theTop - Mapa");
+			//System.out.println(user.getEmail());
 
-			stage.setScene(new Scene(root, buttonMapa.getScene().getWidth(), buttonMapa.getScene().getHeight()));
-
-        }catch (Exception e) {
-			e.printStackTrace();
-		}
-    }
-
-    @FXML
-    void volverEntrenador(ActionEvent event) {
-
-    	try {
-
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEntren.fxml"));
-        	controlEntrenador controlEntren = new controlEntrenador();
-			loader.setController(controlEntren);
-			Parent root = loader.load();
-
-			controlEntren.setUsuario(mister);
+			controlE1.setUsuario(user, mister);
 
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
-			stage.setTitle("gO2theTop - Entrenador");
+			stage.setTitle("gO2theTop - Seleccion de sesion");
 
 			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
 
-        }catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-    }
+	}
 
-    public void setUsuario(Deportista u, Sesion sesion, Entrenador mis) {
-    	user = u;
-    	sesioncita = sesion;
-    	if(!sesioncita.getFeedback().equals("")) {
-    		textoFeedback.setText(sesioncita.getFeedback());
-    	}
-    	
-    	mister=mis;
+	@FXML
+	void setFeedback(ActionEvent event) {
 
-    }
+		String fb = textoFeedback.getText();
+		BBDD bd = new BBDD();
+		bd.escribirFeedback(sesion, fb);
+
+	}
+
+	public void setUsuario(Deportista u, Sesion season, Entrenador mis) {
+		user = u;
+		sesion = season;
+		if (!sesion.getFeedback().equals("")) {
+			textoFeedback.setText(sesion.getFeedback());
+		}
+
+		mostrarFrecuencia();
+		mostrarNivelO2();
+		mostrarVelocidad();
+		mister = mis;
+
+	}
 }

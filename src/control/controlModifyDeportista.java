@@ -1,14 +1,6 @@
 package control;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
-import javax.swing.JFrame;
-
-import com.google.gson.Gson;
-
-import application.ficheros;
+import application.BBDD;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +18,7 @@ public class controlModifyDeportista extends controlModificarUsuario{
 
 
 	private Administrador user;
-
+	private Usuario modificar;
 	@FXML
     private Text bienvenide;
 
@@ -52,9 +44,6 @@ public class controlModifyDeportista extends controlModificarUsuario{
     private TextField nuevoGenero;
 
     @FXML
-    private TextField nuevoId;
-
-    @FXML
     private TextField nuevoNombre;
 
     @FXML
@@ -72,13 +61,13 @@ public class controlModifyDeportista extends controlModificarUsuario{
     	try{
     		System.out.println("MODIFICA EL USUARIO");
 
-    		String id = nuevoId.getText();
-    		System.out.println(id);
+    		String id = modificar.getUserId();
+
     		String mail = nuevoEmail.getText();
     		System.out.println(mail);
     		String password = nuevaContraseña.getText();
     		System.out.println(password);
-    		String type="Deportista";
+    		String type="deportista";
     		System.out.println(type);
     		String name = nuevoNombre.getText();
     		System.out.println(name);
@@ -96,16 +85,12 @@ public class controlModifyDeportista extends controlModificarUsuario{
     		float pes2 = Float.parseFloat(pes);
     		System.out.println(pes);
 
-    		Usuario nuevo = new Usuario(id, mail, password, type);
-
-        	Deportista nuevo2 = new Deportista (id, mail, password, type, name, lastname, day, gen, act, alt2, pes2);
+        	Deportista nuevo = new Deportista (id, mail, password, type, name, lastname, day, gen, act, alt2, pes2);
         	System.out.println("El usuario que se va a modificar es: " + nuevo.toString());
-        	String ruta = "src/files/deportistas/" + id + ".jsonl";
 
-        	ficheros fichero = new ficheros();
-        	fichero.escribirLogin(nuevo);
-        	fichero.escribirPersona(nuevo2, ruta);
-
+        	BBDD bd = new BBDD();
+        	bd.modificarDeportista(nuevo);
+        	volverAdmin(event);
     	}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -135,8 +120,9 @@ public class controlModifyDeportista extends controlModificarUsuario{
 
     }
 
-    public void setUsuario(Administrador u) {
+    public void setUsuario(Administrador u, Usuario mod) {
 		user = u;
+		modificar = mod;
 	}
 
 }

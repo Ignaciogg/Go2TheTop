@@ -10,17 +10,7 @@ import javafx.stage.Stage;
 import model.Administrador;
 import model.Usuario;
 import javafx.scene.control.TextField;
-import application.ficheros;
-import com.google.gson.Gson;
-import com.jfoenix.controls.JFXTextField;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Properties;
+import application.BBDD;
 
 public class controlModificarUsuario {
 
@@ -42,16 +32,12 @@ public class controlModificarUsuario {
 
 		dni = textMod.getText();
 		System.out.println(dni);
-		
-		System.out.println(user.toString());
-		user.modificarUsuario(dni);
 
-		ficheros files = new ficheros();
-		Usuario persona = files.buscarUsuarioId(dni);
+		BBDD bd = new BBDD();
+		Usuario persona = bd.buscarUsuarioid(dni);
 
 		if (persona != null) {
 
-			persona = files.leerUsuario(persona);
 			switch (persona.getUserType()) {
 			case "administrador":
 
@@ -61,7 +47,7 @@ public class controlModificarUsuario {
 					loader.setController(controlModify);
 					Parent root = loader.load();
 
-					controlModify.setUsuario(user);
+					controlModify.setUsuario(user, persona);
 
 					Stage stage = (Stage) botonModify.getScene().getWindow();
 					stage.setTitle("gO2theTop - Modificar Administrador");
@@ -81,7 +67,7 @@ public class controlModificarUsuario {
 					loader.setController(controlModify1);
 					Parent root = loader.load();
 
-					controlModify1.setUsuario(user);
+					controlModify1.setUsuario(user,persona);
 
 					Stage stage = (Stage) botonModify.getScene().getWindow();
 					stage.setTitle("gO2theTop - Modificar Entrenador");
@@ -101,7 +87,7 @@ public class controlModificarUsuario {
 					loader.setController(controlModify2);
 					Parent root = loader.load();
 
-					controlModify2.setUsuario(user);
+					controlModify2.setUsuario(user,persona);
 
 					Stage stage = (Stage) botonModify.getScene().getWindow();
 					stage.setTitle("gO2theTop - Modificar Deportista");

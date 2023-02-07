@@ -13,14 +13,6 @@ public class Usuario {
     private Boolean active;
 
 
-    public Usuario(String userId, String email, String password, String userType) {
-        this.userId = userId;
-        this.email = email;
-        this.password = password;
-        this.userType = userType;
-    }
-
-
     public Usuario(String userId, String email, String password, String userType, String name, String lastnames,
 			String birthdate, String genre, Boolean active) {
 		this.userId = userId;
@@ -104,6 +96,14 @@ public class Usuario {
 
 	public void setActive(Boolean active) {
 		this.active = active;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Usuario [userId=" + userId + ", email=" + email + ", password=" + password + ", userType=" + userType
+				+ ", name=" + name + ", lastnames=" + lastnames + ", birthday=" + birthday + ", genre=" + genre
+				+ ", active=" + active + "]";
 	}
 
 }

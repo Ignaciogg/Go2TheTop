@@ -24,7 +24,7 @@
                            <children>
                               <ImageView fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../recursos/logo.jpeg" />
+                                    <Image url="@../logo.jpeg" />
                                  </image>
                                  <VBox.margin>
                                     <Insets left="75.0" />
@@ -90,20 +90,23 @@
          <center>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                <children>
-                  <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                      <left>
                         <VBox alignment="CENTER" BorderPane.alignment="CENTER" />
                      </left>
                      <center>
-                        <TableView fx:id="tableAdmin" maxHeight="700.0" maxWidth="-Infinity" prefHeight="418.0" prefWidth="439.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+                        <TableView fx:id="tableAdmin" prefHeight="1000000.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                           <columns>
                             <TableColumn fx:id="colUserId" editable="false" prefWidth="115.0" text="User ID" />
                             <TableColumn fx:id="colEmail" editable="false" minWidth="0.0" prefWidth="154.0" text="Email" />
                               <TableColumn fx:id="colUserType" editable="false" prefWidth="190.0" text="User Type" />
                           </columns>
                            <BorderPane.margin>
-                              <Insets bottom="30.0" />
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </BorderPane.margin>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </TableView>
                      </center>
                      <top>
@@ -112,7 +115,7 @@
                               <Font name="System Bold" size="26.0" />
                            </font>
                            <BorderPane.margin>
-                              <Insets bottom="50.0" />
+                              <Insets bottom="50.0" top="20.0" />
                            </BorderPane.margin>
                         </Text>
                      </top>

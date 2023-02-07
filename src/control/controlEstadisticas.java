@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
+import application.BBDD;
 import application.ficheros;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,17 +51,18 @@ public class controlEstadisticas {
     void seleccionar(ActionEvent event) {
     	if(tableSesiones.getSelectionModel().getSelectedItem() != null) {
     		try {
+    			String fecha = tableSesiones.getSelectionModel().getSelectedItem().getFecha();
+    			System.out.println("Sesión seleccionada: " + user.getUserId() + " - " + fecha);
 
             	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticas2.fxml"));
             	controlEstadisticas2 controlE2 = new controlEstadisticas2();
     			loader.setController(controlE2);
     			Parent root = loader.load();
 
-    			String fecha = tableSesiones.getSelectionModel().getSelectedItem().getFecha();
-    			Sesion sesionFin = buscar_fecha(fecha);
 
+    			BBDD bd = new BBDD();
+    			Sesion sesionFin = bd.buscarFecha(fecha);
     			controlE2.setUsuario(user,sesionFin);
-    			System.out.println("Sesión seleccionada: " + user.getUserId() + " - " + fecha);
 
     			Stage stage = (Stage) botonSeleccionar.getScene().getWindow();
     			stage.setTitle("gO2theTop - Estadisticas2");
@@ -96,62 +98,16 @@ public class controlEstadisticas {
     }
 
 	private void inicializarTabla() {
+		BBDD bd = new BBDD();
 		colFecha.setCellValueFactory(new PropertyValueFactory<Sesion, String>("fecha"));
-		tableSesiones.setItems(observableList());
+		tableSesiones.setItems(bd.verSesiones(user.getUserId()));
 	}
 
-	public ObservableList<Sesion> observableList() {
-		ObservableList<Sesion> sesiones = FXCollections.observableArrayList();
-		Gson gson = new Gson();
-		String linea="";
-		Sesion sesion = null;
-		ficheros files = new ficheros();
-
-		try (BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"))) {
-
-			while ((linea = br.readLine()) != null) {
-				sesion = gson.fromJson(linea, Sesion.class);
-				sesiones.add(sesion);
-			}
-
-
-		} catch (FileNotFoundException ex) {
-			System.out.println(ex.getMessage());
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
-		}
-
-		return sesiones;
-	}
 
 	public void setUsuario(Deportista u) {
 		user = u;
 		this.inicializarTabla();
 	}
 
-	public Sesion buscar_fecha(String fecha){
-		Sesion sesion = null;
-		Sesion sesionFinal=null;
-		Gson gson = new Gson();
-		String linea="";
-
-		try (BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"))) {
-
-			while ((linea = br.readLine()) != null) {
-				sesion = gson.fromJson(linea, Sesion.class);
-				if(sesion.getFecha().equals(fecha)){
-					sesionFinal = sesion;
-				}
-			}
-
-
-		} catch (FileNotFoundException ex) {
-			System.out.println(ex.getMessage());
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
-		}
-		return sesionFinal;
-
-	}
 
 }

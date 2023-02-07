@@ -21,7 +21,7 @@
                      <top>
                         <ImageView fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                            <image>
-                              <Image url="@../../recursos/logo.jpeg" />
+                              <Image url="@../logo.jpeg" />
                            </image>
                            <BorderPane.margin>
                               <Insets right="125.0" />
@@ -67,37 +67,37 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="524.0" prefWidth="328.0" style="-fx-background-color: black;">
                            <children>
-                              <JFXTextField fx:id="fieldUserId" prefHeight="31.0" prefWidth="188.0" promptText="DNI/UserId" style="-fx-background-color: white;">
+                              <JFXTextField fx:id="fieldUserId" alignment="CENTER" prefHeight="31.0" prefWidth="188.0" promptText="DNI/UserId" style="-fx-background-color: white;">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="50.0" right="50.0" top="20.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldEmail" prefHeight="31.0" prefWidth="188.0" promptText="Email" style="-fx-background-color: white;">
+                              <JFXTextField fx:id="fieldEmail" alignment="CENTER" prefHeight="31.0" prefWidth="188.0" promptText="Email" style="-fx-background-color: white;">
                                  <VBox.margin>
                                     <Insets left="50.0" right="50.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldPassword" prefHeight="31.0" prefWidth="188.0" promptText="Password" style="-fx-background-color: white;">
+                              <JFXTextField fx:id="fieldPassword" alignment="CENTER" prefHeight="31.0" prefWidth="188.0" promptText="Password" style="-fx-background-color: white;">
                                  <VBox.margin>
                                     <Insets left="50.0" right="50.0" top="10.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldNombre" prefHeight="31.0" prefWidth="188.0" promptText="Nombre" style="-fx-background-color: white;">
+                              <JFXTextField fx:id="fieldNombre" alignment="CENTER" prefHeight="31.0" prefWidth="188.0" promptText="Nombre" style="-fx-background-color: white;">
                                  <VBox.margin>
                                     <Insets left="50.0" right="50.0" top="10.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldApellidos" prefHeight="31.0" prefWidth="188.0" promptText="Apellidos" style="-fx-background-color: white;">
+                              <JFXTextField fx:id="fieldApellidos" alignment="CENTER" prefHeight="31.0" prefWidth="188.0" promptText="Apellidos" style="-fx-background-color: white;">
                                  <VBox.margin>
                                     <Insets left="50.0" right="50.0" top="10.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldFecha" prefHeight="31.0" prefWidth="188.0" promptText="Fecha de Nacimiento" style="-fx-background-color: white;">
+                              <JFXTextField fx:id="fieldFecha" alignment="CENTER" prefHeight="31.0" prefWidth="188.0" promptText="Fecha de Nacimiento (aaaa-mm-dd)" style="-fx-background-color: white;">
                                  <VBox.margin>
                                     <Insets left="50.0" right="50.0" top="10.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldGenero" prefHeight="31.0" prefWidth="229.0" promptText="Género" style="-fx-background-color: white;">
+                              <JFXTextField fx:id="fieldGenero" alignment="CENTER" prefHeight="31.0" prefWidth="229.0" promptText="Género" style="-fx-background-color: white;">
                                  <VBox.margin>
                                     <Insets left="50.0" right="50.0" top="10.0" />
                                  </VBox.margin>
@@ -106,12 +106,12 @@
                         </VBox>
                      </children>
                   </VBox>
-                  <JFXTextField fx:id="fieldPeso" prefHeight="31.0" prefWidth="229.0" promptText="Peso" style="-fx-background-color: white;">
+                  <JFXTextField fx:id="fieldPeso" alignment="CENTER" prefHeight="31.0" prefWidth="229.0" promptText="Peso (kg)" style="-fx-background-color: white;">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </JFXTextField>
-                  <JFXTextField fx:id="fieldAltura" prefHeight="31.0" prefWidth="229.0" promptText="Altura" style="-fx-background-color: white;">
+                  <JFXTextField fx:id="fieldAltura" alignment="CENTER" prefHeight="31.0" prefWidth="229.0" promptText="Altura (m)" style="-fx-background-color: white;">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>

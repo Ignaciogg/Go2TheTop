@@ -5,8 +5,11 @@ import control.controlLogin;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import model.Deportista;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 
 public class Main extends Application {
 
@@ -19,6 +22,9 @@ public class Main extends Application {
     			Parent root = loader.load();
     			primaryStage.setTitle("gO2theTop - Login");
     			primaryStage.setScene(new Scene(root));
+    			primaryStage.setFullScreen(true);
+    			primaryStage.getIcons().add(new Image("/logo.jpeg"));
+
     			primaryStage.show();
         	}catch (IOException f) {
                 f.printStackTrace();

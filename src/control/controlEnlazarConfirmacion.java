@@ -1,6 +1,6 @@
 package control;
 
-import application.ficheros;
+import application.BBDD;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,9 +55,9 @@ public class controlEnlazarConfirmacion {
 
 		try {
 
-			ficheros files = new ficheros();
+			BBDD bd = new BBDD();
 			Enlace en = new Enlace(entrenador.getUserId(), deportista.getUserId());
-			files.escribirEnlace(en);
+			bd.escribirEnlace(en);
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewAdmin.fxml"));
 			controlAdmin controladmin = new controlAdmin();

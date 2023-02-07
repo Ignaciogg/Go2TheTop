@@ -1,15 +1,6 @@
 package control;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import com.google.gson.Gson;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import application.BBDD;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,15 +15,11 @@ import model.Deportista;
 import model.Entrenador;
 import model.Sesion;
 
-public class controlEstadisticasEntren1 {
+public class controlEstadisticasEntrenador1 {
 
 	private Deportista user;
 
 	private Entrenador mister;
-
-	private Sesion sesion;
-
-	ArrayList<Sesion> sesionArray;
 
     @FXML
     private Button botonVolver;
@@ -50,7 +37,7 @@ public class controlEstadisticasEntren1 {
     private Button buttonChatEntrenador;
 
 
-    @FXML
+    /*@FXML
     void chatEntrenador(ActionEvent event) {
     	System.out.println("VER CHAT");
     	try {
@@ -67,7 +54,7 @@ public class controlEstadisticasEntren1 {
 			e.printStackTrace();
 		}
 
-    }
+    }*/
 
     @FXML
     void seleccionar(ActionEvent event) {
@@ -80,10 +67,11 @@ public class controlEstadisticasEntren1 {
     			Parent root = loader.load();
 
     			String fecha = tableSesiones.getSelectionModel().getSelectedItem().getFecha();
-    			Sesion sesionFin = buscar_fecha(fecha);
-
-    			controlEntren2.setUsuario(user,sesionFin,mister);
     			System.out.println("Sesión seleccionada: " + user.getUserId() + " - " + fecha);
+    			
+    			BBDD bd = new BBDD();
+    			Sesion sesionFin = bd.buscarFecha(fecha);
+    			controlEntren2.setUsuario(user,sesionFin,mister);
 
     			Stage stage = (Stage) botonSeleccionar.getScene().getWindow();
     			stage.setTitle("gO2theTop - EstadisticasEntren1");
@@ -118,63 +106,18 @@ public class controlEstadisticasEntren1 {
 		}
     }
 
-	private void inicializarTabla() {
+    private void inicializarTabla() {
+		BBDD bd = new BBDD();
 		colFecha.setCellValueFactory(new PropertyValueFactory<Sesion, String>("fecha"));
-		tableSesiones.setItems(observableList());
-	}
-
-	public ObservableList<Sesion> observableList() {
-		ObservableList<Sesion> sesiones = FXCollections.observableArrayList();
-		Gson gson = new Gson();
-		String linea="";
-		Sesion sesion = null;
-
-		try (BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"))) {
-
-			while ((linea = br.readLine()) != null) {
-				sesion = gson.fromJson(linea, Sesion.class);
-				sesiones.add(sesion);
-			}
-
-
-		} catch (FileNotFoundException ex) {
-			System.out.println(ex.getMessage());
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
-		}
-
-		return sesiones;
+		tableSesiones.setItems(bd.verSesiones(user.getUserId()));
 	}
 
 	public void setUsuario(Deportista u, Entrenador mis) {
 		user = u;
-		mister=mis;
+		mister = mis;
+		System.out.println((user.getEmail()));
 		this.inicializarTabla();
 	}
 
-	public Sesion buscar_fecha(String fecha){
-		Sesion sesion = null;
-		Sesion sesionFinal=null;
-		Gson gson = new Gson();
-		String linea="";
-
-		try (BufferedReader br = new BufferedReader(new FileReader("src/files/sesiones/"+ user.getUserId() +".jsonl"))) {
-
-			while ((linea = br.readLine()) != null) {
-				sesion = gson.fromJson(linea, Sesion.class);
-				if(sesion.getFecha().equals(fecha)){
-					sesionFinal = sesion;
-				}
-			}
-
-
-		} catch (FileNotFoundException ex) {
-			System.out.println(ex.getMessage());
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
-		}
-		return sesionFinal;
-
-	}
 
 }

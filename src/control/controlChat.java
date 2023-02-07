@@ -1,10 +1,12 @@
 package control;
 
 import model.Deportista;
+import model.Entrenador;
 import model.Mensaje;
 
 import java.util.ArrayList;
 
+import application.BBDD;
 import application.ficheros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,10 +18,15 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class controlChat {
 
-	Deportista dep;
+	private Deportista dep;
+	
+	private Entrenador entren;
 
 	@FXML
     private Button botonVolver;
@@ -36,12 +43,12 @@ public class controlChat {
     @FXML
     private Button botonEnviar;
 
+
     void cargarChat(){
 
     	chatBox.clear();
-    	ficheros fichero = new ficheros();
-    	String ruta = "src/files/chats/"+ dep.getUserId() +".jsonl";
-    	ArrayList <Mensaje> miChat = fichero.leerChat(ruta);
+    	BBDD bd = new BBDD();
+    	ArrayList <Mensaje> miChat = bd.leerChat(dep);
 
     	for(int i = 0; i < miChat.size(); i++){
     		chatBox.appendText(miChat.get(i).getNombre() + " : " + miChat.get(i).getTexto());
@@ -52,9 +59,9 @@ public class controlChat {
 
     @FXML
     void enviar(ActionEvent event) {
-
-    	ficheros fichero = new ficheros();
-    	fichero.escribirChat(new Mensaje (dep.getName(), textoMensaje.getText()), ("src/files/chats/"+ dep.getUserId() +".jsonl"));
+    	BBDD bd = new BBDD();
+    	bd.escribirChat(new Mensaje (dep.getName(), textoMensaje.getText()), dep);
+    	textoMensaje.clear();
     	cargarChat();
     }
 
@@ -63,10 +70,11 @@ public class controlChat {
     	try {
 
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewDepor.fxml"));
+        	System.out.println("vuelvo");
         	controlDeportista controlDep = new controlDeportista();
 			loader.setController(controlDep);
 			Parent root = loader.load();
-
+			
 			controlDep.setUsuario(dep);
 
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
@@ -79,9 +87,11 @@ public class controlChat {
 		}
     }
 
-	public void setUsuario(Deportista user) {
+	public void setUsuario(Deportista user, Entrenador ent) {
+		BBDD bd = new BBDD();
 		dep = user;
-		depor.setText("Chat de " + dep.getName());
+		entren = ent;
+		depor.setText("Chat de " + user.getName() + " y "+ entren.getName());
 		cargarChat();
 	}
 

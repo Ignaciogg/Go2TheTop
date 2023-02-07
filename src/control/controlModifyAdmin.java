@@ -1,14 +1,6 @@
 package control;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
-import javax.swing.JFrame;
-
-import com.google.gson.Gson;
-
-import application.ficheros;
+import application.BBDD;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +17,7 @@ public class controlModifyAdmin extends controlModificarUsuario{
 
 
 	private Administrador user;
+	private Usuario modificar;
 
 	@FXML
     private Text bienvenide;
@@ -59,20 +52,15 @@ public class controlModifyAdmin extends controlModificarUsuario{
     @FXML
     void confirmarModify(ActionEvent event) {
 
-
-    	System.out.println(dni);
-    	user.borrarUsuario(dni);
-
     	try{
     		System.out.println("MODIFICA EL USUARIO");
 
-    		String id = nuevoId.getText();
-    		System.out.println(id);
+    		String id = modificar.getUserId();
     		String mail = nuevoEmail.getText();
     		System.out.println(mail);
     		String password = nuevaContraseña.getText();
     		System.out.println(password);
-    		String type="Administrador";
+    		String type="administrador";
     		System.out.println(type);
     		String name = nuevoNombre.getText();
     		System.out.println(name);
@@ -84,15 +72,13 @@ public class controlModifyAdmin extends controlModificarUsuario{
     		System.out.println(gen);
     		Boolean act = true;
 
-    		Usuario nuevo = new Usuario(id, mail, password, type);
-        	Administrador nuevo2 = new Administrador (id, mail, password, type, name, lastname, day, gen, act);
+    		Usuario nuevo = new Usuario(id, mail, password, type, name, lastname, day, gen, act);
         	System.out.println("El usuario modificado es: " + nuevo.toString());
-        	String ruta = "src/files/administradores/" + id + ".jsonl";
 
-        	ficheros fichero = new ficheros();
-        	fichero.escribirLogin(nuevo);
-        	fichero.escribirPersona(nuevo2, ruta);
+        	BBDD bd = new BBDD();
+        	bd.modificarUsuario(nuevo);
 
+        	volverAdmin(event);
     	}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -122,8 +108,9 @@ public class controlModifyAdmin extends controlModificarUsuario{
 
     }
 
-    public void setUsuario(Administrador u) {
+    public void setUsuario(Administrador u, Usuario mod) {
 		user = u;
+		modificar = mod;
 	}
 
 }

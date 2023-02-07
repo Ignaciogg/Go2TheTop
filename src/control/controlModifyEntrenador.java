@@ -1,14 +1,6 @@
 package control;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
-import javax.swing.JFrame;
-
-import com.google.gson.Gson;
-
-import application.ficheros;
+import application.BBDD;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,13 +11,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Administrador;
-import model.Entrenador;
 import model.Usuario;
 
 public class controlModifyEntrenador extends controlModificarUsuario{
 
 
 	private Administrador user;
+	private Usuario modificar;
 
 	@FXML
     private Text bienvenide;
@@ -52,9 +44,6 @@ public class controlModifyEntrenador extends controlModificarUsuario{
     private TextField nuevoGenero;
 
     @FXML
-    private TextField nuevoId;
-
-    @FXML
     private TextField nuevoNombre;
 
     @FXML
@@ -62,18 +51,17 @@ public class controlModifyEntrenador extends controlModificarUsuario{
 
 
     	System.out.println(dni);
-    	user.borrarUsuario(dni);
 
     	try{
     		System.out.println("MODIFICA EL USUARIO");
 
-    		String id = nuevoId.getText();
-    		System.out.println(id);
+    		String id = modificar.getUserId();
+
     		String mail = nuevoEmail.getText();
     		System.out.println(mail);
     		String password = nuevaContraseña.getText();
     		System.out.println(password);
-    		String type="Entrenador";
+    		String type="entrenador";
     		System.out.println(type);
     		String name = nuevoNombre.getText();
     		System.out.println(name);
@@ -86,15 +74,12 @@ public class controlModifyEntrenador extends controlModificarUsuario{
     		Boolean act = true;
 
 
-    		Usuario nuevo = new Usuario(id, mail, password, type);
-
-        	Entrenador nuevo2 = new Entrenador (id, mail, password, type, name, lastname, day, gen, act);
+    		Usuario nuevo = new Usuario(id, mail, password, type, name, lastname, day, gen, act);
         	System.out.println("El usuario que se va a modificar es: " + nuevo.toString());
-        	String ruta = "src/files/entrenadores/" + id + ".jsonl";
 
-        	ficheros fichero = new ficheros();
-        	fichero.escribirLogin(nuevo);
-        	fichero.escribirPersona(nuevo2, ruta);
+        	BBDD bd = new BBDD();
+        	bd.modificarUsuario(nuevo);
+        	volverAdmin(event);
 
     	}catch (Exception e) {
 			e.printStackTrace();
@@ -126,8 +111,9 @@ public class controlModifyEntrenador extends controlModificarUsuario{
 
     }
 
-    public void setUsuario(Administrador u) {
+    public void setUsuario(Administrador u, Usuario mod) {
 		user = u;
+		modificar = mod;
 	}
 
 }

@@ -20,7 +20,7 @@ import model.Usuario;
 
 public class ficheros {
 
-	public Usuario IniciarSesion(String email, String password) {
+	/*public Usuario IniciarSesion(String email, String password) {
 		Usuario persona = buscarUsuario(email);
 
 		if (persona != null && persona.getPassword().equals(password)) {
@@ -62,7 +62,7 @@ public class ficheros {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("src/files/login.jsonl"));
 			String linea;
-			
+
 			while ((linea = br.readLine()) != null && !encontrado) {
 				try {
 					persona = gson.fromJson(linea, Usuario.class);
@@ -188,13 +188,13 @@ public class ficheros {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public boolean escribirFeedback(Sesion feedback, String ruta, String mensaje) {
 		Gson gson = new Gson();
 		File ficheroViejo = new File(ruta);
 		File ficheroNuevo = new File("src/files/sesiones/buffer.jsonl");
 		Sesion sesion = null;
-		
+
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(ficheroViejo));
 			BufferedWriter bw = new BufferedWriter(new FileWriter(ficheroNuevo, true));
@@ -232,7 +232,7 @@ public class ficheros {
 			System.out.println(e);
 		}
 		return false;
-		
+
 	}
 
 	public ArrayList<Mensaje> leerChat(String ruta) {
@@ -311,5 +311,5 @@ public class ficheros {
 		}
 		return false;
 	}
-
+*/
 }

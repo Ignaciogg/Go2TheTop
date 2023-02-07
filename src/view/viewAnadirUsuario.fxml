@@ -20,7 +20,7 @@
                      <top>
                         <ImageView fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                            <image>
-                              <Image url="@../../recursos/logo.jpeg" />
+                              <Image url="@../logo.jpeg" />
                            </image>
                            <BorderPane.margin>
                               <Insets right="125.0" />
@@ -60,14 +60,14 @@
             </VBox>
          </left>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                <children>
                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir Usuario" textAlignment="CENTER">
                         <font>
                              <Font name="System Bold" size="26.0" />
                         </font>
                      <VBox.margin>
-                        <Insets left="127.0" top="10.0" />
+                        <Insets />
                      </VBox.margin>
                     </Text>
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">

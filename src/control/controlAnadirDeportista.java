@@ -1,13 +1,10 @@
 package control;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 
-import com.google.gson.Gson;
 import com.jfoenix.controls.JFXTextField;
 
-import application.ficheros;
+import application.BBDD;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -77,16 +74,12 @@ public class controlAnadirDeportista {
         	float alt2 = Float.parseFloat(alt);
         	Boolean act = true;
 
-        	Usuario nuevo = new Usuario (dni, ema, pas, use);
-        	Deportista nuevo2 = new Deportista (dni, ema, pas, use, nom, ape, fec, gen, act, pes2, alt2);
-
-        	System.out.println("El usuario que se va a anadir es: " + nuevo2.toString());
-        	String ruta = "src/files/deportistas/" + dni + ".jsonl";
-
-        	ficheros fichero = new ficheros();
-        	fichero.escribirLogin(nuevo);
-        	fichero.escribirPersona(nuevo2, ruta);
-            
+        	Deportista nuevo = new Deportista (dni, ema, pas, use, nom, ape, fec, gen, act);
+        	nuevo.setPeso(pes2);
+        	nuevo.setAltura(alt2);
+        	BBDD bd = new BBDD();
+        	bd.escribirPersona(nuevo);
+        	bd.escribirDeportista(nuevo);
             volverAdmin(event);
 
     	}catch (Exception e) {

@@ -2,6 +2,7 @@ package control;
 
 import java.util.ArrayList;
 
+import application.BBDD;
 import application.ficheros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,11 +17,12 @@ import javafx.stage.Stage;
 import model.Deportista;
 import model.Entrenador;
 import model.Mensaje;
+import model.Usuario;
 
 public class controlChatEntrenador {
 
-	Entrenador mister;
-	Deportista deportista;
+	private Entrenador mister;
+	private Deportista dep;
 
 	@FXML
     private Button botonVolver;
@@ -37,13 +39,12 @@ public class controlChatEntrenador {
     @FXML
     private Button botonEnviar;
 
- 
+
     void cargarChat(){
 
     	chatBox.clear();
-    	ficheros fichero = new ficheros();
-    	String ruta = "src/files/chats/"+ deportista.getUserId() +".jsonl";
-    	ArrayList <Mensaje> miChat = fichero.leerChat(ruta);
+    	BBDD bd = new BBDD();
+    	ArrayList <Mensaje> miChat = bd.leerChat(dep);
 
     	for(int i = 0; i < miChat.size(); i++){
     		chatBox.appendText(miChat.get(i).getNombre() + " : " + miChat.get(i).getTexto());
@@ -51,16 +52,16 @@ public class controlChatEntrenador {
     	}
 
     }
-    
+
     @FXML
     void enviar(ActionEvent event) {
-
-    	ficheros fichero = new ficheros();
-    	fichero.escribirChat(new Mensaje (mister.getName(), textoMensaje.getText()), ("src/files/chats/"+ deportista.getUserId() +".jsonl"));
+    	BBDD bd = new BBDD();
+    	bd.escribirChat(new Mensaje (mister.getName(), textoMensaje.getText()), dep);
+    	textoMensaje.clear();
     	cargarChat();
     }
 
-    @FXML
+    /*@FXML
     void volver(ActionEvent event) {
     	try {
 
@@ -69,7 +70,17 @@ public class controlChatEntrenador {
 			loader.setController(controlEntren);
 			Parent root = loader.load();
 
-			controlEntren.setUsuario(mister);
+			Usuario user = new Usuario(mister.getUserId(),
+					mister.getEmail(),
+					mister.getPassword(),
+					mister.getUserType(),
+					mister.getName(),
+					mister.getLastnames(),
+					mister.getBirthday(),
+					mister.getGenre(),
+					mister.getActive());
+			
+			controlEntren.setUsuario(user);
 
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setTitle("gO2theTop - Entrenador");
@@ -79,12 +90,34 @@ public class controlChatEntrenador {
         }catch (Exception e) {
 			e.printStackTrace();
 		}
+    }*/
+    
+    @FXML
+    void volver(ActionEvent event) {
+
+    	try {
+
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/viewEstadisticasEntren.fxml"));
+			controlEstadisticasEntrenador controlEstadisticasEntren = new controlEstadisticasEntrenador();
+			loader.setController(controlEstadisticasEntren);
+			Parent root = loader.load();
+			controlEstadisticasEntren.setUsuario(mister);
+
+			Stage stage = (Stage) botonVolver.getScene().getWindow();
+			stage.setTitle("gO2theTop - VerEstadisticasEntrenador");
+
+			stage.setScene(new Scene(root, botonVolver.getScene().getWidth(), botonVolver.getScene().getHeight()));
+
+
+        }catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 
 	public void setUsuario(Entrenador user, Deportista depor) {
+		dep = depor;
 		mister = user;
-		deportista = depor;
-		String texto = "Chat de " + mister.getName() + " y " + deportista.getName();
+		String texto = "Chat de " + mister.getName() + " y " + dep.getName();
 		System.out.println(texto);
 		entren.setText(texto);
 		cargarChat();
